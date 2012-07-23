@@ -1,0 +1,2111 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tichuiq\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-15 09:44+0200\n"
+"PO-Revision-Date: 2012-07-15 09:45+0200\n"
+"Last-Translator: lefteris hatzipetrou <ekchatzi@auth.gr>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ./lib\n"
+"X-Poedit-SearchPath-1: ./public_html\n"
+"X-Poedit-SearchPath-2: ./views\n"
+"X-Poedit-SearchPath-3: ./doc\n"
+
+#: lib/login.php:74
+#: lib/login.php:79
+msgid "User not found or wrong password."
+msgstr "User not found or wrong password."
+
+#: public_html/index.php:12
+msgid "Ηλεκτρονική τάξη Τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης"
+msgstr "E-class of Electrical and Electronics Engineering of Aristotle University of Thessaloniki"
+
+#~ msgid "Error(s)"
+#~ msgstr "Error(s)"
+
+#~ msgid "Warning(s)"
+#~ msgstr "Warning(s)"
+
+#~ msgid "Innapropriate Hand."
+#~ msgstr "Innapropriate Hand."
+
+#~ msgid "It's not your turn."
+#~ msgstr "It's not your turn."
+
+#~ msgid "Invalid Hand."
+#~ msgstr "Invalid Hand."
+
+#~ msgid "Request fail."
+#~ msgstr "Check the requested card!"
+
+#~ msgid "Ο λογαριασμός σας ενεργοποίηθηκε.Μπορείτε να παίξετε."
+#~ msgstr "Your account was activate. You can now join a game."
+
+#~ msgid "Token is bad."
+#~ msgstr "Token is bad."
+
+#~ msgid "Token is invalid."
+#~ msgstr "Token is invalid."
+
+#~ msgid "You made your call already."
+#~ msgstr "You made your call already."
+
+#~ msgid "It is not play phase."
+#~ msgstr "It is not play phase."
+
+#~ msgid "Game not found."
+#~ msgstr "Game not found."
+
+#~ msgid "You are not joined in a game."
+#~ msgstr "You are not joined in a game."
+
+#~ msgid "You are not logged in."
+#~ msgstr "You are not logged in."
+
+#~ msgid "You can't change your call"
+#~ msgstr "You can't change your call."
+
+#~ msgid "Your have less than 14 cards."
+#~ msgstr "Your have less than 14 cards."
+
+#~ msgid "It's not tichu time."
+#~ msgstr "It's not tichu time."
+
+#~ msgid "Email taken."
+#~ msgstr "Email taken."
+
+#~ msgid "Email is invalid"
+#~ msgstr "Email is invalid."
+
+#~ msgid "It's not deal phase."
+#~ msgstr "It's not deal phase."
+
+#~ msgid "You are not the dealer."
+#~ msgstr "You are not the dealer."
+
+#~ msgid "Access denied."
+#~ msgstr "Access denied."
+
+#~ msgid "Access Denied."
+#~ msgstr "Access Denied."
+
+#~ msgid "City name is not valid."
+#~ msgstr "City name is not valid."
+
+#~ msgid ""
+#~ "Το καλύτερο μέρος για να παίξετε tichu στο internet, απευθείας από τον "
+#~ "web browser σας!"
+#~ msgstr "The best place to play tichu online, through your web browser!"
+
+#~ msgid "TichuIQ-Game"
+#~ msgstr "TichuIQ - Game"
+
+#~ msgid "Πρέπει να δώσετε σε όλους τους παίχτες μία κάρτα..."
+#~ msgstr "You must trade with every player..."
+
+#~ msgid "Στείλε τον παρακάτω σύνδεσμο:"
+#~ msgstr "Send this link:"
+
+#~ msgid "Θέλετε σίγουρα να εγκαταλείψετε το παιχνίδι;"
+#~ msgstr "Are you sure you want to quit the game?"
+
+#~ msgid "Πρόσκληση..."
+#~ msgstr "Invitation"
+
+#~ msgid "Θέση κενή..."
+#~ msgstr "Seat is empty..."
+
+#~ msgid "Υπομονή φίλε μου..."
+#~ msgstr "Waiting for players..."
+
+#~ msgid "Προφίλ..."
+#~ msgstr "Profile"
+
+#~ msgid "Γράψε εδώ το μήνυμά σου..."
+#~ msgstr "Enter your chat message here..."
+
+#~ msgid "Επαναφορά"
+#~ msgstr "Reset"
+
+#~ msgid "Ανταλλαγή!"
+#~ msgstr "Trade!"
+
+#~ msgid "Μπαα..."
+#~ msgstr "Nope.."
+
+#~ msgid "GRAND!"
+#~ msgstr "GRAND!"
+
+#~ msgid "Ομάδα"
+#~ msgstr "Team"
+
+#~ msgid "Μάζεψε τα φύλλα..."
+#~ msgstr "Take the pile"
+
+#~ msgid "Τι κάνεις τον φοίνικα;"
+#~ msgstr "What is the phoenix transformed into?"
+
+#~ msgid "Τραπέζια"
+#~ msgstr "Games"
+
+#~ msgid "Αποχώρηση"
+#~ msgstr "Quit"
+
+#~ msgid "Δες"
+#~ msgstr "Check"
+
+#~ msgid "Μοίρασε τις κάρτες..."
+#~ msgstr "Deal the cards..."
+
+#~ msgid "Διώξε τους offline"
+#~ msgstr "Kick offline players"
+
+#~ msgid "Παίξε"
+#~ msgstr "Play"
+
+#~ msgid "Πάσο"
+#~ msgstr "Pass"
+
+#~ msgid "Σκυλιά"
+#~ msgstr "The Dogs"
+
+#~ msgid "Mach Jong"
+#~ msgstr "Mach Jong"
+
+#~ msgid ""
+#~ "Δεν παίζεται πλέον σε αυτό το τραπέζι. Θα μεταφερθείτε εκτός του "
+#~ "τραπεζιού..."
+#~ msgstr ""
+#~ "You are no longer playing in this game. You will be transferred to the "
+#~ "lobby."
+
+#~ msgid ""
+#~ "Οι παίχτες %s και %s νίκησαν το παιχνίδι με τελικό σκόρ %d - %d . "
+#~ "Ευχαριστούμε που παίξατε!"
+#~ msgstr ""
+#~ "%s and %s have won the game with final score %d - %d . Thank you very "
+#~ "much for playing!"
+
+#~ msgid "Φύλλα: %d"
+#~ msgstr "%d Cards"
+
+#~ msgid "Βγήκε..."
+#~ msgstr "No cards"
+
+#~ msgid "Ο δράκος δώθηκε στον παίχτη: "
+#~ msgstr "The dragon was given to "
+
+#~ msgid "Ζητήθηκε %s ..."
+#~ msgstr "%s requested ..."
+
+#~ msgid "Να πέσει %s ..."
+#~ msgstr "I request %s to be played..."
+
+#~ msgid "Ο/H %s δεν θα πει GRAND..."
+#~ msgstr "%s is not calling GRAND..."
+
+#~ msgid "Μπααα, δεν λέω..."
+#~ msgstr "Nope.."
+
+#~ msgid "Ο/H %s λεει TICHU"
+#~ msgstr "%s called TICHU"
+
+#~ msgid "Έλα θα πω TICHU! :)"
+#~ msgstr "TICHU!"
+
+#~ msgid "Ο/H %s λεει GRAND"
+#~ msgstr "%s called GRAND"
+
+#~ msgid "GRAND!!! :D"
+#~ msgstr "GRAND!"
+
+#~ msgid "Υπομονή  μέχρι να καθίσουν όλοι οι παίχτες..."
+#~ msgstr "Waiting for players..."
+
+#~ msgid "Ο δημιουργός του τραπεζιού μοιράζει τις κάρτες..."
+#~ msgstr "Dealer is dealing cards..."
+
+#~ msgid "θα πει κανείς Grand;"
+#~ msgstr "Will you call GRAND?"
+
+#~ msgid "Ανταλλαγή καρτών"
+#~ msgstr "Card Trade"
+
+#~ msgid "Τελευταίο χέρι: %s"
+#~ msgstr "Last hand by %s"
+
+#~ msgid "Τρέχων παίχτης: %s"
+#~ msgstr "Current player is %s"
+
+#~ msgid "Προς τα που θα πετάξει ο δράκος;;"
+#~ msgstr "Where will the dragon fly?"
+
+#~ msgid "Περιμένετε να διαλέξει που θα δώσει τον δράκο..."
+#~ msgstr "Waiting for the Dragon to be given..."
+
+#~ msgid "Τι φύλλο ζητάς;;"
+#~ msgstr "What shall be your request?"
+
+#~ msgid "Περιμένετε να ζητήσει φύλλο..."
+#~ msgstr "Waiting for card request..."
+
+#~ msgid "Μάζεψε τα φύλλα σου..."
+#~ msgstr "Take the pile!"
+
+#~ msgid "Περιμένετε μέχρι να μαζέψει τα φύλλα..."
+#~ msgstr "Waiting for pile to be taken..."
+
+#~ msgid "Chatroom not found."
+#~ msgstr "Chatroom not found."
+
+#~ msgid "Bad input."
+#~ msgstr "Bad input."
+
+#~ msgid "Player not found."
+#~ msgstr "Player not found."
+
+#~ msgid "No input."
+#~ msgstr "No input."
+
+#~ msgid "You already traded."
+#~ msgstr "You already traded."
+
+#~ msgid "It's not swap phase."
+#~ msgstr "It's not swap phase."
+
+#~ msgid "Invalid card arguments."
+#~ msgstr "Invalid card arguments."
+
+#~ msgid "Cards are not unique"
+#~ msgstr "Cards are not unique"
+
+#~ msgid "It's not play phase."
+#~ msgstr "It's not play phase."
+
+#~ msgid "TichuIQ. All rights reserved."
+#~ msgstr "TichuIQ. All rights reserved."
+
+#~ msgid "Το καλύτερο site για tichu online από το 2012."
+#~ msgstr "The best place to play tichu online since 2012."
+
+#~ msgid "Λάθος κωδικός."
+#~ msgstr "Wrong password."
+
+#~ msgid "Το παιχνίδι δεν βρέθηκε."
+#~ msgstr "Game not found."
+
+#~ msgid "Δεν μπορείτε να καθίσετε σε αυτό το παιχνίδι."
+#~ msgstr "You can't join this game."
+
+#~ msgid "Δεν είστε συνδεδεμένοι."
+#~ msgstr "You are not logged in."
+
+#~ msgid "We are escorting you to your table..."
+#~ msgstr "We are escorting you to your table..."
+
+#~ msgid "Δεν μπορείτε να δημιουργήσετε τραπέζι."
+#~ msgstr "You can't create a game."
+
+#~ msgid "We are preparing the felt..."
+#~ msgstr "We are preparing the felt..."
+
+#~ msgid "Player is not joined in a game."
+#~ msgstr "Player is not joined in a game."
+
+#~ msgid "You don't appear to be joined anywhere."
+#~ msgstr "You don't appear to be joined anywhere."
+
+#~ msgid "We are planning your escape!"
+#~ msgstr "We are planning your escape!"
+
+#~ msgid "You can play the request."
+#~ msgstr "You can play the requested card."
+
+#~ msgid "You can't pass on empty table."
+#~ msgstr "You can't pass on empty table."
+
+#~ msgid "No cards to play."
+#~ msgstr "No cards to play!"
+
+#~ msgid "Message too big."
+#~ msgstr "Message is too big."
+
+#~ msgid "Bad Message."
+#~ msgstr "Invalid Message."
+
+#~ msgid "You are silenced until %s."
+#~ msgstr "You are silenced until %s."
+
+#~ msgid "Ο λογαριασμός σας ενεργοποίηθηκε.Μπορείτε να κάνετε login."
+#~ msgstr "Your account was activate. You can login."
+
+#~ msgid "Email is taken."
+#~ msgstr "Email is taken."
+
+#~ msgid "Email is invalid."
+#~ msgstr "Email is invalid."
+
+#~ msgid "Image file error"
+#~ msgstr "Image file error"
+
+#~ msgid "Image file is too large."
+#~ msgstr "Image file is too large."
+
+#~ msgid "Image not uploaded."
+#~ msgstr "Image not uploaded."
+
+#~ msgid "Image file is not valid."
+#~ msgstr "Image file is not valid."
+
+#~ msgid "Filetype of image is not allowed."
+#~ msgstr "Filetype of image is not allowed."
+
+#~ msgid ""
+#~ "Ακολούθησε το παρακάτω λινκ για να ενεργοποιήσεις τον λογαριασμό σου...\n"
+#~ msgstr "Click the following link to activate your account... \n"
+
+#~ msgid "Ενεργοποιήση λογαριασμού στο TICHUIQ"
+#~ msgstr "Account activation on TICHUIQ"
+
+#~ msgid "Email delivery failed."
+#~ msgstr "Email delivery failed."
+
+#~ msgid "An activation email was sent to email address %s."
+#~ msgstr "An activation email was sent to email address %s."
+
+#~ msgid "Failed to get authentication token."
+#~ msgstr "Failed to get authentication token."
+
+#~ msgid "Wrong CAPTCHA!"
+#~ msgstr "Wrong CAPTCHA!"
+
+#~ msgid "An activation email was sent to email adress"
+#~ msgstr "An activation email was sent to email adress"
+
+#~ msgid "Account is already activated."
+#~ msgstr "Account is already activated."
+
+#~ msgid "Email not found!"
+#~ msgstr "Email not found!"
+
+#~ msgid "Ακολούθησε το παρακάτω λινκ για να αλλάξεις τον κωδικό σου...\n"
+#~ msgstr "Click the following link to change your password... \n"
+
+#~ msgid "Αλλαγή κωδικού στο TICHUIQ"
+#~ msgstr "Password recovery on TICHUIQ"
+
+#~ msgid "Invalid form."
+#~ msgstr "Invalid form."
+
+#~ msgid "It's not phoenix form select phase."
+#~ msgstr "It's not phoenix form select phase."
+
+#~ msgid "Invalid request."
+#~ msgstr "Invalid request."
+
+#~ msgid "It's not majong request phase."
+#~ msgstr "It's not majong request phase."
+
+#~ msgid "Όλα τα μετάλλια"
+#~ msgstr "All the badges"
+
+#~ msgid "Μετάλλια"
+#~ msgstr "Badges"
+
+#~ msgid ""
+#~ "Το έχουν στην κατοχή τους <a href='index.php?v=badge_owners&bid=%d'>%d "
+#~ "παίκτες</a>. Αξία %d."
+#~ msgstr ""
+#~ "<a href='index.php?v=badge_owners&bid=%d'>%d players</a> have it. Value "
+#~ "%d."
+
+#~ msgid "Το μετάλλιο δεν βρέθηκε."
+#~ msgstr "Badge not found."
+
+#~ msgid "Καλώς ήρθες"
+#~ msgstr "Welcome"
+
+#~ msgid "Επιστροφή στο παιχνίδι"
+#~ msgstr "Resume game"
+
+#~ msgid "Γρήγορο κάθισμα"
+#~ msgstr "Quickjoin"
+
+#~ msgid "Νέο τραπέζι"
+#~ msgstr "New game"
+
+#~ msgid "Αποσύνδεση"
+#~ msgstr "Logout"
+
+#~ msgid "Διαχείρηση"
+#~ msgstr "Administration"
+
+#~ msgid "Δημιουργία νέου τραπεζιού"
+#~ msgstr "Create a new table"
+
+#~ msgid "Κωδικός"
+#~ msgstr "Password"
+
+#~ msgid "Πόντοι"
+#~ msgstr "Points"
+
+#~ msgid "Δημιουργία"
+#~ msgstr "Create"
+
+#~ msgid "Αναζήτηση..."
+#~ msgstr "Search..."
+
+#~ msgid "Σας προτείνουμε"
+#~ msgstr "Suggestions"
+
+#~ msgid "Είναι η σειρά σας!"
+#~ msgstr "It's your turn!"
+
+#~ msgid "Πρέπει να ανταλλάξετε κάρτες!"
+#~ msgstr "You have to trade cards."
+
+#~ msgid "Πρέπει να αποφασίσετε αν θα πείτε Grand!"
+#~ msgstr "You have to make your GRAND call!"
+
+#~ msgid "Πρέπει να μοιράσετε κάρτες!"
+#~ msgstr "You have to deal cards."
+
+#~ msgid "Το παιχνίδι ξεκίνησε!"
+#~ msgstr "Your game has began!"
+
+#~ msgid "Υπάρχουν μην αναγνωσμένα μηνύματα στο τραπέζι σας..."
+#~ msgstr "There are unread messages in your table!"
+
+#~ msgid "Ο λογαριασμός σας δεν είναι ενεργοποιήμενος."
+#~ msgstr "You account is not activated."
+
+#~ msgid ""
+#~ "Ένα email ενεργοποίησης αποστάλθηκε στην διεύθυνση %s κατά την εγγραφή "
+#~ "σας."
+#~ msgstr ""
+#~ "Account activation email was successfully sent to the address %s during "
+#~ "your registration."
+
+#~ msgid "Σε περίπτωση που δεν το βρίσκετε, ελέγξτε τα junk mail σας!"
+#~ msgstr "In case you can find it, check your junk mail!"
+
+#~ msgid "Αποστολή ξανά"
+#~ msgstr "Send again"
+
+#~ msgid "You are banned until %s."
+#~ msgstr "You are banned until %s."
+
+#~ msgid "Εισάγετε κωδικό μόνο αν επιθυμείτε να δημιουργήσετε ιδιωτικό τραπέζι"
+#~ msgstr "Insert a password if you wish to create a private game"
+
+#~ msgid "Εισάγετε τους πόντους λήξης του παιχνιδιού"
+#~ msgstr "Insert at how many points the game ends"
+
+#~ msgid "Πατήστε για δημιουργία"
+#~ msgstr "Click to create"
+
+#~ msgid "Αναζήτηση... "
+#~ msgstr "Search..."
+
+#~ msgid ""
+#~ "Καλώς ήρθατε στο <em>Tichuiq</em>, μια διαδικτυακή εφαρμογή όπου παίζετε "
+#~ "<em>tichu online</em> με άλλα άτομα από την Ελλαδά, αλλά και όλο τον "
+#~ "κόσμο! Συναγωνιστείτε με τα υπόλοιπα μέλη της κοινότητας του <em>Tichuiq</"
+#~ "em> σε στατιστικά και μετάλλια! Δεν χρειάζεται να κάνετε κανενός είδους "
+#~ "εγκατάσταση! Το μόνο που χρειάζεστε είναι μια έγκυρη διεύθυνση <em>email</"
+#~ "em> και ένας σύγχρονος <em>web browser</em>, που σημαίνει ότι μπορείτε να "
+#~ "παίζετε tichu online από οποιαδήποτε σύστημα και λειτουργικό στα οποία "
+#~ "έχετε πρόσβαση στο internet, συμπεριλαμβανομένων <em>Windows</em>, "
+#~ "<em>Mac</em>, <em>Linux</em> ,<em>tablets</em> και <em>smartphones</em>."
+#~ msgstr ""
+#~ "Welcome to <em>Tichuiq</em>, an online application where you can play "
+#~ "<em>tichu</em> with other people from Greece and the World! Compete "
+#~ "against the other members of <em>Tichuiq community</em> on statistics and "
+#~ "badges! You don't have to perform any installation whatsoever! All you "
+#~ "need is a valid <em>email</em> address and a modern <em>web browser</em>. "
+#~ "That means you can play on any web capable hardware and operating "
+#~ "system , including <em>Windows</em>, <em>Mac</em>, <em>Linux</em>, "
+#~ "<em>tablets</em> and <em>smartphones</em>. "
+
+#~ msgid ""
+#~ "Εάν είστε ήδη εγγεγραμμένοι βάλτε τα στοιχεία σας (Email - password) και "
+#~ "πατήστε <em>'Είσοδος'</em>, αλλιώς πατήστε <em>'Εγγραφή'</em> για να "
+#~ "ξεκινήσετε την διαδικασία εγγραφής σας και να παίξετε tichu online "
+#~ "<em>άμεσα</em>!"
+#~ msgstr ""
+#~ "If you already have an account , fill your login information <em>Email</"
+#~ "em> - <em>Password</em> and hit the <em>Login</em> button, otherwise hit "
+#~ "the <em>Sign up</em> button and fill in your information so you can play "
+#~ "tichu online <em>immediately</em>!"
+
+#~ msgid "E-mail"
+#~ msgstr "E-mail"
+
+#~ msgid "Είσοδος"
+#~ msgstr "Login"
+
+#~ msgid "Εγγραφή"
+#~ msgstr "Sign up"
+
+#~ msgid "Ξέχασα τον κωδικό μου"
+#~ msgstr "Forgot my password"
+
+#~ msgid "Επαναφορά κωδικού"
+#~ msgstr "Password reset"
+
+#~ msgid "Token"
+#~ msgstr "Token"
+
+#~ msgid "Αλλαγή"
+#~ msgstr "Change"
+
+#~ msgid "Μέλη κατα περιοχή"
+#~ msgstr "Users by Location"
+
+#~ msgid "Παίκτες"
+#~ msgstr "Players"
+
+#~ msgid "Βρέθηκαν οι"
+#~ msgstr "Found"
+
+#~ msgid "Oι καλύτεροι"
+#~ msgstr "Top players"
+
+#~ msgid "Δεν βρέθηκαν χρήστες."
+#~ msgstr "Users not found."
+
+#~ msgid "Δεν βρέθηκε η πόλη."
+#~ msgstr "City not found."
+
+#~ msgid "Επικοινωνήστε μαζί μας"
+#~ msgstr "Contact us"
+
+#~ msgid "Πληροφορίες παιχνιδιού"
+#~ msgstr "Game information"
+
+#~ msgid "Κάτσε"
+#~ msgstr "Join"
+
+#~ msgid "Κανένας"
+#~ msgstr "Nobody"
+
+#~ msgid "Το παιχνίδι δεν έχει αρχίσει"
+#~ msgstr "Game has not started"
+
+#~ msgid "Το παιχνίδι έχει σταματήσει"
+#~ msgstr "Game has been stopped"
+
+#~ msgid "Μοιράζονται κάρτες"
+#~ msgstr "Cards are being dealt"
+
+#~ msgid "Δηλώνονται Grand Tichu"
+#~ msgstr "GRAND call phase"
+
+#~ msgid "Ανταλλάσονται κάρτες"
+#~ msgstr "Cards are being traded"
+
+#~ msgid "Το παιχνίδι έχει τελειώσει"
+#~ msgstr "The game is over"
+
+#~ msgid "Το παιχνίδι βρίσκεται σε εξέλιξη"
+#~ msgstr "The game is underway"
+
+#~ msgid "Δημιουργήθηκε στις"
+#~ msgstr "Created on"
+
+#~ msgid "Δεν βρέθηκε το παιχνίδι"
+#~ msgstr "Game not gound."
+
+#~ msgid "Διαγραφή"
+#~ msgstr "Delete"
+
+#~ msgid "Το τραπέζι είναι αδρανές, είστε σίγουροι ότι θέλετε να καθίσετε;"
+#~ msgstr "Table is able. Are you sure you want to join?"
+
+#~ msgid "Δημόσιο"
+#~ msgstr "Public"
+
+#~ msgid "Με κωδικό"
+#~ msgstr "Private"
+
+#~ msgid "Τελειωμένο"
+#~ msgstr "Finished"
+
+#~ msgid "Γεμάτο"
+#~ msgstr "Full"
+
+#~ msgid "Αδρανές"
+#~ msgstr "Idle"
+
+#~ msgid "Καθαρισμός Τραπεζιών"
+#~ msgstr "Clean Lobby"
+
+#~ msgid "Ανακατεύθυνση"
+#~ msgstr "Redirection"
+
+#~ msgid "<a href='%s'>Skip</a>"
+#~ msgstr "<a href='%s'>Skip</a>"
+
+#~ msgid "Auto-redirection in %s seconds."
+#~ msgstr "Auto-redirection in %s seconds."
+
+#~ msgid "Οι κανόνες του tichu"
+#~ msgstr "The rules of Tichu"
+
+#~ msgid ""
+#~ "To TichuIQ είναι ένα ομαδικό παιχνίδι καρτών που παίζεται με 4 παίχτες"
+#~ msgstr "Tichu is a co-op card game with four players in two pairs"
+
+#~ msgid ""
+#~ "Η τράπουλα αποτελείται από 56 φύλλα, εκ των οποίων τα 52 είναι τα "
+#~ "συνηθισμένα μίας\n"
+#~ "  κλασσικής τράπουλας και τα υπόλοιπα 4 είσαι οι ειδικές κάρτες (Δράκος, "
+#~ "Φοίνικας, Μαγιονγκ, Σκυλιά)."
+#~ msgstr ""
+#~ "The deck consist of the normal 52 cards plus 4 special cards (The Dragon, "
+#~ "The Phoenix, The Majong and The Dogs)."
+
+#~ msgid "Το παιχνίδι"
+#~ msgstr "The game"
+
+#~ msgid ""
+#~ "Σκοπός του παιχνιδιού είναι μία ομάδα να φτάσει τους 1000 πόντους για να "
+#~ "κερδίσει."
+#~ msgstr "The goal for a pair of players is to reach 1000 points."
+
+#~ msgid ""
+#~ "Για να το πετύχει αυτό, παίζονται πολλοί γύροι μέσα στο παιχνίδι\n"
+#~ "  μέσα στους οποίους οι παίχτες προσπαθούν με ποικίλους τρόπους να "
+#~ "μαζέψουν πόντους.<br/>Στην αρχή κάθε γύρου μοιράζονται 8 φύλλα σε κάθε "
+#~ "παίχτη."
+#~ msgstr ""
+#~ "To get there a set of rounds are played. At the begining of each round, "
+#~ "players are dealt 8 cards."
+
+#~ msgid ""
+#~ "Αν κάποιος από τους\n"
+#~ "  παίχτες κρίνει πως θα βγει πρώτος (<u>αυτός και όχι απλά κάποιος από "
+#~ "την ομάδα</u>) έχωντας δει μόνο τα πρώτα του 8 φύλλα, τότε έχει το "
+#~ "δικαίωμα να πει Grand και να\n"
+#~ "  ρισκάρει 200 πόντους για την ομάδα του"
+#~ msgstr ""
+#~ "If a player thinks that he/she can get rid of all of his cards before "
+#~ "everyone else (<u> including his pair</u>), he/she can call Grand Tichu "
+#~ "which is a 200 points bet for his/her team."
+
+#~ msgid ""
+#~ "Αυτό σημαίνει πως αν καταφέρει και τελειώσει πρώτος τον γύρο η ομάδα του "
+#~ "θα κερδίσει 200 πόντους, ειδάλως θα τους χάσει."
+#~ msgstr ""
+#~ " So, if he finishes first, his team gets 200 points, otherwise 200 points "
+#~ "are deducted from the current total of his team( negative score is "
+#~ "possible)."
+
+#~ msgid ""
+#~ "Μόλις\n"
+#~ "  αποφασίσουν οι παίχτες αν θα πουν Grand ή όχι, τότε μοιράζονται και τα "
+#~ "υπόλοιπα φύλλα της τράπουλας."
+#~ msgstr ""
+#~ "When all players decide on calling GRAND or not, the rest of the deck is "
+#~ "dealt."
+
+#~ msgid ""
+#~ "Μόλις τελειώσει το μοίρασμα τότε οι παίχτες πρέπει να δώσουν τις πάσες "
+#~ "τους."
+#~ msgstr "As soon as ,all the cards are dealt , the players must trade."
+
+#~ msgid ""
+#~ "Αυτό σημαίνει ότι πρέπει να δώσουν από 1 φύλλο σε κάθε παίχτη. Προφανώς "
+#~ "δίνονται στους\n"
+#~ "  αντιπάλους κάποια φύλλα μικρής αξίας και στον συμπαίχτη κάποιο που θα "
+#~ "μπορούσε να τον βοηθήσει, αν και αυτό βέβαια δεν αποτελεί κανόνα."
+#~ msgstr ""
+#~ "Trading means, that they have to pass one card from their hand to each of "
+#~ "the other players."
+
+#~ msgid "Το παιχνίδι αρχίζει ο παίχτης που έχει το Μαγιονγκ."
+#~ msgstr ""
+#~ "The round begins with the player which has the Majong special card in his "
+#~ "hand."
+
+#~ msgid ""
+#~ "Μπορεί να\n"
+#~ "  ξεκινήσει ρίχνοντας όποιο φύλλο θέλει σε οποιονδήποτε επιτρεπτό "
+#~ "συνδιασμό."
+#~ msgstr "He can begin by playing any valid hand."
+
+#~ msgid ""
+#~ "Αν αποφασίσει να ξεκινήσει με το Μαγιονγκ τότε του δίνεται το δικαίωμα να "
+#~ "ζητήσει ένα φύλλο."
+#~ msgstr "If he decides to play the Majong card he can <i>request</i> a card."
+
+#~ msgid ""
+#~ "Οποιοσδήποτε από τους παίχτες έχει αυτό το φύλλο και μπορεί να το παίξει "
+#~ "σύμφωνα με τους κανόνες του παιχνιδιού, τότε <u>υποχρεούται</u> να το "
+#~ "κάνει (σε οποιονδήποτε\n"
+#~ "  πιθανό και επιτρεπτό συνδιασμό)."
+#~ msgstr ""
+#~ "Any player that is able to play a hand consisting of this card, he/she "
+#~ "<u>must</u> play it, (in any possible and valid way)."
+
+#~ msgid ""
+#~ "Το Μαγκιονγκ μπορεί να παιχτεί είτε μόνο του είτε σε κέντα σαν αρχικό "
+#~ "φύλλο (δηλαδή στην κέντα πρέπει να υπάρχουν οπωσδήποτε και τα\n"
+#~ "  φύλλα 2,3,4,5 τουλάχιστον)."
+#~ msgstr ""
+#~ "The Majong can be played either as a single card hand, or a straight. "
+#~ "Majong value is '1'."
+
+#~ msgid ""
+#~ "Όταν κάποιος παίχτης παίξει έναν συνδιασμό, τότε ο επόμενος παίχτης "
+#~ "μπορεί είτε να χτυπήσει τον συνδιασμό αυτό είτε να πάει πάσο."
+#~ msgstr ""
+#~ "When a hand is played , the next player can either <i>hit</i> it or fold."
+
+#~ msgid ""
+#~ "Για να χτυπήσει τον συνδιασμό που\n"
+#~ "  είναι στο τραπέζι, πρέπει να ρίξει τον ίδιο συνδιασμό αλλά πιο ισχυρό."
+#~ msgstr "To hit the hand he must play a more powerful hand of the same type."
+
+#~ msgid "Οι πιθανοί συνδιασμοί είναι:"
+#~ msgstr "List of tichu hands:"
+
+#~ msgid "Μονοφυλλία"
+#~ msgstr "Single card"
+
+#~ msgid "π.χ. 3 το οποίο χτυπιέται με ένα 4"
+#~ msgstr "e.g. '3' can be hit by a '4'"
+
+#~ msgid "O άσσος πάει πάντα μετά τον ρίγα και ποτέ πριν το 2"
+#~ msgstr "A is more powerful than K and is NOT before 2."
+
+#~ msgid "Ζεύγος"
+#~ msgstr "Pair"
+
+#~ msgid "π.χ. 55 το οποίο χτυπιέται με ένα 77"
+#~ msgstr "e.g. '55' can be hit by '77'"
+
+#~ msgid "Τρία ίδια"
+#~ msgstr "Three of a kind"
+
+#~ msgid "π.χ. JJJ το οποίο χτυπιέται από ένα QQQ"
+#~ msgstr "e.g. 'JJJ' can be hit by 'QQQ'"
+
+#~ msgid "Φουλ"
+#~ msgstr "Full House"
+
+#~ msgid "π.χ. 555ΚΚ το οποίο χτυπιέται από ένα 66677"
+#~ msgstr "e.g. '555KK' can be hit by '66677'"
+
+#~ msgid "προσέξτε"
+#~ msgstr "pay attetion that"
+
+#~ msgid ""
+#~ "ότι στο φουλ η ισχύς καθορίζεται μόνο από τα 3 ίδια φύλλα και όχι από το "
+#~ "ζεύγος"
+#~ msgstr ""
+#~ "in full house, power is defined solely on the three of a kind part of the "
+#~ "hand."
+
+#~ msgid "Κέντα"
+#~ msgstr "Straight"
+
+#~ msgid "π.χ. 34567 το οποίο χτυπιέται από ένα 45678 αλλά όχι από ένα 456789"
+#~ msgstr "e.g. '34567' can be hit by '45678' , but no by a '456789'"
+
+#~ msgid ""
+#~ "Η κέντα πρέπει να έχει τουλάχιστον 5 φύλλα και μπορεί να χτυπηθεί από μία "
+#~ "ισχυρότερη\n"
+#~ "\tμε ακριβώς ίδιο αριθμό φύλλων."
+#~ msgstr ""
+#~ "Straight must be at least 5 cards long , and can be hit by a higher one "
+#~ "with the same count of cards."
+
+#~ msgid "Η ισχύς της κέντας καθορίζεται από το μεγαλύτερό της φύλλο."
+#~ msgstr "The value of the straigth is determined by its highest card."
+
+#~ msgid "Συνεχόμενα ζεύγη"
+#~ msgstr "Steps"
+
+#~ msgid ""
+#~ "π.χ. 445566 το οποίο μπορεί να χτυπηθεί από ένα 667788 αλλά όχι από ένα "
+#~ "8899 ή 66778899"
+#~ msgstr ""
+#~ "e.g. '445566' that can be hit by '667788', but no by '8899' or '66778899'"
+
+#~ msgid ""
+#~ "Με λίγα λόγια ο κάθε συνδιασμός χτυπιέται από έναν\n"
+#~ "\tισχυρότερο μόνο αν ο ισχυρότερος έχει ίσο αριθμό φύλλων."
+#~ msgstr ""
+#~ "The hand can be hit by a hand of more value but with the same length."
+
+#~ msgid "Βόμβα"
+#~ msgstr "Bomb"
+
+#~ msgid "Υπάρχουν 2 ειδών βόμβες"
+#~ msgstr "There are two kinds of bombs"
+
+#~ msgid ""
+#~ "Το ένα είδος είναι βόμβες τεσσάρων ίδιων φύλλων και το δεύτερο είναι "
+#~ "βόμβες φύλλων σε κέντα που έχουν το ίδιο χρώμα"
+#~ msgstr "One kind is Four of a Kind , and the second is Straight Flush."
+
+#~ msgid ""
+#~ "Οι βόμβες\n"
+#~ "\tείναι ισχυρότερες από κάθε συνδιασμό εκτός βομβών και μπορούν να τον "
+#~ "χτυπήσουν"
+#~ msgstr ""
+#~ "Bombs are more powerful than any combination except bombs of more value"
+
+#~ msgid "δηλαδή το ΚΚΚ55 μπορεί να χτυπηθεί από το 2222"
+#~ msgstr "e.g 'KKK55' can be hit by '2222'"
+
+#~ msgid ""
+#~ "Μία βόμβα μπορεί να χτυπηθεί <u>μόνο</u>\n"
+#~ "\tαπό μία ισχυρότερη βόμβα"
+#~ msgstr "A bomb can only be hit by a more powerful bomb"
+
+#~ msgid "Οι βόμβες κέντες είναι ισχυρότερες από αυτές με 4 φύλλα"
+#~ msgstr "Bombs with more cards are more powerful"
+
+#~ msgid "Η ισχύς των τετράφυλλων βομβών καθορίζεται από την ισχύ του φύλλου"
+#~ msgstr ""
+#~ "Value of four of a kind bombs is determined by the value of the kind"
+
+#~ msgid ""
+#~ "π.χ. η 6666 είναι\n"
+#~ "\tισχυρότερη από την 3333"
+#~ msgstr "e.g. '6666' beats '3333'"
+
+#~ msgid ""
+#~ "και η ισχύς των βομβών κέντα καθορίζεται πρώτα από τον αριθμό φύλλων και "
+#~ "μετά (όταν έχουν ίδιο αριθμό φύλλων) από το ισχυρότερο φύλλο τους."
+#~ msgstr ""
+#~ "In straight flush bombs of the same length ( straight flush bombs can be "
+#~ "any length >= 5) the one with the highest highest card wins."
+
+#~ msgid "Γραφικά για να το θυμάστε ισχύει: 3333<7777<23456<56789<2345678."
+#~ msgstr "So remember 3333 < 7777 < 23456 < 56789 < 2345678 etc."
+
+#~ msgid "ΠΡΟΣΟΧΗ"
+#~ msgstr "ATTETION"
+
+#~ msgid "μπορείτε να παίξετε μία βόμβα ακόμα και αν δεν είναι η σειρά σας."
+#~ msgstr "You can play a bomb even if it is not your turn."
+
+#~ msgid ""
+#~ "Αυτό θα δείτε στην\n"
+#~ "\tπορεία ότι είναι ένα πολύ ισχυρό στρατηγικό πλεονέκτημα και πολλές "
+#~ "φορές \"σώζει\" την κατάσταση."
+#~ msgstr ""
+#~ "You will see that this gives you a very powerful stategic advantage that "
+#~ "can save the day."
+
+#~ msgid ""
+#~ "Το μοναδικό φύλλο που δεν μπορεί να το χτυπήσει η βόμβα είναι τα σκυλιά."
+#~ msgstr "The only 'unbombable' card is the Dogs."
+
+#~ msgid "Φοίνικας"
+#~ msgstr "Phoenix"
+
+#~ msgid "Ο Φοίνικας από πολλούς θεωρείται το καλύτερο φύλλο της τράπουλας."
+#~ msgstr ""
+#~ "Phoenix is considered the more valueble card of the deck by many players."
+
+#~ msgid ""
+#~ "Και αυτό γιατί είναι μπαλαντέρ και μπορεί να μας βοηθήσει να φτιάξουμε "
+#~ "έναν ισχυρότερο\n"
+#~ "  συνδιασμό ή να φτιάξουμε έναν συνδιασμό που δεν μπορούσαμε γιατί μας "
+#~ "έλειπε ένα φύλλο."
+#~ msgstr ""
+#~ "And that's because of it's ability to 'transform' to any card (except the "
+#~ "special ones)."
+
+#~ msgid ""
+#~ "Μπορεί επίσης να παιχτεί και μόνος του σαν απλό φύλλο, όπου η ισχύς του "
+#~ "είναι\n"
+#~ "  ίδια με την ισχύ του κάτω φύλλου+0.5."
+#~ msgstr ""
+#~ "When not played in a combo hand  and played as a single card hand ,then "
+#~ "it's value is the value_of_card_under_phoenix + 0.5."
+
+#~ msgid ""
+#~ "Αυτό σημαίνει όταν αν κάνω είναι 4 και κάποιος ρίξει τον φοίνικα, τότε "
+#~ "πάνω από τον φοίνικα (που είναι σαν 4,5) μπορεί να πέσει\n"
+#~ "  ένα 5."
+#~ msgstr ""
+#~ "That means that if 4 is the current hand and the Phoenix is played on "
+#~ "top, then the value of the current hand is 4.5 and so it can be struck by "
+#~ "'5'."
+
+#~ msgid ""
+#~ "Ο Φοίνικας μπορεί να νικήσει τον άσσο στις μονοφυλλίες αλλά όχι και τον "
+#~ "δράκο."
+#~ msgstr "Phoenix beats A but not the Dragon."
+
+#~ msgid ""
+#~ "Επίσης, παρόλο που ο φοίνικας είναι ισχυρότερος από τον άσσο, η κέντα "
+#~ "JQKAphoenix"
+#~ msgstr ""
+#~ "Furthermore, even though phoenix is of more value than Ace, it can't be "
+#~ "used as higher than Ace in straights like J Q K A Phoenix."
+
+#~ msgid "ΔΕΝ είναι επιτρεπτός συνδιασμός."
+#~ msgstr "  "
+
+#~ msgid "Δράκος"
+#~ msgstr "The Dragon"
+
+#~ msgid ""
+#~ "Ο Δράκος θεωρείται το καλύτερο φύλλο της τράπουλας από όσους δεν θεωρούν "
+#~ "τον Φοίνικα."
+#~ msgstr ""
+#~ "The Dragon is too considered the best card of the deck just like the "
+#~ "Phoenix."
+
+#~ msgid ""
+#~ "Μπορεί να πέσει μόνο πάνω από μονοφυλλία και είναι το ισχυρότερο φύλλο."
+#~ msgstr ""
+#~ "It can only be played as single card hard and is the more powerful of "
+#~ "single card hands."
+
+#~ msgid ""
+#~ "Ο μοναδικός συνδιασμός που μπορεί να χτυπήσει τον δράκο είναι μία βόμβα."
+#~ msgstr "The only hand that beats the Dragon is a Bomb."
+
+#~ msgid ""
+#~ "Όταν κάποιος πάρει χέρι (θα εξηγήσουμε παρακάτω τι σημαίνει αυτό) με τον "
+#~ "δράκο, τότε πρέπει να\n"
+#~ "  δώσει τον δράκο και τα φύλλα που υπάρχαν από κάτω του σε κάποιον από "
+#~ "τους 2 αντιπάλους."
+#~ msgstr ""
+#~ "When someones takes the pile by playing the dragon, then he must give the "
+#~ "whole pile he won to one of the opponents."
+
+#~ msgid ""
+#~ "Τα σκυλιά συνήθως υποτιμούνται από τους παίχτες του παιχνιδού γιατί δεν "
+#~ "έχουν καμία ισχύ σαν φύλλο γι'αυτό και συνήθως αποτελούν μία από τις "
+#~ "πιθανές πάσες\n"
+#~ "  προς τους αντιπάλους."
+#~ msgstr "The dogs are often underestimated due to their zero value."
+
+#~ msgid ""
+#~ "Δεν είναι όμως λίγες οι φορές που χάρη στα σκυλιά κερδίζει μία ομάδα και "
+#~ "θα το δείτε και στην πορεία στο παιχνίδι! Η ιδιότητα της κάρτας αυτής\n"
+#~ "  είναι να δίνετε χέρι στον συμπαίχτη σας."
+#~ msgstr ""
+#~ "But they sometimes can mean win or loss in a tough round. Their ability "
+#~ "is passing turn to your teammate."
+
+#~ msgid ""
+#~ "Δηλαδή αν παίξετε τα σκυλιά, τότε απευθείες παίρνει χέρι ο συμπαίχτης "
+#~ "σας. Θέλω να πιστεύω πως οι έμπειροι\n"
+#~ "  παίχτες αναγνωρίζουν την αξία του φύλλου αυτού γιατί μπορεί να μην "
+#~ "βοηθάει τον παίχτη σαν παίχτη αλλά βοηθάει την ομάδα."
+#~ msgstr "So that makes it a good team playing card."
+
+#~ msgid ""
+#~ "Σημαντικό είναι να προσέξετε ότι τα σκυλιά\n"
+#~ "  <u>ΔΕΝ</u> μπορούν να χτυπηθούν από κάποια βόμβα."
+#~ msgstr "Dogs <u>CAN\"T</u> be beaten by bombs!"
+
+#~ msgid "Πως παίρνετε χέρι"
+#~ msgstr "Taking the pile"
+
+#~ msgid ""
+#~ "Πολύ απλά αν όλοι οι υπόλοιποι παίχτες πουν πάσο στον συνδιασμό που έχετε "
+#~ "ρίξει."
+#~ msgstr ""
+#~ "To take the pile (i.e. all the played cards after the last taking of the "
+#~ "pile), every other player must pass to the hand you played."
+
+#~ msgid ""
+#~ "Μόλις πουν όλοι πάσο τότε μαζεύεται τα φύλλα που υπάρχουν στο\n"
+#~ "  τραπέζι και τα βάζετε στην μπάζα σας."
+#~ msgstr "As soon as everyone passes, you add the played pile to your own."
+
+#~ msgid ""
+#~ "Αφού μαζέψετε τα φύλλα και πάρετε χέρι, τότε μπορείτε να παίξετε "
+#~ "οποιονδήποτε φύλλο πιθανό συνδιασμό (μόνο παίρνωντας χέρι μπορείτε\n"
+#~ "  να παίξετε τα σκυλιά)."
+#~ msgstr ""
+#~ "After you took the pile you can play any possible valid hand. Taking the "
+#~ "pile is the sole way to play the Dogs special card."
+
+#~ msgid "Στο τέλος κάθε γύρου μετριούνται οι πόντοι της κάθε ομάδας."
+#~ msgstr "At the end of each round the points for every team are counted."
+
+#~ msgid ""
+#~ "Οι μπάζα του παίχτη που βρήκε τελευταίος πάει στην μπάζα του παίχτη που "
+#~ "βρήκε πρώτος (είτε\n"
+#~ "  αυτός είναι ο συμπαίχτης είτε δεν είναι)."
+#~ msgstr "First finisher takes lasts' pile."
+
+#~ msgid ""
+#~ "Τα φύλλα όμως που έχουν μείνει στο χέρι του τελευταίου παίχτη, πάνε πάντα "
+#~ "στους αντιπάλους."
+#~ msgstr "Last's hand always goes to the opponents."
+
+#~ msgid "Τα φύλλα που έχουν πόντους είναι:"
+#~ msgstr "Cards with points:"
+
+#~ msgid "πόντοι"
+#~ msgstr "points"
+
+#~ msgid "Λέγωντας Τίτσου"
+#~ msgstr "Calling TICHU"
+
+#~ msgid ""
+#~ "Το τίτσου είναι ρίσκο 100 πόντων για την ομάδα (κάτι σαν τον Grand) και "
+#~ "ένας παίχτης μπορεί να το πει όποτε θέλει, αρκεί να έχει στο χέρι του\n"
+#~ "  όλα τα φύλλα (14 δηλαδή)."
+#~ msgstr ""
+#~ "Tichu is a 100 point bet, just like a 'small' GRAND , and can be called "
+#~ "at any time by any player who stills has a full 14 card hand."
+
+#~ msgid ""
+#~ "Αν καταφέρει και βγει ο ίδιος πρώτος τότε στην ομάδα προστίθεται πέραν "
+#~ "τους πόντους που μάζεψε, άλλοι 100 πόντοι, αλλιώς αν βγει ακόμα και\n"
+#~ "  δεύτερος, οι πόντοι αυτοί χάνονται από την ομάδα."
+#~ msgstr ""
+#~ "Just like GRAND ,if the Tichu caller finishes first , then 100 points are "
+#~ "added to the points of the round, otherwise 100 points are deducted from "
+#~ "their total score."
+
+#~ msgid "Ένα-Δύο"
+#~ msgstr "One-two"
+
+#~ msgid ""
+#~ "Το Ένα-Δύο γίνεται όταν οι 2 παίχτες της ίδια ομάδας καταφέρουν να βγουν "
+#~ "πριν βγει κάποιος από τους αντιπάλους τους."
+#~ msgstr ""
+#~ "When two partners empty their hands before any of the opponents then they "
+#~ "have achieved a <i>One-Two</i>."
+
+#~ msgid ""
+#~ "Αν μία ομάδα βγει Ένα-Δύο τότε ο γύρος τελειώνει με σκορ 200-0, υπέρ "
+#~ "φυσικά της ομάδας που το κατάφερε."
+#~ msgstr ""
+#~ "When this happen the round ends with 200-0 for the team of partners that "
+#~ "achieved One-Two."
+
+#~ msgid "Οι πόντοι για τα tichu και grand προστίθονται κανονικά."
+#~ msgstr ""
+#~ "Points for Tichu and Grand Tichu calls are added like in a normal round "
+#~ "end."
+
+#~ msgid "Καλό παιχνίδι!"
+#~ msgstr "Have a Good Game!"
+
+#~ msgid "Διαχείρηση πόλεων"
+#~ msgstr "Locations manager"
+
+#~ msgid "Όνομα νέας πόλης"
+#~ msgstr "New city name"
+
+#~ msgid "Προσθήκη"
+#~ msgstr "Add"
+
+#~ msgid "Επιτυχής διαγραφή."
+#~ msgstr "Delete successul."
+
+#~ msgid "Επιτυχής αλλαγή."
+#~ msgstr "Change successful."
+
+#~ msgid "Η "
+#~ msgstr "  "
+
+#~ msgid "προστέθηκε."
+#~ msgstr "was added"
+
+#~ msgid "id"
+#~ msgstr "ID"
+
+#~ msgid "Όνομα"
+#~ msgstr "Name"
+
+#~ msgid "Χρήστες"
+#~ msgstr "Users"
+
+#~ msgid "Διαγραφή επιλεγμένων"
+#~ msgstr "Delete selected"
+
+#~ msgid "Οι καλύτεροι παίκτες"
+#~ msgstr "Top players"
+
+#~ msgid "Παίκτης"
+#~ msgstr "Player"
+
+#~ msgid "Βαθμολογία"
+#~ msgstr "Rating"
+
+#~ msgid "Αναζήτηση παικτών"
+#~ msgstr "Player search"
+
+#~ msgid "ή"
+#~ msgstr "or"
+
+#~ msgid "email"
+#~ msgstr "Email"
+
+#~ msgid "Αναζήτηση"
+#~ msgstr "Search"
+
+#~ msgid "Μέλη Online"
+#~ msgstr "Members Online"
+
+#~ msgid "Προφίλ παίκτη"
+#~ msgstr "Player profile"
+
+#~ msgid "Not found."
+#~ msgstr "Not found."
+
+#~ msgid "Αλλού"
+#~ msgstr "Elsewhere"
+
+#~ msgid "Αλλαγή κωδικού"
+#~ msgstr "Change password"
+
+#~ msgid "Διαγραφή παίκτη"
+#~ msgstr "Delete player"
+
+#~ msgid "Ενεργοποίηση"
+#~ msgstr "Activation"
+
+#~ msgid "Αποβολή"
+#~ msgstr "Kick"
+
+#~ msgid "Silence"
+#~ msgstr "Silence"
+
+#~ msgid "Φίμωση"
+#~ msgstr "Silence"
+
+#~ msgid "Ο παίχτης φιμώθηκε επιτυχώς"
+#~ msgstr "Player has been silenced."
+
+#~ msgid "Θέσε"
+#~ msgstr "Set"
+
+#~ msgid "Πρόσθεσε"
+#~ msgstr "Add"
+
+#~ msgid "Ημερομηνία"
+#~ msgstr "Date"
+
+#~ msgid "Ώρα"
+#~ msgstr "Time"
+
+#~ msgid "Εισάγετε ημερομηνία και ώρα και πατήστε"
+#~ msgstr "Select date and time of day and press"
+
+#~ msgid "Λεπτά φίμωσης για προσθήκη:"
+#~ msgstr "Minutes of silence to add:"
+
+#~ msgid "Ban"
+#~ msgstr "Ban"
+
+#~ msgid "Ο παίχτης αποκλείστηκε επιτυχώς"
+#~ msgstr "Player has been banned."
+
+#~ msgid "Λεπτά αποβολής για προσθήκη:"
+#~ msgstr "Minutes of ban to add:"
+
+#~ msgid "Σίγουρα;"
+#~ msgstr "Are you sure?"
+
+#~ msgid "Ναι"
+#~ msgstr "Yes"
+
+#~ msgid "Όχι"
+#~ msgstr "No"
+
+#~ msgid "Επεξεργασία"
+#~ msgstr "Edit"
+
+#~ msgid "Αποδοχή"
+#~ msgstr "Accept"
+
+#~ msgid "Ακύρωση"
+#~ msgstr "Cancel"
+
+#~ msgid "Πόλη"
+#~ msgstr "City"
+
+#~ msgid "Registered on %s."
+#~ msgstr "Plays tichu online since %s."
+
+#~ msgid "Last active on %s."
+#~ msgstr "Last active on %s."
+
+#~ msgid "Now playing on table %s."
+#~ msgstr "Now playing on table %s."
+
+#~ msgid "Στατιστικά"
+#~ msgstr "Statistics"
+
+#~ msgid "Κερδισμένα TICHU"
+#~ msgstr "TICHU calls Won"
+
+#~ msgid "Κερδισμένα GRAND"
+#~ msgstr "GRAND Tichu calls Won"
+
+#~ msgid "Κερδισμένα παιχνίδια"
+#~ msgstr "Games won"
+
+#~ msgid "Ένα-δύο"
+#~ msgstr "One-twos"
+
+#~ msgid "Συνολικοί πόντοι"
+#~ msgstr "Total points"
+
+#~ msgid "Αποχωρήσεις"
+#~ msgstr "Quits"
+
+#~ msgid "Δραστηριοτητα"
+#~ msgstr "Activity"
+
+#~ msgid "Became online on %s."
+#~ msgstr "Became online on %s."
+
+#~ msgid "Left a game on %s."
+#~ msgstr "Left a game on %s."
+
+#~ msgid "Won a game with %s against %s and %s on %s."
+#~ msgstr "Won a game with %s against %s and %s on %s."
+
+#~ msgid "Lost a game with %s against %s and %s on %s."
+#~ msgstr "Lost a game with %s against %s and %s on %s."
+
+#~ msgid "Accomplished one-two with %s on %s,"
+#~ msgstr "Accomplished one-two with %s on %s,"
+
+#~ msgid "Accomplished tichu on %s."
+#~ msgstr "Accomplished tichu on %s."
+
+#~ msgid "Accomplished grand tichu on %s."
+#~ msgstr "Accomplished grand tichu on %s."
+
+#~ msgid "Gained %s badge on %s."
+#~ msgstr "Gained %s badge on %s."
+
+#~ msgid "Bombed on %s!"
+#~ msgstr "Bombed on %s!"
+
+#~ msgid "%d on %s."
+#~ msgstr "%d on %s."
+
+#~ msgid "Περισσότερα..."
+#~ msgstr "More..."
+
+#~ msgid "Userid is not a valid."
+#~ msgstr "Userid is not a valid."
+
+#~ msgid "User is not given."
+#~ msgstr "User is not given."
+
+#~ msgid "Εικόνα"
+#~ msgstr "Image"
+
+#~ msgid "Ανέβασμα"
+#~ msgstr "Upload"
+
+#~ msgid "Αποστολή"
+#~ msgstr "Send"
+
+#~ msgid ""
+#~ "Η διαγραφή είναι μη αναστρέψιμη. Είστε σίγουρος ότι θέλετε να διαγράψετε "
+#~ "το λογαριασμό;"
+#~ msgstr ""
+#~ "Deletion is irreversible. Are you sure you want to delete this account?"
+
+#~ msgid ""
+#~ "Είστε σίγουρος ότι θέλετε να αποβάλετε τον παίκτη από το τραπέζι του;"
+#~ msgstr "Are you sure you want to kick this player?"
+
+#~ msgid "Παρουσιάστηκε σφάλμα"
+#~ msgstr "Error"
+
+#~ msgid "Το email επαναφοράς κωδικού στάλθηκε με επιτυχία στην διεύθυνση"
+#~ msgstr "Password reset email was sent succesfully to the adreess"
+
+#~ msgid "Παρουσιάστηκε σφάλμα ,ελέξτε το email σας ή προσπαθήστε αργότερά."
+#~ msgstr "Error, check you email or try again later."
+
+#~ msgid "Ο παίκτης είναι online"
+#~ msgstr "Player is online"
+
+#~ msgid "Δεν βρέθηκαν εγγραφές."
+#~ msgstr "No entries."
+
+#~ msgid "Εγγραφείτε στο TichuIQ"
+#~ msgstr "Sign up on TichuIQ"
+
+#~ msgid "Περιοχή"
+#~ msgstr "Location"
+
+#~ msgid "Φωτογραφία"
+#~ msgstr "Picture"
+
+#~ msgid "Απέδειξε οτί είσαι άνθρωπος"
+#~ msgstr "Prove you are human"
+
+#~ msgid "Δεν μπορείτε να εγγραφτείτε στο TichuIQ ενώ είστε ήδη συνδεδεμένος."
+#~ msgstr "You can't sign up when you are logged in."
+
+#~ msgid ""
+#~ "Το email ενεργοποίησης λογαριασμού στάλθηκε με επιτυχία στην διεύθυνση"
+#~ msgstr "Account activation email was succesfully sent to the address"
+
+#~ msgid "Ενεργοποίηση λογαριασμού"
+#~ msgstr "Account activation"
+
+#~ msgid ""
+#~ "Εισάγετε τη διεύθυνση του λογαριασμού ηλεκτρονικού ταχυδρομείου της "
+#~ "εγγραφής σας στην παρακάτω φόρμα\n"
+#~ "\tκαι θα σας αποσταλλεί ένα email ενεργοποίησης λογαριασμού."
+#~ msgstr ""
+#~ "Insert your account email adress and an account activation email will be "
+#~ "sent."
+
+#~ msgid "Ο λογαριασμός σας είναι ενεργοποιημένος."
+#~ msgstr "Your account is activated."
+
+#~ msgid ""
+#~ "Εισάγετε τη διεύθυνση του λογαριασμού ηλεκτρονικού ταχυδρομείου της "
+#~ "εγγραφής σας στην παρακάτω φόρμα\n"
+#~ "\tκαι θα σας αποσταλλεί ένα email επαναφοράς κωδικού."
+#~ msgstr ""
+#~ "Insert your account email adress and a password reset email will be sent."
+
+#~ msgid "Χρησιμοποιείστε το λίνκ στο <a href='%s'>προφίλ σας.</a> "
+#~ msgstr "Use the link in <a href='%s'>your profile.</a> "
+
+#~ msgid "Αναζήτηση Μελών"
+#~ msgstr "Users search"
+
+#~ msgid "Το στοιχείο αναζήτησης είναι πολύ μικρό."
+#~ msgstr "Search query is too small."
+
+#~ msgid "Players"
+#~ msgstr "Players"
+
+#~ msgid "Frequently Asked Questions"
+#~ msgstr "Frequently Asked Questions"
+
+#~ msgid "Tichuiq rules"
+#~ msgstr "Tichuiq rules"
+
+#~ msgid "Games"
+#~ msgstr "Games"
+
+#~ msgid "Register"
+#~ msgstr "Register"
+
+#~ msgid "Change password"
+#~ msgstr "Change password"
+
+#~ msgid "Tichu online on your browser!"
+#~ msgstr "Tichu online on your browser!"
+
+#~ msgid "Contact us"
+#~ msgstr "Contact us"
+
+#~ msgid "Search for players"
+#~ msgstr "Search for players"
+
+#~ msgid "Player profile"
+#~ msgstr "Player profile"
+
+#~ msgid "%s's profile"
+#~ msgstr "%s's profile"
+
+#~ msgid "Player activity"
+#~ msgstr "Player activity"
+
+#~ msgid "%s's activity"
+#~ msgstr "%s's activity"
+
+#~ msgid "Manage cities"
+#~ msgstr "Player profile"
+
+#~ msgid "Password reset"
+#~ msgstr "Password reset"
+
+#~ msgid "Account activation"
+#~ msgstr "Account activation"
+
+#~ msgid "All Badges"
+#~ msgstr "All Badges"
+
+#~ msgid "Badge info"
+#~ msgstr "Badge info"
+
+#~ msgid "About %s"
+#~ msgstr "About %s"
+
+#~ msgid "Badge owners"
+#~ msgstr "Badge owners"
+
+#~ msgid "%s owners"
+#~ msgstr "%s owners"
+
+#~ msgid "Game information"
+#~ msgstr "Game information"
+
+#~ msgid "City information"
+#~ msgstr "City information"
+
+#~ msgid "Online players"
+#~ msgstr "Online players"
+
+#~ msgid "Redirection"
+#~ msgstr "Redirection"
+
+#~ msgid "Διαχείρηση διαφημίσεων"
+#~ msgstr "Ads manager"
+
+#~ msgid "Βοήθεια"
+#~ msgstr "Help"
+
+#~ msgid "Δεν έρχεται το email ενεργοποίησης"
+#~ msgstr "I can't find my account activation email"
+
+#~ msgid "Ελέγξε και τα junk mail. Το hotmail συνήθως το βάζει εκεί."
+#~ msgstr "Check your junk mail. Hotmail usually puts it there."
+
+#~ msgid "Βάζω τα στοιχεία μου αλλά δεν μπορώ να μπω"
+#~ msgstr "I type in my login credentials but I can't login"
+
+#~ msgid ""
+#~ "Τα στοιχεία που πρέπει να εισάγετε για να μπείτε στο site είναι EMAIL και "
+#~ "κωδικός. Πολλοί βάζουν το username τους αντί για το email, πράγμα που δεν "
+#~ "είναι σωστό."
+#~ msgstr ""
+#~ "The login credentials are EMAIL and password. A lot of users are confused "
+#~ "and use username instead, which is wrong."
+
+#~ msgid "Δεν ξέρω να παίζω τίτσου"
+#~ msgstr "I don't know how to play"
+
+#~ msgid "Μην ανησυχείτε! :) Μπορείτε να βρείτε τους κανόνες του παιχνδιού "
+#~ msgstr "Don't worry! :) You can find the rules "
+
+#~ msgid "εδώ."
+#~ msgstr "here."
+
+#~ msgid "Δεν μπορώ να μιλήσω στο chat"
+#~ msgstr "I can't chat"
+
+#~ msgid ""
+#~ "Κατά πάσα πιθανότητα δράσατε με τρόπο ενοχλητικό προς τους άλλους παίχτες "
+#~ "και χρεωθήκατε με σιωπή. Αν νομίζετε ότι δεν είναι έτσι, απευθυνθείτε "
+#~ "στους διαχειριστές."
+#~ msgstr ""
+#~ "You propably acted in a distrurbing way to other players and you have "
+#~ "been silenced. If you think this is unfair in some way, contact the "
+#~ "admins."
+
+#~ msgid "Αδρανείς παίχτες"
+#~ msgstr "Offline players"
+
+#~ msgid ""
+#~ "Μετά από  %d λεπτά αδράνειας ο παίχτης βγαίνει εκτός σύνδεσης. Μέσα στο "
+#~ "παιχνίδι, όταν κάποιος γίνει αδρανής, τότε μπορεί οποιοσδήποτε από το "
+#~ "τραπέζι να τον διώξει, πράξη που επιπλέον θα του χρεώσει αποχώρηση σαν "
+#~ "ποινή."
+#~ msgstr ""
+#~ "After %d of inactivity players appear offline. While in a game, when "
+#~ "someone becomes offline, then he can be kicked by any other player and be "
+#~ "charged with a quit."
+
+#~ msgid "Είμαι online αλλά με δείχνει offline"
+#~ msgstr "I am online but appear offline"
+
+#~ msgid "Με πέταξε έξω από το τραπέζι"
+#~ msgstr "I was thrown out of the table"
+
+#~ msgid ""
+#~ "Σε περίπτωση που πρέπει να κάνεις κάτι στο παιχνίδι που παίζεις το "
+#~ "σύστημα δεν σε ανανεώνει και βγαίνεις offline μετά από %d λεπτά οπότε οι "
+#~ "παίχτες μπορούν να σε διώξουν και να χρεωθείς αποχώρηση."
+#~ msgstr ""
+#~ "In you have to do something in the game you are playing, the system does "
+#~ "NOT refresh your status and you appear offline after %d minutes. By being "
+#~ "offline , other players in your game can kick you and charge you with a "
+#~ "quit."
+
+#~ msgid "\"Xάνω άρα καλύτερα να βγω από το παιχνίδι...\""
+#~ msgstr "\"I'm losing so I quit!...\""
+
+#~ msgid ""
+#~ "Το να βγεις από το παιχνίδι εκτός του ότι είναι εκνευριστικό για τους "
+#~ "υπόλοιπους παίχτες είναι και χειρότερο για τα δικά σου στατιστικά μιας "
+#~ "και οι αποχωρήσεις 'στοιχίζουν' περισσότερο απ'ότι οι ήττες."
+#~ msgstr ""
+#~ "Quitting games not only is very disturbing to other players, it is far "
+#~ "worse for your stats, since quits 'cost' more than defeats."
+
+#~ msgid "...άλλη ερώτηση"
+#~ msgstr "...a different question"
+
+#~ msgid ""
+#~ "Εάν οι παραπάνω πληροφορίες δεν σας κάλυψαν ή εάν αντιμετωπίσατε κάποιο "
+#~ "πρόβλημα στην σελίδα του tichuIQ παρακαλούμε απευθυνθείτε στους "
+#~ "διαχειριστές."
+#~ msgstr ""
+#~ "If the above questions didn't answer your inquiries , or your are facing "
+#~ "a different problem on the website, please refer to the administrators."
+
+#~ msgid "Αριθμός παικτών"
+#~ msgstr "Player count"
+
+#~ msgid "Αριθμός τραπεζιών"
+#~ msgstr "Games count"
+
+#~ msgid "Αριθμός γεμάτων τραπεζιών"
+#~ msgstr "Full tables count"
+
+#~ msgid "Αριθμός ιδιωτικών τραπεζιών"
+#~ msgstr "Private tables count"
+
+#~ msgid "Αριθμός παικτών online"
+#~ msgstr "Online players count"
+
+#~ msgid "Μέγιστος αριθμός γεμάτων τραπεζιών"
+#~ msgstr "Maximum count of full tables"
+
+#~ msgid "Σύνολο τελειωμένων παιχνιδιών"
+#~ msgstr "Finished games count"
+
+#~ msgid "Σύνολο τελειωμένων σέτ"
+#~ msgstr "Finished round count"
+
+#~ msgid "Σύνολο δημιουργημένων τραπεζιών"
+#~ msgstr "Created games count"
+
+#~ msgid "Μέγιστος αριθμός τραπεζιών"
+#~ msgstr "Maximum games' count"
+
+#~ msgid "Σύνολο  απεσταλμένων μηνυμάτων στο chat"
+#~ msgstr "Total chat messages sent"
+
+#~ msgid "Server load"
+#~ msgstr "Server load"
+
+#~ msgid "Περίφανοι ιδιοκτήτες μεταλλίου"
+#~ msgstr "Proud badge owners"
+
+#~ msgid "Άσπρη Ζώνη"
+#~ msgstr "White belt"
+
+#~ msgid ""
+#~ "Το μετάλλιο αυτό δίνεται σε όσους πραγματοποιήσουν επιτυχώς την εγγραφή "
+#~ "τους."
+#~ msgstr ""
+#~ "This badge is awarded to players who successfully activated their account."
+
+#~ msgid "Πολεμιστής του δράκου"
+#~ msgstr "Dragon Warrior"
+
+#~ msgid "Το μετάλλιο των διαχειριστών."
+#~ msgstr "The administrator badge."
+
+#~ msgid "Κίτρινη ζώνη"
+#~ msgstr "Yellow belt"
+
+#~ msgid "Το μετάλλιο δίνεται στους παίκτες που έχουν πετύχει 5 νίκες."
+#~ msgstr "This badge is awarded to players who have won 5 games."
+
+#~ msgid "Κόκκινη ζώνη"
+#~ msgstr "Red belt"
+
+#~ msgid "Το μετάλλιο δίνεται στους παίκτες που έχουν πετύχει 10 νίκες."
+#~ msgstr "This badge is awarded to players who have won 10 games."
+
+#~ msgid "Καφέ ζώνη"
+#~ msgstr "Brown belt"
+
+#~ msgid "Το μετάλλιο δίνεται στους παίκτες που έχουν πετύχει 50 νίκες."
+#~ msgstr "This badge is awarded to players who have won 50 games."
+
+#~ msgid "Μαύρη ζώνη"
+#~ msgstr "Black belt"
+
+#~ msgid "Το μετάλλιο δίνεται στους παίκτες που έχουν πετύχει 100 νίκες."
+#~ msgstr "This badge is awarded to players who have won 100 games."
+
+#~ msgid "Tichu Panda"
+#~ msgstr "Tichu Panda"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 10 Tichu."
+#~ msgstr "This badge is awarded to players who have won at least 10 Tichus."
+
+#~ msgid "Tichu Tiger"
+#~ msgstr "Tichu Tiger"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 50 Tichu."
+#~ msgstr "This badge is awarded to players who won at least 50 Tichus."
+
+#~ msgid "Tichu Sifu"
+#~ msgstr "Tichu Sifu"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 100 Tichu."
+#~ msgstr "This badge is awarded to players who have won at least 100 Tichus."
+
+#~ msgid "Tichu Ninja"
+#~ msgstr "Tichu Ninja"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 500 Tichu."
+#~ msgstr "This badge is awarded to players who have won at least 500 Tichus."
+
+#~ msgid "Grand Mantis"
+#~ msgstr "Grand Mantis"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 5 Grand Tichu."
+#~ msgstr "This badge is awarded to players who have won 5 Grand Tichus."
+
+#~ msgid "Grand Viper"
+#~ msgstr "Grand Viper"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 10 Grand Tichu."
+#~ msgstr "This badge is awarded to players who have won 10 Grand Tichus."
+
+#~ msgid "Grand Crane"
+#~ msgstr "Grand Crane"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 50 Grand Tichu."
+#~ msgstr "This badge is awarded to players who have won 50 Grand Tichus."
+
+#~ msgid "Grand Tai Lung"
+#~ msgstr "Grand Tai Lung"
+
+#~ msgid "Το μετάλλιο δίνεται σε αυτούς που έχουν κερδίσει 100 Grand Tichu."
+#~ msgstr "This badge is awarded to players who have won 100 Grand Tichus."
+
+#~ msgid "Άπειρη Κέντα"
+#~ msgstr "Infinite Straight"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους παίξουν μια 14φυλη κέντα."
+#~ msgstr ""
+#~ "This badge is awarded to players who have played a 14 card straight hand."
+
+#~ msgid "Επιστήμονας στο Μανχάταν Πρότζεκτ"
+#~ msgstr "Manhattan project scientist"
+
+#~ msgid ""
+#~ "Το μετάλλιο δίνεται σε όσους παίξουν μια βόμβα με περισσότερα από 7 φύλα."
+#~ msgstr ""
+#~ "This badge is awarded to players who played a bomb hand consisted of more "
+#~ "than 8 cards."
+
+#~ msgid "Βομβιστής Καμικάζι"
+#~ msgstr "Kamikaze"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους παίξουν 50 βόμβες."
+#~ msgstr "This badge is awarded to players who have played 50 bomb hands."
+
+#~ msgid "Μέλος της 17Ν"
+#~ msgstr "Terrorist"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους παίξουν 100 βόμβες."
+#~ msgstr "This badge is awarded to players who have played 100 bomb hands."
+
+#~ msgid "Αρχηγός της Αλ Κάιντα"
+#~ msgstr "Al Kaida Leader"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους παίξουν 500 βόμβες."
+#~ msgstr "This badge is awarded to players who have played 500 bomb hands."
+
+#~ msgid "Φλύαρος"
+#~ msgstr "Chatty"
+
+#~ msgid ""
+#~ "Το μετάλλιο δίνεται σε όσους έχουν στείλει τουλάχιστον 1000 μυνήματα στο "
+#~ "chat."
+#~ msgstr ""
+#~ "This badge is awarded to players who have sent more than 1000 chat "
+#~ "messages."
+
+#~ msgid "Εντάξει συμπαίκτης"
+#~ msgstr "OK pair"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους έχουν πετύχει 20 ένα-δύο."
+#~ msgstr "This badge is awarded to players who have achieved 20 one-twos."
+
+#~ msgid "Καλός συμπαίκτης"
+#~ msgstr "Good pair"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους έχουν πετύχει 50 ένα-δύο."
+#~ msgstr "This badge is awarded to players who have achieved 50 one-twos."
+
+#~ msgid "Γαμάτος συμπαίκτης"
+#~ msgstr "Awsome pair"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους έχουν πετύχει 100 ένα-δύο."
+#~ msgstr "This badge is awarded to players who have achieved 100 one-twos."
+
+#~ msgid "Αδελφός συμπαίκτης"
+#~ msgstr "Soul mate pair"
+
+#~ msgid "Το μετάλλιο δίνεται σε όσους έχουν πετύχει 250 ένα-δύο."
+#~ msgstr "This badge is awarded to players who have achieved 250 one-twos."
+
+#~ msgid "Φασούλι το φασούλι"
+#~ msgstr "Look after the pennies..."
+
+#~ msgid ""
+#~ "Το μετάλλιο δίνεται σε όσους έχουν συγκεντρώσει 10000 συνολικούς πόντους."
+#~ msgstr ""
+#~ "This badge is awarded to players who have acquired 10000 total points."
+
+#~ msgid "Γεμίζει το σακούλι"
+#~ msgstr "...and the pounds will take care of themselves"
+
+#~ msgid ""
+#~ "Το μετάλλιο δίνεται σε όσους έχουν συγκεντρώσει 50.000 συνολικούς πόντους."
+#~ msgstr "This badge is awarded to players who acquired 50.000 total points."
+
+#~ msgid "Φραγκάτος"
+#~ msgstr "Rich"
+
+#~ msgid ""
+#~ "Το μετάλλιο δίνεται σε όσους έχουν συγκεντρώσει 250.000 συνολικούς "
+#~ "πόντους."
+#~ msgstr "This badge is awarded to players who "
+
+#~ msgid "Εκατομμυριούχος"
+#~ msgstr "Millionaire"
+
+#~ msgid ""
+#~ "Το μετάλλιο δίνεται σε όσους έχουν συγκεντρώσει 1.000.000 συνολικούς "
+#~ "πόντους."
+#~ msgstr ""
+#~ "This badge is awarded to players who acquired 1.000.000 total points."
+
+#~ msgid "Φευγάτος"
+#~ msgstr "Quitter"
+
+#~ msgid ""
+#~ "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν αποχωρήσει 10 φορές από "
+#~ "παιχνίδι"
+#~ msgstr ""
+#~ "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν αποχωρήσει 10 φορές από "
+#~ "παιχνίδι."
+
+#~ msgid "Ανέμπιστος"
+#~ msgstr "Can't be trusted"
+
+#~ msgid ""
+#~ "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν αποχωρήσει 20 φορές από "
+#~ "παιχνίδι"
+#~ msgstr "This badge is awarded to players who have quit 20 games."
+
+#~ msgid "Μάικλ Σκόφιλντ"
+#~ msgstr "Michael Scoffield"
+
+#~ msgid ""
+#~ "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν αποχωρήσει 50 φορές από "
+#~ "παιχνίδι"
+#~ msgstr "This \"badge\" is awarded to players who have quit 50 games."
+
+#~ msgid "Χουντίνι"
+#~ msgstr "Houdini"
+
+#~ msgid ""
+#~ "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν αποχωρήσει 100 φορές από "
+#~ "παιχνίδι"
+#~ msgstr "This \"badge\" is awarded to players who have quit 100 games."
+
+#~ msgid "Τι είναι TICHU?"
+#~ msgstr "What is TICHU?"
+
+#~ msgid "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν χάσει 50 Tichu"
+#~ msgstr "This \"badge\" is awarded to players who won at least 50 Tichus."
+
+#~ msgid "Τα σκυλιά δεν διώχνουν το Δράκο??"
+#~ msgstr "Doesn't the Dogs beat the Dragon?"
+
+#~ msgid "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν χάσει 100 Tichu."
+#~ msgstr "This \"badge\" is awarded to players who have lost 10 Tichus."
+
+#~ msgid "Θαμώνας του ΠΡΟ-ΠΟ"
+#~ msgstr "BINGO player"
+
+#~ msgid "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν χάσει 20 Grand Tichu."
+#~ msgstr "This \"badge\" is awarded to players who have lost 20 Grand Tichus."
+
+#~ msgid "Τζογαδόρος"
+#~ msgstr "Gambler"
+
+#~ msgid "Το \"μετάλλιο\" δίνεται σε αυτούς που έχουν χάσει 50 Grand Tichu."
+#~ msgstr "This \"badge\" is awarded to players who have lost 50 Grand Tichus."
+
+#~ msgid "Τάγμα του Φοίνικα"
+#~ msgstr "Order of the Phoenix"
+
+#~ msgid ""
+#~ "Το μετάλλιο αυτό δίνεται τιμητικά σε όσους συνέβαλαν στην βελτίωση ή/και "
+#~ "προώθηση της ιστοσελίδας."
+#~ msgstr ""
+#~ "This badge is awarded to players who have helped in improving and "
+#~ "promoting the website."
+
+#~ msgid "Αλεξανδρούπολη"
+#~ msgstr "Alexandroupoli"
+
+#~ msgid "Κομοτηνή"
+#~ msgstr "Komotini"
+
+#~ msgid "Ξάνθη"
+#~ msgstr "Xanthi"
+
+#~ msgid "Καβάλα"
+#~ msgstr "Kavala"
+
+#~ msgid "Δράμα"
+#~ msgstr "Drama"
+
+#~ msgid "Σέρρες"
+#~ msgstr "Serres"
+
+#~ msgid "Πολύγυρος"
+#~ msgstr "Polygyros"
+
+#~ msgid "Θεσσαλονίκη"
+#~ msgstr "Salonika"
+
+#~ msgid "Κιλκίς"
+#~ msgstr "kilkis"
+
+#~ msgid "Έδεσσα"
+#~ msgstr "Edessa"
+
+#~ msgid "Βέροια"
+#~ msgstr "Veroia"
+
+#~ msgid "Καστοριά"
+#~ msgstr "Kastoria"
+
+#~ msgid "Φλώρινα"
+#~ msgstr "Florina"
+
+#~ msgid "Κοζάνη"
+#~ msgstr "Kozani"
+
+#~ msgid "Γρεβενά"
+#~ msgstr "Grevena"
+
+#~ msgid "Κατερίνη"
+#~ msgstr "Katerini"
+
+#~ msgid "Γιάννενα"
+#~ msgstr "Ioanina"
+
+#~ msgid "Ηγουμενίτσα"
+#~ msgstr "Igoumenitsa"
+
+#~ msgid "Άρτα"
+#~ msgstr "Arta"
+
+#~ msgid "Πρέβεζα"
+#~ msgstr "Preveza"
+
+#~ msgid "Λάρισα"
+#~ msgstr "Larisa"
+
+#~ msgid "Βόλος"
+#~ msgstr "Volos"
+
+#~ msgid "Τρίκαλα"
+#~ msgstr "Trikala"
+
+#~ msgid "Καρδίτσα"
+#~ msgstr "Karditsa"
+
+#~ msgid "Αθήνα"
+#~ msgstr "Athens"
+
+#~ msgid "Λαμία"
+#~ msgstr "Lamia"
+
+#~ msgid "Χαλκίδα"
+#~ msgstr "Halkida"
+
+#~ msgid "Άμφισσα"
+#~ msgstr "Amfissa"
+
+#~ msgid "Μεσολόγγι"
+#~ msgstr "Mesologi"
+
+#~ msgid "Κόρινθος"
+#~ msgstr "Korinth"
+
+#~ msgid "Πάτρα"
+#~ msgstr "Patra"
+
+#~ msgid "Ναύπλιο"
+#~ msgstr "Nayplio"
+
+#~ msgid "Πύργος"
+#~ msgstr "Pyrgos"
+
+#~ msgid "Τρίπολη"
+#~ msgstr "Tripoli"
+
+#~ msgid "Καλαμάτα"
+#~ msgstr "Kalamata"
+
+#~ msgid "Σπάρτη"
+#~ msgstr "Sparta"
+
+#~ msgid "Ερμούπολη"
+#~ msgstr "Ermoupolis"
+
+#~ msgid "Μυτιλήνη"
+#~ msgstr "Mytilene"
+
+#~ msgid "Χίος"
+#~ msgstr "Chios"
+
+#~ msgid "Σάμος"
+#~ msgstr "Samos"
+
+#~ msgid "Ρόδος"
+#~ msgstr "Rhodes"
+
+#~ msgid "Κέρκυρα"
+#~ msgstr "Corfu"
+
+#~ msgid "Λευκάδα"
+#~ msgstr "Leukada"
+
+#~ msgid "Αργοστόλι"
+#~ msgstr "Argostoli"
+
+#~ msgid "Ζάκυνθος"
+#~ msgstr "Zakynth"
+
+#~ msgid "Χανιά"
+#~ msgstr "Chania"
+
+#~ msgid "Ρέθυμνο"
+#~ msgstr "Rethymno"
+
+#~ msgid "Ηράκλειο"
+#~ msgstr "Iraklio"
+
+#~ msgid "Άγιος Νικόλαος"
+#~ msgstr "St. Nickolas"
+
+#~ msgid "Σύμη"
+#~ msgstr "Symi"
+
+#~ msgid "Online Μπιλιάρδο"
+#~ msgstr "Online pool"
+
+#~ msgid "Online Τάβλι"
+#~ msgstr "Online Backgammon"
+
+#~ msgid "Γαμάτα μπλουζάκια"
+#~ msgstr "Custom T-shirts"
+
+#~ msgid "YOU.gr"
+#~ msgstr "U.gr"
+
+#~ msgid "Found.gr"
+#~ msgstr "Found.gr"
+
+#~ msgid "bonus Deals"
+#~ msgstr "Bonus Deals"
+
+#~ msgid "Actions"
+#~ msgstr "Actions"
+
+#~ msgid "Ανέβασμα φωτογραφίας"
+#~ msgstr "Upload picture"
+
+#~ msgid "Click <a href='%s'> here </a> to be redirected."
+#~ msgstr "Click <a href='%s'> here </a> to be redirected."
+
+#~ msgid "Οι κανόνες του tichuIQ"
+#~ msgstr "tichuIQ Rules"
+
+#~ msgid "Τραπέζι"
+#~ msgstr "Game"
+
+#~ msgid "Tichu rules"
+#~ msgstr "Tichu rules"
+
+#~ msgid "Wrong password."
+#~ msgstr "Wrong password."
+
+#~ msgid ""
+#~ "Your account is not activated. Fill in the<a href='index.php?"
+#~ "v=request_account_activation'> activation form.</a>"
+#~ msgstr ""
+#~ "Your account is not activated. Fill in the<a href='index.php?"
+#~ "v=request_account_activation'> activation form.</a>"
+
+#~ msgid "Auto Scrol"
+#~ msgstr "Auto Scroll"
+
+#~ msgid "Καθαρισμός..."
+#~ msgstr "Clear"
+
+#~ msgid "Ήχος on/off"
+#~ msgstr "Sound on/off"
+
+#~ msgid "Αρχική"
+#~ msgstr "Home"
+
+#~ msgid "Μέλη"
+#~ msgstr "Users"
+
+#~ msgid "Επικοινωνία"
+#~ msgstr "Contact"
+
+#~ msgid "Γενικά στατιστικά"
+#~ msgstr "Global statistics"
+
+#~ msgid "Site statistics"
+#~ msgstr "Site statistics"
+
+#~ msgid "Τα φύλλα που πήρες είναι:"
+#~ msgstr "The cards you received..."
+
+#~ msgid "TichuIQ - Παίξτε tichu online από τον browser σας!"
+#~ msgstr "TichuIQ - Play tichu online on your browser!"
+
+#~ msgid "Εγώ έδωσα..."
+#~ msgstr "I traded...."
+
+#~ msgid "προφίλ σας"
+#~ msgstr "your profile"
+
+#~ msgid "Νέο παιχνίδι"
+#~ msgstr "New game"
+
+#~ msgid "TichuIQ - Παίξτε tichu online!"
+#~ msgstr "TichuIQ - Play tichu online on your browser!"
+
+#~ msgid "Lobby"
+#~ msgstr "Lobby"
+
+#~ msgid "Πρόφιλ..."
+#~ msgstr "Profile"
+
+#~ msgid "Hand cannot be played."
+#~ msgstr "Hand cannot be played."
+
+#~ msgid "Κάρτες: %d"
+#~ msgstr "%d cards"
