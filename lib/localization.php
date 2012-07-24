@@ -10,8 +10,9 @@
 		$locale = $_COOKIE['locale'];
 	}
 
-	setlocale(LC_MESSAGES, $locale);
-	setlocale(LC_TIME, $locale);
+	setlocale(LC_ALL, $locale);
+	#change
+	
 	bindtextdomain("messages", "../locale");
 	bind_textdomain_codeset("messages", 'utf-8');
 	textdomain("messages");
