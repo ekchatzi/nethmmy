@@ -2,6 +2,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/login.php");
 	include_once("../views/views.php");
+	include_once("../lib/connect_db.php");
 	$logged_userid = get_logged_user();
 	$user_type = isset($logged_userid[0])?$logged_userid[0]:'g';
 ?>
