@@ -1,0 +1,12 @@
+/*
+	REGISTER VIEW
+			*/
+.registrationFormWrapper form > label
+{
+	display:block;
+	font-weight:bold;
+}
+.registrationFormWrapper form > input
+{
+	display:block;
+}

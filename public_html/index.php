@@ -3,8 +3,16 @@
 	include_once("../lib/login.php");
 	include_once("../views/views.php");
 	include_once("../lib/connect_db.php");
-	$logged_userid = get_logged_user();
-	$user_type = isset($logged_userid[0])?$logged_userid[0]:'g';
+
+	/* Get logged user identification data */
+	$user_type = '';
+	$user_id = 0;
+	$logged_user = get_logged_user();
+	if(isset($logged_user) && $logged_user)
+	{
+		$user_type = $logged_user['type'];
+		$logged_userid = $logged_user['id'];
+	}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -15,7 +23,7 @@
 	<link rel="shortcut icon" type="image/png" href="images/resource/icon.png" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="css/views.css" />
-	<script type="text/javascript" src="js/jquery.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -46,8 +54,9 @@
 				});
 			</script>
 			<a id='showLoginLink' href='javascript:void(0)'><?php echo _('Login');?></a>
+			<a href='index.php?v=register'><?php echo _('Register');?></a>
 			<div id='loginPrompt'>
-				<form method='post' action='actions/login.php'>
+				<form method='post' action='login.php'>
 					<div class='loginPromptLine1'>
 						<input type='text' name='username' placeholder="<?php echo _('Username');?>" />
 						<input type='password' name='password' placeholder="<?php echo _('Password');?>" />
@@ -98,9 +107,19 @@
 			</ul>
 		</div>
 		<div class='mainView'>
-		<?php			
-			include($VIEW);
-		?>
+<?php
+			if(isset($_COOKIE['notify']))
+			{?>
+			<div class='notificationSide'>
+<?php				echo $_COOKIE['notify'];
+				setcookie('notify','',time()-3600);
+?>			</div>		
+<?php			}?>
+			<div>
+			<?php			
+				include($VIEW);
+			?>
+			</div>
 		</div>
 	</div>
 	<div class='footer'>
