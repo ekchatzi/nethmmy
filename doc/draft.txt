@@ -289,20 +289,14 @@ Coding style προτείνονται:
   
   
 ###Δομή βάσης δεδομένων
-+ `professors`:  
-`id,first_name,last_name,username,title,email,telephone,website,bio,registration_time,last_login,password,salt,login_token`
-
-+ `students`:  
-`id,first_name,last_name,username,aem,email,classes,registration_time,last_login,password,salt,login_token`
-
-+ `admins`:  
-`id,first_name,last_name,username,aem,email,telephone,permissions,registration_time,last_login,password,salt,login_token`
++ `users`:  
+`id,username,password,first_name,last_name,aem,user_type,title,email,classes,telephone,website,bio,registration_time,last_login,salt,login_token,is_active`
 
 + `classes`:  
 `id,name,professors`
 
 + `classes_grants`: 
-`id,professor_id,class,permissions`
+`id,user_id,class,permissions`
 
 + `file_folders`:  
 `id,name,class,public`
@@ -331,11 +325,11 @@ Coding style προτείνονται:
 + `test_results`:         
 `id,student,test_template,grade,time_evaluated,confirmed`
 
-+ `extra_tab`:            
-`id,class,creator,title,text`
-
 + `global_announcements`:
 `id,time_posted,poster,text`
+
++ `titles`
+`id,title,description`
 
 ####Σημειώσεις
 `test_template.descriptor` είναι η περιγραφή στην γλώσσα περιγραφής των αυτοαξιολογήσεων
@@ -349,14 +343,17 @@ Coding style προτείνονται:
 Δες [`implode()`](http://php.net/manual/en/function.implode.php),[`explode()`](http://www.php.net/manual/en/function.explode.php)
 Μπορουν να μπουν σε SQL Queries με [`FIND_IN_SET()`](http://dreamluverz.com/developers-tools/mysql/mysql-find_in_set-and-in)
 
-`files.uploader`,`test_template.creator` είναι `(s/a/p)$id` όπου
+`files.uploader`,`test_template.creator` είναι `$id` όπου
+$id το id του χρήστη
 
-+ s: student
-+ a: admin
-+ p: proffessor
+`users.user_type` == 0 : guest/ τιποτα
+		     1 : student
+		     2 : professor
+		     3 : admin
 
 
-
+`users.is_active` == 0 : inactive
+		     1 : active
 
 ###Κάποια Θέματα ασφαλείας
 
