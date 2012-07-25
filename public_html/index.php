@@ -31,9 +31,19 @@
 	<div class='topBar'>
 		<div class='loginInfo'>
 <?php		if($logged_userid)
-		{?>
-			<span><?php echo sprintf(_("Welcome ,%s (Last login %s)"),$logged_userid,time());?></span>
-<?php		}
+		{
+			$username = $logged_userid;
+			$last_login = time();
+			$query = "SELECT username,last_login FROM users WHERE id='$logged_userid' LIMIT 1";
+			$ret = mysql_query($query);
+			if($ret && mysql_numrows($ret))
+			{
+				$result = mysql_fetch_array($ret);
+				$username = $result['username'];
+				$last_login = $result['last_login'];
+			}
+			echo "<span><a href='index.php?v=profile&amp;uid=$logged_userid'>$username</a></span>";
+		}
 		else
 		{?>
 			<script type="text/javascript" >
@@ -75,7 +85,7 @@
 ?v=home'><?php echo _('Home');?></a></li>
 <?php				if($logged_userid)
 				{?>
-					<li><a href=''><?php echo _('Logout');?></a></li>			
+					<li><a href='logout.php'><?php echo _('Logout');?></a></li>			
 <?php				}?>
 			</ul>		
 		</div>
@@ -116,7 +126,8 @@
 ?>			</div>		
 <?php			}?>
 			<div>
-			<?php			
+			<?php
+				setcookie('last_view',$_SERVER['QUERY_STRING'],0);//save last view for after some actions	
 				include($VIEW);
 			?>
 			</div>

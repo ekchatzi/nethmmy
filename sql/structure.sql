@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 25, 2012 at 02:57 PM
+-- Generation Time: Jul 25, 2012 at 04:06 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -19,6 +19,61 @@ SET time_zone = "+00:00";
 --
 -- Database: `ethmmy_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE IF NOT EXISTS `classes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'class id',
+  `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'class title',
+  `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'class description',
+  `semesters` tinytext CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of semesters the class is avanaible',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_associations`
+--
+
+CREATE TABLE IF NOT EXISTS `class_associations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'class association id',
+  `user` int(11) NOT NULL COMMENT 'associated user id',
+  `type` int(10) unsigned NOT NULL COMMENT 'association type',
+  `class` int(11) NOT NULL COMMENT 'associated class id',
+  PRIMARY KEY (`id`),
+  KEY `class` (`class`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_association_types`
+--
+
+CREATE TABLE IF NOT EXISTS `class_association_types` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'association type id',
+  `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'association title',
+  `priority` int(10) unsigned NOT NULL COMMENT 'how important is for the class',
+  `permissions` varchar(20) CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titles`
+--
+
+CREATE TABLE IF NOT EXISTS `titles` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'title id',
+  `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'title text',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

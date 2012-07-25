@@ -290,12 +290,18 @@ Coding style προτείνονται:
 + `users`:  
 `id,username,password,first_name,last_name,aem,user_type,title,email,classes,telephone,website,bio,registration_time,last_login,salt,login_token,is_active`
 
++ `titles`
+`id,title,description`
+
 + `classes`:  
-`id,name,professors`
+`id,title,description,semesters`
 
-+ `classes_grants`: 
-`id,user_id,class,permissions`
++ `class_accosiations`: 
+`id,user,class,type`
 
++ `class_association_types`
+`id,title,priority,permissions'
+ 
 + `file_folders`:  
 `id,name,class,public`
 
@@ -326,8 +332,6 @@ Coding style προτείνονται:
 + `global_announcements`:
 `id,time_posted,poster,text`
 
-+ `titles`
-`id,title,description`
 
 ####Σημειώσεις
 `test_template.descriptor` είναι η περιγραφή στην γλώσσα περιγραφής των αυτοαξιολογήσεων
