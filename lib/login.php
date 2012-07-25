@@ -16,13 +16,21 @@
 		$token = isset($_COOKIE['login_token'])?$_COOKIE['login_token']:'';
 		if($token)
 		{		
-			$query= "SELECT id,user_type FROM users
+			$query= "SELECT id,user_type,last_remote_adress FROM users
 				 WHERE login_token = '$token' ";
 			$ret = mysql_query($query);
 			if( $ret && (mysql_numrows($ret) >= 1))
 			{
+				$ip = $_SERVER['REMOTE_ADDR'];
 				$result = mysql_fetch_array($ret);
-				return array('type' => $USER_TYPES[ $result['user_type'] ] , 'id' => $result['id']);
+				if($ip == $result['last_remote_adress'])
+				{
+					return array('type' => $USER_TYPES[ $result['user_type'] ] , 'id' => $result['id']);
+				}
+				else
+				{
+					setcookie('notify',_('Remote adress has been changed since last login'),time()+3600);
+				}			
 			}
 		}
 		return false;
@@ -34,12 +42,11 @@
 	*/
 	function logout()
 	{
-		global $ACTIVE_TIMEOUT;
-		$logged_userid = substr(1,get_logged_user());
-		if($logged_userid)
+		$logged_user = get_logged_user();
+		if($logged_user)
 		{
 			$query= "UPDATE users SET 
-				login_token = NULL WHERE id='$logged_userid' LIMIT 1";
+				login_token = NULL WHERE id='".$logged_user['id']."' LIMIT 1";
 			$ret = mysql_query($query);
 		}
 		setcookie('login_token','',time() - 3600);
@@ -49,16 +56,16 @@
 		Logs in user with username and password.
 		returns error message on error;
 	*/
-	function login_user($username,$password)
+	function login($username,$password)
 	{
-		global $TOKEN_LOGIN_DURATION;
+		global $LOGIN_DURATION;
 		global $HASH_ALGORITHM;
-		$login_duration = $TOKEN_LOGIN_DURATION;
+		$login_duration = $LOGIN_DURATION;
 		if(!get_logged_user())
 		{
 			$query= "SELECT password,salt,id FROM users WHERE username='$username'";
 			$ret = mysql_query($query);
-			if( $ret && (mysql_numrows($result) >= 1))
+			if( $ret && (mysql_numrows($ret) >= 1))
 			{
 				$dbarray = mysql_fetch_array($ret);
 				$uid = $dbarray['id'];
@@ -67,10 +74,13 @@
 				if(hash($HASH_ALGORITHM,$password.$dbarray['salt']) == $dbarray['password'])
 				{
 					/* save the login_token on client and db */
-					$login_token = md5(time().$uid.$_SERVER['REMOTE_ADDR']);
+					$ip = $_SERVER['REMOTE_ADDR'];
+					$login_token = md5(time().$uid.$ip);
 					setcookie("login_token",$login_token,time() + $login_duration);
 					$query = "UPDATE users 
-							SET login_token = '$login_token'
+							SET login_token = '$login_token',
+								last_login = '".time()."',
+								last_remote_adress = '$ip'
 							WHERE id = '$uid' LIMIT 1";
 					mysql_query($query);
 					return mysql_error();//return mysql error if any;

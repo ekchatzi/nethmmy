@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 24, 2012 at 04:24 PM
+-- Generation Time: Jul 25, 2012 at 02:57 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'student id',
   `username` varchar(32) CHARACTER SET latin1 NOT NULL COMMENT 'student username',
-  `password` varchar(32) CHARACTER SET ascii NOT NULL COMMENT 'hash of salted password',
+  `password` varchar(64) CHARACTER SET ascii NOT NULL COMMENT 'hash of salted password',
   `first_name` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'user first name',
   `last_name` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'user last name',
   `aem` int(10) unsigned DEFAULT NULL COMMENT 'Arithmos eidikou mitrwou',
@@ -40,14 +40,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `website` tinytext COLLATE utf8_unicode_ci COMMENT 'user website url',
   `bio` text COLLATE utf8_unicode_ci COMMENT 'user biography',
   `registration_time` int(11) NOT NULL COMMENT 'unix timestamp of registration',
+  `registration_semester` int(11) DEFAULT '1' COMMENT 'semester of studies at registration',
   `last_login` int(11) DEFAULT NULL COMMENT 'unix timestamp of last login',
-  `salt` varchar(32) CHARACTER SET ascii NOT NULL COMMENT 'random salt for security',
-  `login_token` varchar(32) CHARACTER SET ascii NOT NULL COMMENT 'hash for login authentication',
+  `salt` varchar(64) CHARACTER SET ascii NOT NULL COMMENT 'random salt for security',
+  `login_token` varchar(64) CHARACTER SET ascii NOT NULL COMMENT 'hash for login authentication',
   `is_active` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'active account flag',
+  `last_remote_adress` varchar(39) COLLATE utf8_unicode_ci NOT NULL COMMENT 'last login ip adress , sufficient length for IPv6',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `aem` (`aem`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=4 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
