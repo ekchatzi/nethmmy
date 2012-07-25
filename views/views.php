@@ -9,9 +9,6 @@
 
 	$view['register'] = '../views/register.php';
 	$view_title['register'] = _('Register Application');
-	
-	$view['redirection'] = '../views/redirection.php';
-	$view_title['redirection']  = _('Redirection');
 
 	/* if v is one of the above (so $view[$v] evaluates to true)
 	we will include $view[$v] else we include by default home view*/	
