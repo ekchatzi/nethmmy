@@ -24,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="css/views.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="js/validation.js" type="text/javascript"></script>
 
 </head>
 <body>
