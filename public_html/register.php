@@ -14,7 +14,7 @@
 	$username = $_POST['username'];
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
-	$aem = $POST['aem'];
+	$aem = $_POST['aem'];
 	$email = $_POST['email'];
 	$semester = $_POST['semester'];
 
@@ -53,7 +53,7 @@
 								}
 								else
 								{
-									$error .= _('AEM exists.');
+									$error .= _('AEM already exists.');
 								}
 							}
 							else
