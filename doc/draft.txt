@@ -185,51 +185,49 @@ Coding style προτείνονται:
 
 ###Δομή ιεραρχίας αρχείων
 + public\_html/
-Δημόσιος φάκελος για τα front-end αρχεία.
+Δημόσιος φάκελος για τα front-end αρχεία και actions.
 	+ index.php
 	Αρχική σελίδα και controller. Με get μια παράμετρο v θα κάνει include το ανάλογο αρχείο view.
-	+ actions/
-		Φάκελος ενεργειών
-		+ login.php
-		Είσοδος χρήστη
-		+ logout.php
-		Αποσύνδεση χρήστη
-		+ post\_anouncement.php
-		Ανάρτηση ανακοίνωσης
-		+ edit\_anouncement.php
-		Επεξεργασία ανακοίνωσης
-		+ delete\_announcement.php
-		Διαγραφή ανακοίνωσης
-		+ create\_tab.php
-		Δημιουργία tab μαθήματος
-		+ delete\_tab.php
-		Διαγραφή tab μαθήματος
-		+ create\_lab.php
-		Δημιουργία εργαστηρίου/εργασίας
-		+ edit\_lab.php
-		Επεξεργασία εργαστηρίου/εργασίας
-		+ create\_lab\_team.php
-		Δημιουργία ομάδας εργαστηρίου
-		+ edit\_lab\_team.php
-		Επεξεργασία ομάδας εργαστηρίου
-		+ upload\_file\_lab.php
-		Ανέβασμα αρχείων από φοιτητές για εργαστήρια και εργασίες
-		+ download\_file.php
-		Κατέβασμα αρχείου
-		+ create\_folder.php
-		Δημιουργία φακέλο στο υλικό μαθήματος
-		+ upload\_file.php
-		Ανέβασμα αρχείου στο υλικό μαθήματος
-		+ add\_link.php
-		Προσθήκη συνδέσμου στις πηγές
-		+ edit\_information.php
-		Επεξεργασία πληροφοριών
-		+ activate\_account.php
-		Ενεργοποίηση λογαριασμού φοιτητή
-		+ create\_account.php
-		Δημιουργία λογαριασμού
-		+ register.php
-		Εγγραφή φοιτητή
+	+ login.php
+	Είσοδος χρήστη
+	+ logout.php
+	Αποσύνδεση χρήστη
+	+ post\_anouncement.php
+	Ανάρτηση ανακοίνωσης
+	+ edit\_anouncement.php
+	Επεξεργασία ανακοίνωσης
+	+ delete\_announcement.php
+	Διαγραφή ανακοίνωσης
+	+ create\_tab.php
+	Δημιουργία tab μαθήματος
+	+ delete\_tab.php
+	Διαγραφή tab μαθήματος
+	+ create\_lab.php
+	Δημιουργία εργαστηρίου/εργασίας
+	+ edit\_lab.php
+	Επεξεργασία εργαστηρίου/εργασίας
+	+ create\_lab\_team.php
+	Δημιουργία ομάδας εργαστηρίου
+	+ edit\_lab\_team.php
+	Επεξεργασία ομάδας εργαστηρίου
+	+ upload\_file\_lab.php
+	Ανέβασμα αρχείων από φοιτητές για εργαστήρια και εργασίες
+	+ download\_file.php
+	Κατέβασμα αρχείου
+	+ create\_folder.php
+	Δημιουργία φακέλο στο υλικό μαθήματος
+	+ upload\_file.php
+	Ανέβασμα αρχείου στο υλικό μαθήματος
+	+ add\_link.php
+	Προσθήκη συνδέσμου στις πηγές
+	+ edit\_information.php
+	Επεξεργασία πληροφοριών
+	+ activate\_account.php
+	Ενεργοποίηση λογαριασμού φοιτητή
+	+ create\_account.php
+	Δημιουργία λογαριασμού
+	+ register.php
+	Εγγραφή φοιτητή
 	+ image/
 		+ resource/
 		Δημόσιος φάκελος με εικονίδια κλπ.
