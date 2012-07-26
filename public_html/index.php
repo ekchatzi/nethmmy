@@ -4,9 +4,11 @@
 	include_once("../views/views.php");
 	include_once("../lib/connect_db.php");
 
+	setcookie('last_view',(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'v=home'),0);//save last view for after some actions
+
 	/* Get logged user identification data */
 	$user_type = '';
-	$user_id = 0;
+	$logged_userid = 0;
 	$logged_user = get_logged_user();
 	if(isset($logged_user) && $logged_user)
 	{
@@ -127,7 +129,6 @@
 <?php			}?>
 			<div>
 			<?php
-				setcookie('last_view',$_SERVER['QUERY_STRING'],0);//save last view for after some actions	
 				include($VIEW);
 			?>
 			</div>
