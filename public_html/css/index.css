@@ -1,24 +1,23 @@
-*
-{
+* {
 	padding:0px;
 	margin:0px;
 }
 
-body
-{
+body {
 	margin:auto;
 	font-family: arial;
 	width:1000px;
 	background-color:#EEE;
 }
 
-.bodyWrapper
-{
+label {
+	font-weight:bold;
+}
+.bodyWrapper {
 	min-width:1100px;
 	text-align:center;
 }
-.topBar
-{
+.topBar {
 	background-color:#593BEF;
 	color:white;
 	border:1px solid black;
@@ -27,50 +26,41 @@ body
 	padding:3px;
 	padding-top:5px;
 }
-.topBar a
-{
+.topBar a {
 	color:white;
 	text-decoration:none;
 	padding-left:3px;
 	padding-right:3px;
 }
-.topBar a:hover
-{
+.topBar a:hover {
 	color:white;
 	text-decoration:underline;
 }
 
-#loginPrompt
-{
+#loginPrompt {
 	border-radius:3px;
 	background-color:gray;
 	padding:10px;
 	border:1px solid black;
 }
-.loginInfo
-{
+.loginInfo {
 	float:left;
 	text-align:left;
 }
-.topNavigation
-{
+.topNavigation {
 	float:right;
 }
-.topNavigation ul
-{
+.topNavigation ul {
 	text-align:right;	
 }
-.topNavigation ul li
-{
+.topNavigation ul li {
 	display:inline;
 }
 
-.header
-{
+.header {
 	width:100%;
 }
-.headerMain
-{
+.headerMain {
 	background-color:white;
 	width:1000px;
 	border:1px solid black;
@@ -78,21 +68,18 @@ body
 	margin:auto;
 }
 
-.headerMain p
-{
+.headerMain p {
 	font-size:18px;
 	font-style:italic;
 }
 
-.mainBody
-{
+.mainBody {
 	width:1020px;
 	padding-bottom:5px;
 	padding-top:5px;
 	margin:auto;
 }
-.navigationSide
-{
+.navigationSide {
 	width:180px;
 	display:inline-block;
 	border:1px solid black;
@@ -100,17 +87,14 @@ body
 	vertical-align:top;
 	background-color:white;
 }
-.navigationSide ul
-{
+.navigationSide ul {
 	list-style:none;
 }
-.navigationSide ul ul
-{
+.navigationSide ul ul {
 
 }
 
-.mainView
-{
+.mainView {
 	display:inline-block;
 	vertical-align:top;
 	padding:10px;
@@ -122,55 +106,46 @@ body
 	text-align:left;
 }
 
-.footer
-{
+.footer {
 	clear:both;
 	text-align:center;
 	font-size:12px;
 	margin-top:10px;
 }
 
-#loginPrompt
-{
+#loginPrompt {
 	display:none;
 	z-index:8;
 }
-#showLoginLink
-{
+#showLoginLink {
 	z-index:10;
 	position:relative;
 }
-.showLoginLinkExpanded
-{
+.showLoginLinkExpanded {
 	background-color:gray;
 	border:1px solid black;
 	border-bottom:0px;
 	border-radius:5px 5px 0px 0px;
 }
-#forgotPasswordLink
-{
+#forgotPasswordLink {
 	float:right;
 }
 
-.loginPromptLine2
-{
+.loginPromptLine2 {
 	height:25px;
 }
-.loginPromptLine2 input
-{
+.loginPromptLine2 input {
 	vertical-align:middle;
 }
 
-.regForm 
-{
+.regForm {
 	float:left; 
 	padding:0 10px 10px 10px; 
 	background:#f3f3f3; 
 	border:2px solid #cfcfcf;
 	width:150px;
 }
-.regForm label 
-{
+.regForm label {
 	float:left; 
 	width:150px; 
 	padding:10px 10px 0 0; 
@@ -188,35 +163,4 @@ body
 .regForm .submit {
 	clear:both;
 }
-#msg {
-	display:none; 
-	position:absolute; 
-	z-index:200; 
-	background:url(../js/images/msg_arrow.gif) left center no-repeat; 
-	padding-left:7px;
-}
-#msgcontent {
-	display:block; 
-	background:#f3e6e6; 
-	border:2px solid #924949; 
-	border-left:none; 
-	padding:5px; 
-	min-width:150px; 
-	max-width:250px;
-}
-div#msgv {
-	display:none; 
-	position:absolute; 
-	z-index:200; 
-	background:url(../js/images/msg_arrow2.png) left center no-repeat; 
-	padding-left:7px;
-}
-div#msgcontentv {
-	display:block; 
-	background:#c5fab1; 
-	border:2px solid #3e9c1c; 
-	border-left:none; 
-	padding:5px; 
-	min-width:150px; 
-	max-width:250px;
-}
+

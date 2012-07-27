@@ -1,26 +1,21 @@
 /*
 	REGISTER VIEW
 			*/
-.registrationFormWrapper form > label
-{
+.registrationFormWrapper form > label{
 	display:block;
-	font-weight:bold;
 }
-.registrationFormWrapper form > input
-{
+.registrationFormWrapper form > input{
 	display:block;
 }
 
-.regForm 
-{
+.regForm {
 	float:left; 
 	padding:0 10px 10px 10px; 
 	background:#f3f3f3; 
 	border:2px solid #cfcfcf;
 	width:150px;
 }
-.regForm label 
-{
+.regForm label {
 	float:left; 
 	width:150px; 
 	padding:10px 10px 0 0; 
@@ -69,4 +64,16 @@
 	padding:5px; 
 	min-width:150px; 
 	max-width:250px;
+}
+
+/*
+	NEW CLASS VIEW
+			*/
+#classDescriptionField {
+	width:580px;
+	height:200px;
+	display:block;
+}
+.new_class label {
+	display:block;
 }

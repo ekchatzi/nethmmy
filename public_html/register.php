@@ -22,7 +22,8 @@
 	if($password == $password_again)
 	{
 		if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name)) || ($e = new_account_username_validation($username))
-		   || ($e = email_validation($email)) || ($e = new_account_aem_validation($aem) || ($e = semester_validation($semester)))))
+		   || ($e = email_validation($email)) || ($e = new_account_aem_validation($aem)) || ($e = semester_validation($semester))
+		   || ($e = password_validation($password))))
 		{
 			$salt = bin2hex(mcrypt_create_iv(32));
 			$password_hash = hash($HASH_ALGORITHM,$password.$salt);//generate hash of salted password	
@@ -44,7 +45,11 @@
 	}
 
 
-	if(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
+	if(isset($_POST['AJAX']))
+	{ 
+		echo '{ "error" : "'.$error.'"}';
+	}
+	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
 		if(!isset($message))
 			$message = '';

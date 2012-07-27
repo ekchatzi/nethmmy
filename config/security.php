@@ -10,4 +10,7 @@
 
 	$MIN_NAME_LENGTH = 1;
 	$MAX_NAME_LENGTH = 32;
+
+	$ALLOWED_HTML_TAGS = "<b><i><em><br><hr><a><img><table><td><th><tr><p><ul><ol><li>";
+	$ALLOWED_HTML_ATTRIBUTES = array('href','src','title','alt','type','rowspan','colspan','lang');
 ?>

@@ -3,10 +3,13 @@
 	include_once('../lib/login.php');
 	include_once("../lib/access_rules.php");
 	include_once("../lib/localization.php");
-	include_once("../lib/validate_input.php");
+	include_once("../lib/validate.php");
 
         if(!isset($error)) 
                 $error = '';
+
+	$classid = '';
+	
 	/* Get logged user identification data */
 	$user_type = '';
 	$logged_userid = 0;
@@ -17,27 +20,45 @@
 		$logged_userid = $logged_user['id'];
 	}
 
-	/*Data*/
+	/* Data */
 	$title = isset($_POST['title'])?$_POST['title']:'';
 	$description = isset($_POST['description'])?$_POST['description']:'';
-	$semester = isset($_POST['semester'])?$_POST['semester']:'0';
+	$semesters = isset($_POST['semesters'])?$_POST['semesters']:'0';
+
 	if(can_create_class($logged_userid))//if user can add city
 	{
-		//check if city is valid
-		if($name && ($name == addslashes($name)))
+		/* check if input is valid */
+		if(!(($e = name_validation($title)) || ($e = semester_list_validation($semesters))))
 		{
-			$query = "INSERT INTO classes (title,description,semester)
-					VALUES('$name')";
-			mysql_query($query) || ($error .= mysql_error());	
+			$query = "INSERT INTO classes (title,description,semesters)
+					VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
+			mysql_query($query) || ($error .= mysql_error());
+			$classid = mysql_insert_id();	
 		}
 		else
 		{
-			$error .= _('City name is not valid.');
+			$error .= $e;
 		}	
 	}
 	else
 	{
 		$error .= _('Access denied.');
+	}	
+
+	if(isset($_POST['AJAX']))
+	{ 
+		echo '{ "error" : "'.$error.'"}';
 	}
-	echo '{ "error" : "'.$error.'"}';
+	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
+	{
+		if(!isset($message))
+			$message = '';
+		//Hide warnings
+		$warning = '';
+		$redirect = ($error)?"index.php?v=new_class":"index.php?v=class&cid=$classid";
+		if(strlen($error))
+			setcookie('notify',$error,time()+3600);
+		include('redirect.php');
+	}
+	
 ?>
