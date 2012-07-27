@@ -7,6 +7,15 @@
 	$view['classes'] = '../views/classes.php';
 	$view_title['classes'] = _('Classes');
 
+	$view['class'] = '../views/class.php';
+	$view_title['class'] = _('Class');
+
+	$view['new_class'] = '../views/new_class.php';
+	$view_title['new_class'] = _('New Class');
+
+	$view['profile'] = '../views/profile.php';
+	$view_title['profile'] = _('Profile');
+
 	$view['register'] = '../views/register.php';
 	$view_title['register'] = _('Register Application');
 

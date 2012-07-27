@@ -4,86 +4,38 @@
 	include_once("../config/security.php");
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
+	include_once("../lib/validate.php");
 
         if(!isset($error))
                 $error = '';
 
 	/*Get data from form*/
-	$password = $_POST['password'];
-	$password_again = $_POST['password_again'];
-	$username = $_POST['username'];
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$aem = $_POST['aem'];
-	$email = $_POST['email'];
-	$semester = $_POST['semester'];
+	$password = isset($_POST['password'])?$_POST['password']:'';
+	$password_again = isset($_POST['password_again'])?$_POST['password_again']:'';
+	$username = isset($_POST['username'])?$_POST['username']:'';
+	$first_name = isset($_POST['first_name'])?$_POST['first_name']:'';
+	$last_name = isset($_POST['last_name'])?$_POST['last_name']:'';
+	$aem = isset($_POST['aem'])?$_POST['aem']:'';
+	$email = isset($_POST['email'])?$_POST['email']:'';
+	$semester = isset($_POST['semester'])?$_POST['semester']:'';
 
 	if($password == $password_again)
 	{
-		if($username == addslashes($username))
+		if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name)) || ($e = new_account_username_validation($username))
+		   || ($e = email_validation($email)) || ($e = new_account_aem_validation($aem) || ($e = semester_validation($semester)))))
 		{
-			if(strlen($username) <= $MAX_USERNAME_LENGTH)
-			{
-				if(strlen($last_name) <= $MAX_NAME_LENGTH && $last_name == addslashes($last_name))
-				{
-					if(strlen($first_name) <= $MAX_NAME_LENGTH && $first_name == addslashes($first_name))
-					{
-						/*Regular expression check on email validity*/
-						$is_valid =preg_match('~^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$~i',$email);
-						if($is_valid)
-						{
-							/*checking avainability by looking in db for users with
-							the same username*/
-							$query = "SELECT username FROM users WHERE username='$username' LIMIT 1";
-							$ret = mysql_query($query);
-							if(!($ret && mysql_numrows($ret)))//if it is avainable
-							{
-								$query = "SELECT aem FROM users WHERE aem='$aem' LIMIT 1";
-								$ret = mysql_query($query);
-								if(!($ret && mysql_numrows($ret)))//if it is avainable
-								{
-									$salt = bin2hex(mcrypt_create_iv(32));
-									$password_hash = hash($HASH_ALGORITHM,$password.$salt);//generate hash of salted password	
+			$salt = bin2hex(mcrypt_create_iv(32));
+			$password_hash = hash($HASH_ALGORITHM,$password.$salt);//generate hash of salted password	
 
-									/* add user to database */
-									$query = "INSERT INTO users 
-									(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,registration_semester,is_active)
-								 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','1','1',".time().",'$semester','1')";
-									mysql_query($query) || ($error .= mysql_error());
-								}
-								else
-								{
-									$error .= _('AEM already exists.');
-								}
-							}
-							else
-							{
-								$error .= _('Username is taken.');
-							}
-						}
-						else
-						{
-							$error .= _('Email is invalid.');
-						}
-					}
-					else
-					{
-						$error .= _('Bad first name.');
-					}
-				}
-				else
-				{
-					$error .= _('Bad last name.');
-				}
-			}
-			else
-			{
-				$error .= sprintf(_('Username must be less than %s characters long.'),$MAX_USERNAME_LENGTH+1);
-			}
+			/* add user to database */
+			$query = "INSERT INTO users 
+			(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,registration_semester,is_active)
+		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','1','1',".time().",'$semester','1')";
+			mysql_query($query) || ($error .= mysql_error());
 		}
 		else
 		{
-			$error .= _('Illegal characters in username.');
+			$error .= $e;
 		}
 	}
 	else
@@ -98,7 +50,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"index.php?v=register":"index.php?v=login";
+		$redirect = ($error)?"index.php?v=register":"index.php?v=home";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');
