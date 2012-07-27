@@ -23,6 +23,7 @@
 <script type="text/javascript">
 // form validation function //
 function validate(form) {
+  var username = form.username.value;
   var first_name = form.first_name.value;
   var last_name = form.last_name.value;
   var email = form.email.value;
@@ -35,57 +36,81 @@ function validate(form) {
   var passRegex = /(?=.*\d)(?=.*[a-z]).{6,}/;
   var numRegex = /^\s*\d+\s*$/;
   
+  if (username.length<<?php echo $MIN_USERNAME_LENGTH;?>) {
+	inlineMsg('username','Your username has to be bigger than that.', 2, 0);
+    return false;
+  }
+  
+  if (password.length<<?php echo $MIN_PASSWORD_LENGTH;?>) {
+	inlineMsg('password','Your password has to be bigger than that.', 2, 0);
+    return false;
+  }
+  
+  if (username.length><?php echo $MAX_USERNAME_LENGTH;?>) {
+	inlineMsg('username','Your username has to be smaller than that.', 2, 0);
+    return false;
+  }
+  
+  if (password.length><?php echo $MAX_PASSWORD_LENGTH;?>) {
+	inlineMsg('password','Your password has to be smaller than that.', 2, 0);
+    return false;
+  }
+  
   if(password == "") {
-    inlineMsg('password','You must enter a password.', 2);
+    inlineMsg('password','You must enter a password', 2, 0);
     return false;
   }
   if(!password.match(passRegex)) {
-    inlineMsg('password','Password must contain at least 6 letters and numbers', 2);
+    inlineMsg('password','Password must contain at least 6 letters and numbers', 2, 0);
     return false;
   }
-  if(password!==password_again) {
-	inlineMsg('password_again','Passwords must match', 2);
+  if(password!=password_again) {
+	inlineMsg('password_again','Passwords must match', 2, 0);
 	return false;
   }
   if(first_name == "") {
-    inlineMsg('first_name','You must enter your name.',2);
+    inlineMsg('first_name','You must enter your name',2, 0);
     return false;
   }
   if(!first_name.match(nameRegex)) {
-    inlineMsg('first_name','You have entered an invalid name.',2);
+    inlineMsg('first_name','You have entered an invalid name',2, 0);
     return false;
   }
   if(last_name == "") {
-    inlineMsg('last_name','You must enter your last name.',2);
+    inlineMsg('last_name','You must enter your last name',2, 0);
     return false;
   }
   if(!last_name.match(nameRegex)) {
-    inlineMsg('last_name','You have entered an invalid last name.',2);
+    inlineMsg('last_name','You have entered an invalid last name',2, 0);
     return false;
   }
   if(aem == "") {
-	inlineMsg('aem','You must enter your aem.', 2);
+	inlineMsg('aem','You must enter your aem', 2, 0);
     return false;
   }
   if(!aem.match(numRegex)) {
-	inlineMsg('aem','Your aem must contain only numbers.', 2);
+	inlineMsg('aem','Your aem must contain only numbers', 2, 0);
     return false;
   }
   if(email == "") {
-    inlineMsg('email','You must enter your email.',2);
+    inlineMsg('email','You must enter your email',2, 0);
     return false;
   }
   if(!email.match(emailRegex)) {
-    inlineMsg('email','You have entered an invalid email.',2);
+    inlineMsg('email','You have entered an invalid email.',2, 0);
     return false;
   }
   if(semester == "") {
-    inlineMsg('semester','You must enter your current semester.',2);
+    inlineMsg('semester','You must enter your current semester.',2, 0);
     return false;
   }
   if(!semester.match(numRegex)) {
-    inlineMsg('semester','You have entered an invalid semester.',2);
+    inlineMsg('semester','You have entered an invalid semester.',2, 0);
     return false;
+  }
+  if(exists==1) {
+	inlineMsg('username','Username already exists', 1, 0);
+	return false;
   }
   
   
@@ -100,23 +125,44 @@ var MSGOFFSET = 3;
 var MSGHIDE = 3;
 
 // build out the divs, set attributes and call the fade function //
-function inlineMsg(target,string,autohide) {
+function inlineMsg(target,string,autohide, type) {
   var msg;
   var msgcontent;
-  if(!document.getElementById('msg')) {
-    msg = document.createElement('div');
-    msg.id = 'msg';
-    msgcontent = document.createElement('div');
-    msgcontent.id = 'msgcontent';
-    document.body.appendChild(msg);
-    msg.appendChild(msgcontent);
-    msg.style.filter = 'alpha(opacity=0)';
-    msg.style.opacity = 0;
-    msg.alpha = 0;
-  } else {
-    msg = document.getElementById('msg');
-    msgcontent = document.getElementById('msgcontent');
+  if (type==0) {
+	  if(!document.getElementById('msg')) {
+		msg = document.createElement('div');
+		msg.id = 'msg';
+		msgcontent = document.createElement('div');
+		msgcontent.id = 'msgcontent';
+		document.body.appendChild(msg);
+		msg.appendChild(msgcontent);
+		msg.style.filter = 'alpha(opacity=0)';
+		msg.style.opacity = 0;
+		msg.alpha = 0;
+	  } 
+	  else {
+			msg = document.getElementById('msg');
+			msgcontent = document.getElementById('msgcontent');
+	  }
   }
+  else {
+	  if(!document.getElementById('msgv')) {
+		msg = document.createElement('div');
+		msg.id = 'msgv';
+		msgcontent = document.createElement('div');
+		msgcontent.id = 'msgcontentv';
+		document.body.appendChild(msg);
+		msg.appendChild(msgcontent);
+		msg.style.filter = 'alpha(opacity=0)';
+		msg.style.opacity = 0;
+		msg.alpha = 0;
+	  } 
+	  else {
+			msg = document.getElementById('msgv');
+			msgcontent = document.getElementById('msgcontentv');
+	  }
+  }
+		
   msgcontent.innerHTML = string;
   msg.style.display = 'block';
   var msgheight = msg.offsetHeight;
@@ -129,27 +175,50 @@ function inlineMsg(target,string,autohide) {
   msg.style.top = topposition + 'px';
   msg.style.left = leftposition + 'px';
   clearInterval(msg.timer);
-  msg.timer = setInterval("fadeMsg(1)", MSGTIMER);
+  if (type==0) {
+	msg.timer = setInterval("fadeMsg(1, 0)", MSGTIMER);
+  }
+  else {
+	msg.timer = setInterval("fadeMsg(1, 1)", MSGTIMER);
+  }
   if(!autohide) {
     autohide = MSGHIDE;  
   }
-  window.setTimeout("hideMsg()", (autohide * 1000));
+  if (type==0) {
+	window.setTimeout("hideMsg(1, 0)", (autohide * 1000));
+  }
+  else {
+	window.setTimeout("hideMsg(1, 1)", (autohide * 1000));
+  }
 }
 
 // hide the form alert //
-function hideMsg(msg) {
-  var msg = document.getElementById('msg');
-  if(!msg.timer) {
-    msg.timer = setInterval("fadeMsg(0)", MSGTIMER);
+function hideMsg(msg, type) {
+  if (type==0) {
+	  var msg = document.getElementById('msg');
+	  if(!msg.timer) {
+		msg.timer = setInterval("fadeMsg(0, 0)", MSGTIMER);
+	  }
+  }
+  else {
+	var msg = document.getElementById('msgv');
+	  if(!msg.timer) {
+		msg.timer = setInterval("fadeMsg(0, 1)", MSGTIMER);
+	  }
   }
 }
 
 // fade the message box //
-function fadeMsg(flag) {
+function fadeMsg(flag, type) {
   if(flag == null) {
     flag = 1;
   }
-  var msg = document.getElementById('msg');
+  if (type==0) {
+	var msg = document.getElementById('msg');
+  }
+  else {
+    var msg = document.getElementById('msgv');
+  }
   var value;
   if(flag == 1) {
     value = msg.alpha + MSGSPEED;
@@ -204,7 +273,43 @@ function topPosition(target) {
 
 // preload the arrow //
 if(document.images) {
-  arrow = new Image(7,80); 
-  arrow.src = "images/msg_arrow.gif"; 
+  arrow1 = new Image(7,80); 
+  arrow1.src = "images/msg_arrow.gif"; 
+  arrow2 = new Image(7,80); 
+  arrow2.src = "images/msg_arrow2.png"; 
 }
+
+
+
+//Unique username evaluation//
+$(document).ready(function(){
+$('#username').focusout(username_check);
+});
+var exists;
+function username_check(){	
+	var username = $('#username').val();
+
+	if(username.length >= <?php echo $MIN_USERNAME_LENGTH;?>) {
+		
+		$.ajax({
+		   type: "POST",
+		   url: "../public_html/check_username.php",
+		   data: 'username='+ username,
+		   cache: false,
+		   success: function(response){
+				if(response == 1){
+					inlineMsg('username','Username already exists', 1, 0);
+					exists=1;
+				}
+				else {
+					inlineMsg('username','Username available', 1, 1);
+					exists=0;
+				}
+
+			}
+		});
+	}
+}
+
+
 </script>

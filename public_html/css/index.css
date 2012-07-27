@@ -204,3 +204,19 @@ body
 	min-width:150px; 
 	max-width:250px;
 }
+div#msgv {
+	display:none; 
+	position:absolute; 
+	z-index:200; 
+	background:url(../js/images/msg_arrow2.png) left center no-repeat; 
+	padding-left:7px;
+}
+div#msgcontentv {
+	display:block; 
+	background:#c5fab1; 
+	border:2px solid #3e9c1c; 
+	border-left:none; 
+	padding:5px; 
+	min-width:150px; 
+	max-width:250px;
+}
