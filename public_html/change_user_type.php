@@ -23,9 +23,9 @@
 		$logged_userid = $logged_user['id'];
 	}
 	/* User type */
-	if(!(($e = user_type_validation($user_type)) || ($uid_is_valid = $e = user_id_validation($uid))))
+	if(!(($uid_is_invalid = $e = user_id_validation($uid)) || ($e = user_type_validation($user_type))))
 	{
-		if(can_change_user_type($logged_userid,$uid,$user_type))
+		if(can_change_user_type($logged_userid,$uid))
 		{
 			/* update database */
 			$query = "UPDATE users 
@@ -45,12 +45,13 @@
 
 	/* Activate/deactivate */
 	$activate = isset($_POST['active_status'])?$_POST['active_status']:'-1';
-	if($uid_is_valid)
+	if(!$uid_is_invalid)
 	{
-		if($activate == '0' || $activate == '1')
+		if(($activate === '0') || ($activate === '1'))
 		{
 			if(can_change_active_status($logged_userid,$uid))
 			{
+
 				/* update database */
 				$query = "UPDATE users 
 						SET is_active = '$activate'

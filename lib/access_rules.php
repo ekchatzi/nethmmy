@@ -5,7 +5,7 @@
 	{
 		return true;
 	}
-	function can_change_user_type($user,$target_user,$new_type)
+	function can_change_user_type($user,$target_user)
 	{
 		return true;
 	}

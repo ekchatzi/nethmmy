@@ -82,36 +82,35 @@
 					<form method='post' action='change_user_type.php'>
 						<ul>
 							<li><label> <?php echo _("Account type");?>: </label>
+<?php						if(can_change_user_type($logged_userid,$uid))
+						{?>
 							<select name='user_type' id='userTypeSelect'>
 <?php							
 							$count = count($USER_TYPES);							
 							for($i=0;$i<$count;++$i)
 							{
-								if(can_change_user_type($logged_userid,$uid,$i))
-								{
-									echo "<option value='$i' ";
-									if($i == $result['user_type'])
-										echo "selected='selected' ";
-									echo ">".$USER_TYPES_FULL[$i]."</option>";
-								}
+								echo "<option value='$i' ";
+								if($i == $result['user_type'])
+									echo "selected='selected' ";
+								echo ">".$USER_TYPES_FULL[$i]."</option>";
 							}
-?>
-							</select>
+?>							</select>						
+<?php						}?>
 <?php				
-							if(can_change_active_status($logged_userid,$uid))
+						if(can_change_active_status($logged_userid,$uid))
+						{
+							$is_active = $result['is_active'];
+?>							<select name='active_status' id='activeStatusSelect'>	<?php
+							for($i=0;$i<=1;++$i)
 							{
-								$is_active = $result['is_active'];
-?>								<select name='active_status' id='activeStatusSelect'>	<?php
-								for($i=0;$i<=1;++$i)
-								{
-									echo "<option value='0' ";
-									if($i == $is_active)
-										echo "selected='selected' ";
-									echo ">".(($i == 1)?'Active':'Inactive');
-									echo "</option>";
-								}
-?>								</select>						<?php
-							}?>						
+								echo "<option value='$i' ";
+								if($i == $is_active)
+									echo "selected='selected' ";
+								echo ">".(($i == 1)?_('Active'):_('Inactive'));
+								echo "</option>";
+							}
+?>							</select>						<?php
+						}?>						
 						</ul>
 						<input type='hidden' name='uid' value="<?php echo $uid;?>" />
 						<input type='submit' value="<?php echo _('Apply');?>" />

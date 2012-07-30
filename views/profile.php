@@ -24,7 +24,7 @@
 				$title_description = _('Common user');
 				if(!$e = title_id_validation($title_id))
 				{
-					$query = "SELECT title,description FROM titles WHERE id='$title_id";
+					$query = "SELECT title,description FROM titles WHERE id='$title_id'";
 					$ret2 = mysql_query($query);
 					if($ret2 && mysql_num_rows($ret))
 					{
