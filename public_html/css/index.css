@@ -23,7 +23,9 @@ fieldset {
 	border: 1px solid #1B1260;
 	width: 775px;
 	background-color: #C5C0E8;
-	padding: 5px;
+	padding: 7px;
+	margin-top:10px;
+	margin-bottom:15px;
 }
 fieldset legend {
 	background-color: #796BE0;

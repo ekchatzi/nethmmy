@@ -25,24 +25,24 @@
 					<fieldset>
 					<legend><?php echo _('User information');?></legend>
 					<ul>
-						<li><label><?php echo _("First name");?>: </label><input type='text' name='first_name' value="<?php echo $result['first_name'];?>" /></li>
-						<li><label><?php echo _("Last name");?>: </label><input type='text' name='last_name' value="<?php echo $result['last_name'];?>" /></li>
+						<li><label><?php echo _("First name");?> </label><input type='text' name='first_name' value="<?php echo $result['first_name'];?>" placeholder="<?php echo _('Your first name');?>" /></li>
+						<li><label><?php echo _("Last name");?> </label><input type='text' name='last_name' value="<?php echo $result['last_name'];?>" placeholder="<?php echo _('Your last name');?>" /></li>
 <?php						$uid_type = $result['user_type'];
 						if(!($e = user_type_validation($uid_type)) && $USER_TYPES[$uid_type] == 's' && can_edit_aem($logged_userid,$uid))
 						{?>
-							<li><label><?php echo _("ΑΕΜ");?>:</label><input type='text' name='aem' value="<?php echo $result['aem'];?>" /></li>
+							<li><label><?php echo _("ΑΕΜ");?> </label><input type='text' name='aem' value="<?php echo $result['aem'];?>" placeholder="<?php echo _('Your AEM');?>"/></li>
 <?php						}
 						else
 						{
 							$error .= $e;
 						}?>
-						<li><label><?php echo _("Semester");?>:</label><input type='text' name='semester' value="<?php echo ($result['semester'] + floor((time() - $result['semester_update_time'])/(60*60*24*30*6)));?>" /></li>
-						<li><label><?php echo _("Email");?>: </label><input type='text' name='email' value="<?php echo $result['email'];?>" /></li>
-						<li><label><?php echo _("Telephone");?>:</label><input type='text' name='telephone' value="<?php echo $result['telephone'];?>" /></li>
-						<li><label><?php echo _("Website");?>: </label><input type='text' name='website' value="<?php echo $result['website'];?>" /></li>
+						<li><label><?php echo _("Semester");?> </label><input type='text' name='semester' value="<?php echo ($result['semester'] + floor((time() - $result['semester_update_time'])/(60*60*24*30*6)));?>" placeholder="<?php echo _('Your current semester');?>"/></li>
+						<li><label><?php echo _("Email");?> </label><input type='text' name='email' value="<?php echo $result['email'];?>" placeholder="<?php echo _('Your email address');?>" /></li>
+						<li><label><?php echo _("Telephone");?></label><input type='text' name='telephone' value="<?php echo $result['telephone'];?>" placeholder="<?php echo _('Your telephone number');?>" /></li>
+						<li><label><?php echo _("Website");?> </label><input type='text' name='website' value="<?php echo $result['website'];?>" placeholder="<?php echo _('Your personal website URL');?>" /></li>
 					</ul>
 					<p>
-						<label><?php echo _('Title');?>:</label>
+						<label><?php echo _('Title');?> </label>
 <?php					/* Title */
 					if(can_edit_title($logged_userid,$uid,$row['id']))
 					{
@@ -65,8 +65,8 @@
 					?>
 					</p>
 					<p>
-						<label id='biographyLabel'><?php echo _('Biography');?>:</label>
-						<textarea name='bio' class='bioTextarea' placeholder="<?php echo _('Biography');?>"><?php echo $result['bio'];?></textarea>
+						<label id='biographyLabel'><?php echo _('Biography');?></label>
+						<textarea name='bio' class='bioTextarea' placeholder="<?php echo _('Some words about your self');?>"><?php echo $result['bio'];?></textarea>
 					</p>
 					<input type='hidden' name='uid' value="<?php echo $uid;?>" />
 					<input type='submit' value="<?php echo _('Apply');?>" />
@@ -81,7 +81,7 @@
 					<legend><?php echo _('Account');?></legend>
 					<form method='post' action='change_user_type.php'>
 						<ul>
-							<li><label> <?php echo _("Account type");?>: </label>
+							<li><label> <?php echo _("Account type");?> </label>
 <?php						if(can_change_user_type($logged_userid,$uid))
 						{?>
 							<select name='user_type' id='userTypeSelect'>

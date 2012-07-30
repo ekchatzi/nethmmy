@@ -8,30 +8,12 @@
 	display:block;
 }
 
-.regForm {
-	float:left; 
-	padding:0 10px 10px 10px; 
-	background:#f3f3f3; 
-	border:2px solid #cfcfcf;
-	width:150px;
-}
+
 .regForm label {
-	float:left; 
-	width:150px; 
-	padding:10px 10px 0 0; 
-	font-weight:bold;
-}
-.regForm select {
-	float:left; 
-	width:146px; 
-	margin-top:10px;
-}
-.regForm input {
-	float:left; 
-	margin-top:10px;
+	display:block;
 }
 .regForm .submit {
-	clear:both;
+	display:block;
 }
 #msg {
 	display:none; 
@@ -81,21 +63,13 @@
 /*
 	PROFILE VIEW
 			*/
-.contactInfoWrapper,.bioWrapper,.associatedClassesWrapper,.accountInformationWrapper {
-	padding-top:5px;
-}
-.associatedClassesWrapper,.accountInformationWrapper {
-	margin-top:20px;
-}
-.contactInfoWrapper,.bioWrapper {
-	margin-top:5px;
-}
+
 
 /*
 	EDIT PROFILE VIEW
 				*/
-#biographyLabel {
-	display: block;
+.editProfileWrapper  label {
+	display:block;
 }
 .bioTextarea {
 	width:765px;
