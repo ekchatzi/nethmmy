@@ -20,6 +20,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<base href=<?php echo $INDEX_ROOT;?> />
 	<meta charset="utf-8" />
 	<meta name="description" content="<?php echo _('Ηλεκτρονική τάξη Τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης');?>">
 	<title><?php echo "$TITLE - nethmmy";?></title>
@@ -27,6 +28,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="css/views.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<base href="localhost/nethmmy/public_html/" />
 
 </head>
 <body>
@@ -67,7 +69,7 @@
 				});
 			</script>
 			<a id='showLoginLink' href='javascript:void(0)'><?php echo _('Login');?></a>
-			<a href='index.php?v=register'><?php echo _('Register');?></a>
+			<a href='register/'><?php echo _('Register');?></a>
 			<div id='loginPrompt'>
 				<form method='post' action='login.php'>
 					<div class='loginPromptLine1'>
@@ -110,7 +112,7 @@
 	<div class='mainBody'>
 		<div class='navigationSide'>
 			<ul>
-				<li><a href='index.php?v=class&amp;id=5'><?php echo _('Class 1');?></a></li>
+				<li><a href='class/5/'><?php echo _('Class 1');?></a></li>
 <?php
 				if($user_type == 's')
 				{
