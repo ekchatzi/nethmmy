@@ -1,4 +1,4 @@
-<?
+<?php
 	/* Ta stoixeia tis vasis apo to hosting*/
 	$mysql_host = "localhost";
 	$mysql_database = "ethmmy_db";
