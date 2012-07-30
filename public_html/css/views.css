@@ -82,7 +82,6 @@
 	PROFILE VIEW
 			*/
 .contactInfoWrapper,.bioWrapper,.associatedClassesWrapper,.accountInformationWrapper {
-	border:1px solid black;
 	padding-top:5px;
 }
 .associatedClassesWrapper,.accountInformationWrapper {
@@ -99,7 +98,7 @@
 	display: block;
 }
 .bioTextarea {
-	width:390px;
-	height:70px;
+	width:765px;
+	height:80px;
 	resize:vertical;
 }

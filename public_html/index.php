@@ -124,9 +124,12 @@
 			if(isset($_COOKIE['notify']))
 			{?>
 			<div class='notificationSide'>
-<?php				echo $_COOKIE['notify'];
-				setcookie('notify','',time()-3600);
-?>			</div>		
+				<img class='errorIcon' src='images/resource/exclamation_sign.png' />
+				<p>
+<?php					echo $_COOKIE['notify'];
+					setcookie('notify','',time()-3600);
+?>				</p>
+			</div>		
 <?php			}?>
 			<div>
 			<?php
