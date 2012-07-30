@@ -13,6 +13,21 @@ body {
 label {
 	font-weight:bold;
 }
+ul > li{
+	list-style:none;
+}
+fieldset {
+	border: 1px solid #CCA383;
+	width: 50%;
+	background: #FFE8EF;
+	padding: 3px;
+}
+fieldset legend {
+	background: #CCA383;
+	padding: 3px;
+	font-weight: bold;
+	border:1px solid black;
+}
 .bodyWrapper {
 	min-width:1100px;
 	text-align:center;

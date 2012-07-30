@@ -16,6 +16,9 @@
 	$view['profile'] = '../views/profile.php';
 	$view_title['profile'] = _('Profile');
 
+	$view['edit_profile'] = '../views/edit_profile.php';
+	$view_title['edit_profile'] = _('Edit Profile');
+
 	$view['register'] = '../views/register.php';
 	$view_title['register'] = _('Register Application');
 

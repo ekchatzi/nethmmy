@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 25, 2012 at 04:06 PM
+-- Generation Time: Jul 30, 2012 at 02:24 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'class description',
   `semesters` tinytext CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of semesters the class is avanaible',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
 CREATE TABLE IF NOT EXISTS `titles` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'title id',
   `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'title text',
+  `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'title description',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -95,16 +96,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `website` tinytext COLLATE utf8_unicode_ci COMMENT 'user website url',
   `bio` text COLLATE utf8_unicode_ci COMMENT 'user biography',
   `registration_time` int(11) NOT NULL COMMENT 'unix timestamp of registration',
-  `registration_semester` int(11) DEFAULT '1' COMMENT 'semester of studies at registration',
+  `semester` int(11) DEFAULT NULL COMMENT 'semester of studies at registration',
   `last_login` int(11) DEFAULT NULL COMMENT 'unix timestamp of last login',
   `salt` varchar(64) CHARACTER SET ascii NOT NULL COMMENT 'random salt for security',
   `login_token` varchar(64) CHARACTER SET ascii NOT NULL COMMENT 'hash for login authentication',
   `is_active` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'active account flag',
   `last_remote_adress` varchar(39) COLLATE utf8_unicode_ci NOT NULL COMMENT 'last login ip adress , sufficient length for IPv6',
+  `is_email_validated` int(11) NOT NULL DEFAULT '0' COMMENT 'flag for email validation',
+  `semester_update_time` int(11) NOT NULL COMMENT 'unix timestamp of the last time the semester field was updated by the user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `aem` (`aem`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=6 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

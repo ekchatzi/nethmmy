@@ -3,7 +3,6 @@
 	include_once('../config/security.php');
 	include_once("../lib/localization.php");
 
-	$USER_TYPES = array(0 => 'g', 1 => 's', 2 => 'p', 3 => 'a');
 
 	/*
 		Get logged user identification data.

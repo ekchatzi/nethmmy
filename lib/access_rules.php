@@ -5,23 +5,35 @@
 	{
 		return true;
 	}
-	function can_create_professor_account($user)
+	function can_change_user_type($user,$target_user,$new_type)
 	{
 		return true;
 	}
-	function can_create_admin_account($user)
-	{
-		return true;
-	}
-	function can_activate_account($user,$target_user)
-	{
-		return true;
-	}
-	function can_deactivate_account($user,$target_user)
+	function can_change_active_status($user,$target_user)
 	{
 		return true;
 	}
 	function can_view_profile($user,$target_user)
+	{
+		return true;
+	}
+	function can_view_contact_information($user,$target_user)
+	{
+		return true;
+	}
+	function can_view_account_information($user,$target_user)
+	{
+		return true;
+	}
+	function can_edit_account($user,$target_user)
+	{
+		return true;
+	}
+	function can_edit_title($user,$target_user)
+	{
+		return true;
+	}
+	function can_edit_aem($user,$target_user)
 	{
 		return true;
 	}

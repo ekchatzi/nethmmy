@@ -74,14 +74,12 @@
 	*/
 	function semester_validation($text)
 	{
-		/* Must be a number */
-		if(!is_numeric($text))
-			return _('Semester must be numeric.');
-		
-		/* Must be positive */
-		if($text <= 0)
-			return _('Semester must be positive.');
-
+		if(isset($text) && strlen($text) > 0)
+		{
+			/* Must be a number */
+			if(!is_numeric($text) || $text <= 0)
+				return _('Semester must be positive integer.');
+		}
 		return false;
 	}
 
@@ -110,7 +108,7 @@
 			return sprintf(_("Names must be between %s and %s characters long"),$MIN_NAME_LENGTH,$MAX_NAME_LENGTH);
 
 		/* Must contain only alphanumeric characters */
-		if(!preg_match('~^[a-zA-Z0-9 ]*$~',$name))
+		if(!preg_match('~^[\p{L}\d ]*$~u',$name))
 			return _('Names must contain only alphanumeric characters and whitespace.');
 
 		return false;
@@ -135,7 +133,7 @@
 
 		/* Must contain only alphanumeric characters */
 		if(!preg_match('~^[a-zA-Z0-9]*$~',$username))
-			return _('Username must contain only alphanumeric characters.');
+			return _('Username must contain only latin alphanumeric characters.');
 		
 		return false;
 	}
@@ -146,16 +144,18 @@
 	*/
 	function new_account_aem_validation($aem)
 	{
-		/* Must not already exist on database */
-		$query = "SELECT aem FROM users WHERE aem='$aem' LIMIT 1";
-		$ret = mysql_query($query);
-		if($ret && mysql_numrows($ret))
-			return _('AEM already exists.');
+		if(isset($aem) && strlen($aem) > 0)
+		{
+			/* Must not already exist on database */
+			$query = "SELECT aem FROM users WHERE aem='$aem' LIMIT 1";
+			$ret = mysql_query($query);
+			if($ret && mysql_numrows($ret))
+				return _('AEM already exists.');
 		
-		/* Must be numeric */
-		if(!is_numeric($aem))
-			return _('AEM must be numeric.');
-
+			/* Must be numeric */
+			if(!is_numeric($aem) || $aem <= 0) 
+				return _('AEM must be positive integer.');
+		}
 		return false;
 	}
 
@@ -177,4 +177,88 @@
 		return false;
 	}
 
+	/*
+		Validates user types.
+		returns false on ok,errors on error
+	*/
+	function user_type_validation($type)
+	{
+		global $USER_TYPES;
+
+		if(!isset($USER_TYPES[$type]))
+			return _('Invalid user type.');
+		
+		return false;
+	}
+	
+	/*
+		Validates user ids.
+		returns false on ok,errors on error
+	*/
+	function user_id_validation($id)
+	{
+		if(!is_numeric($id) || $id <=0)
+			return _('User ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM users WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('User id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
+		return false;
+	}
+
+	/*
+		Validate title ids.
+		returns false on ok, errors on error
+	*/
+	function title_id_validation($id)
+	{
+		if(!is_numeric($id) || $id <=0)
+			return _('Title ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM titles WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Title id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
+		return false;		
+	}
+
+	/* 
+		Validates telephone numbers.
+		returns false on ok, errors on error
+	*/
+	function telephone_validation($tel)
+	{
+		global $MIN_TELEPHONE_NUMBER_LENGTH,$MAX_TELEPHONE_NUMBER_LENGTH;
+		if(!((strlen($tel) == 0) || (strlen($tel) >= $MIN_TELEPHONE_NUMBER_LENGTH) && (strlen($tel) <= $MAX_TELEPHONE_NUMBER_LENGTH)))
+			return sprintf(_("Telephone numbers must be between %s and %s characters long or empty."),$MIN_TELEPHONE_NUMBER_LENGTH,$MAX_TELEPHONE_NUMBER_LENGTH);
+
+		if(!preg_match('~^\+?[0-9]*$~',$tel))
+			return _('Invalid characters for telephone number.');			
+		
+		return false;
+	}
+
+	/* 
+		Validates websites.
+		returns false on ok, errors on error
+	*/
+	function website_validation($tel)
+	{
+		return false;
+	}
 ?>

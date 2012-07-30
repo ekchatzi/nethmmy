@@ -45,7 +45,7 @@
 		$error .= _('Access denied.');
 	}	
 
-	if(isset($_POST['AJAX']))
+	if(isset($_GET['AJAX']))
 	{ 
 		echo '{ "error" : "'.$error.'"}';
 	}

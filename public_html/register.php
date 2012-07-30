@@ -30,8 +30,8 @@
 
 			/* add user to database */
 			$query = "INSERT INTO users 
-			(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,registration_semester,is_active)
-		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','1','1',".time().",'$semester','1')";
+	(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,registration_semester,is_active,semester_update_time)
+		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','1','1',".time().",'$semester','1','".time()."')";
 			mysql_query($query) || ($error .= mysql_error());
 		}
 		else
@@ -45,7 +45,7 @@
 	}
 
 
-	if(isset($_POST['AJAX']))
+	if(isset($_GET['AJAX']))
 	{ 
 		echo '{ "error" : "'.$error.'"}';
 	}

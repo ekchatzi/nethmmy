@@ -3,6 +3,7 @@
 	include_once("../lib/login.php");
 	include_once("../views/views.php");
 	include_once("../lib/connect_db.php");
+	include_once("../config/general.php");
 
 	setcookie('last_view',(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'v=home'),0);//save last view for after some actions
 
@@ -44,7 +45,7 @@
 				$username = $result['username'];
 				$last_login = $result['last_login'];
 			}
-			echo "<span><a href='index.php?v=profile&amp;uid=$logged_userid'>$username</a></span>";
+			echo "<span><a href='index.php?v=profile&amp;id=$logged_userid'>$username</a></span>";
 		}
 		else
 		{?>
@@ -75,7 +76,7 @@
 					</div>
 					<div class='loginPromptLine2'>
 						<input type='submit' value="<?php echo _('Login');?>" />
-						<a href='' id='forgotPasswordLink'><?php echo _('Remind password');?></a>
+						<a href='' id='forgotPasswordLink'><?php echo _('Forgot password');?></a>
 					</div>
 				</form>
 			</div>

@@ -288,21 +288,20 @@ Coding style προτείνονται:
   
 ###Δομή βάσης δεδομένων
 + `users`:  
-`id,username,password,first_name,last_name,aem,user_type,title,email,classes,telephone,website,bio,registration_time,last_login,salt,login_token,is_active`
-
+`id,username,password,first_name,last_name,aem,user_type,title,email,telephone,website,bio,registration_time,semester,last_login,salt,login_token,is_active,last_remote_adress,is_email_validated,semester_update_time`
 + `titles`
 `id,title,description`
 
 + `classes`:  
 `id,title,description,semesters`
 
-+ `class_accosiations`: 
++ `class_accosiations`:
 `id,user,class,type`
 
-+ `class_association_types`
++ `class_association_types`:
 `id,title,priority,permissions'
  
-+ `file_folders`:  
++ `file_folders`:
 `id,name,class,public`
 
 + `files`:  

@@ -11,6 +11,12 @@
 	$MIN_NAME_LENGTH = 1;
 	$MAX_NAME_LENGTH = 32;
 
+	$MAX_TELEPHONE_NUMBER_LENGTH = 15;
+	$MIN_TELEPHONE_NUMBER_LENGTH = 7;
+
 	$ALLOWED_HTML_TAGS = "<b><i><em><br><hr><a><img><table><td><th><tr><p><ul><ol><li>";
 	$ALLOWED_HTML_ATTRIBUTES = array('href','src','title','alt','type','rowspan','colspan','lang');
+
+	$USER_TYPES = array(0 => 'g', 1 => 's', 2 => 'p', 3 => 'a');
+	$USER_TYPES_FULL = array(0 => _('Guest'), 1 => _('Student'), 2 => _('Professor'), 3 => _('Admin'));
 ?>
