@@ -4,15 +4,13 @@
 	include_once("../config/security.php");
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
+	include_once("../lib/validate.php");
 
 	$username = trim(strtolower($_POST['username']));
 	$username = mysql_escape_string($username);
 
-	$query = "SELECT username FROM users WHERE username = '$username' LIMIT 1";
-	$result = mysql_query($query);
-	
-	$num = mysql_num_rows($result);
+	$e = new_account_username_validation($username);
 
-	echo $num;
+	echo $e;
 	//echo "1";
 	
