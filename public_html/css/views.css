@@ -1,0 +1,104 @@
+/*
+	REGISTER VIEW
+			*/
+.registrationFormWrapper form > label{
+	display:block;
+}
+.registrationFormWrapper form > input{
+	display:block;
+}
+
+.regForm {
+	float:left; 
+	padding:0 10px 10px 10px; 
+	background:#f3f3f3; 
+	border:2px solid #cfcfcf;
+	width:150px;
+}
+.regForm label {
+	float:left; 
+	width:150px; 
+	padding:10px 10px 0 0; 
+	font-weight:bold;
+}
+.regForm select {
+	float:left; 
+	width:146px; 
+	margin-top:10px;
+}
+.regForm input {
+	float:left; 
+	margin-top:10px;
+}
+.regForm .submit {
+	clear:both;
+}
+#msg {
+	display:none; 
+	position:absolute; 
+	z-index:200; 
+	background:url(../js/images/msg_arrow.gif) left center no-repeat; 
+	padding-left:7px;
+}
+#msgcontent {
+	display:block; 
+	background:#f3e6e6; 
+	border:2px solid #924949; 
+	border-left:none; 
+	padding:5px; 
+	min-width:150px; 
+	max-width:250px;
+}
+#msg2 {
+	display:none; 
+	position:absolute; 
+	z-index:200; 
+	background:url(../js/images/msg_arrow2.png) left center no-repeat; 
+	padding-left:7px;
+}
+#msgcontent2 {
+	display:block; 
+	background:#c5fab1; 
+	border:2px solid #3e9c1c; 
+	border-left:none; 
+	padding:5px; 
+	min-width:150px; 
+	max-width:250px;
+}
+
+/*
+	NEW CLASS VIEW
+			*/
+#classDescriptionField {
+	width:580px;
+	height:200px;
+	display:block;
+}
+.new_class label {
+	display:block;
+}
+
+/*
+	PROFILE VIEW
+			*/
+.contactInfoWrapper,.bioWrapper,.associatedClassesWrapper,.accountInformationWrapper {
+	padding-top:5px;
+}
+.associatedClassesWrapper,.accountInformationWrapper {
+	margin-top:20px;
+}
+.contactInfoWrapper,.bioWrapper {
+	margin-top:5px;
+}
+
+/*
+	EDIT PROFILE VIEW
+				*/
+#biographyLabel {
+	display: block;
+}
+.bioTextarea {
+	width:765px;
+	height:80px;
+	resize:vertical;
+}
