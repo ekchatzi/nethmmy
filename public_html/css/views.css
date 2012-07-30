@@ -1,21 +1,26 @@
 /*
 	REGISTER VIEW
 			*/
-.registrationFormWrapper form > label{
+.registrationFormWrapper form > label
+{
 	display:block;
+	font-weight:bold;
 }
-.registrationFormWrapper form > input{
+.registrationFormWrapper form > input
+{
 	display:block;
 }
 
-.regForm {
+.regForm 
+{
 	float:left; 
 	padding:0 10px 10px 10px; 
 	background:#f3f3f3; 
 	border:2px solid #cfcfcf;
 	width:150px;
 }
-.regForm label {
+.regForm label 
+{
 	float:left; 
 	width:150px; 
 	padding:10px 10px 0 0; 
@@ -56,50 +61,12 @@
 	background:url(../js/images/msg_arrow2.png) left center no-repeat; 
 	padding-left:7px;
 }
-#msgcontent2 {
+#msgcontent2{
 	display:block; 
-	background:#3e9c1c; 
-	border:2px solid #c5fab1; 
+	background:#c5fab1;
+	border:2px solid #3e9c1c; 
 	border-left:none; 
 	padding:5px; 
 	min-width:150px; 
 	max-width:250px;
-}
-
-/*
-	NEW CLASS VIEW
-			*/
-#classDescriptionField {
-	width:580px;
-	height:200px;
-	display:block;
-}
-.new_class label {
-	display:block;
-}
-
-/*
-	PROFILE VIEW
-			*/
-.contactInfoWrapper,.bioWrapper,.associatedClassesWrapper,.accountInformationWrapper {
-	border:1px solid black;
-	padding-top:5px;
-}
-.associatedClassesWrapper,.accountInformationWrapper {
-	margin-top:20px;
-}
-.contactInfoWrapper,.bioWrapper {
-	margin-top:5px;
-}
-
-/*
-	EDIT PROFILE VIEW
-				*/
-#biographyLabel {
-	display: block;
-}
-.bioTextarea {
-	width:390px;
-	height:70px;
-	resize:vertical;
 }

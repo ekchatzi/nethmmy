@@ -153,29 +153,3 @@ fieldset legend {
 	vertical-align:middle;
 }
 
-.regForm {
-	float:left; 
-	padding:0 10px 10px 10px; 
-	background:#f3f3f3; 
-	border:2px solid #cfcfcf;
-	width:150px;
-}
-.regForm label {
-	float:left; 
-	width:150px; 
-	padding:10px 10px 0 0; 
-	font-weight:bold;
-}
-.regForm select {
-	float:left; 
-	width:146px; 
-	margin-top:10px;
-}
-.regForm input {
-	float:left; 
-	margin-top:10px;
-}
-.regForm .submit {
-	clear:both;
-}
-

@@ -146,11 +146,11 @@ function inlineMsg(target,string,autohide, type) {
 	  }
   }
   else {
-	  if(!document.getElementById('msgv')) {
+	  if(!document.getElementById('msg2')) {
 		msg = document.createElement('div');
-		msg.id = 'msgv';
+		msg.id = 'msg2';
 		msgcontent = document.createElement('div');
-		msgcontent.id = 'msgcontentv';
+		msgcontent.id = 'msgcontent2';
 		document.body.appendChild(msg);
 		msg.appendChild(msgcontent);
 		msg.style.filter = 'alpha(opacity=0)';
@@ -158,8 +158,8 @@ function inlineMsg(target,string,autohide, type) {
 		msg.alpha = 0;
 	  } 
 	  else {
-			msg = document.getElementById('msgv');
-			msgcontent = document.getElementById('msgcontentv');
+			msg = document.getElementById('msg2');
+			msgcontent = document.getElementById('msgcontent2');
 	  }
   }
 		
@@ -167,7 +167,9 @@ function inlineMsg(target,string,autohide, type) {
   msg.style.display = 'block';
   var msgheight = msg.offsetHeight;
   var targetdiv = document.getElementById(target);
-  targetdiv.focus();
+  if (type==0) {
+	targetdiv.focus();
+  }
   var targetheight = targetdiv.offsetHeight;
   var targetwidth = targetdiv.offsetWidth;
   var topposition = topPosition(targetdiv) - ((msgheight - targetheight) / 2);
@@ -201,7 +203,7 @@ function hideMsg(msg, type) {
 	  }
   }
   else {
-	var msg = document.getElementById('msgv');
+	var msg = document.getElementById('msg2');
 	  if(!msg.timer) {
 		msg.timer = setInterval("fadeMsg(0, 1)", MSGTIMER);
 	  }
@@ -217,7 +219,7 @@ function fadeMsg(flag, type) {
 	var msg = document.getElementById('msg');
   }
   else {
-    var msg = document.getElementById('msgv');
+    var msg = document.getElementById('msg2');
   }
   var value;
   if(flag == 1) {
@@ -274,9 +276,9 @@ function topPosition(target) {
 // preload the arrow //
 if(document.images) {
   arrow1 = new Image(7,80); 
-  arrow1.src = "images/msg_arrow.gif"; 
+  arrow1.src = "js/images/msg_arrow.gif"; 
   arrow2 = new Image(7,80); 
-  arrow2.src = "images/msg_arrow2.png"; 
+  arrow2.src = "js/images/msg_arrow2.png"; 
 }
 
 

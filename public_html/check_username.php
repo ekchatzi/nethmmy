@@ -10,6 +10,7 @@
 
 	$query = "SELECT username FROM users WHERE username = '$username' LIMIT 1";
 	$result = mysql_query($query);
+	
 	$num = mysql_num_rows($result);
 
 	echo $num;
