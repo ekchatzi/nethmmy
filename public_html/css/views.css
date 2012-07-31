@@ -52,9 +52,9 @@
 	NEW CLASS VIEW
 			*/
 #classDescriptionField {
-	width:580px;
-	height:200px;
-	display:block;
+	width:767px;
+	height:80px;
+	resize:vertical;
 }
 .new_class label {
 	display:block;
@@ -72,7 +72,7 @@
 	display:block;
 }
 .bioTextarea {
-	width:765px;
+	width:767px;
 	height:80px;
 	resize:vertical;
 }

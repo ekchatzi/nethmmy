@@ -51,18 +51,22 @@ fieldset legend {
 	text-decoration:none;
 	padding-left:3px;
 	padding-right:3px;
+	padding-top:1px;
+	padding-bottom:1px;
+	position:relative;
+	top:1px;
 }
 .topBar a:hover {
-	color:white;
-	text-decoration:underline;
+	background-color:#E0DEEF;
+	color:black !important;
+	border:1px solid black;
+
+	padding-left:2px;
+	padding-right:2px;
+	padding-top:0px;
+	padding-bottom:0px;
 }
 
-#loginPrompt {
-	border-radius:3px;
-	background-color:gray;
-	padding:10px;
-	border:1px solid black;
-}
 .loginInfo {
 	float:left;
 	text-align:left;
@@ -94,7 +98,7 @@ fieldset legend {
 }
 
 .mainBody {
-	width:1020px;
+	min-width:1020px;
 	padding-bottom:5px;
 	padding-top:5px;
 	margin:auto;
@@ -133,21 +137,27 @@ fieldset legend {
 }
 
 #loginPrompt {
+	background-color:#E0DEEF;
+	padding:10px;
+	border:1px solid black;
+	color:black !important;
+
 	display:none;
 	z-index:8;
 }
 #showLoginLink {
 	z-index:10;
-	position:relative;
 }
 .showLoginLinkExpanded {
-	background-color:gray;
-	border:1px solid black;
+	background-color:#E0DEEF;
+	color:black !important;
+	border:1px solid black !important;
+	border-bottom:0px !important;
 	border-bottom:0px;
-	border-radius:5px 5px 0px 0px;
 }
 #forgotPasswordLink {
 	float:right;
+	color:black;
 }
 
 .loginPromptLine2 {
