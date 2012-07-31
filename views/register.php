@@ -2,7 +2,10 @@
 <div class='registrationFormWrapper'>
 	<form method='post' action='register.php' id='regForm' class='regForm' onsubmit="return validate(this)">
 		<fieldset>
-			<legend><?php echo _('User Information');?></legend>		
+			<legend><?php echo _('User Information');?></legend>	
+			<p><label><?php echo _('Identity');?></label></p>	
+			<input type = 'radio' Name ='user_type' value= '1' id='student_radio' checked>Student
+			<input type = 'radio' Name ='user_type' value= '2' id='professor_radio'>Professor
 			<label><?php echo _('Username');?></label>
 			<input type='text' name='username' id='username' placeholder="<?php echo _('Your unique username');?>" />
 			<label><?php echo _('Password');?></label>
@@ -13,11 +16,11 @@
 			<input type='text' name='first_name' id='first_name' placeholder="<?php echo _('Your first name');?>" />
 			<label><?php echo _('Last Name');?></label>
 			<input type='text' name='last_name' id='last_name' placeholder="<?php echo _('Your last name');?>" />
-			<label><?php echo _('AEM');?></label>
-			<input type='text' name='aem' id='aem' placeholder="<?php echo _('Your AEM');?>" />
 			<label><?php echo _('Email');?></label>
 			<input type='text' name='email' id='email' placeholder="<?php echo _('Your email address');?>" />
-			<label><?php echo _('Semester');?></label>
+			<label id='aemLabel'><?php echo _('AEM');?></label>
+			<input type='text' name='aem' id='aem' placeholder="<?php echo _('Your AEM');?>" />
+			<label id='semesterLabel'><?php echo _('Semester');?></label>
 			<input type='text' name='semester' id='semester' placeholder="<?php echo _('Your current semester');?>" />
 			<input type='submit' value = "<?php echo _('Send');?>" class='submit'/>
 		</fieldset>
@@ -93,6 +96,22 @@ function validate(form) {
   }
   if(!email.match(emailRegex)) {
     inlineMsg('email','You have entered an invalid email.',2, 0);
+    return false;
+  }
+  if(aem == ""&&($('#student_radio:checked').val())) {
+	inlineMsg('aem','You have to enter your AEM',2, 0);
+    return false;
+  }
+  if(!aem.match(numRegex)&&($('#student_radio:checked').val())) {
+	inlineMsg('aem','You have entered an invalid AEM',2, 0);
+    return false;
+  }
+  if(semester == ""&&($('#student_radio:checked').val())) {
+	inlineMsg('semester','You have to enter your semester',2, 0);
+    return false;
+  }
+  if(!semester.match(numRegex)&&($('#student_radio:checked').val())) {
+	inlineMsg('semester','You have entered an invalid semester',2, 0);
     return false;
   }
   if(exists==1) {
@@ -299,6 +318,14 @@ function username_check(){
 		});
 	}
 }
+
+//User type form formatting//
+$('#professor_radio').click(function() {	
+	$('#aemLabel, #semesterLabel, #aem, #semester').fadeOut('fast');//css("display","none");
+});
+$('#student_radio').click(function() {	
+	$('#aemLabel, #semesterLabel, #aem, #semester').fadeIn('fast');//css("display","block");
+});
 
 
 </script>

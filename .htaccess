@@ -10,5 +10,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteCond %{HTTP_HOST} !^localhost/nethmmy/$ [NC]
 RewriteBase   /nethmmy/
 RewriteRule	 ^public_html/([A-Za-z0-9-]+)/([0-9]+)/$     ./public_html/index.php?v=$1&id=$2	[L]
-RewriteRule  ^public_html/([a-z]+)/$                          	  ./public_html/index.php?v=$1 			[L]
+RewriteRule  ^public_html/([A-Za-z0-9_-]+)/$                          	  ./public_html/index.php?v=$1 			[L]
 #RewriteRule ^public_html/([a-z]+)/?$       				  ./public_html/index.php?v=$1 			[L]
