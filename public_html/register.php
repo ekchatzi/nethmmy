@@ -18,20 +18,21 @@
 	$aem = isset($_POST['aem'])?$_POST['aem']:'';
 	$email = isset($_POST['email'])?$_POST['email']:'';
 	$semester = isset($_POST['semester'])?$_POST['semester']:'';
+	$user_type = isset($_POST['user_type'])?$_POST['user_type']:'';
 
 	if($password == $password_again)
 	{
 		if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name)) || ($e = new_account_username_validation($username))
 		   || ($e = email_validation($email)) || ($e = new_account_aem_validation($aem)) || ($e = semester_validation($semester))
-		   || ($e = password_validation($password))))
+		   || ($e = password_validation($password)) || ($e = user_type_validation($user_type))))
 		{
 			$salt = bin2hex(mcrypt_create_iv(32));
 			$password_hash = hash($HASH_ALGORITHM,$password.$salt);//generate hash of salted password	
 
 			/* add user to database */
 			$query = "INSERT INTO users 
-	(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,registration_semester,is_active,semester_update_time)
-		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','1','1',".time().",'$semester','1','".time()."')";
+	(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,semester,is_active,semester_update_time)
+		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','$user_type','1',".time().",'$semester','$DEFAULT_ACCOUNT_ACTIVE_STATE','".time()."')";
 			mysql_query($query) || ($error .= mysql_error());
 		}
 		else

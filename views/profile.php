@@ -73,51 +73,52 @@
 					<legend><?php echo _('Biography');?></legend>
 					<p><?php echo ((strlen($result['bio'])>0)?$result['bio']:_('There is no biography yet.'))?></p>
 				</fieldset>
-
-				<fieldset class='associatedClassesWrapper'>
-					<legend><?php echo _('Associated classes');?></legend>
-<?php				/* Associated classes */
-				$classes = array();
-				$classes_titles = array();
-				$query = "SELECT class_associatons.class AS class,
-							class_associatons_types.title AS title,
-							class_associatons_types.description AS description
-							FROM class_associatons,class_associatons_types WHERE class_associatons.user='$uid' AND class_associatons_types.id = class_associatons.type";
-				$ret2 = mysql_query($query);
-				if($ret2 && mysql_num_rows($ret2))
-				{
-					while( $row = mysql_fetch_array($ret2))
+<?php					if(!($e = user_type_validation($uid_type)) && $USER_TYPES[$uid_type] == 'p')
+					{?>
+					<fieldset class='associatedClassesWrapper'>
+						<legend><?php echo _('Associated classes');?></legend>
+<?php					/* Associated classes */
+					$classes = array();
+					$classes_titles = array();
+					$query = "SELECT class_associatons.class AS class,
+								class_associatons_types.title AS title,
+								class_associatons_types.description AS description
+								FROM class_associatons,class_associatons_types WHERE class_associatons.user='$uid' AND class_associatons_types.id = class_associatons.type";
+					$ret2 = mysql_query($query);
+					if($ret2 && mysql_num_rows($ret2))
 					{
-						$id = $row['class'];
-						$classes[] = $id;
-						$classes_titles[$id] = $row['title'];
-						$classes_descriptions[$id] = $row['description'];
-					}
-					$classes = implode(',',$classes);
-					
-					$query = "SELECT id,title FROM classes 
-							WHERE FIND_IN_SET(id,'$classes')";
-					$ret3 = mysql_query($query);
-					if($ret3 && mysql_num_rows($ret3))
-					{
-						while( $row = mysql_fetch_array($ret3) )
+						while( $row = mysql_fetch_array($ret2))
 						{
-							$cid = $row['id'];
-							$title = $row['title'];							
-							?>
-							<ul class='associatedClassesList'>
-								<li><a href="index.php?v=class&amp;cid=<?php echo $cid;?>"><?php echo "$title - ".$classes_titles[$cid];?></li>
-							</ul>
-<?php						}			
-					} 
-				}
-				else
-				{
-					echo "<p>"._('None')."</p>";
-				}
+							$id = $row['class'];
+							$classes[] = $id;
+							$classes_titles[$id] = $row['title'];
+							$classes_descriptions[$id] = $row['description'];
+						}
+						$classes = implode(',',$classes);
+					
+						$query = "SELECT id,title FROM classes 
+								WHERE FIND_IN_SET(id,'$classes')";
+						$ret3 = mysql_query($query);
+						if($ret3 && mysql_num_rows($ret3))
+						{
+							while( $row = mysql_fetch_array($ret3) )
+							{
+								$cid = $row['id'];
+								$title = $row['title'];							
+								?>
+								<ul class='associatedClassesList'>
+									<li><a href="index.php?v=class&amp;cid=<?php echo $cid;?>"><?php echo "$title - ".$classes_titles[$cid];?></li>
+								</ul>
+<?php							}			
+						} 
+					}
+					else
+					{
+						echo "<p>"._('None')."</p>";
+					}
 ?>
 				</fieldset>
-	
+<?php				}?>	
 <?php				/* Account information */
 				
 				$account_type_text = $USER_TYPES_FULL[$result['user_type']];				

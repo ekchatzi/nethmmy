@@ -3,9 +3,9 @@
 	<form method='post' action='register.php' id='regForm' class='regForm' onsubmit="return validate(this)">
 		<fieldset>
 			<legend><?php echo _('User Information');?></legend>	
-			<p><label><?php echo _('Identity');?></label></p>	
-			<input type = 'radio' Name ='user_type' value= '1' id='student_radio' checked>Student
-			<input type = 'radio' Name ='user_type' value= '2' id='professor_radio'>Professor
+			<p><label><?php echo _('Account type');?></label></p>	
+			<input type = 'radio' Name ='user_type' value= '1' id='student_radio' checked><span class='radioText'>Student</span>
+			<input type = 'radio' Name ='user_type' value= '2' id='professor_radio'><span class='radioText'>Professor</span>
 			<label><?php echo _('Username');?></label>
 			<input type='text' name='username' id='username' placeholder="<?php echo _('Your unique username');?>" />
 			<label><?php echo _('Password');?></label>

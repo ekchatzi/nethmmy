@@ -33,6 +33,9 @@ fieldset legend {
 	font-weight: bold;
 	border:1px solid black;
 }
+.radioText {
+	font-size:80%;
+}
 .bodyWrapper {
 	min-width:1100px;
 	text-align:center;
