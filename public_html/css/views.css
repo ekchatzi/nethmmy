@@ -76,3 +76,15 @@
 	height:80px;
 	resize:vertical;
 }
+
+/*
+	EDIT PROFILE VIEW
+				*/
+.editClassWrapper  label {
+	display:block;
+}
+.descriptionTextarea {
+	width:767px;
+	height:80px;
+	resize:vertical;
+}

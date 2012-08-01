@@ -41,6 +41,10 @@
 	{
 		return true;
 	}
+	function can_edit_class($user,$class_id)
+	{
+		return true;
+	}
 	function can_delete_class($user,$target_user)
 	{
 		return true;

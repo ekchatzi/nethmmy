@@ -107,7 +107,7 @@
 								$title = $row['title'];							
 								?>
 								<ul class='associatedClassesList'>
-									<li><a href="index.php?v=class&amp;cid=<?php echo $cid;?>"><?php echo "$title - ".$classes_titles[$cid];?></li>
+									<li><a href="index.php?v=class&amp;id=<?php echo $cid;?>"><?php echo "$title - ".$classes_titles[$cid];?></li>
 								</ul>
 <?php							}			
 						} 

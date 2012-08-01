@@ -215,6 +215,28 @@
 	}
 
 	/*
+		Validates class ids.
+		returns false on ok,errors on error
+	*/
+	function class_id_validation($id)
+	{
+		if(!is_numeric($id) || $id <=0)
+			return _('Class ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM classes WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Class id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
+		return false;
+	}
+	/*
 		Validate title ids.
 		returns false on ok, errors on error
 	*/

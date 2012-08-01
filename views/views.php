@@ -10,6 +10,9 @@
 	$view['class'] = '../views/class.php';
 	$view_title['class'] = _('Class');
 
+	$view['edit_class'] = '../views/edit_class.php';
+	$view_title['edit_class'] = _('Edit Class');
+
 	$view['new_class'] = '../views/new_class.php';
 	$view_title['new_class'] = _('New Class');
 
