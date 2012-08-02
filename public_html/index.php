@@ -47,7 +47,7 @@
 				$username = $result['username'];
 				$last_login = $result['last_login'];
 			}
-			echo "<span><a href='index.php?v=profile&amp;id=$logged_userid'>$username</a></span>";
+			echo "<span><a href='profile/$logged_userid/'>$username</a></span>";
 		}
 		else
 		{?>
