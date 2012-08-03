@@ -21,7 +21,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = "index.php?v=home";
+		$redirect = "home/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');

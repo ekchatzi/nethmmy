@@ -13,7 +13,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"index.php?v=register":"index.php?v=login";
+		$redirect = ($error)?"register/":"login/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');
