@@ -53,7 +53,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"index.php?v=edit_class&id=$cid":"index.php?v=class&id=$cid";
+		$redirect = ($error)?"edit_class/$cid/":"class/$cid/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');
