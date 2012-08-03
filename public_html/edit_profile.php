@@ -106,7 +106,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"index.php?v=edit_profile&id=$uid":"index.php?v=profile&id=$uid";
+		$redirect = ($error)?"edit_profile/$uid/":"/profile/$uid/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');

@@ -81,7 +81,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = "index.php?v=profile&id=$uid";
+		$redirect = "profile/$uid/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');

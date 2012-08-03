@@ -55,7 +55,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"index.php?v=new_class":"index.php?v=class&cid=$classid";
+		$redirect = ($error)?"new_class/":"class/$classid/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600);
 		include('redirect.php');
