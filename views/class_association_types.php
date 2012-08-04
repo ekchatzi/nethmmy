@@ -30,7 +30,7 @@
 		</table>
 <?php		if(can_edit_class_association_types($logged_userid))
 		{?>
-			<a href='index.php?v=edit_class_association_types'><?php echo _('Edit');?></a>
+			<a href='edit_class_association_types/'><?php echo _('Edit');?></a>
 <?php		}
 ?>
 <?php	}

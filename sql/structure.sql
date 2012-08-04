@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 30, 2012 at 02:24 PM
+-- Generation Time: Aug 04, 2012 at 09:35 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'class description',
   `semesters` tinytext CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of semesters the class is avanaible',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'association type id',
   `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'association title',
   `priority` int(10) unsigned NOT NULL COMMENT 'how important is for the class',
-  `permissions` varchar(20) CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
+  `permissions` tinytext CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `titles` (
   `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'title text',
   `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'title description',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -105,9 +105,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_email_validated` int(11) NOT NULL DEFAULT '0' COMMENT 'flag for email validation',
   `semester_update_time` int(11) NOT NULL COMMENT 'unix timestamp of the last time the semester field was updated by the user',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `aem` (`aem`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=6 ;
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=10 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
