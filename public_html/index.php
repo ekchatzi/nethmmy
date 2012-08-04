@@ -5,7 +5,7 @@
 	include_once("../lib/connect_db.php");
 	include_once("../config/general.php");
 
-	setcookie('last_view',(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'v=home'),0);//save last view for after some actions
+	setcookie('last_view',(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'home/'),0);//save last view for after some actions
 
 	/* Get logged user identification data */
 	$user_type = '';
@@ -86,11 +86,10 @@
 		</div>
 		<div class='topNavigation'>
 			<ul>
-				<li><a href='index.php
-?v=home'><?php echo _('Home');?></a></li>
+				<li><a href='home/'><?php echo _('Home');?></a></li>
 <?php				if($logged_userid)
 				{?>
-					<li><a href='logout.php'><?php echo _('Logout');?></a></li>			
+					<li><a href='logout/'><?php echo _('Logout');?></a></li>			
 <?php				}?>
 			</ul>		
 		</div>
@@ -116,7 +115,7 @@
 <?php
 				if($user_type == 's')
 				{
-					echo "<li><a href='index.php?v=classes'>"._('All classes')."</a></li>";
+					echo "<li><a href='classes/'>"._('All classes')."</a></li>";
 				}
 ?>
 			</ul>

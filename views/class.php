@@ -51,7 +51,7 @@
 								$name = $row['first_name'].' '.$row['last_name'];							
 								?>
 								<ul class='associatedUsersList'>
-									<li><a href="index.php?v=profile&amp;id=<?php echo $uid;?>"><?php echo "$name - ".$user_titles[$uid];?></li>
+									<li><a href="profile/<?php echo $uid;?>/"><?php echo "$name - ".$user_titles[$uid];?></li>
 								</ul>
 <?php							}			
 						} 
@@ -69,7 +69,7 @@
 <?php
 				if(can_edit_class($logged_userid,$uid))
 				{?>
-					<a href="index.php?v=edit_class&amp;id=<?php echo $cid;?>" id='editClassLink'><?php echo _('Edit');?></a> 
+					<a href="edit_class/<?php echo $cid;?>/" id='editClassLink'><?php echo _('Edit');?></a> 
 <?php				}?>
 <?php			}
 			else

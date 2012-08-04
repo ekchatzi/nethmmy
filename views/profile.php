@@ -107,7 +107,7 @@
 								$title = $row['title'];							
 								?>
 								<ul class='associatedClassesList'>
-									<li><a href="index.php?v=class&amp;id=<?php echo $cid;?>"><?php echo "$title - ".$classes_titles[$cid];?></li>
+									<li><a href="class/<?php echo $cid;?>/"><?php echo "$title - ".$classes_titles[$cid];?></li>
 								</ul>
 <?php							}			
 						} 
@@ -138,7 +138,7 @@
 <?php
 				if(can_edit_account($logged_userid,$uid))
 				{?>
-					<a href="index.php?v=edit_profile&amp;id=<?php echo $uid;?>" id='editProfileLink'><?php echo _('Edit');?></a> 
+					<a href="edit_profile/<?php echo $uid;?>/" id='editProfileLink'><?php echo _('Edit');?></a> 
 <?php				}?>
 <?php			}
 			else

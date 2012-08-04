@@ -1,12 +1,5 @@
-<!DOCTYPE HTML> 
-<html>
-<head>
-</head>
-<script>
 <?php
-	echo "window.location = '$redirect'";
+	include_once('../config/general.php');
+	header('Location:'.$INDEX_ROOT.$redirect);
 ?>
-</script>
-<body>
-</body>
-</html>
+
