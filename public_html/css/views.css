@@ -88,3 +88,17 @@
 	height:80px;
 	resize:vertical;
 }
+/*
+	ASSOCIATIONS VIEW
+				*/
+.deleteIcon {
+	width:24px;
+	height:24px;
+}
+.editClassAssociationTypesWrapper label,.submit {
+	display:block;
+}
+
+.associationTable {
+
+}

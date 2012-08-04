@@ -1,5 +1,10 @@
 <h2> <?php echo _('New Class');?> </h2>
-<div class='allclasses'>
+<div class='newClassWrapper'>
+<?php	
+	include_once('../lib/access_rules.php');
+
+	if(can_create_class($logged_userid))
+	{?>
 	<form class="new_class" action="new_class.php" method="post">
 		<fieldset>
 			<legend><?php echo _('Class Information');?></legend>		
@@ -12,4 +17,9 @@
 			<input type="submit" value="<?php echo _('Add');?>" />
 		</fieldset>
 	</form>
+<?php	}
+	else
+	{?>
+		<p class='error'><?php echo _('Access Denied.');?></p>
+<?php	}?>
 </div>

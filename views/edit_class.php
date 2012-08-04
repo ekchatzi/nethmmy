@@ -1,3 +1,4 @@
+<h2><?php echo _('Edit class');?></h2>
 <div class='editClassWrapper'>
 <?php
 	include_once('../lib/access_rules.php');
@@ -14,9 +15,7 @@
 		if($ret && mysql_num_rows($ret))
 		{
 			$result = mysql_fetch_array($ret);
-?>
-			<h2><?php echo _('Edit class information');?></h2>
-<?php			if(can_edit_class($logged_userid,$cid) && can_view_class($logged_user,$uid))
+			if(can_edit_class($logged_userid,$cid) && can_view_class($logged_user,$uid))
 			{?>
 				<form method='post' action='edit_class.php'>
 					<fieldset>

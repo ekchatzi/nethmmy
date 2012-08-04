@@ -97,4 +97,16 @@
 	{
 		return true;
 	}
+	function can_view_class_association_types($user)
+	{
+		return true;
+	}
+	function can_edit_class_association_types($user)
+	{
+		return true;
+	}
+	function can_edit_class_associations($user,$class)
+	{
+		return true;
+	}
 ?>

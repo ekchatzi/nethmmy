@@ -20,4 +20,6 @@
 	$USER_TYPES = array(0 => 'g', 1 => 's', 2 => 'p', 3 => 'a');
 	$USER_TYPES_FULL = array(0 => _('Guest'), 1 => _('Student'), 2 => _('Professor'), 3 => _('Admin'));
 	$DEFAULT_ACCOUNT_ACTIVE_STATE = '0';//written on the db during registration
+
+	$CLASS_PERMISSIONS = array('announce','manage_announcements','create_lab','lab_evaluation','upload','manage_files','create_test','evaluate_tests')
 ?>

@@ -279,7 +279,25 @@
 		Validates websites.
 		returns false on ok, errors on error
 	*/
-	function website_validation($tel)
+	function website_validation($url)
+	{
+		return false;
+	}
+
+	/* 
+		Validates association type priority.
+		returns false on ok, errors on error
+	*/
+	function association_type_priority_validation($priority)
+	{
+		return false;
+	}
+
+	/* 
+		Validates association type permission comma seperated lists.
+		returns false on ok, errors on error
+	*/
+	function association_type_permissions_validation($permissions)
 	{
 		return false;
 	}

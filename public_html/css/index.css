@@ -188,3 +188,18 @@ fieldset legend {
 	display:inline-block;
 	vertical-align:middle;
 }
+
+
+table {
+	text-align:center;
+	width:100%;
+}
+tr {
+	background-color:#DCDAEA;
+}
+tr.alternateRow {
+	background-color:#F2F2F2;
+}
+td {
+
+}
