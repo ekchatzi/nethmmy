@@ -24,18 +24,18 @@
 				echo "<tr";
 				if($a%2)
 					echo " class='alternateRow' ";
-				echo ">";
+				echo ">\n";
 				echo "<td><input type='hidden' value='$tid' name='id[]' />";
-				echo "<input class='classAssociationTypeField' id='delete$a' type='checkbox' name='delete[]'/></td>";
-				echo "<td><input class='classAssociationTypeField' id='title$a' type='text' name='title[]' value='".$row['title']."' /><input type='hidden' name='id[]' /></td>";
-				echo "<td><input class='classAssociationTypeField' id='priority$a' type='text' value='".$row['priority']."' /></td>";
-				echo "<td><input class='classAssociationTypeField' id='permissions$a' type='text' value='".$row['permissions']."' /></td></tr>";	
+				echo "<input class='classAssociationTypeField' id='delete$a' type='checkbox' name='delete[]' value='$tid' /></td>\n";
+				echo "<td><input class='classAssociationTypeField' id='title$a' type='text' name='title[]' value='".$row['title']."' /></td>\n";
+				echo "<td><input class='classAssociationTypeField' id='priority$a' type='text' name='priority[]' value='".$row['priority']."' /></td>\n";
+				echo "<td><input class='classAssociationTypeField' id='permissions$a' type='text' name='permissions[]' value='".$row['permissions']."' /></td>\n</tr>\n";	
 				++$a;			
 			}		
 		}
 		else
 		{
-			echo "<tr><td colspan='4'>"._('No entries.')."</td></tr>";
+			echo "\n<tr>\n<td colspan='4'>"._('No entries.')."</td>\n</tr>\n";
 		}
 ?>
 		</tbody>
