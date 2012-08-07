@@ -2,6 +2,7 @@
 	include_once("../lib/connect_db.php");
 	include_once("../lib/access_rules.php");
 	include_once("../config/security.php");
+	include_once("../config/general.php");
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
@@ -83,7 +84,7 @@
 		$warning = '';
 		$redirect = "profile/$uid/";
 		if(strlen($error))
-			setcookie('notify',$error,time()+3600);
+			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>	

@@ -128,7 +128,7 @@
 				<img class='errorIcon' src='images/resource/exclamation_sign.png' />
 				<p>
 <?php					echo $_COOKIE['notify'];
-					setcookie('notify','',time()-3600);
+					setcookie('notify','',time()-3600,$INDEX_ROOT);
 ?>				</p>
 			</div>		
 <?php			}?>

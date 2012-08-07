@@ -1,6 +1,7 @@
 <?php
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
+	include_once("../config/general.php");
 
         if(!isset($error)) 
                 $error = '';
@@ -23,7 +24,7 @@
 		$warning = '';
 		$redirect = "home/";
 		if(strlen($error))
-			setcookie('notify',$error,time()+3600);
+			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>

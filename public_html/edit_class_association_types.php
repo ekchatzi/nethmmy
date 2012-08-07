@@ -4,6 +4,7 @@
 	include_once("../lib/access_rules.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
+	include_once("../config/general.php");
 
         if(!isset($error)) 
                 $error = '';
@@ -87,7 +88,7 @@
 		$warning = '';
 		$redirect = ($error)?"edit_class_association_types/":"class_association_types/";
 		if(strlen($error))
-			setcookie('notify',$error,time()+3600);
+			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 	
