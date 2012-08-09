@@ -20,7 +20,7 @@
 			while($row = mysql_fetch_array($ret))
 			{
 				$tid = $row['id'];
-				echo "<tr";
+				echo "<tr id='associationRow$a'";
 				if($a%2)
 					echo " class='alternateRow' ";
 				echo ">\n";
@@ -58,3 +58,40 @@
 		<p class='error'><?php echo _('Access Denied.');?></p>
 <?php	}?>
 </div>
+<script>
+var changes = new Array();
+var a=<?php echo $a;?>;
+for (var i=0;i<a;i++) {
+	changes[i]=0;
+}
+$(document).ready(function() {
+				$('.classAssociationTypeField').keyup(function() { 
+					var tid = this.id;
+					tid=tid.replace(/[a-z]+/,"");
+					changes[tid]=1;
+				});
+				$(':checkbox').click(function() { 
+					var tid = this.id;
+					tid=tid.replace(/[a-z]+/,"");
+					changes[tid]=1;
+				});
+});
+								
+
+function check() {
+	//delete confirmation//
+	var checked=$('input:checked').length;
+	if (checked>0) {
+		if (!confirm(<?php echo _("'Are you sure you want to delete the selected class associations?'");?>)) {
+			return false;
+		}
+	}
+	//removes unchanged rows//
+	for (var i=0;i<changes.length;i++) {
+		if (changes[i]==0) {
+			$('#associationRow'+i).remove();
+		}
+	}
+	return true;
+}
+</script>
