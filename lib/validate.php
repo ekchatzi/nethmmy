@@ -22,7 +22,7 @@
 		/* load XHTML with SimpleXML */
 		$data_sxml = simplexml_load_string('<root>'. $html .'</root>', 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOXMLDECL);
 
-		$sane = _('Invalid markup');
+		$sane = htmlentities($html);
 		if($data_sxml) 
 		{
 			/* loop all elements with an attribute */
@@ -61,9 +61,12 @@
 	*/	
 	function xml_validation($xml)
 	{
-		$data_sxml = simplexml_load_string('<root>'. $xml .'</root>', 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOXMLDECL);
-		if(!$data_sxml)
-			return _('Invalid markup');
+		if($xml && strlen($xml))
+		{
+			$data_sxml = simplexml_load_string('<root>'. $xml .'</root>', 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOXMLDECL);
+			if(!$data_sxml)
+				return _('Invalid markup');
+		}
 		return false;
 	}
 
@@ -382,12 +385,15 @@
 	function association_type_permissions_validation($permissions)
 	{
 		global $CLASS_PERMISSIONS;
-		$permissions = explode(',',$permissions);
-		for($i=0;$i<count($permissions);++$i)
+		if($permissions && strlen($permissions))
 		{
-			$per = $permissions[$i];
-			if(!in_array($per,$CLASS_PERMISSIONS))
-				return sprintf(_('Invalid permission "%s".'),$per);
+			$permissions = explode(',',$permissions);
+			for($i=0;$i<count($permissions);++$i)
+			{
+				$per = $permissions[$i];
+				if(!in_array($per,$CLASS_PERMISSIONS))
+					return sprintf(_('Invalid permission "%s".'),$per);
+			}
 		}
 		return false;
 	}

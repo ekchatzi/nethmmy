@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 04, 2012 at 09:35 PM
+-- Generation Time: Aug 09, 2012 at 03:48 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -23,6 +23,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `announcements`
+--
+
+CREATE TABLE IF NOT EXISTS `announcements` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'announcement id',
+  `poster` int(10) unsigned NOT NULL COMMENT 'user that posted announcement',
+  `class` int(10) unsigned NOT NULL COMMENT 'class the announcement is about',
+  `post_time` int(10) unsigned NOT NULL COMMENT 'unix time the announcement was posted',
+  `update_time` int(10) unsigned DEFAULT NULL COMMENT 'unix time the announcement was last updated',
+  `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'body of annoument',
+  PRIMARY KEY (`id`),
+  KEY `poster` (`poster`,`class`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `classes`
 --
 
@@ -32,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'class description',
   `semesters` tinytext CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of semesters the class is avanaible',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -47,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `class_associations` (
   `class` int(11) NOT NULL COMMENT 'associated class id',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -61,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
   `priority` int(10) unsigned NOT NULL COMMENT 'how important is for the class',
   `permissions` tinytext CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 

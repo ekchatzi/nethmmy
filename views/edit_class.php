@@ -118,7 +118,7 @@
 			<fieldset>		
 			<legend><?php echo _('New association');?></legend>
 			<form action='new_class_association.php' method='post'>
-				<label><?php echo _('User ID');?></label><input type='text' name='user' />
+				<label><?php echo _('User ID');?></label><input type='text' name='user' placeholder="<?php echo _('User ID');?>" />
 				<label> <?php echo _('as');?> </label>
 				<select name='type'>
 <?php

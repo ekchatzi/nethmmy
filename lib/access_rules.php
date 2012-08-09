@@ -49,10 +49,6 @@
 	{
 		return true;
 	}
-	function can_post_announcement($user,$class)
-	{
-		return true;
-	}
 	function can_upload_file($user,$folder)
 	{
 		return true;
@@ -106,6 +102,18 @@
 		return true;
 	}
 	function can_edit_class_associations($user,$class)
+	{
+		return true;
+	}
+	function can_view_announcements($user,$class)
+	{
+		return true;
+	}
+	function can_post_announcement($user,$class)
+	{
+		return true;
+	}
+	function can_edit_announcement($user,$announcement)
 	{
 		return true;
 	}

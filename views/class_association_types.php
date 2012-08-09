@@ -5,6 +5,8 @@
 
 	if(can_view_class_association_types($logged_userid))
 	{?>
+		<fieldset>
+		<legend><?php echo _('Association type list');?></legend>
 		<table>
 		<tbody>
 			<tr><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
@@ -13,11 +15,17 @@
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
+			$a = 0;
 			while($row = mysql_fetch_array($ret))
 			{
-				echo "<tr><td>".$row['title']."</td>";
+				echo "<tr";
+				if($a%2)
+					echo " class='alternateRow' ";
+				echo ">\n";
+				echo "<td>".$row['title']."</td>";
 				echo "<td>".$row['priority']."</td>";
-				echo "<td>".$row['permissions']."</td></tr>";	
+				echo "<td>".$row['permissions']."</td></tr>";
+				++$a;
 			}		
 		}
 		else
@@ -27,6 +35,7 @@
 ?>
 		</tbody>
 		</table>
+		</fieldset>
 <?php		if(can_edit_class_association_types($logged_userid))
 		{?>
 			<a href='edit_class_association_types/'><?php echo _('Edit');?></a>
