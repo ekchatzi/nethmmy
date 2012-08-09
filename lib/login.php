@@ -1,6 +1,7 @@
 <?php
 	include_once('../lib/connect_db.php');
 	include_once('../config/security.php');
+	include_once('../config/general.php');
 	include_once("../lib/localization.php");
 
 
@@ -11,7 +12,7 @@
 	*/
 	function get_logged_user()
 	{
-		global $USER_TYPES;
+		global $USER_TYPES,$INDEX_ROOT;
 		$token = isset($_COOKIE['login_token'])?$_COOKIE['login_token']:'';
 		if($token)
 		{		
@@ -28,7 +29,7 @@
 				}
 				else
 				{
-					setcookie('notify',_('Remote adress has been changed since last login'),time()+3600);
+					setcookie('notify',_('Remote adress has been changed since last login'),time()+3600,$INDEX_ROOT);
 				}			
 			}
 		}
@@ -41,6 +42,7 @@
 	*/
 	function logout()
 	{
+		global $INDEX_ROOT;
 		$logged_user = get_logged_user();
 		if($logged_user)
 		{
@@ -48,7 +50,7 @@
 				login_token = NULL WHERE id='".$logged_user['id']."' LIMIT 1";
 			$ret = mysql_query($query);
 		}
-		setcookie('login_token','',time() - 3600);
+		setcookie('login_token','',time() - 3600,$INDEX_ROOT);
 	}
 
 	/*

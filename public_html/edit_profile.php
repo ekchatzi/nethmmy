@@ -13,7 +13,6 @@
 	/*Get data from form*/
 	$first_name = isset($_POST['first_name'])?$_POST['first_name']:'';
 	$last_name = isset($_POST['last_name'])?$_POST['last_name']:'';
-
 	$email = isset($_POST['email'])?$_POST['email']:'';
 	$semester = isset($_POST['semester'])?$_POST['semester']:'';
 	$website = isset($_POST['website'])?$_POST['website']:'';
@@ -21,6 +20,15 @@
 	$title = isset($_POST['title'])?$_POST['title']:'';
 	$bio =  isset($_POST['bio'])?$_POST['bio']:'';
 	$uid = isset($_POST['uid'])?$_POST['uid']:'';
+	/* Get logged user identification data */
+	$logged_user_type = '';
+	$logged_userid = 0;
+	$logged_user = get_logged_user();
+	if(isset($logged_user) && $logged_user)
+	{
+		$logged_user_type = $logged_user['type'];
+		$logged_userid = $logged_user['id'];
+	}
 	if(!($e = user_id_validation($uid)))
 	{
 		if(can_edit_account($logged_userid,$uid))
@@ -29,7 +37,7 @@
 			{
 				if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name))
 				   || ($e = email_validation($email)) || ($e = website_validation($website))
-				   || ($e = telephone_validation($telephone))))
+				   || ($e = telephone_validation($telephone)) || ($e = xml_validation($bio))))
 				{
 		
 					/* basic info */

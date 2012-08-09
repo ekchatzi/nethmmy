@@ -9,8 +9,6 @@
         if(!isset($error)) 
                 $error = '';
 
-	$classid = '';
-	
 	/* Get logged user identification data */
 	$user_type = '';
 	$logged_userid = 0;
@@ -22,30 +20,36 @@
 	}
 
 	/* Data */
-	$title = isset($_POST['title'])?$_POST['title']:'';
-	$description = isset($_POST['description'])?$_POST['description']:'';
-	$semesters = isset($_POST['semesters'])?$_POST['semesters']:'0';
-
-	if(can_create_class($logged_userid))//if user can add city
+	$tid = isset($_POST['tid'])?$_POST['tid']:'';
+	$class = isset($_POST['class'])?$_POST['class']:'';
+	if(!($e = association_id_validation($tid)))
 	{
-		/* check if input is valid */
-		if(!(($e = name_validation($title)) || ($e = semester_list_validation($semesters)) || ($e = xml_validation($description))))
+		/* We get class from associations table because we don't trust post input.
+		We use post 'class' for redirection initialiazation purposes*/
+		$query = "SELECT class FROM class_associations WHERE id='$tid'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
 		{
-			$query = "INSERT INTO classes (title,description,semesters)
-					VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
-			mysql_query($query) || ($error .= mysql_error());
-			$classid = mysql_insert_id();	
+			$class = mysql_result($ret,0,0);
+			if(can_edit_class_associations($logged_userid,$class))
+			{
+				$query = "DELETE FROM class_associations WHERE id='$tid' LIMIT 1";
+				mysql_query($query) || ($error .= mysql_error());
+			}
+			else
+			{
+				$error .= _('Access denied.');
+			}	
 		}
 		else
 		{
-			$error .= $e;
-		}	
+			$error .= mysql_error();
+		}
 	}
 	else
 	{
-		$error .= _('Access denied.');
-	}	
-
+		$error .= $e;
+	}
 	if(isset($_GET['AJAX']))
 	{ 
 		echo '{ "error" : "'.$error.'"}';
@@ -56,7 +60,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"new_class/":"class/$classid/";
+		$redirect = "edit_class/$class/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');

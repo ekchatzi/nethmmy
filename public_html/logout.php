@@ -9,6 +9,7 @@
 	$logged_user = get_logged_user();	
 	if($logged_user)
 	{
+
 		$ret = logout();
 	}
 	else

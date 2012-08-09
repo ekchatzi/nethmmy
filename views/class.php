@@ -24,19 +24,18 @@
 <?php					/* Associated professors */
 					$users = array();
 					$user_titles = array();
-					$query = "SELECT class_associatons.user AS user,
-								class_associatons_types.title AS title,
-								class_associatons_types.description AS description
-								FROM class_associatons,class_associatons_types WHERE class_associatons.class = '$cid' AND class_associatons_types.id = class_associatons.type";
+					$query = "SELECT class_associations.user AS user,
+								class_association_types.title AS title
+								FROM class_associations,class_association_types 
+								WHERE class_associations.class = '$cid' AND class_association_types.id = class_associations.type";
 					$ret2 = mysql_query($query);
 					if($ret2 && mysql_num_rows($ret2))
 					{
 						while( $row = mysql_fetch_array($ret2))
 						{
 							$id = $row['user'];
-							$classes[] = $id;
+							$users[] = $id;
 							$user_titles[$id] = $row['title'];
-							$user_descriptions[$id] = $row['description'];
 						}
 						$users = implode(',',$users);
 					
@@ -51,7 +50,7 @@
 								$name = $row['first_name'].' '.$row['last_name'];							
 								?>
 								<ul class='associatedUsersList'>
-									<li><a href="profile/<?php echo $uid;?>/"><?php echo "$name - ".$user_titles[$uid];?></li>
+									<li><a href="profile/<?php echo $uid;?>/"><?php echo "$name</a> - ".$user_titles[$uid];?></li>
 								</ul>
 <?php							}			
 						} 

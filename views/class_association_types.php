@@ -6,7 +6,6 @@
 	if(can_view_class_association_types($logged_userid))
 	{?>
 		<table>
-		<thead><?php echo _('Association Types');?></thead>
 		<tbody>
 			<tr><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
 <?php

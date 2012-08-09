@@ -6,10 +6,9 @@
 	if(can_edit_class_association_types($logged_userid))
 	{?>
 		<fieldset>
-		<legend><?php echo _('Existing association types');?></legend>
+		<legend><?php echo _('Class associations types');?></legend>
 		<form action='edit_class_association_types.php' method='post'>
 		<table class='associationTable'>
-		<thead><?php echo _('Association Types');?></thead>
 		<tbody>
 			<tr><th><img class='deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete?');?>"></th><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
 <?php

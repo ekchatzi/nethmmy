@@ -9,8 +9,6 @@
         if(!isset($error)) 
                 $error = '';
 
-	$classid = '';
-	
 	/* Get logged user identification data */
 	$user_type = '';
 	$logged_userid = 0;
@@ -22,19 +20,17 @@
 	}
 
 	/* Data */
-	$title = isset($_POST['title'])?$_POST['title']:'';
-	$description = isset($_POST['description'])?$_POST['description']:'';
-	$semesters = isset($_POST['semesters'])?$_POST['semesters']:'0';
-
-	if(can_create_class($logged_userid))//if user can add city
+	$user = isset($_POST['user'])?$_POST['user']:'';
+	$type = isset($_POST['type'])?$_POST['type']:'';
+	$class = isset($_POST['class'])?$_POST['class']:'';
+	if(can_edit_class_associations($logged_userid,$class))
 	{
 		/* check if input is valid */
-		if(!(($e = name_validation($title)) || ($e = semester_list_validation($semesters)) || ($e = xml_validation($description))))
+		if(!(($e = class_id_validation($class)) || ($e = user_id_validation($user)) || ($e = association_type_id_validation($type))))
 		{
-			$query = "INSERT INTO classes (title,description,semesters)
-					VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
+			$query = "INSERT INTO class_associations (class,user,type)
+					VALUES('$class','$user','$type')";
 			mysql_query($query) || ($error .= mysql_error());
-			$classid = mysql_insert_id();	
 		}
 		else
 		{
@@ -56,7 +52,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"new_class/":"class/$classid/";
+		$redirect = "edit_class/$class/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');

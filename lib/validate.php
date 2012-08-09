@@ -22,6 +22,7 @@
 		/* load XHTML with SimpleXML */
 		$data_sxml = simplexml_load_string('<root>'. $html .'</root>', 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOXMLDECL);
 
+		$sane = _('Invalid markup');
 		if($data_sxml) 
 		{
 			/* loop all elements with an attribute */
@@ -47,10 +48,23 @@
 					}
 				}
 		    	}
+			$sane = strip_tags(preg_replace($strip_arr,array(''),$data_sxml->asXML()), $safe_tags);
 		}
 
 		// strip unallowed attributes and root tag
-		return strip_tags(preg_replace($strip_arr,array(''),$data_sxml->asXML()), $safe_tags);
+		return $sane;
+	}
+
+	/*
+		Validates xml.
+		returns false on ok,errors on error
+	*/	
+	function xml_validation($xml)
+	{
+		$data_sxml = simplexml_load_string('<root>'. $xml .'</root>', 'SimpleXMLElement', LIBXML_NOERROR | LIBXML_NOXMLDECL);
+		if(!$data_sxml)
+			return _('Invalid markup');
+		return false;
 	}
 
 	/*
@@ -331,6 +345,30 @@
 			$count = mysql_result($ret,0,0);
 			if($count < 1)
 				return _('Association type id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
+		return false;
+	}
+
+	/* 
+		Validates association ids.
+		returns false on ok, errors on error
+	*/
+	function association_id_validation($id)
+	{
+		/* Must be a number */
+		if(!is_numeric($id) || $id <= 0)
+			return _('Association ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM class_associations WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Association id does not exist.');
 		}
 		else
 			return _("Database Error.");

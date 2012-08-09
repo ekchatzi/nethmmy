@@ -203,3 +203,7 @@ tr.alternateRow {
 td {
 
 }
+
+.deleteIcon {
+	cursor:pointer;
+}

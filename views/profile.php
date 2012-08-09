@@ -80,10 +80,9 @@
 <?php					/* Associated classes */
 					$classes = array();
 					$classes_titles = array();
-					$query = "SELECT class_associatons.class AS class,
-								class_associatons_types.title AS title,
-								class_associatons_types.description AS description
-								FROM class_associatons,class_associatons_types WHERE class_associatons.user='$uid' AND class_associatons_types.id = class_associatons.type";
+					$query = "SELECT class_associations.class AS class,
+								class_association_types.title AS title
+								FROM class_associations,class_association_types WHERE class_associations.user='$uid' AND class_association_types.id = class_associations.type";
 					$ret2 = mysql_query($query);
 					if($ret2 && mysql_num_rows($ret2))
 					{
@@ -107,7 +106,7 @@
 								$title = $row['title'];							
 								?>
 								<ul class='associatedClassesList'>
-									<li><a href="class/<?php echo $cid;?>/"><?php echo "$title - ".$classes_titles[$cid];?></li>
+									<li><a href="class/<?php echo $cid;?>/"><?php echo "$title</a> - ".$classes_titles[$cid];?></li>
 								</ul>
 <?php							}			
 						} 
