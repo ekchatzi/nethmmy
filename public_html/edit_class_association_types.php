@@ -10,6 +10,7 @@
                 $error = '';
 	
 	/* Get logged user identification data */
+	die();
 	$user_type = '';
 	$logged_userid = 0;
 	$logged_user = get_logged_user();

@@ -7,7 +7,7 @@
 	{?>
 		<fieldset>
 		<legend><?php echo _('Class associations types');?></legend>
-		<form action='edit_class_association_types.php' method='post'>
+		<form action='edit_class_association_types.php' method='post' onsubmit='return check()'>
 		<table class='associationTable'>
 		<tbody>
 			<tr><th><img class='deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete?');?>"></th><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
