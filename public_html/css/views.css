@@ -112,4 +112,35 @@
 .navigationClassDirectories li{
 	border-bottom: 1px solid #f0f0f0;
 }
->>>>>>> 4a6295b1a9954e4eda0672c819c3499ff19c9660
+
+/*
+	ANNOUNCEMENT VIEW
+				*/
+.newAnnouncementWrapper label {
+	display:block;
+}
+.announcementTextarea {
+	width:767px;
+	height:80px;
+	resize:vertical;
+}
+.announcementTitle {
+
+}
+.announcementInfo {
+	font-size:50%;
+}
+.announcementBody {
+	font-size:80%;
+}
+.pastAnnouncement {
+	margin-bottom:5px;
+	padding:5px;
+	position:relative;
+}
+.editOptionsWrapper {
+	position:absolute;
+	top:5px;
+	right:3px;
+}
+
