@@ -91,6 +91,10 @@
 /*
 	ASSOCIATIONS VIEW
 				*/
+.deleteIcon {
+	width:24px;
+	height:24px;
+}
 .editClassAssociationTypesWrapper label,.submit {
 	display:block;
 }
@@ -99,17 +103,3 @@
 
 }
 
-.navigationClassDirectories {
-	font-size: 80%;
-	display: none;
-	text-align: left;
-	padding-left: 50px;
-	background-color: #d4d2d2;
-}
-.navigationClassDirectories a {
-	text-decoration: none;
-}
-.navigationClassDirectories li{
-	border-bottom: 1px solid #f0f0f0;
-}
->>>>>>> 4a6295b1a9954e4eda0672c819c3499ff19c9660

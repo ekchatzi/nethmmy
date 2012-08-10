@@ -98,18 +98,34 @@
 .associationTable {
 
 }
+/*
+	ANNOUNCEMENT VIEW
+				*/
+.newAnnouncementWrapper label {
+	display:block;
+}
+.announcementTextarea {
+	width:767px;
+	height:80px;
+	resize:vertical;
+}
+.announcementTitle {
 
-.navigationClassDirectories {
-	font-size: 80%;
-	display: none;
-	text-align: left;
-	padding-left: 50px;
-	background-color: #d4d2d2;
 }
-.navigationClassDirectories a {
-	text-decoration: none;
+.announcementInfo {
+	font-size:50%;
 }
-.navigationClassDirectories li{
-	border-bottom: 1px solid #f0f0f0;
+.announcementBody {
+	font-size:80%;
 }
->>>>>>> 4a6295b1a9954e4eda0672c819c3499ff19c9660
+.pastAnnouncement {
+	margin-bottom:5px;
+	padding:5px;
+	position:relative;
+}
+.editOptionsWrapper {
+	position:absolute;
+	top:5px;
+	right:3px;
+}
+

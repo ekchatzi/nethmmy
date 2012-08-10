@@ -98,7 +98,41 @@
 .associationTable {
 
 }
+/*
+<<<<<<< HEAD
+	ANNOUNCEMENT VIEW
+				*/
+.newAnnouncementWrapper label {
+	display:block;
+}
+.announcementTextarea {
+	width:767px;
+	height:80px;
+	resize:vertical;
+}
+.announcementTitle {
 
+}
+.announcementInfo {
+	font-size:50%;
+}
+.announcementBody {
+	font-size:80%;
+}
+.pastAnnouncement {
+	margin-bottom:5px;
+	padding:5px;
+	position:relative;
+}
+.editOptionsWrapper {
+	position:absolute;
+	top:5px;
+	right:3px;
+}
+
+=======
+	NAVIGATION SIDE VIEW
+				*/
 .navigationClassDirectories {
 	font-size: 80%;
 	display: none;
