@@ -102,4 +102,19 @@
 .associationTable {
 
 }
-
+/*
+	NAVIGATION SIDE VIEW
+				*/
+.navigationClassDirectories {
+	font-size: 80%;
+	display: none;
+	text-align: left;
+	padding-left: 50px;
+	background-color: #d4d2d2;
+}
+.navigationClassDirectories a {
+	text-decoration: none;
+}
+.navigationClassDirectories li{
+	border-bottom: 1px solid #f0f0f0;
+}
