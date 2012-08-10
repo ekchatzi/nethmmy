@@ -6,16 +6,6 @@
 	include_once("../config/general.php");
 
 	setcookie('last_view',(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'home/'),0,$INDEX_ROOT);//save last view for after some actions
-
-	/* Get logged user identification data */
-	$user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
-	{
-		$user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
 ?>
 <!DOCTYPE HTML>
 <html>

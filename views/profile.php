@@ -73,12 +73,11 @@
 					<legend><?php echo _('Biography');?></legend>
 					<p><?php echo ((strlen($result['bio'])>0)?$result['bio']:_('There is no biography yet.'))?></p>
 				</fieldset>
-<?php					if(!($e = user_type_validation($uid_type)) && $USER_TYPES[$uid_type] == 'p')
+<?php					if(can_view_user_associations($logged_userid,$uid))
 					{?>
 					<fieldset class='associatedClassesWrapper'>
 						<legend><?php echo _('Associated classes');?></legend>
 <?php					/* Associated classes */
-					$classes = array();
 					$classes_titles = array();
 					$query = "SELECT class_associations.class AS class,
 								class_association_types.title AS title
@@ -88,28 +87,25 @@
 					{
 						while( $row = mysql_fetch_array($ret2))
 						{
-							$id = $row['class'];
-							$classes[] = $id;
-							$classes_titles[$id] = $row['title'];
-							$classes_descriptions[$id] = $row['description'];
-						}
-						$classes = implode(',',$classes);
+							$cid = $row['class'];
+							$association_title = $row['title'];
 					
-						$query = "SELECT id,title FROM classes 
-								WHERE FIND_IN_SET(id,'$classes')";
-						$ret3 = mysql_query($query);
-						if($ret3 && mysql_num_rows($ret3))
-						{
-							while( $row = mysql_fetch_array($ret3) )
+							$query = "SELECT id,title FROM classes 
+									WHERE id = '$cid'";
+							$ret3 = mysql_query($query);
+							if($ret3 && mysql_num_rows($ret3))
 							{
-								$cid = $row['id'];
-								$title = $row['title'];							
-								?>
-								<ul class='associatedClassesList'>
-									<li><a href="class/<?php echo $cid;?>/"><?php echo "$title</a> - ".$classes_titles[$cid];?></li>
-								</ul>
-<?php							}			
-						} 
+								while( $row = mysql_fetch_array($ret3) )
+								{
+									$cid = $row['id'];
+									$class_title = $row['title'];							
+									?>
+									<ul class='associatedClassesList'>
+										<li><a href="class/<?php echo $cid;?>/"><?php echo "$class_title</a> - ".$association_title;?></li>
+									</ul>
+	<?php							}			
+							} 
+						}
 					}
 					else
 					{
@@ -127,6 +123,7 @@
 						<legend><?php echo _('Account Information');?></legend>
 						<ul>
 							<li><label> <?php echo _("Username");?>: </label><?php echo $result['username'];?></li>
+							<li><label> <?php echo _("User ID");?>: </label><?php echo $result['id'];?></li>
 							<li><label> <?php echo _("Account type");?>: </label><?php echo $account_type_text." - ".($result['is_active']?'Active':'Inactive');?></li>
 							<li><label> <?php echo _("Registered on");?> </label><?php echo strftime($DATE_FORMAT,$result['registration_time']);?></li>
 							<li><label> <?php echo _("Last Login on");?> </label><?php echo strftime($DATE_FORMAT,$result['last_login']);?></li>

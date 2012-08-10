@@ -19,79 +19,56 @@
 	$telephone = isset($_POST['telephone'])?$_POST['telephone']:'';
 	$title = isset($_POST['title'])?$_POST['title']:'';
 	$bio =  isset($_POST['bio'])?$_POST['bio']:'';
-	$uid = isset($_POST['uid'])?$_POST['uid']:'';
-	/* Get logged user identification data */
-	$logged_user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
+	/* check input */
+	if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name))
+	   || ($e = email_validation($email)) || ($e = website_validation($website))
+	   || ($e = telephone_validation($telephone)) || ($e = xml_validation($bio))
+	   || ($e = user_id_validation($uid))))
 	{
-		$logged_user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
-	if(!($e = user_id_validation($uid)))
-	{
-		if(can_edit_account($logged_userid,$uid))
+		if(can_edit_account($logged_userid,$uid) && can_edit_title($logged_userid,$uid))
 		{
-			if(can_edit_title($logged_userid,$uid))
-			{
-				if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name))
-				   || ($e = email_validation($email)) || ($e = website_validation($website))
-				   || ($e = telephone_validation($telephone)) || ($e = xml_validation($bio))))
-				{
-		
-					/* basic info */
-					$query = "UPDATE users SET
-							email='".mysql_real_escape_string($email)."',
-							first_name='".mysql_real_escape_string($first_name)."',
-							last_name='".mysql_real_escape_string($last_name)."',
-							title='$title',
-							bio='".mysql_real_escape_string(sanitize_html($bio))."',
-							website='".mysql_real_escape_string($website)."',
-							telephone='".mysql_real_escape_string($telephone)."',
-							semester='$semester',
-							semester_update_time='".time()."'
-							WHERE id='$uid' LIMIT 1";
-					mysql_query($query) || ($error .= mysql_error());
+			/* basic info */
+			$query = "UPDATE users SET
+					email='".mysql_real_escape_string($email)."',
+					first_name='".mysql_real_escape_string($first_name)."',
+					last_name='".mysql_real_escape_string($last_name)."',
+					title='$title',
+					bio='".mysql_real_escape_string(sanitize_html($bio))."',
+					website='".mysql_real_escape_string($website)."',
+					telephone='".mysql_real_escape_string($telephone)."',
+					semester='$semester',
+					semester_update_time='".time()."'
+					WHERE id='$uid' LIMIT 1";
+			mysql_query($query) || ($error .= mysql_error());
 
-					/* aem */
-					if(isset($_POST['aem']))
+			/* aem */
+			if(isset($_POST['aem']))
+			{
+				if(can_edit_aem($logged_userid,$uid))
+				{
+					$aem = $_POST['aem'];
+					$query = "SELECT aem FROM users WHERE id='$uid'";
+					$ret = mysql_query($query);
+					if($ret && mysql_num_rows($ret))
 					{
-						if(can_edit_aem($logged_userid,$uid))
+						$old_aem = mysql_result($ret,0,0);
+						if($old_aem != $aem && !($e = new_account_aem_validation($aem)))
 						{
-							$aem = $_POST['aem'];
-							$query = "SELECT aem FROM users WHERE id='$uid'";
-							$ret = mysql_query($query);
-							if($ret && mysql_num_rows($ret))
-							{
-								$old_aem = mysql_result($ret,0,0);
-								if($old_aem != $aem && !($e = new_account_aem_validation($aem)))
-								{
-									$query = "UPDATE users SET
-										aem='$aem'
-										WHERE id='$uid'";
-									mysql_query($query) || ($error .= mysql_error());
-								}
-								else
-								{
-									$error .= $e;
-								}
-							}
+							$query = "UPDATE users SET
+								aem='$aem'
+								WHERE id='$uid'";
+							mysql_query($query) || ($error .= mysql_error());
 						}
 						else
 						{
-							$error .= _('You are not allowed to change user AEM.');
+							$error .= $e;
 						}
 					}
 				}
 				else
 				{
-					$error .= $e;
+					$error .= _('Access denied.');
 				}
-			}
-			else
-			{
-				$error .= _('You are not allowed to change user title.');
 			}
 		}
 		else

@@ -9,16 +9,6 @@
         if(!isset($error)) 
                 $error = '';
 
-	/* Get logged user identification data */
-	$user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
-	{
-		$user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
-
 	/* Data */
 	$tid = isset($_POST['tid'])?$_POST['tid']:'';
 	$class = isset($_POST['class'])?$_POST['class']:'';

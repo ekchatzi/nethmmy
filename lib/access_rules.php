@@ -1,5 +1,6 @@
 <?php
 	include_once('../config/security.php');
+	include_once('../lib/login.php');
 	
 	function can_create_class($user)
 	{
@@ -97,6 +98,10 @@
 	{
 		return true;
 	}
+	function can_view_user_associations($user,$target_user)
+	{
+		return true;
+	}
 	function can_edit_class_association_types($user)
 	{
 		return true;
@@ -111,7 +116,8 @@
 	}
 	function can_post_announcement($user,$class)
 	{
-		return true;
+		global $logged_userid;
+		return $logged_userid;
 	}
 	function can_edit_announcement($user,$announcement)
 	{

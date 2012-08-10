@@ -10,41 +10,32 @@
                 $error = '';
 
 	$classid = '';
-	
-	/* Get logged user identification data */
-	$user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
-	{
-		$user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
 
 	/* Data */
 	$title = isset($_POST['title'])?$_POST['title']:'';
 	$description = isset($_POST['description'])?$_POST['description']:'';
 	$semesters = isset($_POST['semesters'])?$_POST['semesters']:'0';
-
-	if(can_create_class($logged_userid))//if user can add city
+	/* check if input is valid */
+	if(!(($e = name_validation($title)) || ($e = semester_list_validation($semesters)) || ($e = xml_validation($description))))
 	{
-		/* check if input is valid */
-		if(!(($e = name_validation($title)) || ($e = semester_list_validation($semesters)) || ($e = xml_validation($description))))
+		if(can_create_class($logged_userid))//if user can add city
 		{
-			$query = "INSERT INTO classes (title,description,semesters)
-					VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
-			mysql_query($query) || ($error .= mysql_error());
-			$classid = mysql_insert_id();	
+
+				$query = "INSERT INTO classes (title,description,semesters)
+						VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
+				mysql_query($query) || ($error .= mysql_error());
+				$classid = mysql_insert_id();	
+
 		}
 		else
 		{
-			$error .= $e;
-		}	
+			$error .= _('Access denied.');
+		}
 	}
 	else
 	{
-		$error .= _('Access denied.');
-	}	
+		$error .= $e;
+	}
 
 	if(isset($_GET['AJAX']))
 	{ 

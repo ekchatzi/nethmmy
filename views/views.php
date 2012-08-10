@@ -28,6 +28,12 @@
 	$view['announcements'] = '../views/announcements.php';
 	$view_title['announcements'] = _('Announcements');
 
+	$view['edit_announcement'] = '../views/edit_announcement.php';
+	$view_title['edit_announcement'] = _('Edit Announcement');
+
+	$view['class_files'] = '../views/class_files.php';
+	$view_title['class_files'] = _('Class Files');
+
 	$view['edit_profile'] = '../views/edit_profile.php';
 	$view_title['edit_profile'] = _('Edit Profile');
 

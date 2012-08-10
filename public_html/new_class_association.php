@@ -9,38 +9,29 @@
         if(!isset($error)) 
                 $error = '';
 
-	/* Get logged user identification data */
-	$user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
-	{
-		$user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
-
 	/* Data */
 	$user = isset($_POST['user'])?$_POST['user']:'';
 	$type = isset($_POST['type'])?$_POST['type']:'';
 	$class = isset($_POST['class'])?$_POST['class']:'';
-	if(can_edit_class_associations($logged_userid,$class))
+	/* check if input is valid */
+	if(!(($e = class_id_validation($class)) || ($e = user_id_validation($user)) || ($e = association_type_id_validation($type))))
 	{
-		/* check if input is valid */
-		if(!(($e = class_id_validation($class)) || ($e = user_id_validation($user)) || ($e = association_type_id_validation($type))))
+		if(can_edit_class_associations($logged_userid,$class))
 		{
+
 			$query = "INSERT INTO class_associations (class,user,type)
 					VALUES('$class','$user','$type')";
 			mysql_query($query) || ($error .= mysql_error());
 		}
 		else
 		{
-			$error .= $e;
-		}	
+			$error .= _('Access denied.');
+		}			
 	}
 	else
 	{
-		$error .= _('Access denied.');
-	}	
+		$error .= $e;
+	}
 
 	if(isset($_GET['AJAX']))
 	{ 

@@ -287,12 +287,6 @@ if(document.images) {
   arrow2.src = "js/images/msg_arrow2.png"; 
 }
 
-
-
-//Unique username evaluation//
-$(document).ready(function(){
-$('#username').focusout(username_check);
-});
 var exists;
 function username_check(){	
 	var username = $('#username').val();
@@ -319,13 +313,15 @@ function username_check(){
 	}
 }
 
-//User type form formatting//
-$('#professor_radio').click(function() {	
-	$('#aemLabel, #semesterLabel, #aem, #semester').fadeOut('fast');//css("display","none");
+//Unique username evaluation//
+$(document).ready(function(){
+	$('#username').focusout(username_check);
+	//User type form formatting//
+	$('#professor_radio').click(function() {	
+		$('#aemLabel, #semesterLabel, #aem, #semester').fadeOut('fast');//css("display","none");
+	});
+	$('#student_radio').click(function() {	
+		$('#aemLabel, #semesterLabel, #aem, #semester').fadeIn('fast');//css("display","block");
+	});
 });
-$('#student_radio').click(function() {	
-	$('#aemLabel, #semesterLabel, #aem, #semester').fadeIn('fast');//css("display","block");
-});
-
-
 </script>

@@ -309,7 +309,7 @@ Coding style προτείνονται:
 `id,name,path,folder,uploader,time_uploaded,times_downloaded`
 
 + `announcements`:  
-`id,poster,post_timestamp,update_timestamp,text,class`
+`id,poster,class,post_time,update_time,title,text`
 
 + `labs`:  
 `id,title,description,team_limit,students_per_team_limit,register_expire,upload_expire,class`

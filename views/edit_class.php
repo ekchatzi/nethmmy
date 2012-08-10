@@ -6,15 +6,7 @@
 	$allowed = false;
         if(!isset($error))
                 $error = '';
-	/* Get logged user identification data */
-	$logged_user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
-	{
-		$logged_user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
+
 	$cid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = class_id_validation($cid)))
 	{
@@ -72,7 +64,10 @@
 			<tbody>
 				<tr><th>&nbsp;</th><th><?php echo _('User');?></th><th><?php echo _('Type');?></th><th><?php echo _('Permissions');?></th></tr>
 <?php
-			$query = "SELECT * FROM class_associations WHERE class='$cid'";
+			$query = "SELECT class_associations.id AS id,
+					 class_associations.user AS user,
+					 class_associations.type AS type
+					 FROM class_associations,class_association_types WHERE class_associations.class='$cid' AND class_associations.type = class_association_types.id ORDER BY class_association_types.priority ASC";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
 			{
@@ -137,6 +132,20 @@
 				<input class='submit' type='submit' value="<?php echo _('Submit');?>" />
 			</form>
 			</fieldset>
+			<script type='text/javascript'>
+				$(document).ready(function(){
+					var classId = "<?php echo $cid;?>";
+					$('.deleteIcon').click(function(){
+						var id = $(this).attr('id').replace('deleteIcon','');
+						var s = "<form style='display:none' action='delete_class_association.php' method='post'>";
+						s += "<input type='hidden' name='tid' value='"+id+"' />";
+						s += "<input type='hidden' name='class' value='"+classId+"' />";
+						s += '</form>';
+						var form = $(s).appendTo('body');
+						form.submit(); 	
+					});
+				});
+			</script>
 <?php
 			if(can_view_class_association_types($logged_userid))
 			{?>
@@ -156,18 +165,4 @@
 	{?>
 		<p class='error'><?php echo $error;?></p>
 <?php	}?>
-<script type='text/javascript'>
-	$(document).ready(function(){
-		var classId = "<?php echo $cid;?>";
-		$('.deleteIcon').click(function(){
-			var id = $(this).attr('id').replace('deleteIcon','');
-			var s = "<form style='display:none' action='delete_class_association.php' method='post'>";
-			s += "<input type='hidden' name='tid' value='"+id+"' />";
-			s += "<input type='hidden' name='class' value='"+classId+"' />";
-			s += '</form>';
-			var form = $(s).appendTo('body');
-			form.submit(); 	
-		});
-	});
-</script>
 </div>

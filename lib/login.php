@@ -3,8 +3,6 @@
 	include_once('../config/security.php');
 	include_once('../config/general.php');
 	include_once("../lib/localization.php");
-
-
 	/*
 		Get logged user identification data.
 		returns array with 'type' => user_type and 'id' => id , of logged in user,
@@ -100,5 +98,16 @@
 		{
 			return _('Someone is logged in.');
 		}
+	}
+
+
+	/* Get logged user identification data */
+	$user_type = '';
+	$logged_userid = 0;
+	$logged_user = get_logged_user();
+	if(isset($logged_user) && $logged_user)
+	{
+		$user_type = $logged_user['type'];
+		$logged_userid = $logged_user['id'];
 	}
 ?>

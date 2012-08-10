@@ -13,17 +13,6 @@
 	/*Get user type*/
 	$user_type = isset($_POST['user_type'])?$_POST['user_type']:false;
 	$uid = isset($_POST['uid'])?$_POST['uid']:0;
-
-	/* Get logged user identification data */
-	$logged_user_type = '';
-	$logged_userid = 0;
-	$logged_user = get_logged_user();
-	if(isset($logged_user) && $logged_user)
-	{
-		$logged_user_type = $logged_user['type'];
-		$logged_userid = $logged_user['id'];
-	}
-	/* User type */
 	if(!(($uid_is_invalid = $e = user_id_validation($uid)) || ($e = user_type_validation($user_type))))
 	{
 		if(can_change_user_type($logged_userid,$uid))

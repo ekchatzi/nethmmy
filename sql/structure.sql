@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 09, 2012 at 03:48 PM
+-- Generation Time: Aug 09, 2012 at 09:18 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `class` int(10) unsigned NOT NULL COMMENT 'class the announcement is about',
   `post_time` int(10) unsigned NOT NULL COMMENT 'unix time the announcement was posted',
   `update_time` int(10) unsigned DEFAULT NULL COMMENT 'unix time the announcement was last updated',
+  `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'announcement header title',
   `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'body of annoument',
   PRIMARY KEY (`id`),
   KEY `poster` (`poster`,`class`)
@@ -78,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
   `priority` int(10) unsigned NOT NULL COMMENT 'how important is for the class',
   `permissions` tinytext CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
