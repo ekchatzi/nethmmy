@@ -91,7 +91,7 @@
 						if($a%2)
 							echo " class='alternateRow' ";
 						echo ">\n";
-						echo "<td><img id='deleteIcon$tid' class='deleteIcon' src='images/resource/trash_can.png' alt='X' title='"._('Delete')."'>";
+						echo "<td><a class='deleteLink' id='deleteLink$tid' href='javascript:void(0)'><img id='deleteIcon$tid' class='deleteIcon' src='images/resource/trash_can.png' alt='X' title='"._('Delete')."'></a>";
 						echo "</td>\n";
 						echo "<td><a href='profile/$uid/'>".$row['first_name']." ".$row['last_name']."</a></td>\n";
 						echo "<td>".$row['title']."</td>\n";
@@ -135,8 +135,8 @@
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					var classId = "<?php echo $cid;?>";
-					$('.deleteIcon').click(function(){
-						var id = $(this).attr('id').replace('deleteIcon','');
+					$('.deleteLink').click(function(){
+						var id = $(this).attr('id').replace('deleteLink','');
 						var s = "<form style='display:none' action='delete_class_association.php' method='post'>";
 						s += "<input type='hidden' name='tid' value='"+id+"' />";
 						s += "<input type='hidden' name='class' value='"+classId+"' />";

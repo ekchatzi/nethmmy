@@ -119,6 +119,7 @@
 		global $logged_userid;
 		return $logged_userid;
 	}
+	/* edit means can also delete */
 	function can_edit_announcement($user,$announcement)
 	{
 		return true;

@@ -21,7 +21,7 @@
 					<form action='new_announcement.php' method='post'>
 						<label><?php echo _('Title');?></label>
 						<input type='text' name='title' placeholder="<?php echo _('Announcement title here...');?>" />
-						<label><?php echo _('Announcement body');?></label>
+						<label><?php echo _('Body');?></label>
 						<textarea class='announcementTextarea' name='text' placeholder="<?php echo _('Announcement body here...');?>" ></textarea>
 						<input type='hidden' name='class' value="<?php echo $cid;?>" />
 						<input type='submit' value="<?php echo _('Post announcement');?>" />
@@ -68,18 +68,35 @@
 				<div class='pastAnnouncement' id="pastAnnouncement<?php echo $id;?>">
 					<h3 class='announcementTitle'><?php echo $title;?></h3>
 					<p class='announcementInfo'><?php echo sprintf(_('Posted on %s by %s. Last update on %s.'),$post_time,$poster,$update_time);?></p>
-					<p class='announcementBody'><?php echo $body;?></p>
+					<pre class='announcementBody'><?php echo $body;?></pre>
 
 <?php
 					if(can_edit_announcement($logged_userid,$id))
 					{?>
 					<div class='editOptionsWrapper'>
-						<img src='images/resource/edit-pencil.gif' class='editIcon' id="editIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" />
-						<img src='images/resource/trash_can.png' class='deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" />
+						<a class='editLink' id="editLink<?php echo $id;?>" href="edit_announcement/<?php echo $id;?>/"><img src='images/resource/edit-pencil.gif' class='editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+						<a class='deleteLink' id="deleteLink<?php echo $id;?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+						<script type='text/javascript'>
+							$(document).ready(function(){
+								var classId = "<?php echo $cid;?>";
+								$('.deleteLink').click(function(){
+									var id = $(this).attr('id').replace('deleteLink','');
+									var s = "<form style='display:none' action='delete_announcement.php' method='post'>";
+									s += "<input type='hidden' name='aid' value='"+id+"' />";
+									s += '</form>';
+									var form = $(s).appendTo('body');
+									form.submit(); 	
+								});
+							});
+						</script>
 					</div>
 <?php					}?>
 				</div>
 <?php				}
+			}
+			else
+			{
+				echo _('None announcements yet.');
 			}?>
 			</div>
 	<?php	}

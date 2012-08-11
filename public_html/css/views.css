@@ -132,6 +132,7 @@
 }
 .announcementBody {
 	font-size:80%;
+	width:800px;
 }
 .pastAnnouncement {
 	margin-bottom:5px;
@@ -144,3 +145,6 @@
 	right:3px;
 }
 
+.editAnnouncementWrapper label {
+	display:block;
+}

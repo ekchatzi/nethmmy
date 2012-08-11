@@ -378,6 +378,7 @@
 
 		return false;
 	}
+
 	/* 
 		Validates association type permission comma seperated lists.
 		returns false on ok, errors on error
@@ -395,6 +396,30 @@
 					return sprintf(_('Invalid permission "%s".'),$per);
 			}
 		}
+		return false;
+	}
+
+	/* 
+		Validates announcement ids.
+		returns false on ok, errors on error
+	*/
+	function announcement_id_validation($id)
+	{
+		/* Must be a number */
+		if(!is_numeric($id) || $id <= 0)
+			return _('Announcement ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM announcements WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Announcement id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
 		return false;
 	}
 ?>
