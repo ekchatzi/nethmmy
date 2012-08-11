@@ -28,7 +28,7 @@
 				$query = "UPDATE announcements SET
 						title = '".mysql_real_escape_string($title)."',
 						text = '".mysql_real_escape_string(sanitize_html($text))."',
-						update_time = '".time()."' LIMIT 1";
+						update_time = '".time()."' WHERE id='$aid' LIMIT 1";
 				mysql_query($query) || ($error .= mysql_error());	
 			}
 			else

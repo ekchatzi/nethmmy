@@ -96,7 +96,7 @@
 			}
 			else
 			{
-				echo _('None announcements yet.');
+				echo _('No announcements yet.');
 			}?>
 			</div>
 	<?php	}
