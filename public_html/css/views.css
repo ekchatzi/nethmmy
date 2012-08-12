@@ -101,7 +101,7 @@
 
 .navigationClassDirectories {
 	font-size: 80%;
-	display: none;
+	/*display: none;*/
 	text-align: left;
 	padding-left: 50px;
 	background-color: #d4d2d2;
@@ -111,6 +111,9 @@
 }
 .navigationClassDirectories li{
 	border-bottom: 1px solid #f0f0f0;
+}
+#navigationHl a{
+	background: #bbbaba;
 }
 
 /*
