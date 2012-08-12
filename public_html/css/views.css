@@ -98,28 +98,50 @@
 .associationTable {
 
 }
-
+.navigationTitles {
+	background-color:#ffffff;
+	border:1px solid #000000;
+	display:inline-block;
+	color:#000000;
+	font-family:arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 10px;
+	width:150px;
+	text-decoration:none;
+	margin: 2px;
+}
+.navigationTitles:hover {
+	background-color:#dfdfdf;
+}
+.navigationTitles:active {
+	position:relative;
+	top:1px;
+}
+	
 .navigationClassDirectories {
 	font-size: 80%;
-	/*display: none;*/
+	/*display: none;
 	text-align: left;
-	padding-left: 50px;
-	background-color: #d4d2d2;
+	padding-left: 50px;*/
+	background-color: #d4d6e8;
 }
 .navigationClassDirectories a {
 	text-decoration: none;
+	color:#000000;
 }
 .navigationClassDirectories li{
 	border-bottom: 1px solid #f0f0f0;
 }
+#navigationHl {
+	background: #a0a3c1;
+}
 #navigationHl a{
-	background: #bbbaba;
+	color: white;
 }
 #navigationClassHl {
-	padding-left: 2px;
-	padding-right: 2px;
-	border: 1px solid grey;
-	border-radius: 5px;
+	background: #a0a3c1;
+	color: white;
 }
 
 /*
