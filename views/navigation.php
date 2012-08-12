@@ -2,16 +2,17 @@
 <?php
 	$query = "SELECT * FROM classes";
 	$ret = mysql_query($query);
+	$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'));
 	if($ret && mysql_num_rows($ret)) 
 	{
 		while($row = mysql_fetch_array($ret)) 
 		{
-			echo "<li><a href='class/".$row['id']."/'";
-			if (isset($_GET['id'])&&$_GET['id']>0&&$_GET['id']==$row['id']) 
+			echo "<li><a href='class/".$row['id']."/'  class='navigationTitles'";
+			if (isset($_GET['id'])&&$_GET['id']>0&&$_GET['id']==$row['id']&&array_key_exists($_GET['v'], $view_accept)) 
 			{
 				echo "id='navigationClassHl'>".$row['title']."</a>";
-				$view_names = array('announcements' => _('Announcements'), 'class_files' => _('Files'));
 				echo "<ul class='navigationClassDirectories'>";
+				$view_names = array('announcements' => _('Announcements'), 'class_files' => _('Files'));
 				foreach ($view_names as $view => $view_title) 
 				{
 					echo "<li ";
@@ -29,7 +30,7 @@
 				echo ">".$row['title']."</a>";
 			}
 		}
-		echo "<li><a href='classes/'>"._("All Classes")."</a>";
+		echo "<li><a href='classes/'  class='navigationTitles'>"._("All Classes")."</a>";
 	}
 	else 
 	{
