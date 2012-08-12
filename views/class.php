@@ -1,3 +1,4 @@
+<h2><?php echo _('Class information');?></h2>
 <div class='classWrapper'>
 <?php
 	include_once('../lib/access_rules.php');
@@ -15,7 +16,6 @@
 		{
 			$result = mysql_fetch_array($ret);
 ?>
-			<h2><?php echo $result['title'];?></h2>
 <?php			if(can_view_class($logged_userid,$cid))
 			{?>					
 				<p><?php echo sprintf(_('Taught on semester(s) %s'),$result['semesters']);?></p>
@@ -87,6 +87,10 @@
 
 	if($error)
 	{?>
-		<p class='error'><?php echo $error;?></p>
+		<script>
+		$(document).ready(function(){
+			$('#notificationText').html("<?php echo $error;?>");
+		});
+		</script>
 <?php	}?>
 </div>

@@ -1,3 +1,4 @@
+<h2><?php echo _('Edit class');?></h2>
 <div class='editClassWrapper'>
 <?php
 	include_once('../lib/access_rules.php');
@@ -16,7 +17,6 @@
 		{
 			$result = mysql_fetch_array($ret);
 			$title = $result['title'];?>
-			<h2><?php echo sprintf(_('Edit %s'),"<a href='class/$cid/'>$title</a>");?></h2>
 <?php
 			if(can_edit_class($logged_userid,$cid) && can_view_class($logged_user,$cid))
 			{
@@ -163,6 +163,10 @@
 	}
 	if($error)
 	{?>
-		<p class='error'><?php echo $error;?></p>
+		<script>
+		$(document).ready(function(){
+			$('#notificationText').html("<?php echo $error;?>");
+		});
+		</script>
 <?php	}?>
 </div>

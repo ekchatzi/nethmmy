@@ -54,11 +54,19 @@
 		</fieldset>
 <?php	}
 	else
+	{
+		$error .= _('Access Denied.');
+	}
+	if($error)
 	{?>
-		<p class='error'><?php echo _('Access Denied.');?></p>
+		<script>
+		$(document).ready(function(){
+			$('#notificationText').html("<?php echo $error;?>");
+		});
+		</script>
 <?php	}?>
 </div>
-<script>
+<script type='text/javascript'>
 var changes = new Array();
 var a=<?php echo $a;?>;
 for (var i=0;i<a;i++) {

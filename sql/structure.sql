@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 09, 2012 at 09:18 PM
+-- Generation Time: Aug 12, 2012 at 02:03 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'body of annoument',
   PRIMARY KEY (`id`),
   KEY `poster` (`poster`,`class`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -80,6 +80,20 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
   `permissions` tinytext CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_folders`
+--
+
+CREATE TABLE IF NOT EXISTS `file_folders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'file folder id',
+  `name` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'folder name',
+  `class` int(11) NOT NULL COMMENT 'id of associated class',
+  `public` int(11) NOT NULL COMMENT 'public flag',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

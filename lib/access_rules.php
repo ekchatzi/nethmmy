@@ -50,14 +50,6 @@
 	{
 		return true;
 	}
-	function can_upload_file($user,$folder)
-	{
-		return true;
-	}
-	function can_download_file($user,$file)
-	{
-		return true;
-	}
 	function can_create_lab($user,$class)
 	{
 		return true;
@@ -121,6 +113,30 @@
 	}
 	/* edit means can also delete */
 	function can_edit_announcement($user,$announcement)
+	{
+		return true;
+	}
+	function can_read_folder($user,$folder)
+	{
+		return true;
+	}
+	function can_upload_file($user,$folder)
+	{
+		return true;
+	}
+	function can_download_file($user,$file)
+	{
+		return true;
+	}
+	function can_edit_folder($user,$folder)
+	{
+		return true;
+	}
+	function can_delete_folder($user,$folder)
+	{
+		return true;
+	}
+	function can_create_folder($user,$class)
 	{
 		return true;
 	}

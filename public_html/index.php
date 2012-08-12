@@ -103,17 +103,19 @@
 <?php			include('../views/navigation.php'); ?>
 		</div>
 		<div class='mainView'>
-<?php
-			if(isset($_COOKIE['notify']))
-			{?>
+
 			<div class='notificationSide'>
 				<img class='errorIcon' src='images/resource/exclamation_sign.png' />
-				<p>
-<?php					echo $_COOKIE['notify'];
+				<p id='notificationText'>
+<?php
+				if(isset($_COOKIE['notify']))
+				{
+					echo $_COOKIE['notify'];
 					setcookie('notify','',time()-3600,$INDEX_ROOT);
-?>				</p>
+				}
+?>
+				</p>
 			</div>		
-<?php			}?>
 			<div>
 			<?php
 				include($VIEW);
@@ -125,5 +127,13 @@
 		<?php echo _('Blah blah blah 2012');?>
 	</div>
 </div>
+<script type='text/javascript'>
+	$(document).ready(function(){
+		if($('#notificationText').html().trim()!=='')
+		{
+			$('.notificationSide').css('display','block');
+		}
+	});
+</script>
 </body>
 </html>

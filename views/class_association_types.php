@@ -39,11 +39,19 @@
 <?php		if(can_edit_class_association_types($logged_userid))
 		{?>
 			<a href='edit_class_association_types/'><?php echo _('Edit');?></a>
-<?php		}
-?>
+<?php		}?>
 <?php	}
 	else
+	{
+		$error .= _('Access Denied.');
+	}
+
+	if($error)
 	{?>
-		<p class='error'><?php echo _('Access Denied.');?></p>
+		<script>
+		$(document).ready(function(){
+			$('#notificationText').html("<?php echo $error;?>");
+		});
+		</script>
 <?php	}?>
 </div>

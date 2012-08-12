@@ -112,6 +112,10 @@
 	}
 	if($error)
 	{?>
-		<p class='error'><?php echo $error;?></p>
+		<script>
+		$(document).ready(function(){
+			$('#notificationText').html("<?php echo $error;?>");
+		});
+		</script>
 <?php	}?>
 </div>

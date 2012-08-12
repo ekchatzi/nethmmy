@@ -182,6 +182,7 @@ pre {
 }
 
 .notificationSide {
+	display:none;
 	border:1px dashed black;
 	background-color:#F4F390;
 	height:50px;
