@@ -115,6 +115,12 @@
 #navigationHl a{
 	background: #bbbaba;
 }
+#navigationClassHl {
+	padding-left: 2px;
+	padding-right: 2px;
+	border: 1px solid grey;
+	border-radius: 5px;
+}
 
 /*
 	ANNOUNCEMENT VIEW
