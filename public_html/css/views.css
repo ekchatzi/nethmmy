@@ -109,7 +109,7 @@
 	padding:6px 10px;
 	width:150px;
 	text-decoration:none;
-	margin: 2px;
+	margin-top: 4px;
 }
 .navigationTitles:hover {
 	background-color:#dfdfdf;
@@ -121,10 +121,10 @@
 	
 .navigationClassDirectories {
 	font-size: 80%;
-	/*display: none;
-	text-align: left;
-	padding-left: 50px;*/
 	background-color: #d4d6e8;
+	width: 150px;
+	margin-left: 15px;
+	
 }
 .navigationClassDirectories a {
 	text-decoration: none;
