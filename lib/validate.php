@@ -133,8 +133,8 @@
 			return sprintf(_("Names must be between %s and %s characters long"),$MIN_NAME_LENGTH,$MAX_NAME_LENGTH);
 
 		/* Must contain only alphanumeric characters */
-		if(!preg_match('~^[\p{L}\d ]*$~u',$name))
-			return _('Names must contain only alphanumeric characters and whitespace.');
+		if(!preg_match('~^[\p{L}\d _\.]*$~u',$name))
+			return _('Name contains illegal characters.');
 
 		return false;
 	}
@@ -450,6 +450,50 @@
 		}
 		else
 			return _("Database Error.");
+
+		return false;
+	}
+	/* 
+		Validates file ids.
+		returns false on ok, errors on error
+	*/
+	function file_id_validation($id)
+	{
+		/* Must be a number */
+		if(!is_numeric($id) || $id <= 0)
+			return _('file ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM files WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('file id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
+		return false;
+	}
+	/* 
+		Validates files as $_FILES array.
+		returns false on ok, errors on error
+	*/
+	function file_validation($file)
+	{
+		global $MAX_FILESIZE;
+		if(!$file)
+			return _('File was not sent from form.');
+
+		if($file['error'] !=0)
+			return sprintf(_("File error %s"),$file['error']);
+
+		if($file['size'] > $MAX_FILESIZE)
+			return _("File is too large.");
+
+		if(!$file['size'])
+			$error .= _("File was not uploaded.");
 
 		return false;
 	}

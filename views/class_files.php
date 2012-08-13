@@ -26,7 +26,7 @@
 					$first = false;
 ?>
 				<div class='classFolder' id="classFolder<?php echo $id;?>">
-						<a class='folderName' href="files/<?php echo $id;?>/"><img src='images/resource/folder.jpeg' title="<?php echo $name;?>" class='folderIcon icon ' /><?php echo $name;?></a>
+						<a class='folderName' href="files/<?php echo $id;?>/"><img src='images/resource/folder.png' title="<?php echo $name;?>" class='folderIcon icon ' /><?php echo $name;?></a>
 					<div class='editOptionsWrapper'>
 <?php
 					if(can_edit_folder($logged_userid,$id))
@@ -69,7 +69,6 @@
 					<div class='editFolderPrompt' id="editFolderPrompt<?php echo $id;?>">
 						<form action='edit_folder.php' method='post'>
 						<label><?php echo _('New Name');?></label>
-
 						<input type='text' name='name' value="<?php echo $name;?>" placeholder="<?php echo _('New name here...');?>" />
 						<input type='checkbox' name='public' value="1" 
 <?php 

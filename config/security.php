@@ -21,5 +21,7 @@
 	$USER_TYPES_FULL = array(0 => _('Guest'), 1 => _('Student'), 2 => _('Professor'), 3 => _('Admin'));
 	$DEFAULT_ACCOUNT_ACTIVE_STATE = '0';//written on the db during registration
 
-	$CLASS_PERMISSIONS = array('announce','manage_announcements','create_lab','lab_evaluation','upload','manage_files','create_test','evaluate_tests')
+	$CLASS_PERMISSIONS = array('announce','manage_announcements','create_lab','lab_evaluation','upload','manage_files','create_test','evaluate_tests');
+
+	$MAX_FILESIZE = 8*1024*1024;//in bytes
 ?>

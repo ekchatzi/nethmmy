@@ -140,4 +140,9 @@
 	{
 		return true;
 	}
+	/* edit means can also delete */
+	function can_edit_file($user,$file)
+	{
+		return true;
+	}
 ?>

@@ -197,3 +197,20 @@
 	border:1px solid black;
 	background-color:#A0A3C1;
 }
+
+.editFilePrompt {
+	display:none;
+}
+.fileContainer {
+	position:relative;
+	padding:5px;
+}
+.fileContainerEditted {
+	border:1px solid black;
+	background-color:#A0A3C1;
+}
+.filetypeIcon {
+	vertical-align:middle;
+	width:18px;
+	height:18px;
+}

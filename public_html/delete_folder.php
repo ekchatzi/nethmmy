@@ -21,8 +21,25 @@
 			$class = mysql_result($ret,0,0);
 			if(can_delete_folder($logged_userid,$fid))
 			{
-				$query = "DELETE FROM file_folders WHERE id='$fid' LIMIT 1";
-				mysql_query($query) || ($error .= mysql_error());
+				$query = "SELECT COUNT(*) FROM files WHERE folder='$fid'";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					$count = mysql_result($ret,0,0);
+					if($count == 0)
+					{
+						$query = "DELETE FROM file_folders WHERE id='$fid' LIMIT 1";
+						mysql_query($query) || ($error .= mysql_error());
+					}				
+					else
+					{
+						$error .= _('Folder is not empty.');
+					}
+				}
+				else
+				{
+					$error .= mysql_error();
+				}			
 			}
 			else
 			{
