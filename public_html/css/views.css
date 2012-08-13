@@ -122,9 +122,8 @@
 .navigationClassDirectories {
 	font-size: 80%;
 	background-color: #d4d6e8;
-	width: 150px;
-	margin-left: 15px;
-	
+	width: 176px;
+	margin-left: 2px;
 }
 .navigationClassDirectories a {
 	text-decoration: none;
@@ -142,6 +141,10 @@
 #navigationClassHl {
 	background: #a0a3c1;
 	color: white;
+	padding: 6px 12px;
+	-moz-box-shadow: 0px 2px 3px #888;
+	-webkit-box-shadow: 0px 2px 3px #888;
+	box-shadow: 0px 2px 3px #888;
 }
 
 /*
