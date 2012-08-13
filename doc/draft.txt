@@ -306,7 +306,7 @@ Coding style προτείνονται:
 `id,name,class,public`
 
 + `files`:  
-`id,name,path,folder,uploader,time_uploaded,times_downloaded`
+`id,name,full_path,folder,uploader,upload_time,download_count`
 
 + `announcements`:  
 `id,poster,class,post_time,update_time,title,text`
@@ -328,9 +328,6 @@ Coding style προτείνονται:
 
 + `test_results`:         
 `id,student,test_template,grade,time_evaluated,confirmed`
-
-+ `global_announcements`:
-`id,time_posted,poster,text`
 
 
 ####Σημειώσεις
@@ -357,6 +354,7 @@ $id το id του χρήστη
 `users.is_active` == 0 : inactive
 		     1 : active
 
+Τα global announcements είναι στο table announcements me class=0
 ###Κάποια Θέματα ασφαλείας
 
 Οι χρήστες θα κάνουν login με κωδικούς. Ο κωδικος με προσθήκη ένος τυχαίου και μοναδικού 'αλατιού' θα περνάει από μια συνάρτηση

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 12, 2012 at 02:03 PM
+-- Generation Time: Aug 13, 2012 at 03:12 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -64,8 +64,9 @@ CREATE TABLE IF NOT EXISTS `class_associations` (
   `type` int(10) unsigned NOT NULL COMMENT 'association type',
   `class` int(11) NOT NULL COMMENT 'associated class id',
   PRIMARY KEY (`id`),
-  KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+  KEY `class` (`class`),
+  KEY `user` (`user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,25 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
   `priority` int(10) unsigned NOT NULL COMMENT 'how important is for the class',
   `permissions` tinytext CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int(10) unsigned NOT NULL COMMENT 'file id',
+  `name` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'filename',
+  `full_path` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'full file path',
+  `folder` int(10) unsigned NOT NULL COMMENT 'id of parent_folder',
+  `uploader` int(10) unsigned NOT NULL COMMENT 'user id of uploader',
+  `upload_time` int(10) unsigned NOT NULL COMMENT 'upload unix time',
+  `download_count` int(10) unsigned NOT NULL COMMENT 'times the file was downloaded',
+  PRIMARY KEY (`id`),
+  KEY `folder` (`folder`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -92,8 +111,9 @@ CREATE TABLE IF NOT EXISTS `file_folders` (
   `name` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'folder name',
   `class` int(11) NOT NULL COMMENT 'id of associated class',
   `public` int(11) NOT NULL COMMENT 'public flag',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  KEY `class` (`class`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -137,7 +157,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_email_validated` int(11) NOT NULL DEFAULT '0' COMMENT 'flag for email validation',
   `semester_update_time` int(11) NOT NULL COMMENT 'unix timestamp of the last time the semester field was updated by the user',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `username` (`username`),
+  KEY `aem` (`aem`),
+  KEY `login_token` (`login_token`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=10 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
