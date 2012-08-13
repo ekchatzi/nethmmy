@@ -91,7 +91,7 @@
 						if($a%2)
 							echo " class='alternateRow' ";
 						echo ">\n";
-						echo "<td><a class='deleteLink' id='deleteLink$tid' href='javascript:void(0)'><img id='deleteIcon$tid' class='deleteIcon' src='images/resource/trash_can.png' alt='X' title='"._('Delete')."'></a>";
+						echo "<td><a class='deleteLink' id='deleteLink$tid' href='javascript:void(0)'><img id='deleteIcon$tid' class='icon deleteIcon' src='images/resource/trash_can.png' alt='X' title='"._('Delete')."'></a>";
 						echo "</td>\n";
 						echo "<td><a href='profile/$uid/'>".$row['first_name']." ".$row['last_name']."</a></td>\n";
 						echo "<td>".$row['title']."</td>\n";
@@ -161,12 +161,5 @@
 	{
 		$error .= _('Access Denied.');
 	}
-	if($error)
-	{?>
-		<script>
-		$(document).ready(function(){
-			$('#notificationText').html("<?php echo $error;?>");
-		});
-		</script>
-<?php	}?>
+?>
 </div>

@@ -20,27 +20,25 @@
 			{
 				$id = $row['id'];
 				$name = $row['name'];
-
+				$public = $row['public'];
 				if(can_read_folder($logged_userid,$id))
 				{
-					if(!$first)
-						echo "<hr />\n";
+					$first = false;
 ?>
-					<div class='classFolder' id="classFolder<?php echo $id;?>">
-						<a class='folderName'><img src='images/resource/folder.jpeg' title="<?php echo $name;?>" /><?php echo $name;?></a>
+				<div class='classFolder' id="classFolder<?php echo $id;?>">
+						<a class='folderName' href="files/<?php echo $id;?>/"><img src='images/resource/folder.jpeg' title="<?php echo $name;?>" class='folderIcon icon ' /><?php echo $name;?></a>
 					<div class='editOptionsWrapper'>
 <?php
 					if(can_edit_folder($logged_userid,$id))
 					{?>
-						<a class='editLink' id="editLink<?php echo $id;?>" href="edit_folder/<?php echo $id;?>/"><img src='images/resource/edit-pencil.gif' class='editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+						<a class='editLink' id="editLink<?php echo $id;?>" href='javascript:void(0)' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 <?php					}
 
 					if(can_delete_folder($logged_userid,$id))
 					{?>
-						<a class='deleteLink' id="deleteLink<?php echo $id;?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+						<a class='deleteLink' id="deleteLink<?php echo $id;?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 						<script type='text/javascript'>
 							$(document).ready(function(){
-								var classId = "<?php echo $cid;?>";
 								$('.deleteLink').click(function(){
 									var id = $(this).attr('id').replace('deleteLink','');
 									var s = "<form style='display:none' action='delete_folder.php' method='post'>";
@@ -49,10 +47,45 @@
 									var form = $(s).appendTo('body');
 									form.submit(); 	
 								});
+								$('.editLink').click(function(){
+									var id = $(this).attr('id').replace('editLink','');
+									$('.editFolderPrompt').css('display','none');
+									$('.classFolder').removeClass('classFolderEditted');
+
+									$('#editFolderPrompt'+id).css('display','block');
+									$('#classFolder'+id).addClass('classFolderEditted');
+								});
+								$('.cancelButton').click(function(){
+									$('.editFolderPrompt').css('display','none');
+									$('.classFolder').removeClass('classFolderEditted');
+								});
 							});
 						</script>
 <?php					}?>
 					</div>
+<?php
+					if(can_edit_folder($logged_userid,$id))
+					{?>
+					<div class='editFolderPrompt' id="editFolderPrompt<?php echo $id;?>">
+						<form action='edit_folder.php' method='post'>
+						<label><?php echo _('New Name');?></label>
+
+						<input type='text' name='name' value="<?php echo $name;?>" placeholder="<?php echo _('New name here...');?>" />
+						<input type='checkbox' name='public' value="1" 
+<?php 
+						if($public)
+							echo "checked='checked'";
+?>
+						 />
+						<label><?php echo _('Public');?></label>
+						<input type='hidden' name='fid' value="<?php echo $id;?>" />
+						<input type='submit' value="<?php echo _('Submit');?>" />
+						<button type='button' class='cancelButton' onclick='javascript:void(0)'><?php echo _('Cancel');?></button>
+					</form>
+					</div>
+<?php
+					}?>
+				</div>
 <?php				}
 			}
 		}	
@@ -83,13 +116,5 @@
 	{
 		$error .= $e;
 	}
-
-	if($error)
-	{?>
-		<script>
-		$(document).ready(function(){
-			$('#notificationText').html("<?php echo $error;?>");
-		});
-		</script>
-<?php	}?>
+?>
 </div>

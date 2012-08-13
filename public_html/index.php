@@ -128,7 +128,13 @@
 	</div>
 </div>
 <script type='text/javascript'>
+
 	$(document).ready(function(){
+<?php
+		if($error)
+		{?>
+			$('#notificationText').append("<?php echo $error;?>");
+<?php		}?>
 		if($('#notificationText').html().trim()!=='')
 		{
 			$('.notificationSide').css('display','block');

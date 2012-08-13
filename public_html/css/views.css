@@ -78,7 +78,7 @@
 }
 
 /*
-	EDIT PROFILE VIEW
+	EDIT CLASS VIEW
 				*/
 .editClassWrapper  label {
 	display:block;
@@ -178,4 +178,19 @@
 
 .editAnnouncementWrapper label {
 	display:block;
+}
+
+/*
+	FILES VIEWS
+			*/
+.editFolderPrompt {
+	display:none;
+}
+.classFolder {
+	position:relative;
+	padding:5px;
+}
+.classFolderEditted {
+	border:1px solid black;
+	background-color:#A0A3C1;
 }

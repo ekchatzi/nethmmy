@@ -54,7 +54,16 @@
 		// strip unallowed attributes and root tag
 		return $sane;
 	}
-
+	/*
+		Validates boolean values.
+		returns false on ok,errors on error
+	*/
+	function boolean_validation($bool)
+	{
+		if(($bool !=='1') && ($bool !== '0') && ($bool !== true) && ($bool !== false))
+			return _('Boolean values values must be "0" or "1" or "true" or "false"');
+		return false;
+	}
 	/*
 		Validates xml.
 		returns false on ok,errors on error
@@ -84,7 +93,6 @@
 		}
 		return false;
 	}
-
 	/*
 		Validates semester text.
 		returns false on ok,errors on error
@@ -416,6 +424,29 @@
 			$count = mysql_result($ret,0,0);
 			if($count < 1)
 				return _('Announcement id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
+		return false;
+	}
+	/* 
+		Validates folder ids.
+		returns false on ok, errors on error
+	*/
+	function folder_id_validation($id)
+	{
+		/* Must be a number */
+		if(!is_numeric($id) || $id <= 0)
+			return _('Folder ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM file_folders WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Folder id does not exist.');
 		}
 		else
 			return _("Database Error.");

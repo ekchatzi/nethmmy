@@ -34,8 +34,8 @@
 	$view['class_files'] = '../views/class_files.php';
 	$view_title['class_files'] = _('Class Files');
 
-	$view['edit_folder'] = '../views/edit_folder.php';
-	$view_title['edit_folder'] = _('Edit folder');
+	$view['files'] = '../views/files.php';
+	$view_title['files'] = _('Folder contents');
 
 	$view['edit_profile'] = '../views/edit_profile.php';
 	$view_title['edit_profile'] = _('Edit Profile');

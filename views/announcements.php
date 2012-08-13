@@ -74,8 +74,8 @@
 					if(can_edit_announcement($logged_userid,$id))
 					{?>
 					<div class='editOptionsWrapper'>
-						<a class='editLink' id="editLink<?php echo $id;?>" href="edit_announcement/<?php echo $id;?>/"><img src='images/resource/edit-pencil.gif' class='editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
-						<a class='deleteLink' id="deleteLink<?php echo $id;?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+						<a class='editLink' id="editLink<?php echo $id;?>" href="edit_announcement/<?php echo $id;?>/"><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+						<a class='deleteLink' id="deleteLink<?php echo $id;?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 						<script type='text/javascript'>
 							$(document).ready(function(){
 								var classId = "<?php echo $cid;?>";
@@ -110,12 +110,5 @@
 	{
 		$error .= _('Access Denied.');
 	}
-	if($error)
-	{?>
-		<script>
-		$(document).ready(function(){
-			$('#notificationText').html("<?php echo $error;?>");
-		});
-		</script>
-<?php	}?>
+?>
 </div>

@@ -57,14 +57,7 @@
 	{
 		$error .= _('Access Denied.');
 	}
-	if($error)
-	{?>
-		<script>
-		$(document).ready(function(){
-			$('#notificationText').html("<?php echo $error;?>");
-		});
-		</script>
-<?php	}?>
+?>
 </div>
 <script type='text/javascript'>
 var changes = new Array();

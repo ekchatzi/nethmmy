@@ -40,6 +40,7 @@
 	{
 		$error .= $e;
 	}
+
 	if(isset($_GET['AJAX']))
 	{ 
 		echo '{ "error" : "'.$error.'"}';

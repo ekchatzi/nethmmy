@@ -185,7 +185,7 @@ pre {
 	display:none;
 	border:1px dashed black;
 	background-color:#F4F390;
-	height:50px;
+	min-height:50px;
 	padding:10px;
 	margin-bottom:10px;
 }
@@ -195,8 +195,8 @@ pre {
 	vertical-align:middle;
 }
 .errorIcon {
-	width:48px;
-	height:48px;
+	width:42px;
+	height:42px;
 	display:inline-block;
 	vertical-align:middle;
 }
@@ -216,13 +216,9 @@ td {
 
 }
 
-.deleteIcon {
-	width:21px;
-	height:21px;
+.icon {
+	width:24px;
+	height:24px;
 	cursor:pointer;
-}
-.editIcon {
-	width:21px;
-	height:21px;
-	cursor:pointer;
+	vertical-align:middle;
 }
