@@ -110,6 +110,7 @@
 	width:150px;
 	text-decoration:none;
 	margin-top: 4px;
+	margin-bottom: 0px;
 }
 .navigationTitles:hover {
 	background-color:#dfdfdf;
@@ -122,29 +123,29 @@
 .navigationClassDirectories {
 	font-size: 80%;
 	background-color: #d4d6e8;
-	width: 176px;
+	display: block;
 	margin-left: 2px;
-}
-.navigationClassDirectories a {
+	width: 156px;
+	margin-top: 0px;
 	text-decoration: none;
+	padding: 0px 10px;
 	color:#000000;
-}
-.navigationClassDirectories li{
 	border-bottom: 1px solid #f0f0f0;
+}
+.navigationClassDirectories:hover {
+	background-color: #c0c2dc;
 }
 #navigationHl {
 	background: #a0a3c1;
-}
-#navigationHl a{
 	color: white;
 }
 #navigationClassHl {
 	background: #a0a3c1;
 	color: white;
 	padding: 6px 12px;
-	-moz-box-shadow: 0px 2px 3px #888;
-	-webkit-box-shadow: 0px 2px 3px #888;
-	box-shadow: 0px 2px 3px #888;
+	-moz-box-shadow: 0px 2px 3px #666;
+	-webkit-box-shadow: 0px 2px 3px #666;
+	box-shadow: 0px 2px 3px #666;
 }
 
 /*
