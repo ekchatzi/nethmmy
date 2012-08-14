@@ -11,16 +11,16 @@
 			if (isset($_GET['id'])&&$_GET['id']>0&&$_GET['id']==$row['id']&&array_key_exists($_GET['v'], $view_accept)) 
 			{
 				echo "id='navigationClassHl'>".$row['title']."</a>";
-				echo "<ul class='navigationClassDirectories'>";
+				echo "<ul>";
 				$view_names = array('announcements' => _('Announcements'), 'class_files' => _('Files'));
 				foreach ($view_names as $view => $view_title) 
 				{
-					echo "<li ";
+					echo "<li><a href=".$view."/".$row['id']."/ ";
 					if (isset($_GET['v'])&&$_GET['v']==$view) 
 					{
 						echo "id='navigationHl'";
 					}
-					echo "><a href=".$view."/".$row['id']."/>".$view_title."</a></li>";	
+					echo " class='navigationClassDirectories'>".$view_title."</a></li>";	
 				}	
 				echo "</ul></li>";
 				
