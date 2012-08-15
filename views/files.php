@@ -41,13 +41,15 @@
 						<script type='text/javascript'>
 							$(document).ready(function(){
 								$('.deleteLink').click(function(){
-									var id = $(this).attr('id').replace('deleteLink','');
-									var s = "<form style='display:none' action='delete_files.php' method='post'>";
-									s += "<input type='hidden' name='fid[]' value='"+id+"' />";
-									s += "<input type='folder' name='folder' value='"+<?php echo $fid;?>+"' />";
-									s += '</form>';
-									var form = $(s).appendTo('body');
-									form.submit(); 	
+									if (confirm(<?php echo _("'Are you sure you want to delete this file?'");?>)) {
+										var id = $(this).attr('id').replace('deleteLink','');
+										var s = "<form style='display:none' action='delete_files.php' method='post'>";
+										s += "<input type='hidden' name='fid[]' value='"+id+"' />";
+										s += "<input type='folder' name='folder' value='"+<?php echo $fid;?>+"' />";
+										s += '</form>';
+										var form = $(s).appendTo('body');
+										form.submit(); 	
+									}
 								});
 								$('.editLink').click(function(){
 									var id = $(this).attr('id').replace('editLink','');
