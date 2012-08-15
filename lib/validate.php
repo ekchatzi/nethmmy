@@ -55,13 +55,13 @@
 		return $sane;
 	}
 	/*
-		Validates boolean values.
+		Validates boolean int values.
 		returns false on ok,errors on error
 	*/
-	function boolean_validation($bool)
+	function boolean_int_validation($bool)
 	{
-		if(($bool !=='1') && ($bool !== '0') && ($bool !== true) && ($bool !== false))
-			return _('Boolean values values must be "0" or "1" or "true" or "false"');
+		if(($bool !=='1') && ($bool !== '0'))
+			return _('Boolean int values values must be "0" or "1"');
 		return false;
 	}
 	/*
@@ -461,7 +461,7 @@
 	{
 		/* Must be a number */
 		if(!is_numeric($id) || $id <= 0)
-			return _('file ids must be positive integers.');
+			return _('File ids must be positive integers.');
 
 		$query = "SELECT COUNT(*) FROM files WHERE id='$id'";
 		$ret = mysql_query($query);
@@ -469,7 +469,7 @@
 		{
 			$count = mysql_result($ret,0,0);
 			if($count < 1)
-				return _('file id does not exist.');
+				return _('File id does not exist.');
 		}
 		else
 			return _("Database Error.");
@@ -495,6 +495,57 @@
 		if(!$file['size'])
 			$error .= _("File was not uploaded.");
 
+		return false;
+	}
+	/*
+		Validates deadline unix timestamps.
+		returns false on ok, errors on error
+	*/
+	function deadline_validation($time)
+	{
+		if($limit)
+		{
+			/* Must be a positive integer */
+			if(!is_numeric($time) || $time <= 0)
+				return _('Timestamps must be positive integers.');
+
+			/* Must be after now */
+			if($time > time())
+				return _('Deadlines must be in the future.');
+		}
+		return false;
+	}
+	function lab_team_limit_validation($limit)
+	{
+		global $MAX_LAB_TEAM_LIMIT;
+		/* Must be a positive integer */
+		if(!is_numeric($limit) || $limit <= 0)
+			return _('Team limit must be positive integer.');
+
+		if($limit > $MAX_LAB_TEAM_LIMIT)
+			return sprintf(_('Team limit too large.Must be less than %s.'),$MAX_LAB_TEAM_LIMIT);
+		return false;
+	}
+	function lab_team_size_limit_validation($limit)
+	{
+		global $MAX_USERS_PER_LAB_TEAM_LIMIT;
+		/* Must be a positive integer */
+		if(!is_numeric($limit) || $limit <= 0)
+			return _('Lab team user limit must be positive integer.');
+
+		if($limit > $MAX_USERS_PER_LAB_TEAM_LIMIT)
+			return sprintf(_('Lab team user  limit too large.Must be less than %s.'),$MAX_USERS_PER_LAB_TEAM_LIMIT);
+		return false;
+	}
+	function lab_upload_limit_validation($limit)
+	{
+		global $MAX_LAB_UPLOAD_LIMIT;
+		/* Must be a positive integer */
+		if(!is_numeric($limit) || $limit < 0)
+			return _('Upload limit must be positive integer.');
+
+		if($limit > $MAX_LAB_UPLOAD_LIMIT)
+			return sprintf(_('Upload limit too large.Must be less than %s.'),$MAX_LAB_UPLOAD_LIMIT);
 		return false;
 	}
 ?>

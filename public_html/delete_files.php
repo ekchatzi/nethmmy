@@ -17,20 +17,27 @@
 		/* delete */
 		foreach($delete as $fid)
 		{
-			$query = "SELECT full_path FROM files WHERE id='$fid'";
-			$ret = mysql_query($query);
-			if($ret && mysql_num_rows($ret))
+			if(!($e = file_id_validation($fid)))
 			{
-				$full_path = mysql_result($ret,0,0);
-				if(can_edit_file($fid) && unlink($full_path))
+				$query = "SELECT full_path FROM files WHERE id='$fid'";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
 				{
-					$query = "DELETE FROM files WHERE id='$fid' LIMIT 1";
-					mysql_query($query) || ($error .= mysql_error());
+					$full_path = mysql_result($ret,0,0);
+					if(can_edit_file($fid) && unlink($full_path))
+					{
+						$query = "DELETE FROM files WHERE id='$fid' LIMIT 1";
+						mysql_query($query) || ($error .= mysql_error());
+					}
+					else
+					{
+						$error .= _('Access denied.');
+					}
 				}
-				else
-				{
-					$error .= _('Access denied.');
-				}
+			}
+			else
+			{
+				$error . $e;				
 			}
 		}
 	}

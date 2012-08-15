@@ -215,3 +215,20 @@
 	width:18px;
 	height:18px;
 }
+/*
+	LABS
+		*/
+.newLabWrapper label {
+	display:block;
+}
+#labDescriptionField {
+	width:767px;
+	height:80px;
+	resize:vertical;
+}
+.checkboxLabel {
+	display:inline !important;
+}
+.uploadSettings {
+	display:none;
+}

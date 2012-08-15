@@ -288,7 +288,7 @@ Coding style προτείνονται:
   
 ###Δομή βάσης δεδομένων
 + `users`:  
-`id,username,password,first_name,last_name,aem,user_type,title,email,telephone,website,bio,registration_time,semester,last_login,salt,login_token,is_active,last_remote_adress,is_email_validated,semester_update_time`
+`id,username,password,first_name,last_name,aem,user_type,title,email,telephone,website,bio,registration_time,semester,last_login,salt,login_token,is_active,last_remote_adress,is_email_validated,semester_update_time,classes`
 
 + `titles`
 `id,title,description`
@@ -301,6 +301,7 @@ Coding style προτείνονται:
 
 + `class_association_types`:
 `id,title,priority,permissions'
+
  
 + `file_folders`:
 `id,name,class,public`
@@ -308,14 +309,20 @@ Coding style προτείνονται:
 + `files`:  
 `id,name,full_path,folder,uploader,upload_time,download_count`
 
+
+
 + `announcements`:  
 `id,poster,class,post_time,update_time,title,text`
 
+
+
 + `labs`:  
-`id,title,description,team_limit,students_per_team_limit,register_expire,upload_expire,class`
+`id,title,class,description,folder,register_expire,upload_expire,upload_limit,team_limit,users_per_team_limit,can_free_join,can_make_new_teams,can_lock_teams`
 
 + `lab_teams`:  
-`id,lab,students,time_created,time_updated,flags,files`
+`id,lab,title,students,time_created,time_updated,files,is_locked`
+
+
 
 + `test_templates`:  
 `id,class,creator,title,description,descriptor`
@@ -355,6 +362,9 @@ $id το id του χρήστη
 		     1 : active
 
 Τα global announcements είναι στο table announcements me class=0
+
+labs.folder είναι φάκελος όπου αποθηκεύονται τα αρχεία των φοιτητών για τις εργασίες, αν το μάθημα δεν επιτρέπει ανέβασμα αρχείων
+το folder είναι 0
 ###Κάποια Θέματα ασφαλείας
 
 Οι χρήστες θα κάνουν login με κωδικούς. Ο κωδικος με προσθήκη ένος τυχαίου και μοναδικού 'αλατιού' θα περνάει από μια συνάρτηση

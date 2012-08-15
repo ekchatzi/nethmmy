@@ -65,7 +65,7 @@
 					<p><?php echo ((strlen($result['description'])>0)?$result['description']:_('There is no description yet.'))?></p>
 				</fieldset>
 <?php
-				if(can_edit_class($logged_userid,$uid))
+				if(can_edit_class($logged_userid,$cid))
 				{?>
 					<a href="edit_class/<?php echo $cid;?>/" id='editClassLink'><?php echo _('Edit');?></a> 
 <?php				}?>

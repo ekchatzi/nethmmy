@@ -50,26 +50,8 @@
 	{
 		return true;
 	}
-	function can_create_lab($user,$class)
-	{
-		return true;
-	}
-	function can_delete_lab($user,$lab)
-	{
-		return true;
-	}
-	function can_create_lab_team($user,$lab)
-	{
-		return true;
-	}
-	function can_delete_lab_team($user,$lab)
-	{
-		return true;
-	}
-	function can_edit_lab_team($user,$lab)
-	{
-		return true;
-	}
+
+
 	function can_change_class_subscriptions($user,$target_user)
 	{
 		return true;
@@ -78,6 +60,9 @@
 	{
 		return true;
 	}
+
+
+
 	function can_view_professor_list($user)
 	{
 		return true;
@@ -86,6 +71,9 @@
 	{
 		return true;
 	}
+
+
+
 	function can_view_class_association_types($user)
 	{
 		return true;
@@ -102,6 +90,8 @@
 	{
 		return true;
 	}
+
+
 	function can_view_announcements($user,$class)
 	{
 		return true;
@@ -116,6 +106,10 @@
 	{
 		return true;
 	}
+
+
+
+
 	function can_read_folder($user,$folder)
 	{
 		return true;
@@ -142,6 +136,46 @@
 	}
 	/* edit means can also delete */
 	function can_edit_file($user,$file)
+	{
+		return true;
+	}
+
+
+
+
+	function can_create_lab($user,$class)
+	{
+		return true;
+	}
+	function can_upload_lab_file($user,$lab)
+	{
+		return true;
+	}
+	function can_create_lab_team($user,$lab)
+	{
+		return true;
+	}
+	function can_view_lab_team($user,$team)
+	{
+		return true;
+	}
+	function can_edit_lab_team($user,$team)
+	{
+		return true;
+	}
+	function can_delete_lab_team($user,$team)
+	{
+		return true;
+	}
+	function can_join_lab_team($user,$team)
+	{
+		return true;
+	}
+	function can_edit_lab($user,$lab)
+	{
+		return true;
+	}
+	function can_delete_lab($user,$lab)
 	{
 		return true;
 	}

@@ -24,4 +24,8 @@
 	$CLASS_PERMISSIONS = array('announce','manage_announcements','create_lab','lab_evaluation','upload','manage_files','create_test','evaluate_tests');
 
 	$MAX_FILESIZE = 8*1024*1024;//in bytes
+
+	$MAX_LAB_TEAM_LIMIT = 200;
+	$MAX_USERS_PER_LAB_TEAM_LIMIT = 20;
+	$MAX_LAB_UPLOAD_LIMIT = 10;
 ?>
