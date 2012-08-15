@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2012 at 03:12 PM
+-- Generation Time: Aug 15, 2012 at 05:07 AM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -89,16 +89,16 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
 --
 
 CREATE TABLE IF NOT EXISTS `files` (
-  `id` int(10) unsigned NOT NULL COMMENT 'file id',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'file id',
   `name` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'filename',
   `full_path` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'full file path',
-  `folder` int(10) unsigned NOT NULL COMMENT 'id of parent_folder',
-  `uploader` int(10) unsigned NOT NULL COMMENT 'user id of uploader',
+  `folder` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'id of parent_folder',
+  `uploader` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'user id of uploader',
   `upload_time` int(10) unsigned NOT NULL COMMENT 'upload unix time',
-  `download_count` int(10) unsigned NOT NULL COMMENT 'times the file was downloaded',
+  `download_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'times the file was downloaded',
   PRIMARY KEY (`id`),
   KEY `folder` (`folder`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `file_folders` (
   `public` int(11) NOT NULL COMMENT 'public flag',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -156,6 +156,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_remote_adress` varchar(39) COLLATE utf8_unicode_ci NOT NULL COMMENT 'last login ip adress , sufficient length for IPv6',
   `is_email_validated` int(11) NOT NULL DEFAULT '0' COMMENT 'flag for email validation',
   `semester_update_time` int(11) NOT NULL COMMENT 'unix timestamp of the last time the semester field was updated by the user',
+  `classes` text COLLATE utf8_unicode_ci COMMENT 'comma seperated list of watched classes',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `aem` (`aem`),
