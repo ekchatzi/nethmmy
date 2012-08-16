@@ -7,9 +7,16 @@
 	include_once('../lib/validate.php');
 	include_once('../config/general.php');
 	
-	//add multiple values per key
 		if (can_view_classes_list($logged_userid)) 
 		{	
+			$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
+			$res = mysql_query($query) or die();
+			$ret = mysql_fetch_object($res);
+			if($ret) 
+			{	
+				$classesraw = $ret->classes;
+				$classes = explode(",", $classesraw);
+			}
 			for ($i=0;$i<=$SEMESTERS_COUNT;$i++) 
 			{	
 				$query = "SELECT * FROM classes WHERE FIND_IN_SET($i, semesters)";
@@ -20,9 +27,14 @@
 					while($row = mysql_fetch_array($ret)) 
 					{
 						echo "<p class='classTitleField'>".$row['title'];
-						if (can_edit_subscriptions($logged_userid)) 
+						if (can_change_class_subscriptions($logged_userid,$logged_userid )) 
 						{						
-							echo "<input class='classCheck' name='subscribe[]' value=".$row['id']." type='checkbox'/>";
+							echo "<input class='classCheck' name='subscribe[]' value=".$row['id']." id=".$row['id']." type='checkbox' ";
+							if (isset($classes)&&in_array($row['id'], $classes))
+							{
+								echo "checked='true'";
+							}
+							echo "/>";
 						}
 						echo "</p>";						
 					}
@@ -38,3 +50,18 @@
 <input class='submit' id='button' type='submit' value='<?php echo _("Submit changes");?>'/> 
 </form>
 </div>
+<script>
+$(document).ready(function() 
+{	
+	//unchecks all classes with same id when one is unchecked//
+	$('.classCheck').click(function() 
+	{
+		var thischeck=$(this);
+		var checkid=$(this).attr('id');
+		if (!thischeck.is(':checked')) 
+		{
+			$('#'+checkid).attr('checked', false);
+		}
+	});
+});
+</script>
