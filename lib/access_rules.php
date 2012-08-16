@@ -71,9 +71,6 @@
 	{
 		return true;
 	}
-
-
-
 	function can_view_class_association_types($user)
 	{
 		return true;
