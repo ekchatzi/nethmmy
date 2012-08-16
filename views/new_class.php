@@ -13,7 +13,7 @@
 			<label><?php echo _('Semesters');?> </label>
 			<input type='text' name='semesters' id='semestersField' placeholder="<?php echo _('The semesters the class is taught');?>" />
 			<label><?php echo _('Description');?> </label>
-			<textarea name='description' id='classDescriptionField' placeholder="<?php echo _('Write a description of the class');?>" ></textarea> 
+			<textarea name='description' id='classDescriptionField' placeholder="<?php echo _('Write a description for the class');?>" ></textarea> 
 			<input type="submit" value="<?php echo _('Add');?>" />
 		</fieldset>
 	</form>

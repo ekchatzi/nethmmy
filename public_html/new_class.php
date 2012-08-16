@@ -18,7 +18,7 @@
 	/* check if input is valid */
 	if(!(($e = name_validation($title)) || ($e = semester_list_validation($semesters)) || ($e = xml_validation($description))))
 	{
-		if(can_create_class($logged_userid))//if user can add city
+		if(can_create_class($logged_userid))
 		{
 
 				$query = "INSERT INTO classes (title,description,semesters)

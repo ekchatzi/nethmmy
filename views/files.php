@@ -72,9 +72,10 @@
 					{?>
 					<div class='editFilePrompt' id="editFilePrompt<?php echo $id;?>">
 						<form action='edit_file.php' method='post'>
+						<input type='hidden' name='fid' value="<?php echo $id;?>" />
 						<label><?php echo _('New Name');?></label>
 						<input type='text' name='name' value="<?php echo $name;?>" placeholder="<?php echo _('New name here...');?>" /> 
-						<input type='hidden' name='fid' value="<?php echo $id;?>" />
+
 						<input type='submit' value="<?php echo _('Submit');?>" />
 						<button type='button' class='cancelButton' onclick='javascript:void(0)'><?php echo _('Cancel');?></button>
 					</form>

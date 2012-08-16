@@ -16,11 +16,10 @@
 	$class = isset($_POST['class'])?$_POST['class']:'';
 	$public = isset($_POST['public'])?$_POST['public']:'0';
 	/* check if input is valid */
-	if(!(($e = name_validation($name)) || ($e = class_id_validation($class)) || ($e = boolean_validation($public))))
+	if(!(($e = name_validation($name)) || ($e = class_id_validation($class)) || ($e = boolean_int_validation($public))))
 	{
 		if(can_create_folder($logged_userid,$class))//if user can add city
 		{
-
 				$query = "INSERT INTO file_folders (name,class,public)
 						VALUES('".mysql_real_escape_string($name)."','$class','$public')";
 				mysql_query($query) || ($error .= mysql_error());

@@ -17,7 +17,7 @@
 	$fid = isset($_POST['fid'])?$_POST['fid']:'';
 	$class = '';
 	/* check input */	
-	if(!(($e = name_validation($name)) || ($e = folder_id_validation($fid)) || ($e = boolean_validation($public))))
+	if(!(($e = name_validation($name)) || ($e = folder_id_validation($fid)) || ($e = boolean_int_validation($public))))
 	{
 		/* select class for redirection later */
 		$query = "SELECT class FROM file_folders WHERE id='$fid'";

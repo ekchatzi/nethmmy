@@ -17,9 +17,10 @@
 	<link rel="shortcut icon" type="image/png" href="images/resource/icon.png" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="css/views.css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="css/anytime.css" />
+	<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+	<script src='js/anytime.js'></script>
 	<base href="localhost/nethmmy/public_html/" />
-
 </head>
 <body>
 <div class='bodyWrapper'>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2012 at 05:07 AM
+-- Generation Time: Aug 15, 2012 at 09:33 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   `download_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'times the file was downloaded',
   PRIMARY KEY (`id`),
   KEY `folder` (`folder`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,33 @@ CREATE TABLE IF NOT EXISTS `file_folders` (
   `public` int(11) NOT NULL COMMENT 'public flag',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `labs`
+--
+
+CREATE TABLE IF NOT EXISTS `labs` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'lab id',
+  `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'lab title',
+  `class` int(10) unsigned NOT NULL COMMENT 'class of lab',
+  `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'about the lab',
+  `folder` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'file folder for lab',
+  `creation_time` int(11) unsigned NOT NULL COMMENT 'creation unix timestamp',
+  `update_time` int(10) unsigned NOT NULL COMMENT 'unix time lab was last updated',
+  `register_expire` int(10) unsigned NOT NULL COMMENT 'unix time that registration expires',
+  `upload_expire` int(10) unsigned NOT NULL COMMENT 'unix time that file uploading expires',
+  `upload_limit` int(11) unsigned NOT NULL DEFAULT '1' COMMENT 'How many files can a team upload',
+  `team_limit` int(10) unsigned NOT NULL COMMENT 'how many lab teams can exist ',
+  `users_per_team_limit` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'how many users can be on the same team',
+  `can_free_join` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can join any team or they have to join the first avainable',
+  `can_make_new_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can make new teams',
+  `can_lock_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can lock their teams',
+  PRIMARY KEY (`id`),
+  KEY `class` (`class`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
