@@ -215,35 +215,3 @@
 	width:18px;
 	height:18px;
 }
-/*CLASSES VIEW*/
-.classesWrapper {
-	width: 500px;
-}
-#classesHeader {
-	border-bottom: 3px solid #9c90f2;
-	width: 500px;
-}
-#classesTitle {
-	display: inline;
-	margin-right: 350px;
-	
-}
-#subscribeTitle {
-	text-align: right;
-	display: inline-block;
-}
-.semesterTitle {
-	margin-top:10px;
-	font-size: 120%;
-	border-bottom: 1px solid blue;
-	margin-bottom: 3px;
-	margin-right: 100px;
-}
-.classCheck {
-	position: relative;
-	display: inline;
-	float: right;
-}
-#button {
-	margin-top: 20px;
-}
