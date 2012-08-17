@@ -162,6 +162,14 @@
 .announcementTitle {
 
 }
+.announcementClass {
+	text-align: center;
+	border-bottom: 1px solid grey;
+	font-size: 10pt;
+}
+.announcementClass a{
+	text-decoration:none;
+}
 .announcementInfo {
 	font-size:50%;
 }
