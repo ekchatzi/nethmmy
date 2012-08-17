@@ -36,12 +36,8 @@
 					echo ">".$row['title']."</a>";
 				}
 			}
-			echo "<li><a href='classes/'  class='navigationTitles'>"._("All Classes")."</a>";
 		}
 	}
-	else 
-	{
-		echo "<li><a href='classes/'  class='navigationTitles'>"._("All Classes")."</a>";
-	}
 ?>
+<li><a href='classes/'  class='navigationTitles'><?php echo _("All Classes");?></a></li>
 </ul>

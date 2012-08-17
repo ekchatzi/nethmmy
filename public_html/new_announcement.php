@@ -18,10 +18,10 @@
 	{
 		if(can_post_announcement($logged_userid,$class))
 		{
-			$query = "INSERT INTO announcements (class,poster,title,text,post_time)
+			$query = "INSERT INTO announcements (class,poster,title,text,post_time,update_time)
 					VALUES('$class','$logged_userid','"
 					.mysql_real_escape_string($title)."','"
-					.mysql_real_escape_string(sanitize_html($text))."','".time()."')";
+					.mysql_real_escape_string(sanitize_html($text))."','".time()."','".time()."')";
 			mysql_query($query) || ($error .= mysql_error());	
 		}
 		else
