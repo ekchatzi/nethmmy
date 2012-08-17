@@ -7,7 +7,7 @@
 	include_once('../config/general.php');
 	
 	$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
-	$res = mysql_query($query) or die();
+	$res = mysql_query($query);
 	$ret = mysql_fetch_object($res);
 	if($ret) 
 	{
@@ -22,11 +22,11 @@
 					 classes.id AS class_id,
 					 classes.title AS class_title
 					 FROM announcements,users,classes
-					WHERE announcements.class IN($classesraw) AND users.id = announcements.poster AND classes.id = announcements.class ORDER BY update_time DESC";
-		$ret = mysql_query($query) or die();
+					WHERE announcements.class IN($classesraw) AND users.id = announcements.poster AND classes.id = announcements.class ORDER BY update_time DESC LIMIT $NEW_ANNOUNCEMENTS_SHOWN";
+		$ret = mysql_query($query);
 		if($ret && mysql_numrows($ret))
 		{
-		$first = true;
+			$first = true;
 			while($row = mysql_fetch_array($ret))
 			{
 				if(!$first)
@@ -59,7 +59,8 @@
 	<p class='announcementInfo'><?php echo sprintf(_('Posted on %s by %s. Last update on %s.'),$post_time,$poster,$update_time);?></p>
 	<pre class='announcementBody'><?php echo $body;?></pre>
 	</div>
-<?php		}
+<?php		
+			}
 		}
 		else
 		{

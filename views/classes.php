@@ -10,7 +10,7 @@
 		if (can_view_classes_list($logged_userid)) 
 		{	
 			$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
-			$res = mysql_query($query) or die();
+			$res = mysql_query($query);
 			$ret = mysql_fetch_object($res);
 			if($ret) 
 			{	
