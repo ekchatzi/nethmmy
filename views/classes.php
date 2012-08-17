@@ -10,11 +10,9 @@
 		if (can_view_classes_list($logged_userid)) 
 		{	
 			$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
-			$res = mysql_query($query);
-			$ret = mysql_fetch_object($res);
-			if($ret) 
-			{	
-				$classesraw = $ret->classes;
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret) && ($classesraw = mysql_result($ret,0,0)))
+			{
 				$classes = explode(",", $classesraw);
 			}
 			for ($i=0;$i<=$SEMESTERS_COUNT;$i++) 

@@ -7,11 +7,9 @@
 	include_once('../config/general.php');
 	
 	$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
-	$res = mysql_query($query);
-	$ret = mysql_fetch_object($res);
-	if($ret) 
+	$ret = mysql_query($query);
+	if($ret && mysql_num_rows($ret) && ($classesraw = mysql_result($ret,0,0)))
 	{
-		$classesraw = $ret->classes;
 		$query = "SELECT announcements.id AS id,
 					 announcements.text AS body,
 					 announcements.title AS title,
