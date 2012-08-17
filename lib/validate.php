@@ -328,14 +328,16 @@
 	*/
 	function id_list_validation($text)
 	{
-		/* Must be a number */
-		$ids = explode(',',$text);
-		for($i = 0; $i < count($ids); ++$i)
+		/* Must be a number or empty*/
+		if(strlen($text))
 		{
-			if(!is_numeric($ids[$i]))
-				return _("Invalid id list.");		
+			$ids = explode(',',$text);
+			for($i = 0; $i < count($ids); ++$i)
+			{
+				if(!is_numeric($ids[$i]))
+					return _("Invalid id list.");		
+			}
 		}
-
 		return false;
 	}
 
@@ -513,6 +515,29 @@
 			if($time > time())
 				return _('Deadlines must be in the future.');
 		}
+		return false;
+	}
+	/* 
+		Validates lab ids.
+		returns false on ok, errors on error
+	*/
+	function lab_id_validation($id)
+	{
+		/* Must be a number */
+		if(!is_numeric($id) || $id <= 0)
+			return _('Lab ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM labs WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Lab id does not exist.');
+		}
+		else
+			return _("Database Error.");
+
 		return false;
 	}
 	function lab_team_limit_validation($limit)

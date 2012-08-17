@@ -317,7 +317,7 @@ Coding style προτείνονται:
 
 
 + `labs`:  
-`id,title,class,description,folder,register_expire,upload_expire,upload_limit,team_limit,users_per_team_limit,can_free_join,can_make_new_teams,can_lock_teams`
+`id,title,class,description,folder,creation_time,update_time,register_expire,upload_expire,upload_limit,team_limit,users_per_team_limit,can_free_join,can_make_new_teams,can_lock_teams`
 
 + `lab_teams`:  
 `id,lab,title,students,time_created,time_updated,files,is_locked`

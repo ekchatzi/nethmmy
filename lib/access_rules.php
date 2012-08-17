@@ -156,6 +156,10 @@
 	{
 		return true;
 	}
+	function can_view_lab_teams($user,$lab)
+	{
+		return true;
+	}
 	function can_edit_lab_team($user,$team)
 	{
 		return true;
@@ -169,6 +173,10 @@
 		return true;
 	}
 	function can_edit_lab($user,$lab)
+	{
+		return true;
+	}
+	function can_view_lab($user,$lab)
 	{
 		return true;
 	}
