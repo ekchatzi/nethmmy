@@ -1,5 +1,3 @@
-<h2><?php echo _('Edit class');?></h2>
-<div class='editClassWrapper'>
 <?php
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
@@ -7,7 +5,11 @@
 	$allowed = false;
         if(!isset($error))
                 $error = '';
-
+	
+	$show = false;
+	$edit_class = false;
+	$edit_associations = false;
+	$class_title = _('Edit class');
 	$cid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = class_id_validation($cid)))
 	{
@@ -15,29 +17,71 @@
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
+			$show = true;
 			$result = mysql_fetch_array($ret);
-			$title = $result['title'];?>
-<?php
+			$class = $result['id'];
+			$class_name = $result['title'];
+			$class_title = "<a href='class/$class/'>$class_name</a>";
+			$semesters = $result['semesters'];
 			if(can_edit_class($logged_userid,$cid) && can_view_class($logged_user,$cid))
 			{
+				$edit_class = true;
 				$allowed = true;
-				?>
-				<form method='post' action='edit_class.php'>
-					<fieldset>
-					<legend><?php echo _('Class information');?></legend>
-					<ul>
-						<li><label><?php echo _("Title");?> </label><input type='text' name='title' value="<?php echo $result['title'];?>" placeholder="<?php echo _('Class\' title');?>" /></li>
-						<li><label><?php echo _("Semesters");?> </label><input type='text' name='semesters' value="<?php echo $result['semesters'];?>" placeholder="<?php echo _('Semesters the class is taught');?>"/></li>
-					</ul>
-					<p>
-						<label id='descriptionLabel'><?php echo _('Description');?></label>
-						<textarea name='description' class='descriptionTextarea' placeholder="<?php echo _('Class description');?>"><?php echo $result['description'];?></textarea>
-					</p>
-					<input type='hidden' name='cid' value="<?php echo $cid;?>" />
-					<input type='submit' value="<?php echo _('Apply');?>" />
-					</fieldset>
-				</form>
-<?php			}
+			}
+
+			if(can_edit_class_associations($logged_userid,$cid))
+			{
+				$allowed = true;
+				$edit_associations = true;
+
+				$tid = array();
+				$uid = array();
+				$type = array();
+				$name = array();
+				$permissions = array();
+				$title = array();
+				$query = "SELECT class_associations.id AS id,
+					 class_associations.user AS user,
+					 class_associations.type AS type
+					 FROM class_associations,class_association_types WHERE class_associations.class='$cid' AND class_associations.type = class_association_types.id ORDER BY class_association_types.priority ASC";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+
+					while($row = mysql_fetch_array($ret))
+					{
+						$tid[] = $row['id'];
+						$uid_t = $uid[] = $row['user'];
+						$type_t = $type[] = $row['type'];
+						$query = "SELECT users.first_name AS first_name,
+								 users.last_name AS last_name,
+								 class_association_types.title AS title,
+								 class_association_types.permissions AS permissions
+								FROM class_association_types,users WHERE users.id='$uid_t' AND class_association_types.id='$type_t'";
+						$ret2 = mysql_query($query);
+						if($ret2 && mysql_num_rows($ret2))
+						{
+							$row = mysql_fetch_array($ret2);
+							$name[] = $row['first_name']." ".$row['last_name'];
+							$title[] = $row['title'];
+							$permissions[] = $row['permissions'];	
+						}
+					}		
+				}
+
+				$assoc_id = array();
+				$assoc_title = array();
+				$query = "SELECT * FROM class_association_types";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					while($row = mysql_fetch_array($ret))
+					{
+						$assoc_id[] = $row['id'];
+						$assoc_title[] = $row['title'];
+					}
+				}
+			}
 		}
 		else	
 		{
@@ -48,87 +92,67 @@
 	{
 		$error .= $e;
 	}
+
+	if($allowed == false)
+		$error .= _('Access Denied');
 ?>
-</div>
-<div class='editClassAssociationsWrapper'>
-<?php
-	if(!($e = class_id_validation($cid)))
-	{
-		if(can_edit_class_associations($logged_userid,$cid))
-		{
-			$allowed = true;?>
+<h2><?php echo sprintf(_('Edit %s'),$class_title);?></h2>
+<div class='editClassWrapper'>
+<?php	if($show) {?>
+<?php		if($edit_class) {?>
+		<form method='post' action='edit_class.php'>
+			<fieldset>
+			<legend><?php echo _('Class information');?></legend>
+			<ul>
+				<li><label><?php echo _("Title");?> </label><input type='text' name='title' value="<?php echo $class_name;?>" placeholder="<?php echo _('Class\' title');?>" /></li>
+				<li><label><?php echo _("Semesters");?> </label><input type='text' name='semesters' value="<?php echo $semesters;?>" placeholder="<?php echo _('Semesters the class is taught');?>"/></li>
+			</ul>
+			<p>
+				<label id='descriptionLabel'><?php echo _('Description');?></label>
+				<textarea name='description' class='descriptionTextarea' placeholder="<?php echo _('Class description');?>"><?php echo $result['description'];?></textarea>
+			</p>
+			<input type='hidden' name='cid' value="<?php echo $cid;?>" />
+			<input type='submit' value="<?php echo _('Apply');?>" />
+			</fieldset>
+		</form>
+<?php		}?>
+<?php		if($edit_associations) {?>
+	<div class='editClassAssociationsWrapper'>
 			<fieldset>
 			<legend><?php echo _('Class Associations');?></legend>
 			<form action='edit_class_association_types.php' method='post'>
 			<table class='associationTable'>
 			<tbody>
 				<tr><th>&nbsp;</th><th><?php echo _('User');?></th><th><?php echo _('Type');?></th><th><?php echo _('Permissions');?></th></tr>
-<?php
-			$query = "SELECT class_associations.id AS id,
-					 class_associations.user AS user,
-					 class_associations.type AS type
-					 FROM class_associations,class_association_types WHERE class_associations.class='$cid' AND class_associations.type = class_association_types.id ORDER BY class_association_types.priority ASC";
-			$ret = mysql_query($query);
-			if($ret && mysql_num_rows($ret))
-			{
-				$has_values = true;
-				$a = 0;
-				while($row = mysql_fetch_array($ret))
-				{
-					$tid = $row['id'];
-					$uid = $row['user'];
-					$type = $row['type'];
-					$query = "SELECT users.first_name AS first_name,
-							 users.last_name AS last_name,
-							 class_association_types.title AS title,
-							 class_association_types.permissions AS permissions
-							FROM class_association_types,users WHERE users.id='$uid' AND class_association_types.id='$type'";
-					$ret2 = mysql_query($query);
-					if($ret2 && mysql_num_rows($ret2))
-					{
-						$row = mysql_fetch_array($ret2);
-						echo "<tr";
-						if($a%2)
-							echo " class='alternateRow' ";
-						echo ">\n";
-						echo "<td><a class='deleteLink' id='deleteLink$tid' href='javascript:void(0)'><img id='deleteIcon$tid' class='icon deleteIcon' src='images/resource/trash_can.png' alt='X' title='"._('Delete')."'></a>";
-						echo "</td>\n";
-						echo "<td><a href='profile/$uid/'>".$row['first_name']." ".$row['last_name']."</a></td>\n";
-						echo "<td>".$row['title']."</td>\n";
-						echo "<td>".$row['permissions']."</td>\n</tr>\n";	
-						++$a;
-					}
-				}		
-			}
-			else
-			{
-				echo "\n<tr>\n<td colspan='4'>"._('No entries.')."</td>\n</tr>\n";
-			}
-?>
+<?php			$a = 0;
+			for($i=0;$i<count($tid);++$i){ ++$a;?>
+				<tr <?php if($a%2) echo " class='alternateRow' ";?> >
+					<td><a class='deleteLink' id="deleteLink<?php echo $tid[$i];?>" href='javascript:void(0)'><img id="deleteIcon<?php echo $tid[$i];?>" class='icon deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete');?>"></a></td>
+					<td><a href="profile/<?php echo $uid[$i];?>/"><?php echo $name[$i];?></a></td>
+					<td><?php echo $title[$i];?></td>
+					<td><?php echo $permissions[$i];?></td>
+				</tr>
+<?php			}?>
+<?php			if(count($tid) == 0) {?>
+				<tr>
+					<td colspan='4'><?php echo _('No entries.');?></td>
+				</tr>
+<?php			}?>
 			</tbody>
 			</table>		
 			</form>
 			</fieldset>
-
-			<fieldset>		
+			<fieldset class='newClassAssociationFieldset'>	
 			<legend><?php echo _('New association');?></legend>
 			<form action='new_class_association.php' method='post'>
+				<input type='hidden' value="<?php echo $cid;?>" name='class' />
 				<label><?php echo _('User ID');?></label><input type='text' name='user' placeholder="<?php echo _('User ID');?>" />
 				<label> <?php echo _('as');?> </label>
 				<select name='type'>
-<?php
-				$query = "SELECT * FROM class_association_types";
-				$ret = mysql_query($query);
-				if($ret && mysql_num_rows($ret))
-				{
-					while($row = mysql_fetch_array($ret))
-					{
-						echo "<option value='".$row['id']."'>".$row['title']."</option>";
-					}
-				}
-	?>
+<?php			for($i=0;$i<count($assoc_id);$i++){?>
+					<option value="<?php echo $assoc_id[$i];?>"><?php echo $assoc_title[$i];?></option>
+<?php			}?>
 				</select>
-				<input type='hidden' value="<?php echo $cid;?>" name='class' />
 				<input class='submit' type='submit' value="<?php echo _('Submit');?>" />
 			</form>
 			</fieldset>
@@ -148,20 +172,10 @@
 					});
 				});
 			</script>
-<?php
-			if(can_view_class_association_types($logged_userid))
-			{?>
-			<a href='class_association_types/'><?php echo _('Association types');?></a>
-<?php			}?>
-<?php		}
-	}
-	else
-	{
-		$error .= $e;
-	}
-	if(!$allowed)
-	{
-		$error .= _('Access Denied.');
-	}
-?>
+		</div>
+<?php		}?>
+<?php		if(can_view_class_association_types($logged_userid)) {?>
+				<a href='class_association_types/'><?php echo _('Association types');?></a>
+<?php		}?>
+<?php	}?>
 </div>

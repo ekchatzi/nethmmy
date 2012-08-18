@@ -1,50 +1,61 @@
-<h2> <?php echo _('Class Association Types');?> </h2>
-<div class='classAssociationTypesWrapper'>
 <?php
 	include_once('../lib/access_rules.php');
 
+	$show = false;
 	if(can_view_class_association_types($logged_userid))
-	{?>
-		<fieldset>
-		<legend><?php echo _('Association type list');?></legend>
-		<table>
-		<tbody>
-			<tr><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
-<?php
+	{
+		$show =true;
+		$title = array();
+		$priority = array();
+		$permissions = array();
 		$query = "SELECT * FROM class_association_types";
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
-			$a = 0;
 			while($row = mysql_fetch_array($ret))
-			{
-				echo "<tr";
-				if($a%2)
-					echo " class='alternateRow' ";
-				echo ">\n";
-				echo "<td>".$row['title']."</td>";
-				echo "<td>".$row['priority']."</td>";
-				echo "<td>".$row['permissions']."</td></tr>";
-				++$a;
+			{ 
+				$title[] = $row['title'];
+				$priority[] = $row['priority'];
+				$permissions[] = $row['permissions'];
 			}		
 		}
 		else
 		{
 			echo "<tr colspan='3'><td>"._('No entries.')."</td></tr>";
 		}
-?>
-		</tbody>
-		</table>
-		</fieldset>
-<?php		if(can_edit_class_association_types($logged_userid))
-		{?>
-			<a href='edit_class_association_types/'><?php echo _('Edit');?></a>
-<?php		}?>
-<?php	}
+	}
 	else
 	{
 		$error .= _('Access Denied.');
 	}
 
 ?>
+<h2> <?php echo _('Class Association Types');?> </h2>
+<div class='classAssociationTypesWrapper'>
+<?php	if($show) {?>
+		<fieldset>
+		<legend><?php echo _('Association type list');?></legend>
+		<table>
+		<tbody>
+			<tr><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
+<?php		$a = 0;
+		for($i=0;$i<count($title);++$i) { ++$a;?>
+			<tr <?php if($a%2) echo " class='alternateRow'";?> >
+				<td><?php echo $title[$i];?></td>
+				<td><?php echo $priority[$i];?></td>
+				<td><?php echo $permissions[$i];?></td>
+			</tr>
+<?php		}?>
+<?php		if(count($title) == 0) {?>
+			<tr>
+				<td colspan='3'><?php echo _('No entries.');?></td>
+			</tr>
+<?php		}?>
+		</tbody>
+		</table>
+		</fieldset>
+<?php		if(can_edit_class_association_types($logged_userid)) {?>
+			<a href='edit_class_association_types/'><?php echo _('Edit');?></a>
+<?php		}?>
+<?php	}?>
 </div>

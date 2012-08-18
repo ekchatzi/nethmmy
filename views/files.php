@@ -1,5 +1,3 @@
-<h2><?php echo _('Folder contents');?></h2>
-<div class='filesWrapper'>
 <?php	
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
@@ -7,92 +5,115 @@
 
         if(!isset($error))
                 $error = '';
-
+	$show = false;
+	$edit = false;
 	$fid = isset($_GET['id'])?$_GET['id']:0;
+	$folder_name =  _('Folder');
+	$class_link = _('Some class');
+	$class_files_link = _('Class files');
 	if(!($e = folder_id_validation($fid)))
 	{
-		$first = true;
+		$show = true;
+		$query = "SELECT file_folders.name AS folder_name, classes.id AS class_id ,classes.title AS class_name FROM file_folders,classes WHERE file_folders.id='$fid' AND classes.id=file_folders.class";
+		$ret = mysql_query($query);
+		if($ret && mysql_numrows($ret))
+		{
+			$result = mysql_fetch_array($ret);
+			$folder_name =  $result['folder_name'];
+			$class_link = "<a href='class/".$result['class_id']."/'>".$result['class_name']."</a>";
+			$class_files_link = "<a href='class_files/".$result['class_id']."/'>"._('Class files')."</a>";
+		}
+
+		$id = array();
+		$name = array();
+		$filepath = array();
+		$upload_time = array();
+		$uploader = array();
+		$filesize = array();
+		$file_extension = array();
+		$icon = array();
 		$query = "SELECT * FROM files WHERE folder='$fid'";
 		$ret = mysql_query($query);
 		if($ret && mysql_numrows($ret))
 		{
 			while($row = mysql_fetch_array($ret))
 			{
-				$id = $row['id'];
-				$name = $row['name'];
-				$filepath = $row['full_path'];
-				$upload_time = $row['upload_time'];
-				$uploader = $row['uploader'];
-				$filesize = file_exists($filepath)?filesize($filepath):0;
-				$file_extension = strtolower(substr(strrchr($filepath,"."),1));
-				$icon = file_exists("images/resource/filetype_icons/$file_extension.png")?"images/resource/filetype_icons/$file_extension.png":"images/resource/filetype_icons/default.png";
-				if(can_download_file($logged_userid,$id))
+				if(can_download_file($logged_userid,$row['id'])) 
 				{
-					$first = false;
-?>
-				<div class='fileContainer' id="fileContainer<?php echo $id;?>">
-						<a class='fileName' href="download_file.php?fid=<?php echo $id;?>"><img src="<?php echo $icon;?>" title="<?php echo sprintf(_('Download %s'),$name);?>" alt="<?php echo _('download');?>" class='filetypeIcon' /> <?php echo $name;?><span class='filesizeSpan'>(<?php echo $filesize;?> bytes)</span></a>
-					<div class='editOptionsWrapper'>
-<?php
-					if(can_edit_file($logged_userid,$id))
-					{?>
-						<a class='editLink' id="editLink<?php echo $id;?>" href='javascript:void(0)' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
-						<a class='deleteLink' id="deleteLink<?php echo $id;?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id;?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
-						<script type='text/javascript'>
-							$(document).ready(function(){
-								$('.deleteLink').click(function(){
-									if (confirm(<?php echo _("'Are you sure you want to delete this file?'");?>)) {
-										var id = $(this).attr('id').replace('deleteLink','');
-										var s = "<form style='display:none' action='delete_files.php' method='post'>";
-										s += "<input type='hidden' name='fid[]' value='"+id+"' />";
-										s += "<input type='folder' name='folder' value='"+<?php echo $fid;?>+"' />";
-										s += '</form>';
-										var form = $(s).appendTo('body');
-										form.submit(); 	
-									}
-								});
-								$('.editLink').click(function(){
-									var id = $(this).attr('id').replace('editLink','');
-									$('.editFilePrompt').css('display','none');
-									$('.fileContainer').removeClass('fileContainerEditted');
-
-									$('#editFilePrompt'+id).css('display','block');
-									$('#fileContainer'+id).addClass('fileContainerEditted');
-								});
-								$('.cancelButton').click(function(){
-									$('.editFilePrompt').css('display','none');
-									$('.fileContainer').removeClass('fileContainerEditted');
-								});
-							});
-						</script>
-<?php					}?>
-					</div>
-<?php
-					if(can_edit_file($logged_userid,$id))
-					{?>
-					<div class='editFilePrompt' id="editFilePrompt<?php echo $id;?>">
-						<form action='edit_file.php' method='post'>
-						<input type='hidden' name='fid' value="<?php echo $id;?>" />
-						<label><?php echo _('New Name');?></label>
-						<input type='text' name='name' value="<?php echo $name;?>" placeholder="<?php echo _('New name here...');?>" /> 
-
-						<input type='submit' value="<?php echo _('Submit');?>" />
-						<button type='button' class='cancelButton' onclick='javascript:void(0)'><?php echo _('Cancel');?></button>
-					</form>
-					</div>
-<?php
-					}?>
-				</div>
-<?php				}
+					$id[] = $row['id'];
+					$name[] = $row['name'];
+					$filepath[] = $row['full_path'];
+					$upload_time[] = $row['upload_time'];
+					$uploader[] = $row['uploader'];
+					$filesize[] = file_exists($row['full_path'])?filesize($row['full_path']):0;
+					$file_extension[] = strtolower(substr(strrchr($filepath,"."),1));
+					$icon[] = file_exists("images/resource/filetype_icons/$file_extension.png")?"images/resource/filetype_icons/$file_extension.png":"images/resource/filetype_icons/default.png";
+				}
 			}
 		}	
-		if($first)
-		{
-			echo _('No files yet.');
-		}
+	}
+	else
+	{
+		$error .= $e;
+	}
+?>
+<h2><?php echo _('Folder contents');?></h2>
+<p><?php echo $class_link . " > " . $class_files_link . " > " . $folder_name;?></p>
+<div class='filesWrapper'>
+<?php	if($show) {
+		for($i=0;$i<count($id);++$i) {?>
+			<div class='fileContainer' id="fileContainer<?php echo $id[$i];?>">
+				<a class='fileName' href="download_file.php?fid=<?php echo $id[$i];?>"><img src="<?php echo $icon[$i];?>" title="<?php echo sprintf(_('Download %s'),$name[$i]);?>" alt="<?php echo _('download');?>" class='filetypeIcon' /> <?php echo $name[$i];?><span class='filesizeSpan'>(<?php echo $filesize[$i];?> bytes)</span></a>
+<?php			if(can_edit_file($logged_userid,$id[$i])) { $edit = true;?>
+				<div class='editOptionsWrapper'>
+					<a class='editLink' id="editLink<?php echo $id[$i];?>" href='javascript:void(0)' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+					<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+				</div>
+				<div class='editFilePrompt' id="editFilePrompt<?php echo $id[$i];?>">
+					<form action='edit_file.php' method='post'>
+					<input type='hidden' name='fid' value="<?php echo $id[$i];?>" />
+					<label><?php echo _('New Name');?></label>
+					<input type='text' name='name' value="<?php echo $name[$i];?>" placeholder="<?php echo _('New name here...');?>" /> 
+					<input type='submit' value="<?php echo _('Submit');?>" />
+					<button type='button' class='cancelButton' onclick='javascript:void(0)'><?php echo _('Cancel');?></button>
+				</form>
+				</div>
+			</div>
+<?php			}?>
+<?php		}?>
+<?php		if(count($id) == 0) {?>
+			<p><?php echo _('No files yet.');?></p>
+<?php		}?>
+<?php		if($edit) {?>
+			<script type='text/javascript'>
+				$(document).ready(function(){
+					$('.deleteLink').click(function(){
+						if (confirm(<?php echo _("'Are you sure you want to delete this file?'");?>)) {
+							var id = $(this).attr('id').replace('deleteLink','');
+							var s = "<form style='display:none' action='delete_files.php' method='post'>";
+							s += "<input type='hidden' name='fid[]' value='"+id+"' />";
+							s += "<input type='folder' name='folder' value='"+<?php echo $fid;?>+"' />";
+							s += '</form>';
+							var form = $(s).appendTo('body');
+							form.submit(); 	
+						}
+					});
+					$('.editLink').click(function(){
+						var id = $(this).attr('id').replace('editLink','');
+						$('.editFilePrompt').css('display','none');
+						$('.fileContainer').removeClass('fileContainerEditted');
 
-		if(can_upload_file($logged_userid,$fid))
-		{?>
+						$('#editFilePrompt'+id).css('display','block');
+						$('#fileContainer'+id).addClass('fileContainerEditted');
+					});
+					$('.cancelButton').click(function(){
+						$('.editFilePrompt').css('display','none');
+						$('.fileContainer').removeClass('fileContainerEditted');
+					});
+				});
+			</script>
+<?php		}?>
+<?php		if(can_upload_file($logged_userid,$fid)) {?>
 			<div class='newFileWrapper'>
 				<fieldset>
 					<legend><?php echo _('Upload file');?></legend>
@@ -107,11 +128,5 @@
 				</fieldset>
 			</div>
 <?php		}?>
-		</div>
-<?php	}
-	else
-	{
-		$error .= $e;
-	}
-?>
+<?php 	}?>
 </div>
