@@ -21,10 +21,18 @@
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret)) 
 			{
-				echo "<div class='semesterDiv'><p class='semesterTitle'>"._("Semester ".$i)."</p>";
+				echo "<div class='semesterDiv'><p class='semesterTitle'>"._("Semester")." ".$i."</p>";
 				while($row = mysql_fetch_array($ret)) 
 				{
-					echo "<p class='classTitleField'>".$row['title'];
+					echo "<p class='classTitleField'>";
+					if(can_view_class($logged_userid,$row['id']))
+					{
+						echo "<a href='class/".$row['id']."/' class='classLink'>".$row['title']."</a>";
+					}
+					else
+					{
+						echo $row['title'];
+					}
 					if (can_change_class_subscriptions($logged_userid,$logged_userid )) 
 					{						
 						echo "<input class='classCheck' name='subscribe[]' value=".$row['id']." id=".$row['id']." type='checkbox' ";
