@@ -1,4 +1,4 @@
-<h2> Most recent announcements </h2>
+<h2><?php echo _('Most recent announcements');?> </h2>
 <div class='studentHomeWrapper'>
 <div class='pastAnnouncementsWrapper'>
 <?php	
