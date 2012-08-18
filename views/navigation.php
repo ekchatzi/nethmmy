@@ -1,5 +1,6 @@
 <ul>
 <?php
+	include_once('../lib/access_rules.php');
 	//special case for v=lab//
 	if(isset($_GET['id']))
 	{
@@ -58,6 +59,10 @@
 							}	
 							echo " class='navigationClassDirectories'>".$row2['title']."</a></li>";
 						}
+					}
+					if(can_create_lab($logged_userid,$id))
+					{
+						echo "<li><a href='new_lab/$id/'  class='navigationClassDirectories'>"._("New Lab")."</a></li>";
 					}
 					echo "</ul></li>";
 				}
