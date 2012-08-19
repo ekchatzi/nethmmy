@@ -25,7 +25,7 @@
 	{
 		$query = "SELECT * FROM classes WHERE id IN($classes)";
 		$ret = mysql_query($query);
-		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'));
+		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'));
 		if($ret && mysql_num_rows($ret)) 
 		{
 			while($row = mysql_fetch_array($ret)) 
@@ -62,7 +62,12 @@
 					}
 					if(can_create_lab($logged_userid,$id))
 					{
-						echo "<li><a href='new_lab/$id/'  class='navigationClassDirectories'>"._("New Lab")."</a></li>";
+						echo "<li><a href='new_lab/$id/' ";
+						if($_GET['v']=='new_lab')
+						{
+							echo "id='navigationHl' ";
+						}
+						echo "class='navigationClassDirectories'>"._("New Lab")."</a></li>";
 					}
 					echo "</ul></li>";
 				}
