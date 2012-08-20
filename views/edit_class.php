@@ -124,9 +124,8 @@
 			<table class='associationTable'>
 			<tbody>
 				<tr><th>&nbsp;</th><th><?php echo _('User');?></th><th><?php echo _('Type');?></th><th><?php echo _('Permissions');?></th></tr>
-<?php			$a = 0;
-			for($i=0;$i<count($tid);++$i){ ++$a;?>
-				<tr <?php if($a%2) echo " class='alternateRow' ";?> >
+<?php			for($i=0;$i<count($tid);++$i){	?>
+				<tr <?php if($i%2) echo " class='alternateRow' ";?> >
 					<td><a class='deleteLink' id="deleteLink<?php echo $tid[$i];?>" href='javascript:void(0)'><img id="deleteIcon<?php echo $tid[$i];?>" class='icon deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete');?>"></a></td>
 					<td><a href="profile/<?php echo $uid[$i];?>/"><?php echo $name[$i];?></a></td>
 					<td><?php echo $title[$i];?></td>

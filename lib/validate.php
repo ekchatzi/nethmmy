@@ -48,7 +48,7 @@
 					}
 				}
 		    	}
-			$sane = strip_tags(preg_replace($strip_arr,array(''),$data_sxml->asXML()), $safe_tags);
+			$sane = trim(strip_tags(preg_replace($strip_arr,array(''),$data_sxml->asXML()), $safe_tags));
 		}
 
 		// strip unallowed attributes and root tag
@@ -267,20 +267,22 @@
 	*/
 	function title_id_validation($id)
 	{
-		if(!is_numeric($id) || $id <=0)
-			return _('Title ids must be positive integers.');
-
-		$query = "SELECT COUNT(*) FROM titles WHERE id='$id'";
-		$ret = mysql_query($query);
-		if($ret && mysql_num_rows($ret))
+		if(strlen($id))
 		{
-			$count = mysql_result($ret,0,0);
-			if($count < 1)
-				return _('Title id does not exist.');
-		}
-		else
-			return _("Database Error.");
+			if(!is_numeric($id) || $id <=0)
+				return _('Title ids must be positive integers.');
 
+			$query = "SELECT COUNT(*) FROM titles WHERE id='$id'";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret))
+			{
+				$count = mysql_result($ret,0,0);
+				if($count < 1)
+					return _('Title id does not exist.');
+			}
+			else
+				return _("Database Error.");
+		}
 		return false;		
 	}
 

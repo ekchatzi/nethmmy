@@ -275,4 +275,6 @@
 #button {
 	margin-top: 20px;
 }
-
+.editClassAssociationTypes label,.submit {
+	display:block;
+}
