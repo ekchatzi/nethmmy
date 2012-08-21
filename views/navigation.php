@@ -79,5 +79,5 @@
 		}
 	}
 ?>
-<li><a href='classes/'  class='navigationTitles'><?php echo _("All Classes");?></a></li>
+<li><a href='classes/'  class='navigationTitles'><?php echo _("Classes");?></a></li>
 </ul>
