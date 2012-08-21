@@ -159,7 +159,7 @@
 				$(document).ready(function(){
 					var classId = "<?php echo $cid;?>";
 					$('.deleteLink').click(function(){
-						if (confirm(<?php echo _("'Are you sure you want to delete this class association?'");?>)) {
+						if (confirm("<?php echo _('Are you sure you want to delete this class association?');?>")) {
 							var id = $(this).attr('id').replace('deleteLink','');
 							var s = "<form style='display:none' action='delete_class_association.php' method='post'>";
 							s += "<input type='hidden' name='tid' value='"+id+"' />";

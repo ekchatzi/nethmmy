@@ -119,7 +119,7 @@
 				$(document).ready(function(){
 					var classId = "<?php echo $cid;?>";
 					$('.deleteLink').click(function(){
-						if (confirm(<?php echo _("'Are you sure you want to delete this announcement?'");?>)) {
+						if (confirm("<?php echo _('Are you sure you want to delete this announcement?');?>")) {
 							var id = $(this).attr('id').replace('deleteLink','');
 							var s = "<form style='display:none' action='delete_announcement.php' method='post'>";
 							s += "<input type='hidden' name='aid' value='"+id+"' />";

@@ -49,13 +49,14 @@
 			$ret = mysql_query($query);
 		}
 		setcookie('login_token','',time() - 3600,$INDEX_ROOT);
+		setcookie('remember','',time() - 3600,$INDEX_ROOT);
 	}
 
 	/*
 		Logs in user with username and password.
 		returns error message on error;
 	*/
-	function login($username,$password)
+	function login($username,$password,$remember)
 	{
 		global $LOGIN_DURATION;
 		global $HASH_ALGORITHM;
@@ -76,6 +77,8 @@
 					$ip = $_SERVER['REMOTE_ADDR'];
 					$login_token = md5(time().$uid.$ip);
 					setcookie("login_token",$login_token,time() + $login_duration);
+					if($remember)
+						setcookie("remember",1,time() + $login_duration);
 					$query = "UPDATE users 
 							SET login_token = '$login_token',
 								last_login = '".time()."',
@@ -109,5 +112,11 @@
 	{
 		$user_type = $logged_user['type'];
 		$logged_userid = $logged_user['id'];
+		setcookie('login_token',$_COOKIE['login_token'],($_COOKIE['remember'])?(time() + $LOGIN_DURATION):0,$INDEX_ROOT);
+	}
+	else
+	{
+		setcookie('login_token','',time() - 3600,$INDEX_ROOT);
+		setcookie('remember','',time() - 3600,$INDEX_ROOT);
 	}
 ?>

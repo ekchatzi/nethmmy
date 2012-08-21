@@ -46,10 +46,10 @@
 				var converter = new AnyTime.Converter();
 				$('#dateField1').val( converter.parse($('#dateField1').val()).getTime()/1000 );
 				$('#dateField2').val( converter.parse($('#dateField2').val()).getTime()/1000 );
-				return false;
+				return true;
 			}
 		</script>
-		<form class="new_lab" action="new_lab.php" method="post" onsubmit="return onsubmission()" >
+		<form class="new_lab" action="new_lab.php" method="post" onsubmit="return onsubmission();" >
 			<fieldset>
 				<legend><?php echo _('Lab information and settings');?></legend>		
 				<label><?php echo _('Title');?> </label>

@@ -4,9 +4,10 @@
 	include_once("../lib/localization.php");
 	include_once("../config/general.php");
 
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$error = login($username,$password);
+	$username = isset($_POST['username'])?$_POST['username']:'';
+	$password = isset($_POST['password'])?$_POST['password']:'';
+	$remember = isset($_POST['remember'])?1:0;
+	$error = login($username,$password,$remember);
 
 	if(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{

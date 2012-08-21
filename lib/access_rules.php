@@ -2,41 +2,72 @@
 	include_once('../config/security.php');
 	include_once('../lib/login.php');
 	
+	/* HELPER FUNCTIONS */
+	/*
+		0 => 'g' for guest
+		1 => 's' for student
+		2 => 'p' for professor
+		3 => 'a' for admin
+	*/
+	function user_type($user)
+	{
+		global $USER_TYPES;
+		$i = 0;
+		$query = "SELECT user_type FROM users WHERE id='".mysql_real_escape_string($user)."'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$i = mysql_result($ret,0,0);
+		return $USER_TYPES[$i];
+	}
+	/*
+		true if account is activated
+		false if account is not activated
+	*/
+	function is_active($user)
+	{
+		$query = "SELECT is_active FROM users WHERE id='".mysql_real_escape_string($user)."'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			return (bool)mysql_result($ret,0,0);
+		return false;	
+	}
+
+	/* RULES */
 	function can_create_class($user)
 	{
-		return true;
+		return is_active($user) && (user_type($user) == 'a');
 	}
 	function can_change_user_type($user,$target_user)
 	{
-		return true;
+		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
 	}
 	function can_change_active_status($user,$target_user)
 	{
-		return true;
+		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
 	}
 	function can_view_profile($user,$target_user)
 	{
-		return true;
+		return is_active($user) || (($user == $target_user) && user_type($target_user) != 'g');
 	}
 	function can_view_contact_information($user,$target_user)
 	{
-		return true;
+		return (is_active($user) && ((user_type($user) == 'p') || (user_type($user) == 'a'))) || (($user == $target_user) && (user_type($target_user) != 'g'));
 	}
 	function can_view_account_information($user,$target_user)
 	{
-		return true;
+		return (is_active($user) && (user_type($user) == 'a')) || (($user == $target_user) && (user_type($target_user) != 'g'));
 	}
 	function can_edit_account($user,$target_user)
 	{
-		return true;
+		return (is_active($user) && (user_type($user) == 'a')) || (($user == $target_user) && (user_type($target_user) != 'g'));
 	}
 	function can_edit_title($user,$target_user)
 	{
-		return true;
+		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
 	}
 	function can_edit_aem($user,$target_user)
 	{
-		return true;
+		return (is_active($user) && (user_type($user) == 'a')) || (($user == $target_user) && (user_type($target_user) != 'g'));
 	}
 	function can_view_class($user,$target_user)
 	{
@@ -54,11 +85,11 @@
 
 	function can_change_class_subscriptions($user,$target_user)
 	{
-		return true;
+		return ($user == $target_user) && (is_active($target_user) && (user_type($target_user) == 's'));
 	}
 	function can_request_password_reset($user,$target_user)
 	{
-		return true;
+		return ($user == $target_user) && (is_active($target_user))  && (user_type($target_user) != 'g');
 	}
 
 

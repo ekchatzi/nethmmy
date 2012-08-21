@@ -69,6 +69,7 @@
 					</div>
 					<div class='loginPromptLine2'>
 						<input type='submit' value="<?php echo _('Login');?>" />
+						<span><input type='checkbox' name='remember' value='1' <?php if($_COOKIE['remember']) echo " checked='checked'";?> />Remember me</span>
 						<a href='' id='forgotPasswordLink'><?php echo _('Forgot password');?></a>
 					</div>
 				</form>

@@ -64,7 +64,7 @@
 						$(document).ready(function(){
 <?php					if($delete) {?>
 							$('.deleteLink').click(function(){
-								if (confirm(<?php echo _("'Are you sure you want to delete this folder?'");?>)) {
+								if (confirm("<?php echo _('Are you sure you want to delete this folder?');?>")) {
 									var id = $(this).attr('id').replace('deleteLink','');
 									var s = "<form style='display:none' action='delete_folder.php' method='post'>";
 									s += "<input type='hidden' name='fid' value='"+id+"' />";

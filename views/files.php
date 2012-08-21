@@ -5,6 +5,7 @@
 
         if(!isset($error))
                 $error = '';
+
 	$show = false;
 	$edit = false;
 	$fid = isset($_GET['id'])?$_GET['id']:0;
@@ -88,7 +89,7 @@
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					$('.deleteLink').click(function(){
-						if (confirm(<?php echo _("'Are you sure you want to delete this file?'");?>)) {
+						if (confirm("<?php echo _('Are you sure you want to delete this file?');?>")) {
 							var id = $(this).attr('id').replace('deleteLink','');
 							var s = "<form style='display:none' action='delete_files.php' method='post'>";
 							s += "<input type='hidden' name='fid[]' value='"+id+"' />";

@@ -60,7 +60,7 @@
 	*/
 	function boolean_int_validation($bool)
 	{
-		if(($bool !=='1') && ($bool !== '0'))
+		if(($bool != '1') && ($bool != '0'))
 			return _('Boolean int values values must be "0" or "1"');
 		return false;
 	}

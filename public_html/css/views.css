@@ -278,3 +278,6 @@
 .editClassAssociationTypes label,.submit {
 	display:block;
 }
+.accountInformationWrapper label,select,.submit{
+	display:inline;
+}

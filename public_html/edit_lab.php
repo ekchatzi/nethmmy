@@ -10,11 +10,10 @@
         if(!isset($error)) 
                 $error = '';
 
-	$lab = 0;
 	/* Data */
 	$title = isset($_POST['title'])?$_POST['title']:'';
 	$description = isset($_POST['description'])?$_POST['description']:'';
-	$class = isset($_POST['class'])?$_POST['class']:0;
+	$lab = isset($_POST['lab'])?$_POST['lab']:0;
 	$team_limit = isset($_POST['team_limit'])?$_POST['team_limit']:0;
 	$users_per_team_limit = isset($_POST['users_per_team_limit'])?$_POST['users_per_team_limit']:0;
 	$registration_expire = isset($_POST['register_expire'])?$_POST['register_expire']:0;
@@ -25,33 +24,57 @@
 	$can_lock_teams =  isset($_POST['can_lock_teams'])?$_POST['can_lock_teams']:0;
 	$can_upload =  isset($_POST['can_upload'])?$_POST['can_upload']:0;
 	/* check if input is valid */
-	if(!(($e = name_validation($title)) || ($e = class_id_validation($class)) || ($e = xml_validation($description))
+	if(!(($e = name_validation($title)) || ($e = lab_id_validation($lab)) || ($e = xml_validation($description))
 	   ||($e = lab_team_limit_validation($team_limit)) || ($e = lab_team_size_limit_validation($users_per_team_limit))
 	   ||($e = lab_upload_limit_validation($upload_limit)) || ($e = deadline_validation($registration_expire))
 	   ||($e = deadline_validation($upload_expire)) || ($e = boolean_int_validation($can_free_join))
 	   ||($e = boolean_int_validation($can_make_new_teams)) || ($e = boolean_int_validation($can_lock_teams))))
 	{
-		if(can_create_lab($logged_userid,$class))
+		if(can_edit_lab($logged_userid,$lab))
 		{
 			//make folder if needed
 			$folder = 0;
 			if($can_upload)
 			{
-				$query = "INSERT INTO file_folders (name,class,public)
-					VALUES('".mysql_real_escape_string($title)."','$class','0')";
-				mysql_query($query) || ($error .= mysql_error());
-				$folder = mysql_insert_id();
+				$query = "SELECT folder,class FROM labs WHERE id='$lab'";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					$result = mysql_fetch_array($ret);
+					$folder = $result['folder'];
+					$class = $result['class'];
+				}
+				if($folder)
+				{
+					$query = "SELECT COUNT(*) FROM file_folders WHERE id='$folder'";
+					$ret = mysql_query($query);
+					if($ret && mysql_num_rows($ret) && mysql_result($ret,0,0) == 0)
+					{
+						$query = "INSERT INTO file_folders (id,name,class,public)
+							VALUES('$folder','".mysql_real_escape_string($title)."','$class','0')";
+						mysql_query($query) || ($error .= mysql_error());
+					}
+				}
+				else
+				{
+					$query = "INSERT INTO file_folders (name,class,public)
+						VALUES('".mysql_real_escape_string($title)."','$class','0')";
+					mysql_query($query) || ($error .= mysql_error());
+					$folder = mysql_insert_id();
+				}
 			}
 			$time = time();
-			$query = "INSERT INTO labs 
-					(title,description,class,team_limit,users_per_team_limit,register_expire,
-					 upload_limit,upload_expire,can_free_join,can_make_new_teams,can_lock_teams,folder,
-					 creation_time,update_time)
-					VALUES
-					('".mysql_real_escape_string($title)."','".mysql_real_escape_string(sanitize_html($description))."','$class','$team_limit','$users_per_team_limit','$registration_expire','$upload_limit','$upload_expire','$can_free_join',
-					 '$can_make_new_teams','$can_lock_teams','$folder','$time','$time')";
+			$query = "UPDATE labs SET  
+					title = '".mysql_real_escape_string($title)."',
+					description = '".mysql_real_escape_string(sanitize_html($description))."',
+					team_limit = '$team_limit',users_per_team_limit = '$users_per_team_limit',
+					register_expire = '$registration_expire',
+					upload_limit = '$upload_limit',upload_expire = '$upload_expire',
+					can_free_join = '$can_free_join',can_make_new_teams = '$can_make_new_teams',
+					can_lock_teams = '$can_lock_teams',folder = '$folder',
+					update_time = '$time'
+					WHERE id='$lab' LIMIT 1";
 			mysql_query($query) || ($error .= mysql_error());
-			$lab = mysql_insert_id();
 		}
 		else
 		{
@@ -73,7 +96,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($error)?"new_lab/$class/":"lab/$lab/";
+		$redirect = ($error)?"edit_lab/$lab/":"lab/$lab/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
