@@ -68,7 +68,7 @@
 
 <h2><?php echo _('Home');?> </h2>
 <div class='studentHomeWrapper'>
-<h3><?php echo _('Newest Announcements');?>
+<h3><?php echo _('Newest Announcements');?></h3>
 <div class='pastAnnouncementsWrapper'>
 <?php	if ($show) {?>
 <?php		for($i=0;$i<count($id);$i++) {?>
