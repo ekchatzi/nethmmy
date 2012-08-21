@@ -1,73 +1,89 @@
-<span id='classesHeader'><h2 id='classesTitle'> <?php echo _('Classes');?> </h2>
-<p id='subscribeTitle'><?php echo _('Subscribe');?></p></span>
-<div class='classesWrapper'>
-<form action='classes_subscription.php' method='post'>
 <?php	
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 	include_once('../config/general.php');
 	
+	$show = false;
+	$show_sub = false;
 	if (can_view_classes_list($logged_userid)) 
-	{	
-		$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
-		$ret = mysql_query($query);
-		if($ret && mysql_num_rows($ret) && ($classesraw = mysql_result($ret,0,0)))
-		{
-			$classes = explode(",", $classesraw);
-		}
+	{
+		$show =true;
+		$title = array();
+		$id = array();
 		for ($i=0;$i<=$SEMESTERS_COUNT;$i++) 
-		{	
+		{
+			$title_t = array();
+			$id_t = array();
 			$query = "SELECT * FROM classes WHERE FIND_IN_SET($i, semesters)";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret)) 
 			{
-				echo "<div class='semesterDiv'><p class='semesterTitle'>"._("Semester")." ".$i."</p>";
 				while($row = mysql_fetch_array($ret)) 
 				{
-					echo "<p class='classTitleField'>";
-					if(can_view_class($logged_userid,$row['id']))
-					{
-						echo "<a href='class/".$row['id']."/' class='classLink'>".$row['title']."</a>";
-					}
-					else
-					{
-						echo $row['title'];
-					}
-					if (can_change_class_subscriptions($logged_userid,$logged_userid )) 
-					{						
-						echo "<input class='classCheck' name='subscribe[]' value=".$row['id']." id=".$row['id']." type='checkbox' ";
-						if (isset($classes)&&in_array($row['id'], $classes))
-						{
-							echo "checked='true'";
-						}
-						echo "/>";
-					}
-					echo "</p>";						
+					$title_t[] = (can_view_class($logged_userid,$row['id']))?"<a href='class/".$row['id']."/' class='classLink'>".$row['title']."</a>":$row['title'];
+					$id_t[] = $row['id'];
 				}
-				echo "</div>";
+			}
+			$title[] = $title_t;
+			$id[] = $id_t;
+		}
+
+		if (can_change_class_subscriptions($logged_userid,$logged_userid )) 
+		{
+			$show_sub = true;
+			$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
+			$ret = mysql_query($query);
+			$classes = array();
+			if($ret && mysql_num_rows($ret) && ($classesraw = mysql_result($ret,0,0)))
+			{
+				$classes = explode(",", $classesraw);
 			}
 		}
 	}
 	else 
 	{
-		echo _("Sorry you can't see or subscribe to any classes");
+		echo _("Access denied.");
 	}
 ?>
-<input class='submit' id='button' type='submit' value='<?php echo _("Submit changes");?>'/> 
-</form>
+<span id='classesHeader'><h2 id='classesTitle'> <?php echo _('Classes');?> </h2>
+<p id='subscribeTitle'><?php echo _('Subscribe');?></p></span>
+<div class='classesWrapper'>
+<?php	if($show) {?>
+<?php		if($show_sub) {?>
+			<form action='classes_subscription.php' method='post'>
+<?php		}?>
+<?php		for($s=1;$s<=$SEMESTERS_COUNT;++$s) {?>
+				<div class='semesterDiv'><p class='semesterTitle'><?php echo sprintf(_("Semester %s"),$s);?></p>
+<?php			for($i=0;$i<count($id[$s]);++$i) {?>
+					<p class='classTitleField'><?php echo $title[$s][$i];?>
+<?php				if($show_sub) {?>						
+					<input class='classCheck' name='subscribe[]' value="<?php echo $id[$s][$i];?>" id="checkbox<?php echo $id[$s][$i];?>" type='checkbox'
+					<?php if(isset($classes)&&in_array($id[$s][$i], $classes)) echo "checked='true'";?> />
+<?php				}?>
+<?php			}?>
+<?php			if(count($id[$s]) == 0) {?>
+					<p><?php echo _('No classes.');?></p>
+<?php			}?>
+				</div>
+<?php		}?>
+<?php		if($show_sub) {?>
+				<input class='submit' id='button' type='submit' value='<?php echo _("Set subscriptions");?>'/> 
+			</form>
+			<script>
+				$(document).ready(function() 
+				{	
+					//unchecks all classes with same id when one is unchecked//
+					$('.classCheck').click(function() 
+					{
+						var thischeck=$(this);
+						var checkid=$(this).attr('id');
+						if (!thischeck.is(':checked')) 
+						{
+							$('#'+checkid).attr('checked', false);
+						}
+					});
+				});
+			</script>
+<?php		}?>
+<?php	}?>
 </div>
-<script>
-$(document).ready(function() 
-{	
-	//unchecks all classes with same id when one is unchecked//
-	$('.classCheck').click(function() 
-	{
-		var thischeck=$(this);
-		var checkid=$(this).attr('id');
-		if (!thischeck.is(':checked')) 
-		{
-			$('#'+checkid).attr('checked', false);
-		}
-	});
-});
-</script>
