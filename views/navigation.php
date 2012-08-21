@@ -5,7 +5,7 @@
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
-		if($_GET['v']=='lab')
+		if($_GET['v']=='lab' || $_GET['v']=='edit_lab')
 		{
 			$query = "SELECT class FROM labs WHERE id = '$id'";
 			$ret = mysql_query($query);
@@ -25,7 +25,7 @@
 	{
 		$query = "SELECT * FROM classes WHERE id IN($classes)";
 		$ret = mysql_query($query);
-		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'));
+		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'));
 		if($ret && mysql_num_rows($ret)) 
 		{
 			while($row = mysql_fetch_array($ret)) 
@@ -53,10 +53,13 @@
 						while($row2 = mysql_fetch_array($ret2)) 
 						{
 							echo "<li><a href=lab/".$row2['id']."/ ";
-							if (isset($_GET['v'])&&$_GET['v']=='lab'&&$_GET['id']==$row2['id']) 
+							if (isset($_GET['v'])&&$_GET['id']==$row2['id'])
 							{
-							echo "id='navigationHl'";
-							}	
+								if ($_GET['v']=='lab' || $_GET['v']=='edit_lab') 
+								{
+								echo "id='navigationHl'";
+								}	
+							}
 							echo " class='navigationClassDirectories'>".$row2['title']."</a></li>";
 						}
 					}
