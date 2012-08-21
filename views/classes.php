@@ -46,7 +46,10 @@
 	}
 ?>
 <span id='classesHeader'><h2 id='classesTitle'> <?php echo _('Classes');?> </h2>
-<p id='subscribeTitle'><?php echo _('Subscribe');?></p></span>
+<?php if($show_sub) {?>
+		<p id='subscribeTitle'><?php echo _('Subscribe');?></p>
+<?php }?>
+</span>
 <div class='classesWrapper'>
 <?php	if($show) {?>
 <?php		if($show_sub) {?>
