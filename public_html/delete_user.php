@@ -10,14 +10,14 @@
                 $error = '';
 
 	/* Data */
-	$cid = isset($_POST['cid'])?$_POST['cid']:'';
-	$class = '';
-	if(!($e = class_id_validation($cid)))
+	$uid = isset($_POST['uid'])?$_POST['uid']:'';
+	$user = '';
+	if(!($e = user_id_validation($uid)))
 	{
-		$class = $cid;
-		if(can_delete_class($logged_userid,$cid))
+		$user = $uid;
+		if(can_delete_user($logged_userid,$uid))
 		{
-			$query = "DELETE FROM classes WHERE id='$cid' LIMIT 1";
+			$query = "DELETE FROM users WHERE id='$uid' LIMIT 1";
 			mysql_query($query) || ($error .= mysql_error());		
 		}
 		else
@@ -40,7 +40,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($class && $error)?"class/$class/":"home/";
+		$redirect = ($class && $error)?"profile/$class/":"home/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');

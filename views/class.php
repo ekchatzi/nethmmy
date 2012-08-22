@@ -85,8 +85,32 @@
 			<legend><?php echo _('Description');?></legend>
 			<p><?php echo $description?></p>
 		</fieldset>
-<?php		if(can_edit_class($logged_userid,$cid)) {?>
-			<a href="edit_class/<?php echo $cid;?>/" id='editClassLink'><?php echo _('Edit');?></a> 
+<?php		
+		$c1 = can_edit_class($logged_userid,$cid);
+		$c2 = can_delete_class($logged_userid,$cid);
+		if($c1 || $c2) {?>
+			<div class='editOptionsWrapper'>
+<?php			if($c1) {?>
+				<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_class/<?php echo $cid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+<?php			};?>
+<?php			if($c2) {?>
+				<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+			<script type='text/javascript'>
+				$(document).ready(function(){
+					$('.deleteLink').click(function(){
+						if (confirm("<?php echo _('Are you sure you want to delete this class?');?>")) {
+							var id = $(this).attr('id').replace('deleteLink','');
+							var s = "<form style='display:none' action='delete_class.php' method='post'>";
+							s += "<input type='hidden' name='cid' value='"+<?php echo $cid;?>+"' />";
+							s += '</form>';
+							var form = $(s).appendTo('body');
+							form.submit(); 	
+						}
+					});
+				});
+			</script>
+<?php			};?>
+			</div>
 <?php		}?>
 <?php	}?>
 </div>

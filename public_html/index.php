@@ -69,7 +69,7 @@
 					</div>
 					<div class='loginPromptLine2'>
 						<input type='submit' value="<?php echo _('Login');?>" />
-						<span><input type='checkbox' name='remember' value='1' <?php if($_COOKIE['remember']) echo " checked='checked'";?> />Remember me</span>
+						<span><input type='checkbox' name='remember' value='1' <?php if(isset($_COOKIE['remember']) && $_COOKIE['remember']) echo " checked='checked'";?> />Remember me</span>
 						<a href='' id='forgotPasswordLink'><?php echo _('Forgot password');?></a>
 					</div>
 				</form>
@@ -90,14 +90,6 @@
 		<div class='headerMain'>
 			<h1> <?php echo _('eTHMMY');?> </h1>
 			<p> <?php echo _('Online classes application');?> </p>		
-		</div>
-		<div class='topBar'>
-			<div class='topNavigation'>
-				<ul>
-					<li><a href=''><?php echo _('Link1');?></a></li>
-					<li><a href=''><?php echo _('Link2');?></a></li>			
-				</ul>
-			</div>
 		</div>
 	</div>
 	<div class='mainBody'>

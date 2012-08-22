@@ -10,20 +10,32 @@
                 $error = '';
 
 	/* Data */
-	$cid = isset($_POST['cid'])?$_POST['cid']:'';
+	$lid = isset($_POST['lid'])?$_POST['lid']:'';
 	$class = '';
-	if(!($e = class_id_validation($cid)))
+	if(!($e = lab_id_validation($lid)))
 	{
-		$class = $cid;
-		if(can_delete_class($logged_userid,$cid))
+		$query = "SELECT class FROM labs WHERE id='$lid'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
 		{
-			$query = "DELETE FROM classes WHERE id='$cid' LIMIT 1";
-			mysql_query($query) || ($error .= mysql_error());		
+			$class = mysql_result($ret,0,0);
+			if(can_delete_lab($logged_userid,$lid))
+			{
+				$query = "DELETE FROM labs WHERE id='$lid' LIMIT 1";
+				mysql_query($query) || ($error .= mysql_error());
+
+				$query = "DELETE FROM lab_teams WHERE lab='$lid'";
+				mysql_query($query) || ($error .= mysql_error());		
+			}
+			else
+			{
+				$error .= _('Access denied.');
+			}	
 		}
 		else
 		{
-			$error .= _('Access denied.');
-		}	
+			$error .= mysql_error();
+		}
 	}
 	else
 	{
@@ -40,7 +52,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($class && $error)?"class/$class/":"home/";
+		$redirect = "class/$class/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
