@@ -34,7 +34,6 @@
 				$register_expire_message = sprintf(_('Registrations close on %s.'),strftime($DATE_FORMAT,$result['register_expire']));
 				$upload_epire_message = ($result['folder'])?sprintf(_('File uploads deadline on %s.'),strftime($DATE_FORMAT,$result['upload_expire'])):'';
 				$lab_info_message = sprintf(_('Created on %s for %s and updated on %s.'),strftime($DATE_FORMAT,$result['creation_time']),"<a href='class/$class/'>$class_name</a>",strftime($DATE_FORMAT,$result['update_time']));
-				$edit_link = (can_edit_lab($logged_userid,$lid))?"<a href='edit_lab/$lid/' id='editLabLink$lid' >". _('Edit')."</a>":''; 
 			}
 			else
 			{
@@ -60,9 +59,34 @@
 			<legend><?php echo _('Description');?></legend>
 		<p><?php echo $description?></p>
 		</fieldset>
-		<p><?php echo $edit_link;?></p>
-<?php		if(can_view_lab_teams($logged_userid,$lid))
-		{?>
+<?php		
+		$c1 = can_edit_lab($logged_userid,$lid);
+		$c2 = can_delete_lab($logged_userid,$lid);
+		if($c1 || $c2) {?>
+			<div class='editOptionsWrapper'>
+<?php			if($c1) {?>
+				<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_lab/<?php echo $lid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+<?php			};?>
+<?php			if($c2) {?>
+				<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
+			<script type='text/javascript'>
+				$(document).ready(function(){
+					$('.deleteLink').click(function(){
+						if (confirm("<?php echo _('Are you sure you want to delete this lab?');?>")) {
+							var id = $(this).attr('id').replace('deleteLink','');
+							var s = "<form style='display:none' action='delete_lab.php' method='post'>";
+							s += "<input type='hidden' name='lid' value='"+<?php echo $lid;?>+"' />";
+							s += '</form>';
+							var form = $(s).appendTo('body');
+							form.submit(); 	
+						}
+					});
+				});
+			</script>
+<?php			};?>
+			</div>			
+<?php		};?>
+<?php		if(can_view_lab_teams($logged_userid,$lid)) {?>
 		<div class='teamsWrapper'>
 			<h3><?php echo _('Teams');?></h3>
 		</div>

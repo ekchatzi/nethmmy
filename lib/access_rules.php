@@ -61,6 +61,10 @@
 	{
 		return (is_active($user) && (user_type($user) == 'a')) || (($user == $target_user) && (user_type($target_user) != 'g'));
 	}
+	function can_delete_account($user,$target_user)
+	{
+		return (is_active($user) && (user_type($user) == 'a'));
+	}
 	function can_edit_title($user,$target_user)
 	{
 		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
@@ -79,7 +83,7 @@
 	}
 	function can_delete_class($user,$target_user)
 	{
-		return true;
+		return (is_active($user) && (user_type($user) == 'a'));
 	}
 
 

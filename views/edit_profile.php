@@ -98,7 +98,10 @@
 			<input type='submit' value="<?php echo _('Submit');?>" />
 			</fieldset>
 		</form>
-<?php		if(($c1 = can_change_user_type($logged_userid,$uid)) || ($c2 = can_change_active_status($logged_userid,$uid))) {?>
+<?php		
+		$c1 = can_change_user_type($logged_userid,$uid);
+		$c2 = can_change_active_status($logged_userid,$uid);
+		if( $c1 || $c2 ) {?>
 			<form method='post' action='change_user_type.php'>
 			<fieldset class='accountInformationWrapper'>
 			<legend><?php echo _('Account');?></legend>

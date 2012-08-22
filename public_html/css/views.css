@@ -281,3 +281,6 @@
 .accountInformationWrapper label,select,.submit{
 	display:inline;
 }
+.selectAll {
+	margin-left:5px;
+}

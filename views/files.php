@@ -33,6 +33,7 @@
 		$filesize = array();
 		$file_extension = array();
 		$icon = array();
+		$can_edit = array();
 		$query = "SELECT * FROM files WHERE folder='$fid'";
 		$ret = mysql_query($query);
 		if($ret && mysql_numrows($ret))
@@ -49,6 +50,10 @@
 					$filesize[] = file_exists($row['full_path'])?filesize($row['full_path']):0;
 					$file_extension[] = strtolower(substr(strrchr($filepath,"."),1));
 					$icon[] = file_exists("images/resource/filetype_icons/$file_extension.png")?"images/resource/filetype_icons/$file_extension.png":"images/resource/filetype_icons/default.png";
+					$can_edit_t = can_edit_file($logged_userid,$row['id']);
+					if($can_edit_t)
+						$edit = true;
+					$can_edit[] = $can_edit_t;
 				}
 			}
 		}	
@@ -61,17 +66,23 @@
 <h2><?php echo _('Folder contents');?></h2>
 <p><?php echo $class_link . " > " . $class_files_link . " > " . $folder_name;?></p>
 <div class='filesWrapper'>
-<?php	if($show) {
-		for($i=0;$i<count($id);++$i) {?>
+<?php	if($show) {?>
+<?php 		if($edit) {?>
+			<p><input class='selectAll' type='checkbox' /></p>
+<?php		}?>
+<?php		for($i=0;$i<count($id);++$i) {?>
 			<div class='fileContainer' id="fileContainer<?php echo $id[$i];?>">
+<?php 			if($can_edit[$i]) {?>
+				<input class='deleteCheck' type='checkbox' name='delete[]' value="<?php echo $id[$i];?>"/>
+<?php			}?>
 				<a class='fileName' href="download_file.php?fid=<?php echo $id[$i];?>"><img src="<?php echo $icon[$i];?>" title="<?php echo sprintf(_('Download %s'),$name[$i]);?>" alt="<?php echo _('download');?>" class='filetypeIcon' /> <?php echo $name[$i];?><span class='filesizeSpan'>(<?php echo $filesize[$i];?> bytes)</span></a>
-<?php			if(can_edit_file($logged_userid,$id[$i])) { $edit = true;?>
+<?php			if($can_edit[$i]) { $edit = true;?>
 				<div class='editOptionsWrapper'>
 					<a class='editLink' id="editLink<?php echo $id[$i];?>" href='javascript:void(0)' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
-					<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+					<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
 				</div>
 				<div class='editFilePrompt' id="editFilePrompt<?php echo $id[$i];?>">
-					<form action='edit_file.php' method='post'>
+				<form action='edit_file.php' method='post'>
 					<input type='hidden' name='fid' value="<?php echo $id[$i];?>" />
 					<label><?php echo _('New Name');?></label>
 					<input type='text' name='name' value="<?php echo $name[$i];?>" placeholder="<?php echo _('New name here...');?>" /> 
@@ -86,8 +97,17 @@
 			<p><?php echo _('No files yet.');?></p>
 <?php		}?>
 <?php		if($edit) {?>
+			<a class='deleteSelectedLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" />Delete Selected</a>
 			<script type='text/javascript'>
 				$(document).ready(function(){
+					$('.selectAll').click(function(){
+						if($('.selectAll').attr('checked'))
+							$('.deleteCheck').attr('checked','checked');
+						else
+							$('.deleteCheck').attr('checked',false);							
+					}).add('.deleteCheck').attr('checked',false);
+					$('.deleteSelected').click(function(){
+					});
 					$('.deleteLink').click(function(){
 						if (confirm("<?php echo _('Are you sure you want to delete this file?');?>")) {
 							var id = $(this).attr('id').replace('deleteLink','');

@@ -58,7 +58,7 @@ pre {
 	background-color:#796BE0;
 	color:white;
 	border:1px solid black;
-	width:1000px;
+	width:1015px;
 	display:inline-block;
 	padding:3px;
 	padding-top:5px;
@@ -144,6 +144,7 @@ pre {
 	background-color:white;
 	border:1px solid black;
 	text-align:left;
+	position:relative;
 }
 
 .footer {
