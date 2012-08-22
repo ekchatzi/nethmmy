@@ -35,6 +35,9 @@ fieldset legend {
 	padding: 3px;
 	font-weight: bold;
 	border:1px solid black;
+	-moz-box-shadow: 4px 4px 3px #888;
+	-webkit-box-shadow: 4px 4px 3px #888;
+	box-shadow: 4px 4px 3px #888;
 }
 pre {
 	white-space: pre-wrap;       /* css-3 */
