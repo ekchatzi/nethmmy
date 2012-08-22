@@ -44,7 +44,7 @@
 			$classes = mysql_result($ret,0,0);
 		}
 	}	
-	$query = "SELECT * FROM classes WHERE id IN($classes)";
+	$query = "SELECT * FROM classes WHERE id IN($classes) ORDER BY title ASC";
 	$ret = mysql_query($query);
 	$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'));
 	if($ret && mysql_num_rows($ret)) 
