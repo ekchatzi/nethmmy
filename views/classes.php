@@ -14,7 +14,7 @@
 		{
 			$title_t = array();
 			$id_t = array();
-			$query = "SELECT * FROM classes WHERE FIND_IN_SET($i, semesters)";
+			$query = "SELECT * FROM classes WHERE FIND_IN_SET($i, semesters) ORDER BY title ASC";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret)) 
 			{
@@ -56,7 +56,7 @@
 			<form action='classes_subscription.php' method='post'>
 <?php		}?>
 <?php		for($s=1;$s<=$SEMESTERS_COUNT;++$s) {?>
-				<div class='semesterDiv'><p class='semesterTitle'><?php echo sprintf(_("Semester %s"),$s);?></p>
+				<div class='semesterDiv'><a href='javascript:void(0)'><img class='showImage' id='semesterImage<?php echo $s;?>' alt='expand/collapse' src='../public_html/images/resource/expandIcon.gif' height="15" width="15"></a><div class='semesterTitle'><?php echo sprintf(_("Semester %s"),$s);?></div><div class='semesterClassesDiv' id='classes<?php echo $s;?>'>
 <?php			for($i=0;$i<count($id[$s]);++$i) {?>
 					<p class='classTitleField'><?php echo $title[$s][$i];?>
 <?php				if($show_sub) {?>						
@@ -67,17 +67,16 @@
 <?php			if(count($id[$s]) == 0) {?>
 					<p><?php echo _('No classes.');?></p>
 <?php			}?>
-				</div>
+				</div></div>
 <?php		}?>
 <?php		if($show_sub) {?>
 				<input class='submit' id='button' type='submit' value='<?php echo _("Set subscriptions");?>'/> 
 			</form>
+<?php		}?>
 			<script>
-				$(document).ready(function() 
-				{	
+				$(document).ready(function(){	
 					//unchecks all classes with same id when one is unchecked//
-					$('.classCheck').click(function() 
-					{
+					$('.classCheck').click(function(){
 						var thischeck=$(this);
 						var checkid=$(this).attr('id');
 						if (!thischeck.is(':checked')) 
@@ -85,8 +84,24 @@
 							$('#'+checkid).attr('checked', false);
 						}
 					});
+					
+					//expands or collapses semester divs//
+					$('img.showImage').click(function(){
+						var src = $(this).attr("src");
+						if(src.indexOf("expand") >= 0) {
+							var src = src.replace("expand", "collapse");
+							$(this).attr("src",src);
+							var id = $(this).attr("id").replace("semesterImage", "");
+							$('div#classes'+id).show("fast");
+						}
+						else if (src.indexOf("collapse") >= 0) {
+							var src = src.replace("collapse", "expand");
+							$(this).attr("src",src);
+							var id = $(this).attr("id").replace("semesterImage", "");
+							$('div#classes'+id).hide("fast");
+						}
+					});
 				});
 			</script>
-<?php		}?>
 <?php	}?>
 </div>

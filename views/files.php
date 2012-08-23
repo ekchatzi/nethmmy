@@ -97,7 +97,7 @@
 			<p><?php echo _('No files yet.');?></p>
 <?php		}?>
 <?php		if($edit) {?>
-			<a class='deleteSelectedLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" />Delete Selected</a>
+			<a class='deleteSelectedLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIconAll" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" />Delete Selected</a>
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					$('.selectAll').click(function(){
@@ -106,7 +106,23 @@
 						else
 							$('.deleteCheck').attr('checked',false);							
 					}).add('.deleteCheck').attr('checked',false);
-					$('.deleteSelected').click(function(){
+					$('.deleteSelectedLink').click(function(){
+						if (confirm("<?php echo _('Are you sure you want to delete the selected file(s)?');?>")) {
+							var id = new Array();
+							$("input:checked").each(function(){
+								if($(this).attr('class')!='selectAll') {
+									id.push($(this).attr('value'));
+								}
+							});
+							var s = "<form style='display:none' action='delete_files.php' method='post'>";
+							for (var i = 0; i < id.length; i++) {
+								s += "<input type='hidden' name='fid[]' value='"+id[i]+"' />";
+							}
+							s += "<input type='folder' name='folder' value='"+<?php echo $fid;?>+"' />";
+							s += '</form>';
+							var form = $(s).appendTo('body');
+							form.submit();
+						}
 					});
 					$('.deleteLink').click(function(){
 						if (confirm("<?php echo _('Are you sure you want to delete this file?');?>")) {
