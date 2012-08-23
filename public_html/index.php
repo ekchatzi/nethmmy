@@ -14,13 +14,12 @@
 	<meta charset="utf-8" />
 	<meta name="description" content="<?php echo _('Ηλεκτρονική τάξη Τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης');?>">
 	<title><?php echo "$TITLE - nethmmy";?></title>
-	<link rel="shortcut icon" type="image/png" href="images/resource/icon.png" />
+	<link rel="shortcut icon" type="image/png" href="<?php echo "$INDEX_ROOT/images/resource/icon.png";?>" />
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="css/views.css" />
 	<link rel="stylesheet" type="text/css" href="css/anytime.css" />
 	<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 	<script src='js/anytime.js'></script>
-	<base href="localhost/nethmmy/public_html/" />
 </head>
 <body>
 <div class='bodyWrapper'>

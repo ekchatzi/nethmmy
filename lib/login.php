@@ -112,7 +112,7 @@
 	{
 		$user_type = $logged_user['type'];
 		$logged_userid = $logged_user['id'];
-		setcookie('login_token',$_COOKIE['login_token'],($_COOKIE['remember'])?(time() + $LOGIN_DURATION):0,$INDEX_ROOT);
+		setcookie('login_token',$_COOKIE['login_token'],(isset($_COOKIE['remember']) && $_COOKIE['remember'])?(time() + $LOGIN_DURATION):0,$INDEX_ROOT);
 	}
 	else
 	{
