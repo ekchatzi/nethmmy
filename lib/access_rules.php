@@ -187,6 +187,10 @@
 	{
 		return true;
 	}
+	function can_create_lab_teams_bulk($user,$lab)
+	{
+		return true;
+	}
 	function can_view_lab_team($user,$team)
 	{
 		return true;

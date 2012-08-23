@@ -156,12 +156,14 @@ pre {
 
 #loginPrompt {
 	background-color:#E0DEEF;
-	padding:10px;
+	padding:5px;
 	border:1px solid black;
 	color:black !important;
 
 	display:none;
 	z-index:8;
+	height:25px;
+	width:1003px;
 }
 #showLoginLink {
 	z-index:10;
@@ -174,7 +176,6 @@ pre {
 	border-bottom:0px;
 }
 #forgotPasswordLink {
-	float:right;
 	color:black;
 }
 

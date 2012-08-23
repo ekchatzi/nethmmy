@@ -64,7 +64,7 @@
 	}
 ?>
 <h2><?php echo _('Folder contents');?></h2>
-<p><?php echo $class_link . " > " . $class_files_link . " > " . $folder_name;?></p>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . $class_files_link . " > " . $folder_name;?></p>
 <div class='filesWrapper'>
 <?php	if($show) {?>
 <?php 		if($edit) {?>

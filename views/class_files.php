@@ -46,7 +46,7 @@
 	}
 ?>
 <h2><?php echo _('Class File Folders');?></h2>
-<p><?php echo $class_link . " > "._('Class Files');?></p>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > "._('Class Files');?></p>
 <div class='classFilesWrapper'>
 <?php	if($show) {
 		for($i=0;$i<count($id);++$i) {?>

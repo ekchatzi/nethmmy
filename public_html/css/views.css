@@ -284,3 +284,10 @@
 .selectAll {
 	margin-left:5px;
 }
+.hierarchyNavigationRow {
+	background-color:#E0DEEF;
+	background-image: -webkit-linear-gradient(right, #FFFFFF, #FFFFFF); 
+	background-image:    -moz-linear-gradient(right, #FFFFFF, #E0DEEF);
+	background-image:     -ms-linear-gradient(right, #FFFFFF, #E0DEEF);
+	background-image:      -o-linear-gradient(right, #FFFFFF, #E0DEEF);
+}
