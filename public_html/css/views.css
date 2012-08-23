@@ -266,6 +266,18 @@
 	border-bottom: 1px solid blue;
 	margin-bottom: 3px;
 	margin-right: 100px;
+	padding-right: 80px;
+	margin-left: 5px;
+	display: inline;
+}
+.semesterDiv {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.semesterClassesDiv {
+	display: none;
+	margin-top: 10px;
+	padding-left: 20px;
 }
 .classCheck {
 	position: relative;
