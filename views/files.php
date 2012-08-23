@@ -48,12 +48,11 @@
 					$upload_time[] = $row['upload_time'];
 					$uploader[] = $row['uploader'];
 					$filesize[] = file_exists($row['full_path'])?filesize($row['full_path']):0;
-					$file_extension[] = strtolower(substr(strrchr($filepath,"."),1));
-					$icon[] = file_exists("images/resource/filetype_icons/$file_extension.png")?"images/resource/filetype_icons/$file_extension.png":"images/resource/filetype_icons/default.png";
-					$can_edit_t = can_edit_file($logged_userid,$row['id']);
+					$file_extension_t = $file_extension[] = strtolower(substr(strrchr($row['full_path'],"."),1));
+					$icon[] = file_exists("images/resource/filetype_icons/$file_extension_t.png")?"images/resource/filetype_icons/$file_extension_t.png":"images/resource/filetype_icons/default.png";
+					$can_edit_t = $can_edit[] = can_edit_file($logged_userid,$row['id']);
 					if($can_edit_t)
 						$edit = true;
-					$can_edit[] = $can_edit_t;
 				}
 			}
 		}	

@@ -109,7 +109,7 @@
 			<p><label><?php echo _("ΑΕΜ");?>:</label>&nbsp;<?php echo $aem;?></p>
 			<p><label><?php echo _("Semester");?>:</label>&nbsp;<?php echo ($semester + floor((time() - $semester_update)/(60*60*24*30*6)));?></p>
 <?php		}?>
-<?php		if(can_view_contact_information($logged_user,$uid)) {?>
+<?php		if(can_view_contact_information($logged_userid,$uid)) {?>
 			<fieldset class='contactInfoWrapper'>
 				<legend><?php echo _('Contact Info');?></legend>
 				<ul>
@@ -156,10 +156,10 @@
 		if($c1 || $c2) {?>
 			<div class='editOptionsWrapper'>
 <?php			if($c1) {?>
-				<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_profile/<?php echo $uid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+				<a class='editLink' href="edit_profile/<?php echo $uid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 <?php			};?>
 <?php			if($c2) {?>
-				<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
+				<a class='deleteLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					$('.deleteLink').click(function(){

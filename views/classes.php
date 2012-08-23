@@ -72,7 +72,6 @@
 <?php		if($show_sub) {?>
 				<input class='submit' id='button' type='submit' value='<?php echo _("Set subscriptions");?>'/> 
 			</form>
-<?php		}?>
 			<script>
 				$(document).ready(function(){	
 					//unchecks all classes with same id when one is unchecked//
@@ -84,24 +83,28 @@
 							$('#'+checkid).attr('checked', false);
 						}
 					});
-					
-					//expands or collapses semester divs//
-					$('img.showImage').click(function(){
-						var src = $(this).attr("src");
-						if(src.indexOf("expand") >= 0) {
-							var src = src.replace("expand", "collapse");
-							$(this).attr("src",src);
-							var id = $(this).attr("id").replace("semesterImage", "");
-							$('div#classes'+id).show("fast");
-						}
-						else if (src.indexOf("collapse") >= 0) {
-							var src = src.replace("collapse", "expand");
-							$(this).attr("src",src);
-							var id = $(this).attr("id").replace("semesterImage", "");
-							$('div#classes'+id).hide("fast");
-						}
-					});
 				});
-			</script>
+			</script>	
+<?php		}?>
+		<script>
+			$(document).ready(function(){			
+				//expands or collapses semester divs//
+				$('img.showImage').click(function(){
+					var src = $(this).attr("src");
+					if(src.indexOf("expand") >= 0) {
+						var src = src.replace("expand", "collapse");
+						$(this).attr("src",src);
+						var id = $(this).attr("id").replace("semesterImage", "");
+						$('div#classes'+id).show("fast");
+					}
+					else if (src.indexOf("collapse") >= 0) {
+						var src = src.replace("collapse", "expand");
+						$(this).attr("src",src);
+						var id = $(this).attr("id").replace("semesterImage", "");
+						$('div#classes'+id).hide("fast");
+					}
+				});
+			});
+		</script>
 <?php	}?>
 </div>

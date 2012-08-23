@@ -89,6 +89,11 @@
 <?php		if(can_view_lab_teams($logged_userid,$lid)) {?>
 		<div class='teamsWrapper'>
 			<h3><?php echo _('Teams');?></h3>
+			<div class='existingTeamsWrapper'>
+			</div>
+<?php			if(can_create_lab_team($logged_userid,$lid)){?>
+				<a href="new_lab_team.php/<?php echo $lib;?>/"><?php echo _('Create new team');?></a>
+<?php			};?>
 		</div>
 <?php		};?>
 <?php	}?>
