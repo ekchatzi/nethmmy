@@ -2,11 +2,18 @@
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 
+	if(!isset($error))
+				$error = '';
 	$show = false;
 	if(can_view_professor_list($logged_userid)) 
 	{
 		$show = true;
-		$query = "SELECT * FROM users WHERE user_type = '2' ORDER BY last_name ASC";
+		$query = "SELECT users.id AS id,
+				  users.last_name AS last_name,
+				  users.first_name AS first_name,
+				  titles.title AS title
+				  FROM users, titles
+				  WHERE user_type = '2' AND titles.id=users.title ORDER BY last_name ASC";
 		$ret = mysql_query($query);
 		$name = array();
 		if($ret && mysql_num_rows($ret))
@@ -17,13 +24,21 @@
 			}
 		}
 	}
+	else 
+	{
+		$error .= _("Access Denied");
+	}
 ?>
 
 <h2><?php echo _('Professors');?></h2>
 <div class='professorListWrapper'>
-<?php for($i=0;$i<count($name);$i++) {?>
+<?php if($show) {?>
+<?php 	for($i=0;$i<count($name);$i++) {?>
 	<p class='professorName'><?php echo $name[$i];?></p>
-<?php }?>
-<?php if(count($name)<1) {?>
+<?php 	}?>
+<?php 	if(count($name)<1) {?>
 	<p><?php echo _('There are no registered professors yet');?></p>
+<?php 	}?>
 <?php }?>
+</div>
+
