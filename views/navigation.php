@@ -7,11 +7,11 @@
         $error = '';
 	}
 	
-	//special case for v=lab or v=edit_lab//
+	//special case for v=lab or v=edit_lab because they have special ids//
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
-		if($_GET['v']=='lab' || $_GET['v']=='edit_lab')
+		if($v=='lab' || $v=='edit_lab')
 		{
 			$query = "SELECT class FROM labs WHERE id = '$id'";
 			$ret = mysql_query($query);
@@ -25,7 +25,10 @@
 			}
 		}
 	}
-	$classes='';
+	$classes = '';
+	$v = isset($_GET['v'])?$_GET['v']:'';
+	
+	//different cases for different users//
 	if(user_type($logged_userid)=='p')
 	{
 		$query = "SELECT class FROM class_associations WHERE user = '$logged_userid'";
@@ -49,17 +52,20 @@
 			$classes = mysql_result($ret,0,0);
 		}
 	}
+	
+	
 	if (!($e=id_list_validation($classes)))
 	{
 		$query = "SELECT * FROM classes WHERE id IN($classes) ORDER BY title ASC";
 		$ret = mysql_query($query);
 		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'));
 		if($ret && mysql_num_rows($ret)) 
-		{
+		{	
+			echo "<div class='navigationClasses'>";
 			while($row = mysql_fetch_array($ret)) 
 			{	
 				echo "<li><a href='class/".$row['id']."/'  class='navigationTitles'";
-				if (isset($id)&&$id>0&&$id==$row['id']&&array_key_exists($_GET['v'], $view_accept)) 
+				if (isset($id)&&$id>0&&$id==$row['id']&&array_key_exists($v, $view_accept)) 
 				{
 					echo "id='navigationClassHl'>".$row['title']."</a>";
 					echo "<ul>";
@@ -67,7 +73,7 @@
 					foreach ($view_names as $view => $view_title) 
 					{
 						echo "<li><a href=".$view."/".$row['id']."/ ";
-						if (isset($_GET['v'])&&$_GET['v']==$view) 
+						if (isset($v)&&$v==$view) 
 						{
 							echo "id='navigationHl'";
 						}
@@ -81,9 +87,9 @@
 						while($row2 = mysql_fetch_array($ret2)) 
 						{
 							echo "<li><a href=lab/".$row2['id']."/ ";
-							if (isset($_GET['v'])&&$_GET['id']==$row2['id'])
+							if (isset($v)&&$_GET['id']==$row2['id'])
 							{
-								if ($_GET['v']=='lab' || $_GET['v']=='edit_lab') 
+								if ($v=='lab' || $v=='edit_lab') 
 								{
 								echo "id='navigationHl'";
 								}	
@@ -94,7 +100,7 @@
 					if(can_create_lab($logged_userid,$id))
 					{
 						echo "<li><a href='new_lab/$id/' ";
-						if($_GET['v']=='new_lab')
+						if($v=='new_lab')
 						{
 							echo "id='navigationHl' ";
 						}
@@ -107,6 +113,7 @@
 					echo ">".$row['title']."</a>";
 				}
 			}
+			echo "</div>";
 		}
 	}
 	else
@@ -114,5 +121,10 @@
 		$error .= $e;
 	}
 ?>
-<li><a href='classes/'  class='navigationTitles'><?php echo _("Classes");?></a></li>
+<?php if(can_view_classes_list($logged_userid)) {?>
+<li><a href='classes/'  class='navigationTitles globalNav' <?php if($v=='classes') {echo "id='navigationClassHl'";}?>><?php echo _("Classes");?></a></li>
+<?php }?>
+<?php if(can_view_professor_list($logged_userid)) {?>
+		<li><a href='professors/' class='navigationTitles globalNav' <?php if($v=='professors') {echo "id='navigationClassHl'";}?>><?php echo _("Professors");?></a></li>
+<?php }?>
 </ul>
