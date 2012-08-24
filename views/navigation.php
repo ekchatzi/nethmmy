@@ -7,13 +7,26 @@
         $error = '';
 	}
 	
-	//special case for v=lab or v=edit_lab because they have special ids//
+	//special case for v=lab or v=edit_lab or v=files because they have special ids//
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
 		if($v=='lab' || $v=='edit_lab')
 		{
 			$query = "SELECT class FROM labs WHERE id = '$id'";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret) && ($cid = mysql_result($ret,0,0)))
+			{
+				$id=$cid;
+			}
+			else 
+			{
+				$id = 0;
+			}
+		}
+		if($v=='files')
+		{
+			$query = "SELECT class FROM file_folders WHERE id = '$id'";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret) && ($cid = mysql_result($ret,0,0)))
 			{
@@ -58,7 +71,7 @@
 	{
 		$query = "SELECT * FROM classes WHERE id IN($classes) ORDER BY title ASC";
 		$ret = mysql_query($query);
-		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'));
+		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'));
 		if($ret && mysql_num_rows($ret)) 
 		{	
 			echo "<div class='navigationClasses'>";
@@ -74,6 +87,10 @@
 					{
 						echo "<li><a href=".$view."/".$row['id']."/ ";
 						if (isset($v)&&$v==$view) 
+						{
+							echo "id='navigationHl'";
+						}
+						elseif (isset($v)&&$view=='class_files'&&$v=='files')
 						{
 							echo "id='navigationHl'";
 						}
