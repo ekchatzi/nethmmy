@@ -51,6 +51,9 @@
 
 	$view['register'] = '../views/register.php';
 	$view_title['register'] = _('Register Application');
+	
+	$view['professors'] = '../views/professors.php';
+	$view_title['professors'] = _('Professors');
 
 	/* if v is one of the above (so $view[$v] evaluates to true)
 	we will include $view[$v] else we include by default home view*/	
