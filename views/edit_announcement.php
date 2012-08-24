@@ -6,6 +6,8 @@
                 $error = '';
 
 	$show = false;
+	$class_link = _('Some class');
+	$announcements_link = _('Announcements');
 	$aid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = announcement_id_validation($aid)))
 	{
@@ -20,6 +22,16 @@
 				$title = $result['title'];
 				$text = $result['text'];
 				$id = $result['id'];
+				$class = $result['class'];
+
+				$query = "SELECT title FROM classes WHERE id='$class'";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					$class_title = mysql_result($ret,0,0);
+					$class_link = "<a href='class/$class/'>$class_title</a>";
+					$announcements_link = "<a href='announcements/$class/'>$announcements_link</a>";
+				}
 			}
 			else
 			{
@@ -37,6 +49,7 @@
 	}
 ?>
 <h2><?php echo _('Edit announcement');?></h2>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . $announcements_link . " > " . _('Edit Announcement');?></p>
 <div class='editAnnouncementWrapper'>
 <?php	if($show) {?>
 		<form action="edit_announcement.php" method="post">

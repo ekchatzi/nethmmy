@@ -8,6 +8,7 @@
 	$show = false;
 	$lid = isset($_GET['id'])?$_GET['id']:0;
 	$lab_name = _('Lab');
+	$class_link = _('Some class');
 	if(!($e = lab_id_validation($lid)))
 	{
 		$query = "SELECT * FROM labs WHERE id='$lid' LIMIT 1";
@@ -32,8 +33,18 @@
 
 				$description = ((strlen($result['description'])>0)?$result['description']:_('There is no description yet.'));
 				$register_expire_message = sprintf(_('Registrations close on %s.'),strftime($DATE_FORMAT,$result['register_expire']));
-				$upload_epire_message = ($result['folder'])?sprintf(_('File uploads deadline on %s.'),strftime($DATE_FORMAT,$result['upload_expire'])):'';
-				$lab_info_message = sprintf(_('Created on %s for %s and updated on %s.'),strftime($DATE_FORMAT,$result['creation_time']),"<a href='class/$class/'>$class_name</a>",strftime($DATE_FORMAT,$result['update_time']));
+				$upload_expire_message = ($result['folder'])?sprintf(_('File uploads deadline on %s.'),strftime($DATE_FORMAT,$result['upload_expire'])):'';
+				$class_link = "<a href='class/$class/'>$class_name</a>";
+				$lab_info_message = sprintf(_('Created on %s for %s and updated on %s.'),strftime($DATE_FORMAT,$result['creation_time']),$class_link,strftime($DATE_FORMAT,$result['update_time']));
+
+				$id = array();
+				$query = "SELECT * FROM labs_teams WHERE lab='$lid' LIMIT 1";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					$result = mysql_fetch_array($ret);
+					$id_t = $id[] = $result['id'];
+				}
 			}
 			else
 			{
@@ -51,6 +62,7 @@
 	}
 ?>
 <h2><?php echo $lab_name;?></a></h2>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('Labs/Assignements') . " > " .$lab_name;?></p>
 <div class='labWrapper'>
 <?php	if($show) {?>
 		<p class='labInfo'><?php echo $lab_info_message;?></p>
@@ -65,15 +77,14 @@
 		if($c1 || $c2) {?>
 			<div class='editOptionsWrapper'>
 <?php			if($c1) {?>
-				<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_lab/<?php echo $lid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+				<a class='editLink' href="edit_lab/<?php echo $lid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 <?php			};?>
 <?php			if($c2) {?>
-				<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
+				<a class='deleteLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					$('.deleteLink').click(function(){
 						if (confirm("<?php echo _('Are you sure you want to delete this lab?');?>")) {
-							var id = $(this).attr('id').replace('deleteLink','');
 							var s = "<form style='display:none' action='delete_lab.php' method='post'>";
 							s += "<input type='hidden' name='lid' value='"+<?php echo $lid;?>+"' />";
 							s += '</form>';
@@ -90,9 +101,31 @@
 		<div class='teamsWrapper'>
 			<h3><?php echo _('Teams');?></h3>
 			<div class='existingTeamsWrapper'>
+<?php			for($i=0;$i<count($id);++$i){?>
+
+<?php			}?>
+<?php			if(count($id) == 0) {?>
+				<p><?php echo _('No teams.');?></p>
+<?php			}?>
 			</div>
 <?php			if(can_create_lab_team($logged_userid,$lid)){?>
-				<a href="new_lab_team.php/<?php echo $lib;?>/"><?php echo _('Create new team');?></a>
+				<a href="javascript:void(0)" id='createLabTeamLink'><?php echo _('Create new team');?></a>
+				<script type='text/javascript'>
+				$(document).ready(function(){
+					$('#createLabTeamLink').click(function(){
+							var s = "<form style='display:none' action='new_lab_team.php' method='post'>";
+							s += "<input type='hidden' name='lid' value='"+<?php echo $lid;?>+"' />";
+							s += '</form>';
+							var form = $(s).appendTo('body');
+							form.submit(); 	
+					});
+				});
+				</script>	
+<?php			};?>
+<?php			if(can_create_lab_teams_bulk($logged_userid,$lid)){?>
+				<form action='new_lab_teams_bulk.php'>
+					<p><?php echo sprintf(_('Create %s new teams'),"<input class='countInput' name='count' value='1'/>");?><input type='submit' value="<?php echo _('Go');?>" />
+				</form> 
 <?php			};?>
 		</div>
 <?php		};?>

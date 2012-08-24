@@ -6,7 +6,7 @@
                 $error = '';
 
 	$show = false;
-	$class_name = _('some class');
+	$class_link = _('some class');
 	$cid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = class_id_validation($cid)))
 	{
@@ -16,7 +16,7 @@
 			$query = "SELECT title FROM classes WHERE id='$cid'";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
-				$class_name = "<a href='class/$cid/'>".mysql_result($ret,0,0)."</a>";
+				$class_link = "<a href='class/$cid/'>".mysql_result($ret,0,0)."</a>";
 		}
 		else
 		{
@@ -28,8 +28,9 @@
 		$error .= $e;
 	}
 ?>
-<h2> <?php echo sprintf(_('New Lab for %s'),$class_name);?> </h2>
+<h2> <?php echo _('New Lab');?> </h2>
 <div class='newLabWrapper'>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('New Lab');?></p>
 <?php	if($show) {?>
 		<script type='text/javascript'>
 			$(document).ready(function(){

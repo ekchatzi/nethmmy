@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 15, 2012 at 09:33 PM
+-- Generation Time: Aug 24, 2012 at 08:31 AM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'body of annoument',
   PRIMARY KEY (`id`),
   KEY `poster` (`poster`,`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `class_associations` (
   PRIMARY KEY (`id`),
   KEY `class` (`class`),
   KEY `user` (`user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `class_association_types` (
   `priority` int(10) unsigned NOT NULL COMMENT 'how important is for the class',
   `permissions` tinytext CHARACTER SET ascii NOT NULL COMMENT 'access on classes',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   `download_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'times the file was downloaded',
   PRIMARY KEY (`id`),
   KEY `folder` (`folder`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `file_folders` (
   `public` int(11) NOT NULL COMMENT 'public flag',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,26 @@ CREATE TABLE IF NOT EXISTS `labs` (
   `can_lock_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can lock their teams',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lab_teams`
+--
+
+CREATE TABLE IF NOT EXISTS `lab_teams` (
+  `id` int(10) unsigned NOT NULL COMMENT 'lab team id',
+  `lab` int(10) unsigned NOT NULL COMMENT 'lab team associated lab id',
+  `students` text CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of students',
+  `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'team title',
+  `creation_time` int(11) NOT NULL COMMENT 'unix time the team was created',
+  `update_time` int(11) NOT NULL COMMENT 'unix time the team was updated',
+  `files` text CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of uploaded files',
+  `is_locked` int(11) NOT NULL COMMENT 'flag that is 1 if team is locked, ie noone new can join',
+  PRIMARY KEY (`id`),
+  KEY `lab` (`lab`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 

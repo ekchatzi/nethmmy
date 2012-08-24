@@ -303,3 +303,6 @@
 	background-image:     -ms-linear-gradient(right, #FFFFFF, #E0DEEF);
 	background-image:      -o-linear-gradient(right, #FFFFFF, #E0DEEF);
 }
+.countInput {
+	width:30px;
+}

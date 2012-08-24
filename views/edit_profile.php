@@ -6,7 +6,7 @@
                 $error = '';
 
 	$show = false;
-	$user_name = _('some user');
+	$user_link = _('some user');
 	$uid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = user_id_validation($uid)))
 	{
@@ -22,7 +22,7 @@
 				$account_type_text = $USER_TYPES_FULL[$result['user_type']];
 				$first_name = $result['first_name'];
 				$last_name = $result['last_name'];
-				$user_name = "<a href='profile/$uid/'>".$first_name . ' ' . $last_name."</a>";
+				$user_link = "<a href='profile/$uid/'>".$first_name . ' ' . $last_name."</a>";
 				$uid_type = $result['user_type'];
 				$aem = $result['aem'];
 				$semester = $result['semester'];
@@ -64,7 +64,8 @@
 	}
 ?>
 <div class='editProfileWrapper'>
-<h2><?php echo sprintf(_('Edit %s\'s profile'),$user_name);?></h2>
+<h2><?php echo _('Edit profile');?></h2>
+<p class='hierarchyNavigationRow'><?php echo $user_link . " > " . _('Edit profile');?></p>
 <?php	if($show) {?>
 		<form method='post' action='edit_profile.php'>
 			<fieldset>

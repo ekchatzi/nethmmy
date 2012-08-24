@@ -76,7 +76,7 @@
 		$error .= _('Access Denied.');
 ?>
 <h2><?php echo _('Announcements');?></h2>
-<p><?php echo sprintf(_('For %s'),$class_link);?></p>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('Announcements');?></p>
 <div class='announcementsWrapper'>
 <?php	if($show) {?>
 <?php		if($post) {?>

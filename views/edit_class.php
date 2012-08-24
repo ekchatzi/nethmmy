@@ -9,7 +9,7 @@
 	$show = false;
 	$edit_class = false;
 	$edit_associations = false;
-	$class_title = _('Edit class');
+	$class_link = _('Edit class');
 	$cid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = class_id_validation($cid)))
 	{
@@ -21,7 +21,7 @@
 			$result = mysql_fetch_array($ret);
 			$class = $result['id'];
 			$class_name = $result['title'];
-			$class_title = "<a href='class/$class/'>$class_name</a>";
+			$class_link = "<a href='class/$class/'>$class_name</a>";
 			$semesters = $result['semesters'];
 			if(can_edit_class($logged_userid,$cid) && can_view_class($logged_user,$cid))
 			{
@@ -96,7 +96,8 @@
 	if($allowed == false)
 		$error .= _('Access Denied');
 ?>
-<h2><?php echo sprintf(_('Edit %s'),$class_title);?></h2>
+<h2><?php echo _('Edit Class');?></h2>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('Edit Class');?></p>
 <div class='editClassWrapper'>
 <?php	if($show) {?>
 <?php		if($edit_class) {?>
