@@ -6,7 +6,12 @@
 	if(can_view_professor_list($logged_userid)) 
 	{
 		$show = true;
-		$query = "SELECT * FROM users WHERE user_type = '2' ORDER BY last_name ASC";
+		$query = "SELECT users.id AS id,
+				  users.last_name AS last_name,
+				  users.first_name AS first_name,
+				  titles.title AS title
+				  FROM users, titles
+				  WHERE user_type = '2' AND titles.id=users.title ORDER BY last_name ASC";
 		$ret = mysql_query($query);
 		$name = array();
 		if($ret && mysql_num_rows($ret))
