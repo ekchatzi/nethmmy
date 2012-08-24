@@ -2,6 +2,8 @@
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 
+	if(!isset($error))
+				$error = '';
 	$show = false;
 	if(can_view_professor_list($logged_userid)) 
 	{
@@ -24,7 +26,7 @@
 	}
 	else 
 	{
-		echo _("Access denied.");
+		$error .= _("Access Denied");
 	}
 ?>
 

@@ -3,6 +3,8 @@
 	include_once('../lib/validate.php');
 	include_once('../config/general.php');
 	
+	if(!isset($error))
+				$error = '';
 	$show = false;
 	$show_sub = false;
 	if (can_view_classes_list($logged_userid)) 
@@ -42,7 +44,7 @@
 	}
 	else 
 	{
-		echo _("Access denied.");
+		$error .= _("Access Denied");
 	}
 ?>
 <span id='classesHeader'><h2 id='classesTitle'> <?php echo _('Classes');?> </h2>
