@@ -38,9 +38,9 @@
 				$('#dateField2').AnyTime_picker( { format: "%Y-%m-%d %H:%i", labelTitle: "<?php echo _('Registration Deadline');?>", labelHour: "<?php echo _('Hour');?>", labelMinute: "<?php echo _('Minute');?>",labelMonth: "<?php echo _('Month');?>",labelDayOfMonth: "<?php echo _('Day of the Month');?>",labelYear: "<?php echo _('Year');?>" } );
 				$('#canUploadCheckbox').click( function() {
 					if($(this).attr('checked'))
-						$('.uploadSettings').css('display','block');
+						$('.uploadSettings').show('fast');
 					else
-						$('.uploadSettings').css('display','none');							
+						$('.uploadSettings').hide('fast');							
 				}).attr('checked',false);		
 			});
 			function onsubmission() {

@@ -147,7 +147,14 @@
 	-webkit-box-shadow: 0px 2px 3px #666;
 	box-shadow: 0px 2px 3px #666;
 }
-
+.navigationClasses {
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid grey;
+}
+.globalNav {
+	font-size: 10.3pt;
+}
 /*
 	ANNOUNCEMENT VIEW
 				*/
@@ -256,6 +263,12 @@
 	margin-right: 350px;
 	
 }
+.classLink {
+	text-decoration: none;
+}
+.classLink:hover {
+	text-decoration: underline;
+}
 #subscribeTitle {
 	text-align: right;
 	display: inline-block;
@@ -305,4 +318,19 @@
 }
 .countInput {
 	width:30px;
+}
+
+/* PROFESSORS VIEW */
+.professorListWrapper {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.professorName {
+	margin-bottom: 5px;
+}
+.professorName a {
+	text-decoration: none;
+}
+.professorName a:hover {
+	text-decoration: underline;
 }
