@@ -22,13 +22,21 @@
 			}
 		}
 	}
+	else 
+	{
+		echo _("Access denied.");
+	}
 ?>
 
 <h2><?php echo _('Professors');?></h2>
 <div class='professorListWrapper'>
-<?php for($i=0;$i<count($name);$i++) {?>
+<?php if($show) {?>
+<?php 	for($i=0;$i<count($name);$i++) {?>
 	<p class='professorName'><?php echo $name[$i];?></p>
-<?php }?>
-<?php if(count($name)<1) {?>
+<?php 	}?>
+<?php 	if(count($name)<1) {?>
 	<p><?php echo _('There are no registered professors yet');?></p>
+<?php 	}?>
 <?php }?>
+</div>
+
