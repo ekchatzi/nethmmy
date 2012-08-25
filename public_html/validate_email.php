@@ -3,7 +3,7 @@
 	include_once('../lib/login.php');
 	include_once("../lib/access_rules.php");
 	include_once("../lib/localization.php");
-	include_once("../public_html/validate_email.php");
+	include_once("../lib/validate.php");
 	include_once("../config/general.php");
 	
 	if(!isset($error)) 

@@ -127,12 +127,13 @@
 													$('#validateHref').click(function(){
 														$.ajax({
 														   type: "POST",
-														   url: "../public_html/validate_email.php",
+														   url: "../public_html/validate_email.php?AJAX",
 														   data: 'uid='+ <?php echo $logged_userid;?>,
 														   cache: false,
-														   success: function(response){
-																if(response){
-																	//var ob = $.parseJSON(response);
+														   success: function(response) {
+																//works only when email server is set up correctly
+																var ob = $.parseJSON(response);
+																if(ob.error!='') {
 																	alert(response);
 																}
 																else {
