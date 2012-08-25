@@ -238,4 +238,9 @@
 	{
 		return true;
 	}
+	
+	function can_send_validation_email($user,$target_user)
+	{
+		return true;
+	}
 ?>
