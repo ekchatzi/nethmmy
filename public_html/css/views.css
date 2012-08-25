@@ -63,7 +63,17 @@
 /*
 	PROFILE VIEW
 			*/
-
+#invalidIcon {
+	position: relative;
+	top: 3px;
+}
+#validateHref {
+	font-size: 8pt;
+	text-decoration: none;
+}
+#validateHref:hover {
+	text-decoration: underline;
+}
 
 /*
 	EDIT PROFILE VIEW
@@ -250,6 +260,7 @@
 .labInfo {
 	font-size:50%;
 }
+
 /*CLASSES VIEW*/
 .classesWrapper {
 	width: 500px;
@@ -292,10 +303,24 @@
 	margin-top: 10px;
 	padding-left: 20px;
 }
-.classCheck {
+.subscribeCheck {
 	position: relative;
-	display: inline;
 	float: right;
+	display: inline;
+}
+#classCheck {
+	position: absolute;
+	z-index: 150;
+	display: inline;
+	top:-15px;
+}
+#joinImage {
+	position: absolute;
+	top: -27px;
+	left: -8px;
+}
+.classField {
+	margin-bottom: 12px;
 }
 #button {
 	margin-top: 20px;

@@ -32,6 +32,7 @@
 				$website = $result['website'];
 				$title_id = $result['title'];
 				$is_active = $result['is_active'];
+				$is_email_validated = $result['is_email_validated'];
 				/* Title */
 				$title_id = $result['title'];
 				$title = _('User');
@@ -113,7 +114,39 @@
 			<fieldset class='contactInfoWrapper'>
 				<legend><?php echo _('Contact Info');?></legend>
 				<ul>
-					<li><label><?php echo _("Email");?>: </label><?php echo $email;?></li>
+					<li><label><?php echo _("Email");?>: </label><?php echo $email;?>
+							   <?php if ($is_email_validated) {?>
+							   <img alt='valid' src='../public_html/images/resource/checkIcon.png' height='2%' width='2%'/>
+							   <?php }?>
+							   <?php if (!$is_email_validated) {?>
+							   <img id='invalidIcon' alt='invalid' src='../public_html/images/resource/crossIcon.png' height='2%' width='2%'/>
+<?php 						   			if (can_send_validation_email($logged_userid, $logged_userid)) {?>							   
+											<a id='validateHref' href='javascript:void(0)'>Send validation email</a>
+											<script>
+												$(document).ready(function() {
+													$('#validateHref').click(function(){
+														$.ajax({
+														   type: "POST",
+														   url: "../public_html/validate_email.php",
+														   data: 'uid='+ <?php echo $logged_userid;?>,
+														   cache: false,
+														   success: function(response){
+																if(response){
+																	//var ob = $.parseJSON(response);
+																	alert(response);
+																}
+																else {
+																	alert('<?php echo _('Email sent! Please check your inbox and spam folder.');?>');
+																}
+															}
+														});
+													});
+												});
+											</script>
+<?php 									}?>
+<?php								}?>
+								 
+					</li>
 					<li><label><?php echo _("Telephone");?>: </label><?php echo $telephone;?></li>
 					<li><label><?php echo _("Website");?>: </label><?php echo $website;?></li>
 				</ul>
