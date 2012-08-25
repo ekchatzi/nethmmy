@@ -24,8 +24,24 @@
 				if($ret && mysql_num_rows($ret))
 				{
 					$full_path = mysql_result($ret,0,0);
-					if(can_edit_file($fid) && unlink($full_path))
+					if(can_edit_file($logged_userid,$fid) && unlink($full_path))
 					{
+						//unlink if file is linked to lab team
+						$query = "SELECT id,files FROM lab_teams WHERE FIND_IN_SET('$fid',files) LIMIT 1";
+						$ret = mysql_query($query);
+						if($ret && mysql_num_rows($ret))
+						{
+							$result = mysql_fetch_array($ret);
+							$team = $result['id'];
+							$files = explode(',',$result['files']);
+							unset($files[array_search($fid,$files)]);
+							$files = implode(',',array_values($files));
+
+							$query = "UPDATE lab_teams SET
+									files='".mysql_real_escape_string($files)."'
+									WHERE id='$team' LIMIT 1";
+							mysql_query($query) || ($error .= mysql_error());
+						}
 						$query = "DELETE FROM files WHERE id='$fid' LIMIT 1";
 						mysql_query($query) || ($error .= mysql_error());
 					}
@@ -56,7 +72,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($folder)?"files/$folder/":"home/";
+		$redirect = ($folder)?"files/$folder/":$_COOKIE['last_view'];
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');

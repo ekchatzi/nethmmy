@@ -34,7 +34,7 @@
 		$file_extension = array();
 		$icon = array();
 		$can_edit = array();
-		$query = "SELECT * FROM files WHERE folder='$fid'";
+		$query = "SELECT * FROM files WHERE folder='$fid' ORDER BY name";
 		$ret = mysql_query($query);
 		if($ret && mysql_numrows($ret))
 		{
@@ -155,7 +155,7 @@
 					<legend><?php echo _('Upload file');?></legend>
 					<form action='upload_file.php' method='post'  enctype="multipart/form-data" >
 						<label><?php echo _('Name');?></label>
-						<input type='text' name='name' placeholder="<?php echo _('File name here...');?>" />
+						<input type='text' name='name' placeholder="<?php echo _('(Optional) File name here...');?>" />
 						<label><?php echo _('File');?></label>
 						<input type='file' name='file' />
 						<input type='hidden' name='folder' value="<?php echo $fid;?>" />

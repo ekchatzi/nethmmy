@@ -250,6 +250,34 @@
 .labInfo {
 	font-size:50%;
 }
+.editLabIcon {
+	display:inline-block !important;
+}
+.editLabTeamPrompt {
+	display:none;
+}
+.labTeamNameContainer {
+}
+.labTeamNameContainerEditted {
+}
+
+.labTeamContainer {
+	margin-top:20px;
+	margin-bottom:10px;
+	position:relative;
+}
+.alternateLabTeamContainer {
+	background-color:#E0DEEF;
+}
+.labTeamName {
+	font-weight:bold;
+	color:#1B107F;
+}
+.joinLabTeamContainer {
+	position:absolute;
+	top:10px;
+	right:10px;
+}
 /*CLASSES VIEW*/
 .classesWrapper {
 	width: 500px;
@@ -311,7 +339,7 @@
 }
 .hierarchyNavigationRow {
 	background-color:#E0DEEF;
-	background-image: -webkit-linear-gradient(right, #FFFFFF, #FFFFFF); 
+	background-image: -webkit-linear-gradient(right, #FFFFFF, #E0DEEF); 
 	background-image:    -moz-linear-gradient(right, #FFFFFF, #E0DEEF);
 	background-image:     -ms-linear-gradient(right, #FFFFFF, #E0DEEF);
 	background-image:      -o-linear-gradient(right, #FFFFFF, #E0DEEF);
@@ -334,3 +362,5 @@
 .professorName a:hover {
 	text-decoration: underline;
 }
+
+

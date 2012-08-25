@@ -39,11 +39,11 @@
 	}
 	function can_change_user_type($user,$target_user)
 	{
-		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
+		return is_active($user) && (user_type($user) == 'a');
 	}
 	function can_change_active_status($user,$target_user)
 	{
-		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
+		return is_active($user) && (user_type($user) == 'a');
 	}
 	function can_view_profile($user,$target_user)
 	{
@@ -179,10 +179,15 @@
 	{
 		return true;
 	}
-	function can_upload_lab_file($user,$lab)
+	function can_upload_lab_team_file($user,$team)
 	{
 		return true;
 	}
+	function can_view_lab_team_files($user,$team)
+	{
+		return true;
+	}
+	/* Must be in registration,team limit */
 	function can_create_lab_team($user,$lab)
 	{
 		return true;
@@ -191,13 +196,13 @@
 	{
 		return true;
 	}
-	function can_view_lab_team($user,$team)
-	{
-		return true;
-	}
 	function can_view_lab_teams($user,$lab)
 	{
 		return true;
+	}
+	function can_view_lab_team($user,$team)
+	{
+		return can_view_lab_teams($user,$team);
 	}
 	function can_edit_lab_team($user,$team)
 	{
@@ -207,7 +212,17 @@
 	{
 		return true;
 	}
+	/* Must be in registration time,team size limit */
 	function can_join_lab_team($user,$team)
+	{
+		return true;
+	}
+	/* Must be joined */
+	function can_leave_lab_team($user,$team)
+	{
+		return true;
+	}
+	function can_kick_from_lab_team($user,$target_user,$team)
 	{
 		return true;
 	}

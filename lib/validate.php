@@ -491,8 +491,29 @@
 			return _('File was not sent from form.');
 
 		if($file['error'] !=0)
-			return sprintf(_("File error %s"),$file['error']);
-
+		{
+			switch($file['error'])
+			{
+				case 1:
+				case 2:
+					return _('File is too big.');
+				break;
+				case 3:
+					return _('The uploaded file was only partially uploaded.');
+				break;
+				case 4:
+					return _('No file was uploaded.');
+				break;
+				case 5:
+					return _('Missing a temporary folder.');
+				break;
+				case 6:
+					return _('Failed to write file to disk.');
+				break;
+				default:
+					return sprintf(_("File error %s"),$file['error']);
+			}		
+		}
 		if($file['size'] > $MAX_FILESIZE)
 			return _("File is too large.");
 
@@ -540,6 +561,28 @@
 		else
 			return _("Database Error.");
 
+		return false;
+	}
+	/* 
+		Validates lab team ids.
+		returns false on ok, errors on error
+	*/
+	function lab_team_id_validation($id)
+	{
+		/* Must be a number */
+		if(!is_numeric($id) || $id <= 0)
+			return _('Lab team ids must be positive integers.');
+
+		$query = "SELECT COUNT(*) FROM lab_teams WHERE id='$id'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$count = mysql_result($ret,0,0);
+			if($count < 1)
+				return _('Lab team id does not exist.');
+		}
+		else
+			return _("Database Error.");
 		return false;
 	}
 	function lab_team_limit_validation($limit)

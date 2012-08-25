@@ -10,42 +10,41 @@
         if(!isset($error)) 
                 $error = '';
 
-	$lab_team = '';
+	$lab = '';
 	/* Data */
-	$lab = isset($_POST['lid'])?$_POST['lid']:0;
+	$tid = isset($_POST['tid'])?$_POST['tid']:'';
+	if(!$tid)
+		$tid = isset($_GET['tid'])?$_GET['tid']:'';
 	/* check if input is valid */
-	if(!($e = lab_id_validation($lab)))
+	if(!($e = lab_team_id_validation($tid)))
 	{
-		if(can_create_lab_team($logged_userid,$lab))
+		if(can_join_lab_team($logged_userid,$tid))
 		{
-			$query = "SELECT last_no FROM labs WHERE id='$lab'";
+			$query = "SELECT lab,students FROM lab_teams WHERE id='$tid'";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
 			{
 				$result = mysql_fetch_array($ret);
-				$last_no = $result['last_no'] + 1;
-				$team_name = "No. $last_no";
-				$students = "$logged_userid";
-				$is_locked = $DEFAULT_LAB_TEAM_LOCK_STATE?'1':'0';
-				$folder = mysql_insert_id();
-				$files = '';	
+				$lab = $result['lab'];
+				$lab_team = $tid;
+				$students = $result['students'];
+				$c = preg_match_all('~\b[0-9]\b~',$students,$m);
+				$students = ($c > 0)?explode(',',$students):array();
+
+				$students[] = $logged_userid;
+				$students = implode(',',$students);
 				$time = time();
-				$query = "INSERT INTO lab_teams
-						(lab,students,title,creation_time,update_time,files,is_locked)
-						VALUES
-						('$lab','$students','".mysql_real_escape_string($team_name)."','$time','$time','$files','$is_locked')";
+				$query = "UPDATE lab_teams SET 
+						students='".mysql_real_escape_string($students)."',
+						update_time='$time'
+						WHERE id='$tid'";
 				mysql_query($query) || ($error .= mysql_error());
-				$lab_team = mysql_insert_id();
-				if($lab_team)
-				{				
-					$query = "UPDATE labs SET last_no = last_no + 1 WHERE id='$lab'";
-					mysql_query($query) || ($error .= mysql_error());				
-				}
 			}
 			else
 			{
 				$error .= mysql_error();
 			}
+
 		}
 		else
 		{
@@ -67,7 +66,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = "lab/$lab/".(($lab_team)?"#labTeamContainer$lab_team":"");
+		$redirect = "lab/$lab/".(($lab_team)?"#labTeamContainer$lab_team":"");;
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
