@@ -47,11 +47,7 @@
 		$error .= _("Access Denied");
 	}
 ?>
-<span id='classesHeader'><h2 id='classesTitle'> <?php echo _('Classes');?> </h2>
-<?php if($show_sub) {?>
-		<p id='subscribeTitle'><?php echo _('Subscribe');?></p>
-<?php }?>
-</span>
+<h2><?php echo _('Classes');?> </h2>
 <div class='classesWrapper'>
 <?php	if($show) {?>
 <?php		if($show_sub) {?>
@@ -60,11 +56,13 @@
 <?php		for($s=1;$s<=$SEMESTERS_COUNT;++$s) {?>
 				<div class='semesterDiv'><a href='javascript:void(0)'><img class='showImage' id='semesterImage<?php echo $s;?>' alt='expand/collapse' src='../public_html/images/resource/expandIcon.gif' height="15" width="15"></a><div class='semesterTitle'><?php echo sprintf(_("Semester %s"),$s);?></div><div class='semesterClassesDiv' id='classes<?php echo $s;?>'>
 <?php			for($i=0;$i<count($id[$s]);++$i) {?>
-					<p class='classTitleField'><?php echo $title[$s][$i];?>
+					<div class='classField'><p class='classTitleField'><?php echo $title[$s][$i];?>
 <?php				if($show_sub) {?>						
-					<input class='classCheck' name='subscribe[]' value="<?php echo $id[$s][$i];?>" id="checkbox<?php echo $id[$s][$i];?>" type='checkbox'
+					<div class='subscribeCheck'><input id='classCheck' name='subscribe[]' value="<?php echo $id[$s][$i];?>" id="checkbox<?php echo $id[$s][$i];?>" type="checkbox"
 					<?php if(isset($classes)&&in_array($id[$s][$i], $classes)) echo "checked='true'";?> />
+					<img id='joinImage' src='../public_html/images/resource/joinIcon.png' alt='join icon' height="30" width="30"/></div>
 <?php				}?>
+					</div>
 <?php			}?>
 <?php			if(count($id[$s]) == 0) {?>
 					<p><?php echo _('No classes.');?></p>
