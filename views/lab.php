@@ -109,7 +109,7 @@
 							$files_t = _("No files.");
 							if(!($e = id_list_validation($row['files'])))
 							{
-								$query = "SELECT id,name FROM files WHERE id IN(".$row['files'].") ORDER BY name ASC";
+								$query = "SELECT id,name,full_path FROM files WHERE id IN(".$row['files'].") ORDER BY name ASC";
 								$ret2 = mysql_query($query);						
 								if($ret2 && mysql_num_rows($ret2))
 								{
@@ -119,8 +119,10 @@
 										$fid = $row2['id'];
 										$fname = $row2['name'];
 										$f = "<span class='file' id='file$fid'>";
+										$file_extension_t = strtolower(substr(strrchr($row2['full_path'],"."),1));
+										$icon = file_exists("images/resource/filetype_icons/$file_extension_t.png")?"images/resource/filetype_icons/$file_extension_t.png":"images/resource/filetype_icons/default.png";
 										if(can_download_file($logged_userid,$fid))
-											$f .= "<a href='download_file.php?fid=$fid'>$fname</a>";
+											$f .= "<a href='download_file.php?fid=$fid'><img src='$icon' title='".sprintf(_('Download %s'),$fname)."' alt='"._('download')."' class='filetypeIcon' />$fname</a>";
 										if(can_edit_file($logged_userid,$fid))
 										{
 											$f .= "<a class='deleteLinkFiles' id='deleteLinkFiles$fid' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id='deleteIcon$fid' alt='"._('Delete')."' title='"._('Delete')."' /></a>";
@@ -305,9 +307,9 @@
 					if (confirm("<?php echo _('Are you sure you want to delete this file?');?>")) {
 						var id = $(this).attr('id').replace('deleteLinkFiles','');
 						var folder = "<?php echo $folder;?>";
-						var labID = "<?php echo $lab;?>";
+						var labID = "<?php echo $lid;?>";
 						var teamId = $(this).parents('.labTeamContainer').attr('id').replace('labTeamContainer','');
-						$.post("delete_files.php?AJAX",{ 'fid[]' : [id],'folder' : folder,'lab' : lab},function(data){
+						$.post("delete_files.php?AJAX",{ 'fid[]' : [id],'folder' : folder,'lab' : labID},function(data){
 							var ob = $.parseJSON(data);
 							if(ob.error) {
 								alert(ob.error);

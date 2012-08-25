@@ -278,6 +278,12 @@
 	top:10px;
 	right:10px;
 }
+.file {
+	display:inline-block;
+}
+.user {
+	display:inline-block;
+}
 /*CLASSES VIEW*/
 .classesWrapper {
 	width: 500px;
