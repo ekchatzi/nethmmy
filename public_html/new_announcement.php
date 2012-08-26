@@ -15,12 +15,6 @@
 	$class = isset($_POST['class'])?$_POST['class']:'';
 	$urgent = isset($_POST['urgent'])?$_POST['urgent']:'0';
 	
-	if($text!='')
-	{	
-		//you have to activate php_tidy extension to get it to work
-		$text = tidy_repair_string($text, array('show-body-only' => true, 'doctype' => '-//W3C//DTD XHTML 1.0 Transitional//EN', 'output-xhtml' => true));
-	}
-	
 	/* check if input is valid */
 	if(!(($e = class_id_validation($class)) || ($e = xml_validation($text)) || ($e = name_validation($title))))
 	{
