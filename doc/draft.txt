@@ -288,7 +288,7 @@ Coding style προτείνονται:
   
 ###Δομή βάσης δεδομένων
 + `users`:  
-`id,username,password,first_name,last_name,aem,user_type,title,email,telephone,website,bio,registration_time,semester,last_login,salt,login_token,is_active,last_remote_adress,is_email_validated,semester_update_time,classes`
+`id,username,password,first_name,last_name,aem,user_type,title,email,telephone,website,bio,registration_time,semester,last_login,salt,login_token,is_active,last_remote_adress,is_email_validated,semester_update_time,classes,email_urgent`
 
 + `titles`
 `id,title,description`
@@ -312,7 +312,7 @@ Coding style προτείνονται:
 
 
 + `announcements`:  
-`id,poster,class,post_time,update_time,title,text`
+`id,poster,class,post_time,update_time,title,text,is_urgent`
 
 
 

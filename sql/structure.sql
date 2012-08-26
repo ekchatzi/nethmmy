@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 24, 2012 at 08:31 AM
+-- Generation Time: Aug 26, 2012 at 12:51 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `update_time` int(10) unsigned DEFAULT NULL COMMENT 'unix time the announcement was last updated',
   `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'announcement header title',
   `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'body of annoument',
+  `is_urgent` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'flag that tells if announcement is urgent',
   PRIMARY KEY (`id`),
   KEY `poster` (`poster`,`class`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
@@ -98,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   `download_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'times the file was downloaded',
   PRIMARY KEY (`id`),
   KEY `folder` (`folder`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=47 ;
 
 -- --------------------------------------------------------
 
@@ -137,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `labs` (
   `can_free_join` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can join any team or they have to join the first avainable',
   `can_make_new_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can make new teams',
   `can_lock_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can lock their teams',
+  `last_no` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'last team no',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
@@ -148,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `labs` (
 --
 
 CREATE TABLE IF NOT EXISTS `lab_teams` (
-  `id` int(10) unsigned NOT NULL COMMENT 'lab team id',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'lab team id',
   `lab` int(10) unsigned NOT NULL COMMENT 'lab team associated lab id',
   `students` text CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of students',
   `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'team title',
@@ -158,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `lab_teams` (
   `is_locked` int(11) NOT NULL COMMENT 'flag that is 1 if team is locked, ie noone new can join',
   PRIMARY KEY (`id`),
   KEY `lab` (`lab`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=87 ;
 
 -- --------------------------------------------------------
 
@@ -202,6 +204,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_email_validated` int(11) NOT NULL DEFAULT '0' COMMENT 'flag for email validation',
   `semester_update_time` int(11) NOT NULL COMMENT 'unix timestamp of the last time the semester field was updated by the user',
   `classes` text COLLATE utf8_unicode_ci COMMENT 'comma seperated list of watched classes',
+  `email_urgent` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'flag that tells if user wants to be notified by email for urgent messages',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `aem` (`aem`),

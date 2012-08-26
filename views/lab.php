@@ -12,6 +12,9 @@
 	$lid = isset($_GET['id'])?$_GET['id']:0;
 	$lab_name = _('Lab');
 	$class_link = _('Some class');
+	$team_limit = '';
+	$team_size_limit = '';
+	$upload_limit = '';
 	if(!($e = lab_id_validation($lid)))
 	{
 		$query = "SELECT * FROM labs WHERE id='$lid' LIMIT 1";
@@ -26,6 +29,9 @@
 				$class = $result['class'];
 				$lab_name = $result['title'];
 				$upload_expire = $result['upload_expire'];
+				$team_limit = $result['team_limit'];
+				$team_size_limit = $result['users_per_team_limit'];
+				$upload_limit = $result['upload_limit'];
 				$class_name = _('Class');
 				$folder = $result['folder'];
 				$query = "SELECT title FROM classes WHERE id='$class'";
@@ -47,7 +53,9 @@
 				$team_name = array();
 				$team_info = array();
 				$students = array();
+				$students_count = array();
 				$files = array();
+				$files_count = array();
 				$can_view_files = array();
 				$query = "SELECT * FROM lab_teams WHERE lab='$lid'";
 				$ret = mysql_query($query);
@@ -67,10 +75,11 @@
 
 						//Students
 						$students_t = _('No students.');
+						$students_count_t = 0;		
 						if(!($e = id_list_validation($row['students'])))
 						{
 							$query = "SELECT id,first_name,last_name,aem FROM users WHERE id IN(".$row['students'].") ORDER BY last_name ASC";
-							$ret2 = mysql_query($query);						
+							$ret2 = mysql_query($query);			
 							if($ret2 && mysql_num_rows($ret2))
 							{
 								$student_links = array();
@@ -92,7 +101,7 @@
 									if($uid == $logged_userid)
 										$current_team = $id_t;
 								}
-								if(count($student_links))
+								if($students_count_t = count($student_links))
 									$students_t = implode(' ',$student_links);
 							}
 						}
@@ -101,12 +110,14 @@
 							$error .= _("Invalid student list.") . " : " . $e;
 						}
 						$students[] = $students_t;
+						$students_count[] = $students_count_t;
 
 						//Files
-						$can_view_files_t = $can_view_files[] = can_view_lab_team_files($logged_userid,$id_t);
+						$can_view_files_t = $can_view_files[] = (can_view_lab_team_files($logged_userid,$id_t) && $folder);
 						if($can_view_files_t)
 						{
 							$files_t = _("No files.");
+							$files_count_t = 0;
 							if(!($e = id_list_validation($row['files'])))
 							{
 								$query = "SELECT id,name,full_path FROM files WHERE id IN(".$row['files'].") ORDER BY name ASC";
@@ -131,7 +142,7 @@
 										$f .= "</span>";
 										$file_links[] = $f;
 									}
-									if(count($file_links))								
+									if($files_count_t = count($file_links))		
 										$files_t = implode(' ',$file_links);
 								}
 							}
@@ -140,6 +151,7 @@
 								$error .= _("Invalid file list.") . " : " . $e;
 							}
 							$files[] = $files_t;
+							$files_count[] = $files_count_t;
 						}
 					}				
 				}
@@ -197,7 +209,22 @@
 <?php		};?>
 <?php		if(can_view_lab_teams($logged_userid,$lid)) {?>
 		<div class='teamsWrapper'>
-			<h3><?php echo _('Teams');?></h3>
+			<h3><?php echo _('Teams');?><?if($team_limit) echo "(".count($id)."/$team_limit)";?>
+<?php			if(can_create_lab_team($logged_userid,$lid)){?>
+				<a href="javascript:void(0)" id='createLabTeamLink'><img src='images/resource/add.png' class='icon addIcon addTeamIcon' alt="<?php echo _('Add');?>" title="<?php echo _('Create new team');?>" /></a>
+				<script type='text/javascript'>
+				$(document).ready(function(){
+					$('#createLabTeamLink').click(function(){
+							var s = "<form style='display:none' action='new_lab_team.php' method='post'>";
+							s += "<input type='hidden' name='lid' value='"+<?php echo $lid;?>+"' />";
+							s += '</form>';
+							var form = $(s).appendTo('body');
+							form.submit(); 	
+					});
+				});
+				</script>	
+<?php			};?>
+			</h3>
 <?php			if($current_team){?>
 				<a href="lab/<?php echo $lid;?>/#labTeamContainer<?php echo $current_team;?>" ><?php echo _("Go to my team");?></a>
 <?php			}?>
@@ -223,9 +250,9 @@
 						</div>
 						</div>
 						<p class='labInfo'><?php echo $team_info[$i];?></p>
-						<label>Students</label><p class='labTeamStudents' id="labTeamStudents<?php echo $id[$i];?>"><?php echo $students[$i];?></p>
+						<label>Students<?php if($team_size_limit) echo "(".$students_count[$i]."/$team_size_limit)";?></label><p class='labTeamStudents' id="labTeamStudents<?php echo $id[$i];?>"><?php echo $students[$i];?></p>
 <?php						if($can_view_files[$i]){?>
-						<label>Files</label><p class='labTeamFiles' id="labTeamFiles<?php echo $id[$i];?>"><?php echo $files[$i];?></p>
+						<label>Files<?php if($upload_limit) echo "(".$files_count[$i]."/$upload_limit)";?></label><p class='labTeamFiles' id="labTeamFiles<?php echo $id[$i];?>"><?php echo $files[$i];?></p>
 <?php							if(can_upload_lab_team_file($logged_userid,$id[$i])){?>
 								<div class='newFileWrapper'>
 									<fieldset>
@@ -249,13 +276,13 @@
 						if($c1 || $c2){?>
 							<div class='joinLabTeamContainer'>
 <?php							if($c1){?>
-								<p><a href="join_lab_team.php?tid=<?php echo $id[$i];?>" ><?php echo _('Join team');?></a></p>
+								<p><a href="join_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/add.png' class='icon addIcon' alt="<?php echo _('Add');?>" title="<?php echo _('Join team');?>" /><?php echo _('Join');?></a></p>
 <?php							}?>
 <?php							if($c2){?>
-								<p><a href="leave_lab_team.php?tid=<?php echo $id[$i];?>" ><?php echo _('Leave team');?></a></p>
+								<p><a href="leave_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/substract.png' class='icon minusIcon' alt="<?php echo _('Leave');?>" title="<?php echo _('Leave team');?>" /><?php echo _('Leave');?></a></p>
 <?php							}?>
 <?php							if($c3){?>
-								<p><a href="delete_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/trash_can.png' class='icon deleteIcon' alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /><?php echo _('Delete team');?></a></p>
+								<p><a href="delete_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/trash_can.png' class='icon deleteIcon' alt="<?php echo _('Delete');?>" title="<?php echo _('Delete team');?>" /><?php echo _('Delete');?></a></p>
 <?php							}?>
 							</div>
 <?php						}?>
@@ -281,7 +308,10 @@
 									alert(ob.error);
 								} else {
 									if($('#labTeamStudents'+teamId).find('.user').size() == 1)
+									{
 										$('#labTeamStudents'+teamId).html("<?php echo _('No students.');?>");
+										window.location.reload();
+									}									
 									$('#labTeamStudents'+teamId +' #user'+id).remove();
 								}
 							});
@@ -325,26 +355,15 @@
 			});
 			</script>
 			</div>
-<?php			if(can_create_lab_team($logged_userid,$lid)){?>
-				<a href="javascript:void(0)" id='createLabTeamLink'><?php echo _('Create new team');?></a>
-				<script type='text/javascript'>
-				$(document).ready(function(){
-					$('#createLabTeamLink').click(function(){
-							var s = "<form style='display:none' action='new_lab_team.php' method='post'>";
-							s += "<input type='hidden' name='lid' value='"+<?php echo $lid;?>+"' />";
-							s += '</form>';
-							var form = $(s).appendTo('body');
-							form.submit(); 	
-					});
-				});
-				</script>	
-<?php			};?>
 <?php			if(can_create_lab_teams_bulk($logged_userid,$lid)){?>
 				<form action='new_lab_teams_bulk.php' method='post'>
+				<fieldset>
+					<legend><?php echo _('Bulk create teams');?></legend>
 					<p><?php echo sprintf(_('Create %s new teams'),"<input class='countInput' name='count' value='1'/>");?>
 						<input type='hidden' name='lid' value="<?php echo $lid;?>" />
 						<input type='submit' value="<?php echo _('Go');?>" />
 					</p>
+				</fieldset>
 				</form> 
 <?php			};?>
 		</div>
