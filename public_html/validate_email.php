@@ -3,7 +3,7 @@
 	include_once('../lib/login.php');
 	include_once("../lib/access_rules.php");
 	include_once("../lib/localization.php");
-	include_once("../public_html/validate_email.php");
+	include_once("../lib/validate.php");
 	include_once("../config/general.php");
 	
 	if(!isset($error)) 
@@ -22,12 +22,12 @@
 			if (!$is_validated)
 			{
 				$to = $email;
-				$subject = '[ethmmy] Validate your email';
+				$subject = _('[ethmmy] Validate your email');
 				
 				//Work to be done		
 				$message = '<placeholder>';
 
-				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
+				$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message, $headers))
 				{
 					echo false;

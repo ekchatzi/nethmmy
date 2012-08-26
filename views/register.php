@@ -10,7 +10,7 @@
 			<input type='text' name='username' id='username' placeholder="<?php echo _('Your unique username');?>" />
 			<label><?php echo _('Password');?></label>
 			<input type='password' name='password' id='password' placeholder="<?php echo _('Your login password');?>" />
-			<label><?php echo _('Password Again');?></label>
+			<label><?php echo _('Confirm Password');?></label>
 			<input type='password' name='password_again' id='password_again' placeholder="<?php echo _('Your login password again');?>" />
 			<label><?php echo _('First Name');?></label>
 			<input type='text' name='first_name' id='first_name' placeholder="<?php echo _('Your first name');?>" />
@@ -22,7 +22,7 @@
 			<input type='text' name='aem' id='aem' placeholder="<?php echo _('Your AEM');?>" />
 			<label id='semesterLabel'><?php echo _('Semester');?></label>
 			<input type='text' name='semester' id='semester' placeholder="<?php echo _('Your current semester');?>" />
-			<input type='submit' value = "<?php echo _('Send');?>" class='submit'/>
+			<input type='submit' value = "<?php echo _('Send');?>" class='submit' id='button'/>
 		</fieldset>
 	</form>
 </div>
@@ -318,10 +318,10 @@ $(document).ready(function(){
 	$('#username').focusout(username_check);
 	//User type form formatting//
 	$('#professor_radio').click(function() {	
-		$('#aemLabel, #semesterLabel, #aem, #semester').fadeOut('fast');//css("display","none");
+		$('#aemLabel, #semesterLabel, #aem, #semester').hide('fast');
 	});
 	$('#student_radio').click(function() {	
-		$('#aemLabel, #semesterLabel, #aem, #semester').fadeIn('fast');//css("display","block");
+		$('#aemLabel, #semesterLabel, #aem, #semester').show('fast');
 	});
 });
 </script>
