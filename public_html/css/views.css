@@ -288,14 +288,15 @@
 	top:10px;
 	right:10px;
 }
-
 .file {
 	display:inline-block;
 }
 .user {
 	display:inline-block;
 }
-
+.teamsWrapper {
+	margin-top:35px;
+}
 /*CLASSES VIEW*/
 .classesWrapper {
 	width: 500px;

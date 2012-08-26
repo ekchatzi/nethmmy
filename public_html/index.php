@@ -74,7 +74,7 @@
 		</div>
 		<div class='topNavigation'>
 			<ul>
-				<li><a href='home/'><?php echo _('Home');?></a></li>
+				<li><a id='homeLink' href='home/'><?php echo _('Home');?></a></li>
 <?php				if($logged_userid)
 				{?>
 					<li><a href='logout.php'><?php echo _('Logout');?></a></li>			

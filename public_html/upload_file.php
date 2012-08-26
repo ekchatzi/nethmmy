@@ -17,15 +17,15 @@
 		if(can_upload_file($logged_userid,$folder))
 		{
 			$uploaddir = "../file_store/";
-			if($name == 'default')
-				$name = pathinfo($file['name'],PATHINFO_FILENAME);
+			
 			//get the base name
 			$uploadfilebase= $uploaddir .pathinfo($file['name'],PATHINFO_FILENAME); 
 			$uploadfile = $uploadfilebase;
 			//get extension				
 			$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 			$uploadfile = $uploadfilebase .".$ext";
-		
+			if($name == 'default')
+					$name = pathinfo($file['name'],PATHINFO_BASENAME);
 			$suffixno = 0;
 			//if file exists add a number at end of 
 			//basename in iterative manner until we

@@ -33,7 +33,7 @@
 
 				$uploaddir = "../file_store/";
 				if($name == 'default')
-					$name = pathinfo($file['name'],PATHINFO_FILENAME);
+					$name = pathinfo($file['name'],PATHINFO_BASENAME);
 				//get the base name
 				$uploadfilebase= $uploaddir .pathinfo($file['name'],PATHINFO_FILENAME); 
 				$uploadfile = $uploadfilebase;

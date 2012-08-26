@@ -187,7 +187,7 @@
 		if($c1 || $c2) {?>
 			<div class='editOptionsWrapper'>
 <?php			if($c1) {?>
-				<a class='editLink' href="edit_lab/<?php echo $lid;?>/" ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+				<a href="edit_lab/<?php echo $lid;?>/" ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 <?php			};?>
 <?php			if($c2) {?>
 				<a class='deleteLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>

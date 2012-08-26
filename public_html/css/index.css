@@ -58,10 +58,12 @@ pre {
 	background-color:#796BE0;
 	color:white;
 	border:1px solid black;
+	border-top:0px;
 	width:1015px;
 	display:inline-block;
 	padding:3px;
 	padding-top:5px;
+	position:relative;
 }
 .topBar a {
 	color:white;
@@ -106,7 +108,7 @@ pre {
 	width:1015px;
 	border:1px solid black;
 	padding:3px;
-	margin:auto;
+	margin:-5px auto auto;
 }
 
 .headerMain p {
@@ -121,12 +123,13 @@ pre {
 	margin:auto;
 }
 .navigationSide {
-	width:180px;
+	width:184px;
 	display:inline-block;
 	border:1px solid black;
 	padding:5px;
 	vertical-align:top;
 	background-color:white;
+	margin-top:-6px;
 }
 .navigationSide ul {
 	list-style:none;
@@ -139,12 +142,14 @@ pre {
 	display:inline-block;
 	vertical-align:top;
 	padding:15px;
-	width:790px;
+	width:796px;
 	min-height:320px;
 	background-color:white;
 	border:1px solid black;
 	text-align:left;
 	position:relative;
+	margin-top:-6px;
+	margin-left:-7px;
 }
 
 .footer {
@@ -163,7 +168,6 @@ pre {
 	display:none;
 	z-index:8;
 	height:25px;
-	width:1003px;
 }
 #showLoginLink {
 	z-index:10;
