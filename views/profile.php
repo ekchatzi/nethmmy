@@ -116,10 +116,10 @@
 				<ul>
 					<li><label><?php echo _("Email");?>: </label><?php echo $email;?>
 							   <?php if ($is_email_validated) {?>
-							   <img alt='valid' src='../public_html/images/resource/checkIcon.png' height='2%' width='2%'/>
+							   <img alt='valid' src='images/resource/checkIcon.png' height='12px' width='15px'/>
 							   <?php }?>
 							   <?php if (!$is_email_validated) {?>
-							   <img id='invalidIcon' alt='invalid' src='../public_html/images/resource/crossIcon.png' height='2%' width='2%'/>
+							   <img id='invalidIcon' alt='invalid' src='images/resource/crossIcon.png' height='12px' width='11px'/>
 <?php 						   			if (can_send_validation_email($logged_userid, $logged_userid)) {?>							   
 											<a id='validateHref' href='javascript:void(0)'>Send validation email</a>
 											<script>
@@ -127,12 +127,13 @@
 													$('#validateHref').click(function(){
 														$.ajax({
 														   type: "POST",
-														   url: "../public_html/validate_email.php",
+														   url: "../public_html/validate_email.php?AJAX",
 														   data: 'uid='+ <?php echo $logged_userid;?>,
 														   cache: false,
-														   success: function(response){
-																if(response){
-																	//var ob = $.parseJSON(response);
+														   success: function(response) {
+																//works only when email server is set up correctly
+																var ob = $.parseJSON(response);
+																if(ob.error!='') {
 																	alert(response);
 																}
 																else {

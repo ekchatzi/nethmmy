@@ -65,7 +65,7 @@
 			*/
 #invalidIcon {
 	position: relative;
-	top: 3px;
+	top: 1px;
 }
 #validateHref {
 	font-size: 8pt;
@@ -86,7 +86,16 @@
 	height:80px;
 	resize:vertical;
 }
-
+div#receiveUrgents {
+	display: inline;
+	font-size: 8pt;
+}
+#receiveUrgents  input{
+	margin-right: 5px;
+	top: 2px;
+	position: relative;
+	margin-left: 10px;
+}
 /*
 	EDIT CLASS VIEW
 				*/
@@ -175,7 +184,15 @@
 	width:767px;
 	height:80px;
 	resize:vertical;
+	background-color: white;
 }
+
+.nicEdit-main {
+	background-color: white;
+	margin: 0px;
+	width: 767px;
+}
+
 .announcementTitle {
 
 }
@@ -207,6 +224,16 @@
 
 .editAnnouncementWrapper label {
 	display:block;
+}
+.urgentDiv {
+	display: inline;
+	float: right;
+	margin-right: 20px;
+	font-size: 10pt;
+}
+.urgentDiv input {
+	top: 2px;
+	position: relative;
 }
 
 /*
@@ -360,7 +387,9 @@
 }
 #button {
 	margin-top: 20px;
+	text-decoration: none;
 }
+
 .editClassAssociationTypes label,.submit {
 	display:block;
 }
@@ -395,5 +424,4 @@
 .professorName a:hover {
 	text-decoration: underline;
 }
-
 

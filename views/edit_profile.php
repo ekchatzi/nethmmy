@@ -32,6 +32,7 @@
 				$website = $result['website'];
 				$title_id = $result['title'];
 				$is_active = $result['is_active'];
+				$email_urgent = $result['email_urgent'];
 
 				$title_list_id = array();
 				$title_list_title = array();
@@ -77,7 +78,8 @@
 				<li><label><?php echo _("ΑΕΜ");?> </label><input type='text' name='aem' value="<?php echo $aem;?>" placeholder="<?php echo _('Your AEM');?>"/></li>
 <?php		}?>
 				<li><label><?php echo _("Semester");?> </label><input type='text' name='semester' value="<?php echo ($semester + floor((time() - $semester_update)/(60*60*24*30*6)));?>" placeholder="<?php echo _('Your current semester');?>"/></li>
-				<li><label><?php echo _("Email");?> </label><input type='text' name='email' value="<?php echo $email;?>" placeholder="<?php echo _('Your email address');?>" /></li>
+				<li><label><?php echo _("Email");?> </label><input type='text' name='email' value="<?php echo $email;?>" placeholder="<?php echo _('Your email address');?>" />
+				<div id='receiveUrgents'><input type='checkbox' name='send_urgent' value='1' <?php if(isset($email_urgent)&&$email_urgent) echo "checked='true'";?>/><?php echo _('Send urgent announcements to this mail');?></div></li>
 				<li><label><?php echo _("Telephone");?></label><input type='text' name='telephone' value="<?php echo $telephone;?>" placeholder="<?php echo _('Your telephone number');?>" /></li>
 				<li><label><?php echo _("Website");?> </label><input type='text' name='website' value="<?php echo $website;?>" placeholder="<?php echo _('Your personal website URL');?>" /></li>
 			</ul>
