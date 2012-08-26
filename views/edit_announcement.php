@@ -72,7 +72,7 @@
 		<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 		<script type='text/javascript'>
 			bkLib.onDomLoaded(function() {
-				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','indent','outdent','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml']}, xhtml : true).panelInstance('editArea');
+				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','indent','outdent','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
 			}); 
 		</script>
 <?php	}?>
