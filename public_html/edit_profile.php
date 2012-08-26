@@ -20,6 +20,7 @@
 	$title = isset($_POST['title'])?$_POST['title']:'';
 	$bio =  isset($_POST['bio'])?$_POST['bio']:'';
 	$uid =  isset($_POST['uid'])?$_POST['uid']:'0';
+	$email_urgent = isset($_POST['send_urgent'])?$_POST['send_urgent']:'0';
 	/* check input */
 	if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name))
 	   || ($e = email_validation($email)) || ($e = website_validation($website))
@@ -28,6 +29,21 @@
 	{
 		if(can_edit_account($logged_userid,$uid))
 		{
+			/*check email validation*/
+			$query = "SELECT email, is_email_validated FROM users WHERE id = '$uid' LIMIT 1";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret))
+			{
+				$result = mysql_fetch_array($ret);
+				if($result['email'] != mysql_real_escape_string($email) && $result['is_email_validated']==1)
+				{	
+					$query = "UPDATE users SET
+							is_email_validated='0'
+							WHERE id='$uid' LIMIT 1";
+					mysql_query($query) || ($error .= mysql_error());
+				}
+			}
+			
 			/* basic info */
 			$query = "UPDATE users SET
 					email='".mysql_real_escape_string($email)."',
@@ -38,7 +54,8 @@
 					website='".mysql_real_escape_string($website)."',
 					telephone='".mysql_real_escape_string($telephone)."',
 					semester='$semester',
-					semester_update_time='".time()."'
+					semester_update_time='".time()."',
+					email_urgent=$email_urgent
 					WHERE id='$uid' LIMIT 1";
 			mysql_query($query) || ($error .= mysql_error());
 

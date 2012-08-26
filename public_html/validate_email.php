@@ -22,12 +22,12 @@
 			if (!$is_validated)
 			{
 				$to = $email;
-				$subject = '[ethmmy] Validate your email';
+				$subject = _('[ethmmy] Validate your email');
 				
 				//Work to be done		
 				$message = '<placeholder>';
 
-				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
+				$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message, $headers))
 				{
 					echo false;

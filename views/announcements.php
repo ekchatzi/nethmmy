@@ -85,9 +85,13 @@
 					<legend><?php echo _('New announcement');?></legend>
 					<form action='new_announcement.php' method='post'>
 						<label><?php echo _('Title');?></label>
-						<input type='text' name='title' placeholder="<?php echo _('Announcement title here...');?>" />
+						<input class='newAnnouncementTitle' size='50' type='text' name='title' placeholder="<?php echo _('Announcement title here...');?>" />
+						<div class='urgentDiv'>
+						<?php echo _('Urgent');?>
+						<input type='checkbox' name='urgent' value='1'/>
+						</div>
 						<label><?php echo _('Body');?></label>
-						<textarea class='announcementTextarea' name='text' placeholder="<?php echo _('Announcement body here...');?>" ></textarea>
+						<textarea class='announcementTextarea' id='editArea' name='text' placeholder="<?php echo _('Announcement body here...');?>" ></textarea>
 						<input type='hidden' name='class' value="<?php echo $cid;?>" />
 						<input type='submit' value="<?php echo _('Post announcement');?>" />
 					</form>
@@ -115,6 +119,7 @@
 			<p><?php echo _('No announcements yet.');?></p>
 <?php		}?>
 <?php		if($edit) {?>
+			<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					var classId = "<?php echo $cid;?>";
@@ -129,6 +134,9 @@
 						}
 					});
 				});
+				bkLib.onDomLoaded(function() {
+				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','indent','outdent','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
+				}); 
 			</script>
 <?php		}?>
 <?php	}?>
