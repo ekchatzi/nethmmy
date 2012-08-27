@@ -8,6 +8,13 @@
 	$show = false;
 	$user_name = _('Some user');
 	$uid = isset($_GET['id'])?$_GET['id']:0;
+	$users_link = _('Users');
+	if(user_type($uid) == 'p')
+	{
+		$users_link = _('Professors');
+		if(can_view_professor_list($logged_userid))
+			$users_link = "<a href='professors/'>$users_link</a>";
+	}
 	if(!($e = user_id_validation($uid)))
 	{
 		$query = "SELECT * FROM users WHERE id='$uid' LIMIT 1";
@@ -99,6 +106,7 @@
 	}
 ?>
 <h2><?php echo $user_name;?></h2>
+<p class='hierarchyNavigationRow'><?php echo $users_link . " > " . $user_name;?></p>
 <div class='profileWrapper'>
 <?php	if($show) {?>
 	<p><?php echo $title;?></p>

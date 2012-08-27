@@ -10,6 +10,9 @@
 	$edit_class = false;
 	$edit_associations = false;
 	$class_link = _('Edit class');
+	$classes_link = _('Classes');
+	if(can_view_classes_list($logged_userid))
+		$classes_link = "<a href='classes/'>$classes_link</a>";
 	$cid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = class_id_validation($cid)))
 	{
@@ -97,7 +100,7 @@
 		$error .= _('Access Denied');
 ?>
 <h2><?php echo _('Edit Class');?></h2>
-<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('Edit Class');?></p>
+<p class='hierarchyNavigationRow'><?php echo $classes_link . " > " .$class_link . " > " . _('Edit Class');?></p>
 <div class='editClassWrapper'>
 <?php	if($show) {?>
 <?php		if($edit_class) {?>

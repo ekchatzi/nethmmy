@@ -52,6 +52,12 @@
 	$view['edit_titles'] = '../views/edit_titles.php';
 	$view_title['edit_titles'] = _('Edit Titles');
 
+	$view['inactive'] = '../views/inactive.php';
+	$view_title['inactive'] = _('Inactive accounts');
+
+	$view['stats'] = '../views/stats.php';
+	$view_title['stats'] = _('Statistics');
+
 	$view['register'] = '../views/register.php';
 	$view_title['register'] = _('Register Application');
 	

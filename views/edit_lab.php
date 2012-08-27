@@ -6,7 +6,8 @@
                 $error = '';
 
 	$show = false;
-	$lab_name = _('Some Lab');
+	$class_link = _('Some class');
+	$lab_link = _('Some Lab');
 	$lid = isset($_GET['id'])?$_GET['id']:0;
 	if(!($e = lab_id_validation($lid)))
 	{
@@ -19,7 +20,7 @@
 				$show = true;
 				$result = mysql_fetch_array($ret);
 				$title = $result['title'];
-				$lab_name = "<a href='lab/$lid/' >$title</a>";
+				$lab_link = "<a href='lab/$lid/' >$title</a>";
 				$description = $result['description'];
 				$register_expire = $result['register_expire'];
 				$upload_expire = $result['upload_expire'];
@@ -30,6 +31,15 @@
 				$can_make_new_teams = $result['can_make_new_teams'];
 				$team_limit = $result['team_limit'];
 				$team_size_limit = $result['users_per_team_limit'];
+				$class = $result['class'];
+				$query = "SELECT title FROM classes WHERE id='$class'";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					$class_link = mysql_result($ret,0,0);
+					if(can_view_class($logged_userid,$class))
+						$class_link = "<a href='class/$class/'>$class_link</a>";
+				}
 			}
 			else
 			{
@@ -46,7 +56,8 @@
 		$error .= $e;
 	}
 ?>
-<h2> <?php echo sprintf(_('Edit %s'),$lab_name);?> </h2>
+<h2> <?php echo _('Edit Lab/assignment');?> </h2>
+<p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('Labs/Assignements') . " > " .$lab_link . " > " . _('Edit Lab');?></p>
 <div class='newLabWrapper'>
 <?php	if($show) {?>
 		<script type='text/javascript'>

@@ -9,6 +9,9 @@
 	$class_title = _('Class information');
 	$description = _('There is no description yet.');
 	$cid = isset($_GET['id'])?$_GET['id']:0;
+	$classes_link = _('Classes');
+	if(can_view_classes_list($logged_userid))
+		$classes_link = "<a href='classes/'>$classes_link</a>";
 	if(!($e = class_id_validation($cid)))
 	{
 		$query = "SELECT * FROM classes WHERE id='$cid' LIMIT 1";
@@ -67,6 +70,7 @@
 	}
 ?>
 <h2><?php echo $class_title;?></h2>
+<p class='hierarchyNavigationRow'><?php echo $classes_link . " > " . $class_title;?></p>
 <div class='classWrapper'>
 <?php	if($show) {?>
 		<p><?php echo sprintf(_('Taught on semester(s) %s'),$result['semesters']);?></p>
