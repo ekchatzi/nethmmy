@@ -77,6 +77,10 @@
 	{
 		return true;
 	}
+	function can_view_class_directories($user, $targer_user)
+	{
+		return true;
+	}
 	function can_edit_class($user,$class_id)
 	{
 		return true;

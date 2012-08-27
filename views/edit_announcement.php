@@ -53,11 +53,11 @@
 <p class='hierarchyNavigationRow'><?php echo $class_link . " > " . $announcements_link . " > " . _('Edit Announcement');?></p>
 <div class='editAnnouncementWrapper'>
 <?php	if($show) {?>
-		<form action="edit_announcement.php" method="post">
+		<form action="edit_announcement.php" method="post" onsubmit="return validate(this)">
 			<fieldset>
 				<legend><?php echo _('Announcement');?></legend>		
 				<label><?php echo _('Title');?> </label>
-				<input type='text' name='title' value="<?php echo $title;?>" placeholder="<?php echo _('Announcement title here...');?>" />
+				<input type='text' name='title' id='title' size='50' value="<?php echo $title;?>" placeholder="<?php echo _('Announcement title here...');?>" />
 				<div class='urgentDiv'>
 				<?php echo _('Urgent');?>
 				<input type='checkbox' name='urgent' value='1' <?php if($is_urgent) echo "checked='true'";?>/>
@@ -66,14 +66,24 @@
 				<textarea class='announcementTextarea' id='editArea' name='text' placeholder="<?php echo _('Announcement body...');?>" ><?php echo $text;?></textarea>
 				<input type='hidden' name='id' value="<?php echo $id;?>" />
 				<input type="submit" value="<?php echo _('Submit');?>" />
-				<a id='button' href="announcements/<?php echo $class;?>/"><input type="button" name="cancel" value="Cancel" /></a>
+				<a id='cancelButton' href="announcements/<?php echo $class;?>/"><input type="button" name="cancel" value="Cancel" /></a>
 			</fieldset>
 		</form>
 		<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 		<script type='text/javascript'>
 			bkLib.onDomLoaded(function() {
-				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','indent','outdent','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
+				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
 			}); 
+			
+			//check the title//
+			function validate(form) {
+				var title = form.title.value;
+				if (title.length<1) {
+					inlineMsg('title','<?php echo _('You have to enter a title');?>', 2, 0);
+					return false;
+				}
+				return true;
+			}
 		</script>
 <?php	}?>
 </div>

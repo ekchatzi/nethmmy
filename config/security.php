@@ -14,7 +14,7 @@
 	$MAX_TELEPHONE_NUMBER_LENGTH = 15;
 	$MIN_TELEPHONE_NUMBER_LENGTH = 7;
 
-	$ALLOWED_HTML_TAGS = "<b><i><em><br><hr><a><img><table><td><th><tr><p><ul><ol><li><strong>";
+	$ALLOWED_HTML_TAGS = "<b><i><em><br><hr><a><img><table><td><th><tr><p><ul><ol><li><strong><sup><sub><u><strike>";
 	$ALLOWED_HTML_ATTRIBUTES = array('href','src','title','alt','type','rowspan','colspan','lang');
 
 	$USER_TYPES = array(0 => 'g', 1 => 's', 2 => 'p', 3 => 'a');

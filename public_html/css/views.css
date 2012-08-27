@@ -65,7 +65,7 @@
 			*/
 #invalidIcon {
 	position: relative;
-	top: 1px;
+	top: 3px;
 }
 #validateHref {
 	font-size: 8pt;
@@ -143,7 +143,7 @@ div#receiveUrgents {
 	font-size: 80%;
 	background-color: #d4d6e8;
 	display: block;
-	margin-left: 2px;
+	margin-left: 4px;
 	width: 156px;
 	margin-top: 0px;
 	text-decoration: none;
@@ -174,6 +174,10 @@ div#receiveUrgents {
 .globalNav {
 	font-size: 10.3pt;
 }
+.openClass {
+	margin-bottom: 5px;
+	border-bottom: 1px solid grey;
+}
 /*
 	ANNOUNCEMENT VIEW
 				*/
@@ -181,16 +185,17 @@ div#receiveUrgents {
 	display:block;
 }
 .announcementTextarea {
-	width:767px;
+	width: 100%;
 	height:80px;
 	resize:vertical;
+	word-wrap: break-word;
 	background-color: white;
 }
 
 .nicEdit-main {
 	background-color: white;
 	margin: 0px;
-	width: 767px;
+	word-wrap: break-word;
 }
 
 .announcementTitle {
@@ -234,6 +239,9 @@ div#receiveUrgents {
 .urgentDiv input {
 	top: 2px;
 	position: relative;
+}
+#cancelButton {
+	text-decoration: none;
 }
 
 /*
@@ -385,10 +393,7 @@ div#receiveUrgents {
 .classField {
 	margin-bottom: 12px;
 }
-#button {
-	margin-top: 20px;
-	text-decoration: none;
-}
+
 
 .editClassAssociationTypes label,.submit {
 	display:block;

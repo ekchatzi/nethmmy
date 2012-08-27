@@ -100,3 +100,171 @@ null;this.oDiv.find(".AnyTime-off-off-btn").each(function(){this.AnyTime_offMin=
 (d=-1,j=0-j);var j=AnyTime.pad(j,4),l=h.earliest&&(new Date(h.earliest)).getFullYear(),k=h.latest&&(new Date(h.latest)).getFullYear();a=0;this.yDiv.find(".AnyTime-mil-btn").each(function(){b=(!h.earliest||d*(a+(d<0?0:999))>=l)&&(!h.latest||d*(a+(d>0?0:999))<=k);g(this).AnyTime_current(this.innerHTML==j.substring(0,1),b);a=a+1E3});a=1E3*Math.floor(j/1E3);this.yDiv.find(".AnyTime-cent-btn").each(function(){b=(!h.earliest||d*(a+(d<0?0:99))>=l)&&(!h.latest||d*(a+(d>0?0:99))<=k);g(this).AnyTime_current(this.innerHTML==
 j.substring(1,2),b);a=a+100});a=100*Math.floor(j/100);this.yDiv.find(".AnyTime-dec-btn").each(function(){b=(!h.earliest||d*(a+(d<0?0:9))>=l)&&(!h.latest||d*(a+(d>0?0:9))<=k);g(this).AnyTime_current(this.innerHTML==j.substring(2,3),b);a=a+10});a=10*Math.floor(j/10);this.yDiv.find(".AnyTime-yr-btn").each(function(){b=(!h.earliest||d*a>=l)&&(!h.latest||d*a<=k);g(this).AnyTime_current(this.innerHTML==j.substring(3),b);a=a+1});this.yDiv.find(".AnyTime-bce-btn").each(function(){g(this).AnyTime_current(d<
 0,!h.earliest||h.earliest<0)});this.yDiv.find(".AnyTime-ce-btn").each(function(){g(this).AnyTime_current(d>0,!h.latest||h.latest>0)});this.conv.setUtcFormatOffsetAlleged(this.offMin);this.conv.setUtcFormatOffsetSubIndex(this.offSI);this.inp.val(this.conv.format(this.time)).change();this.upd(c)}};y[l].initialize(l)};AnyTime.setEarliest=function(g,k){y[g].setEarliest(k)};AnyTime.setLatest=function(g,k){y[g].setLatest(k)}})(jQuery);
+
+
+
+// START OF MESSAGE SCRIPT //
+
+var MSGTIMER = 20;
+var MSGSPEED = 5;
+var MSGOFFSET = 3;
+var MSGHIDE = 3;
+
+// build out the divs, set attributes and call the fade function //
+function inlineMsg(target,string,autohide, type) {
+  var msg;
+  var msgcontent;
+  if (type==0) {
+	  if(!document.getElementById('msg')) {
+		msg = document.createElement('div');
+		msg.id = 'msg';
+		msgcontent = document.createElement('div');
+		msgcontent.id = 'msgcontent';
+		document.body.appendChild(msg);
+		msg.appendChild(msgcontent);
+		msg.style.filter = 'alpha(opacity=0)';
+		msg.style.opacity = 0;
+		msg.alpha = 0;
+	  } 
+	  else {
+			msg = document.getElementById('msg');
+			msgcontent = document.getElementById('msgcontent');
+	  }
+  }
+  else {
+	  if(!document.getElementById('msg2')) {
+		msg = document.createElement('div');
+		msg.id = 'msg2';
+		msgcontent = document.createElement('div');
+		msgcontent.id = 'msgcontent2';
+		document.body.appendChild(msg);
+		msg.appendChild(msgcontent);
+		msg.style.filter = 'alpha(opacity=0)';
+		msg.style.opacity = 0;
+		msg.alpha = 0;
+	  } 
+	  else {
+			msg = document.getElementById('msg2');
+			msgcontent = document.getElementById('msgcontent2');
+	  }
+  }
+		
+  msgcontent.innerHTML = string;
+  msg.style.display = 'block';
+  var msgheight = msg.offsetHeight;
+  var targetdiv = document.getElementById(target);
+  if (type==0) {
+	targetdiv.focus();
+  }
+  var targetheight = targetdiv.offsetHeight;
+  var targetwidth = targetdiv.offsetWidth;
+  var topposition = topPosition(targetdiv) - ((msgheight - targetheight) / 2);
+  var leftposition = leftPosition(targetdiv) + targetwidth + MSGOFFSET;
+  msg.style.top = topposition + 'px';
+  msg.style.left = leftposition + 'px';
+  clearInterval(msg.timer);
+  if (type==0) {
+	msg.timer = setInterval("fadeMsg(1, 0)", MSGTIMER);
+  }
+  else {
+	msg.timer = setInterval("fadeMsg(1, 1)", MSGTIMER);
+  }
+  if(!autohide) {
+    autohide = MSGHIDE;  
+  }
+  if (type==0) {
+	window.setTimeout("hideMsg(1, 0)", (autohide * 1000));
+  }
+  else {
+	window.setTimeout("hideMsg(1, 1)", (autohide * 1000));
+  }
+}
+
+// hide the form alert //
+function hideMsg(msg, type) {
+  if (type==0) {
+	  var msg = document.getElementById('msg');
+	  if(!msg.timer) {
+		msg.timer = setInterval("fadeMsg(0, 0)", MSGTIMER);
+	  }
+  }
+  else {
+	var msg = document.getElementById('msg2');
+	  if(!msg.timer) {
+		msg.timer = setInterval("fadeMsg(0, 1)", MSGTIMER);
+	  }
+  }
+}
+
+// fade the message box //
+function fadeMsg(flag, type) {
+  if(flag == null) {
+    flag = 1;
+  }
+  if (type==0) {
+	var msg = document.getElementById('msg');
+  }
+  else {
+    var msg = document.getElementById('msg2');
+  }
+  var value;
+  if(flag == 1) {
+    value = msg.alpha + MSGSPEED;
+  } else {
+    value = msg.alpha - MSGSPEED;
+  }
+  msg.alpha = value;
+  msg.style.opacity = (value / 100);
+  msg.style.filter = 'alpha(opacity=' + value + ')';
+  if(value >= 99) {
+    clearInterval(msg.timer);
+    msg.timer = null;
+  } else if(value <= 1) {
+    msg.style.display = "none";
+    clearInterval(msg.timer);
+  }
+}
+
+// calculate the position of the element in relation to the left of the browser //
+function leftPosition(target) {
+  var left = 0;
+  if(target.offsetParent) {
+    while(1) {
+      left += target.offsetLeft;
+      if(!target.offsetParent) {
+        break;
+      }
+      target = target.offsetParent;
+    }
+  } else if(target.x) {
+    left += target.x;
+  }
+  return left;
+}
+
+// calculate the position of the element in relation to the top of the browser window //
+function topPosition(target) {
+  var top = 0;
+  if(target.offsetParent) {
+    while(1) {
+      top += target.offsetTop;
+      if(!target.offsetParent) {
+        break;
+      }
+      target = target.offsetParent;
+    }
+  } else if(target.y) {
+    top += target.y;
+  }
+  return top;
+}
+
+// preload the arrow //
+if(document.images) {
+  arrow1 = new Image(7,80); 
+  arrow1.src = "js/images/msg_arrow.gif"; 
+  arrow2 = new Image(7,80); 
+  arrow2.src = "js/images/msg_arrow2.png"; 
+}
+
+//END OF MESSAGE SCRIPT

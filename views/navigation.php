@@ -7,10 +7,16 @@
         $error = '';
 	}
 	
-	//special case for v=lab or v=edit_lab or v=files because they have special ids//
+	$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'), 'edit_announcement' => _('Announcements'));
+	$classes = '';
+	$v = isset($_GET['v'])?$_GET['v']:'';
+	
+	//Get the class id according to view//
 	if(isset($_GET['id']))
 	{
+
 		$id = $_GET['id'];
+			
 		if($v=='lab' || $v=='edit_lab')
 		{
 			$query = "SELECT class FROM labs WHERE id = '$id'";
@@ -24,7 +30,7 @@
 				$id = 0;
 			}
 		}
-		if($v=='files')
+		elseif($v=='files')
 		{
 			$query = "SELECT class FROM file_folders WHERE id = '$id'";
 			$ret = mysql_query($query);
@@ -37,60 +43,50 @@
 				$id = 0;
 			}
 		}
-	}
-	$classes = '';
-	$v = isset($_GET['v'])?$_GET['v']:'';
-	
-	//different cases for different users//
-	if(user_type($logged_userid)=='p')
-	{
-		$query = "SELECT class FROM class_associations WHERE user = '$logged_userid'";
-		$ret = mysql_query($query);
-		if($ret && mysql_num_rows($ret)) 
+		elseif($v=='edit_announcement')
 		{
-			$classesar = array();
-			while($row = mysql_fetch_array($ret)) 
+			$query = "SELECT class FROM announcements WHERE id = '$id'";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret) && ($cid = mysql_result($ret,0,0)))
 			{
-				$classesar[] = $row['class'];
+				$id=$cid;
 			}
-			$classes=implode(',',$classesar);
+			else 
+			{
+				$id = 0;
+			}
 		}
-	}
-	elseif(user_type($logged_userid)=='s')
-	{
-		$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
-		$ret = mysql_query($query);
-		if($ret && mysql_num_rows($ret))
+		elseif(!($id>0&&array_key_exists($v, $view_accept)))
 		{
-			$classes = mysql_result($ret,0,0);
+			$id = 0;
 		}
-	}
-	
-	
-	if (!($e=id_list_validation($classes)))
-	{
-		$query = "SELECT * FROM classes WHERE id IN($classes) ORDER BY title ASC";
-		$ret = mysql_query($query);
-		$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'));
-		if($ret && mysql_num_rows($ret)) 
+		
+		if($id>0)
 		{	
-			echo "<div class='navigationClasses'>";
-			while($row = mysql_fetch_array($ret)) 
-			{	
-				echo "<li><a href='class/".$row['id']."/'  class='navigationTitles'";
-				if (isset($id)&&$id>0&&$id==$row['id']&&array_key_exists($v, $view_accept)) 
+			$first = $id;
+			$query = "SELECT * FROM classes WHERE id='$id' LIMIT 1";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret))
+			{
+				$result = mysql_fetch_array($ret);
+				
+				echo "<div class='openClass'><li><a href='class/".$result['id']."/'  class='navigationTitles' id='navigationClassHl'>".$result['title']."</a>";
+				if(can_view_class_directories($logged_userid,$logged_userid))
 				{
-					echo "id='navigationClassHl'>".$row['title']."</a>";
 					echo "<ul>";
 					$view_names = array('announcements' => _('Announcements'), 'class_files' => _('Files'));
 					foreach ($view_names as $view => $view_title) 
 					{
-						echo "<li><a href=".$view."/".$row['id']."/ ";
+						echo "<li><a href=".$view."/".$result['id']."/ ";
 						if (isset($v)&&$v==$view) 
 						{
 							echo "id='navigationHl'";
 						}
 						elseif (isset($v)&&$view=='class_files'&&$v=='files')
+						{
+							echo "id='navigationHl'";
+						}
+						elseif (isset($v)&&$view=='announcements'&&$v=='edit_announcement')
 						{
 							echo "id='navigationHl'";
 						}
@@ -123,11 +119,59 @@
 						}
 						echo "class='navigationClassDirectories'>"._("New Lab")."</a></li>";
 					}
-					echo "</ul></li>";
+					echo "</ul>";	
 				}
-				else 
+				echo "</li></div>";
+			}
+		}
+	}
+	
+	
+	//different cases for different users//
+	if(user_type($logged_userid)=='p')
+	{
+		$query = "SELECT class FROM class_associations WHERE user = '$logged_userid'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret)) 
+		{
+			$classesar = array();
+			while($row = mysql_fetch_array($ret)) 
+			{
+				$classesar[] = $row['class'];
+			}
+			$classes=implode(',',$classesar);
+		}
+	}
+	elseif(user_type($logged_userid)=='s')
+	{
+		$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+		{
+			$classes = mysql_result($ret,0,0);
+		}
+	}
+	
+	
+	if (!($e=id_list_validation($classes)))
+	{
+		$query = "SELECT * FROM classes WHERE id IN($classes) ORDER BY title ASC";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret)) 
+		{	
+			echo "<div class='navigationClasses'>";
+			while($row = mysql_fetch_array($ret)) 
+			{	
+				if(isset($first))
 				{
-					echo ">".$row['title']."</a>";
+					if ($first!=$row['id'])
+					{
+						echo "<li><a href='class/".$row['id']."/'  class='navigationTitles'>".$row['title']."</a>";
+					}
+				}
+				else
+				{
+					echo "<li><a href='class/".$row['id']."/'  class='navigationTitles'>".$row['title']."</a>";
 				}
 			}
 			echo "</div>";
@@ -139,7 +183,7 @@
 	}
 ?>
 <?php if(can_view_classes_list($logged_userid)) {?>
-<li><a href='classes/'  class='navigationTitles globalNav' <?php if($v=='classes') {echo "id='navigationClassHl'";}?>><?php echo _("Classes");?></a></li>
+		<li><a href='classes/'  class='navigationTitles globalNav' <?php if($v=='classes') {echo "id='navigationClassHl'";}?>><?php echo _("Classes");?></a></li>
 <?php }?>
 <?php if(can_view_professor_list($logged_userid)) {?>
 		<li><a href='professors/' class='navigationTitles globalNav' <?php if($v=='professors') {echo "id='navigationClassHl'";}?>><?php echo _("Professors");?></a></li>

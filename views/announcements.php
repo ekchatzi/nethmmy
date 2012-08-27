@@ -83,9 +83,9 @@
 			<div class='newAnnouncementWrapper'>
 				<fieldset>
 					<legend><?php echo _('New announcement');?></legend>
-					<form action='new_announcement.php' method='post'>
+					<form action='new_announcement.php' method='post' onsubmit="return validate(this)">
 						<label><?php echo _('Title');?></label>
-						<input class='newAnnouncementTitle' size='50' type='text' name='title' placeholder="<?php echo _('Announcement title here...');?>" />
+						<input class='newAnnouncementTitle' size='50' type='text' id='title' name='title' placeholder="<?php echo _('Announcement title here...');?>" />
 						<div class='urgentDiv'>
 						<?php echo _('Urgent');?>
 						<input type='checkbox' name='urgent' value='1'/>
@@ -121,7 +121,19 @@
 <?php		if($edit) {?>
 			<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 			<script type='text/javascript'>
+				
+				//check the title//
+				function validate(form) {
+					var title = form.title.value;
+					if (title.length<1) {
+						inlineMsg('title','<?php echo _('You have to enter a title');?>', 2, 0);
+						return false;
+					}
+					return true;
+				}
+				
 				$(document).ready(function(){
+					
 					var classId = "<?php echo $cid;?>";
 					$('.deleteLink').click(function(){
 						if (confirm("<?php echo _('Are you sure you want to delete this announcement?');?>")) {
@@ -135,7 +147,7 @@
 					});
 				});
 				bkLib.onDomLoaded(function() {
-				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','indent','outdent','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
+				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
 				}); 
 			</script>
 <?php		}?>
