@@ -322,7 +322,8 @@ Coding style προτείνονται:
 + `lab_teams`:  
 `id,lab,students,title,creation_time,update_time,files,is_locked`
 
-
++ `tokens`
+`code,data,context`
 
 + `test_templates`:  
 `id,class,creator,title,description,descriptor`

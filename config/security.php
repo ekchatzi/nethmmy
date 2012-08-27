@@ -33,6 +33,7 @@
 					'create_quizs' => _('Create quizs'),
 					'evaluate_quizs' => _('Evaluate quizs'));
 	
+	$ALLOWED_TOKEN_CONTEXTS = array('password_reset','email_validation');
 	$MAX_FILESIZE = 8*1024*1024;//in bytes
 
 	$MAX_LAB_TEAM_LIMIT = 200;

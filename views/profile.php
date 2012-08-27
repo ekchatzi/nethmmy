@@ -123,7 +123,7 @@
 													$('#validateHref').click(function(){
 														$.ajax({
 														   type: "POST",
-														   url: "../public_html/validate_email.php?AJAX",
+														   url: "../public_html/request_validate_email.php?AJAX",
 														   data: 'uid='+ <?php echo $logged_userid;?>,
 														   cache: false,
 														   success: function(response) {

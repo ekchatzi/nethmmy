@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 26, 2012 at 12:51 PM
+-- Generation Time: Aug 27, 2012 at 06:22 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `is_urgent` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'flag that tells if announcement is urgent',
   PRIMARY KEY (`id`),
   KEY `poster` (`poster`,`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `class_associations` (
   PRIMARY KEY (`id`),
   KEY `class` (`class`),
   KEY `user` (`user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   `download_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'times the file was downloaded',
   PRIMARY KEY (`id`),
   KEY `folder` (`folder`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=51 ;
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,20 @@ CREATE TABLE IF NOT EXISTS `titles` (
   `title` tinytext COLLATE utf8_unicode_ci NOT NULL COMMENT 'title text',
   `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'title description',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tokens`
+--
+
+CREATE TABLE IF NOT EXISTS `tokens` (
+  `code` varchar(13) CHARACTER SET ascii NOT NULL COMMENT 'uniqid generated token',
+  `data` text NOT NULL COMMENT 'data in context specified format',
+  `context` tinytext CHARACTER SET ascii NOT NULL COMMENT 'token purpose',
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -209,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   KEY `aem` (`aem`),
   KEY `login_token` (`login_token`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users table' AUTO_INCREMENT=11 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

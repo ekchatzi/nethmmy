@@ -1,54 +1,36 @@
 <?php
 	include_once('../lib/connect_db.php');
 	include_once('../lib/login.php');
-	include_once("../lib/access_rules.php");
-	include_once("../lib/localization.php");
-	include_once("../lib/validate.php");
-	include_once("../config/general.php");
-	
-	if(!isset($error)) 
-                $error = '';
-				
-	$uid = isset($_POST['uid'])?$_POST['uid']:'';
-	if(!($e=user_id_validation($uid)))
-	{	
-		$query = "SELECT * FROM users WHERE id='$uid' LIMIT 1";
-		$ret = mysql_query($query);
-		if($ret && mysql_num_rows($ret))
-		{
-			$result = mysql_fetch_array($ret);
-			$email = $result['email'];
-			$is_validated = $result['is_email_validated'];
-			if (!$is_validated)
-			{
-				$to = $email;
-				$subject = _('[ethmmy] Validate your email');
-				
-				//Work to be done		
-				$message = '<placeholder>';
+	include_once("../lib/token.php");
+	include_once("../config/security.php");
+	include_once("../lib/localization.php"); 
 
-				$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
-				if(mail($to, $subject, $message, $headers))
-				{
-					echo false;
-				} 
-				else 
-				{
-					$error .= _("Message delivery failed. Please try again.");
-				}
-			}
-			else
-			{
-				$error .= _("Your email is already valid");
-			}
+        if(!isset($error)) 
+                $error = '';
+
+	$token = $_GET['token'];
+	if(verify_token($token,'validate_email'))//if token is valid
+	{
+		$query = "SELECT data FROM tokens WHERE code='$token'";
+		($ret = mysql_query($query)) || ($error = $query . "||" .mysql_error());
+		if($ret && mysql_numrows($ret))
+		{
+			$uid = mysql_result($ret,0,0);//data == uid
+			$query = "UPDATE users SET is_email_validated = '1'
+					WHERE id='$uid' LIMIT 1";
+			mysql_query($query) || ($error .= mysql_error());
+			delete_token($token);
+		}
+		else
+		{
+			$error .= _('Token is no longer avainable.');
 		}
 	}
-	else 
+	else
 	{
-		$error . $e;
+		$error .= _('Token is invalid.');
 	}
-	
-	
+
 	if(isset($_GET['AJAX']))
 	{ 
 		echo '{ "error" : "'.$error.'"}';
@@ -59,7 +41,7 @@
 			$message = '';
 		//Hide warnings
 		$warning = '';
-		$redirect = ($folder)?"files/$folder/":"home/";
+		$redirect = "profile/$uid/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
