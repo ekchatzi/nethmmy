@@ -67,7 +67,7 @@
 	}
 	function can_edit_title($user,$target_user)
 	{
-		return is_active($user) && (user_type($user) == 'a') && (user_type($target_user) != 'a');
+		return is_active($user) && (user_type($user) == 'a');
 	}
 	function can_edit_aem($user,$target_user)
 	{
@@ -141,7 +141,10 @@
 	{
 		return (is_active($user) && (user_type($user) == 'a'));
 	}
-
+	function can_edit_titles($user)
+	{
+		return (is_active($user) && (user_type($user) == 'a'));
+	}
 
 	function can_view_announcements($user,$class)
 	{

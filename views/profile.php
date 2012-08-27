@@ -52,10 +52,6 @@
 						$error .= _('Database Error.');			
 					}				
 				}
-				else
-				{
-					$error .= $e;
-				}
 
 				$uid_type = $result['user_type'];
 				/* Associated classes */

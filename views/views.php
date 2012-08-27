@@ -49,6 +49,9 @@
 	$view['edit_profile'] = '../views/edit_profile.php';
 	$view_title['edit_profile'] = _('Edit Profile');
 
+	$view['edit_titles'] = '../views/edit_titles.php';
+	$view_title['edit_titles'] = _('Edit Titles');
+
 	$view['register'] = '../views/register.php';
 	$view_title['register'] = _('Register Application');
 	

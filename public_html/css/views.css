@@ -429,4 +429,10 @@ div#receiveUrgents {
 .professorName a:hover {
 	text-decoration: underline;
 }
-
+/* TITLES */
+.titlesField {
+	width:350px;
+}
+.newTitleSubmit {
+	display:inline !important;
+}

@@ -37,8 +37,8 @@
 		<tbody>
 			<tr><th><img class='deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete?');?>"></th><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
 <?php		for($i=0;$i<count($tid);++$i) {?>
-			<tr id="associationRow<?php echo $a;?>" <?php if($i%2) echo " class='alternateRow'";?> >
-				<td><input type='hidden' value="<?php echo $tid[$i];?>" name='id[]' /><input class='classAssociationTypeField' id="delete<?php echo $i;?>" type='checkbox' name='delete[]' value="<?php echo $tid;?>" /></td>
+			<tr id="associationRow<?php echo $i;?>" <?php if($i%2) echo " class='alternateRow'";?> >
+				<td><input type='hidden' value="<?php echo $tid[$i];?>" name='id[]' /><input class='classAssociationTypeField' id="delete<?php echo $i;?>" type='checkbox' name='delete[]' value="<?php echo $tid[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="title<?php echo $i;?>" type='text' name='title[]' value="<?php echo $title[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="priority<?php echo $i;?>" type='text' name='priority[]' value="<?php echo $priority[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="permissions<?php echo $i;?>" type='text' name='permissions[]' value="<?php echo $permissions[$i];?>" /></td>
