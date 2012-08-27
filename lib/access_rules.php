@@ -749,4 +749,12 @@
 		}
 		return false;
 	}
+	function can_view_inactive_accounts($user)
+	{
+		return is_active($user) && user_type($user) == 'a';
+	}
+	function can_view_statistics($user)
+	{
+		return is_active($user) && user_type($user) == 'a';
+	}
 ?>

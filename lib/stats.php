@@ -10,3 +10,4 @@
 			mysql_query($query);
 		}
 	}
+?>

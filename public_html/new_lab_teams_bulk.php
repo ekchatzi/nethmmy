@@ -35,6 +35,9 @@
 					$new_teams_count = min($team_limit,$count + $c) - $c;
 					$is_locked = $DEFAULT_LAB_TEAM_LOCK_STATE?'1':'0';
 					if($new_teams_count < $count)
+						$error .= _('Team limit has been reached.');
+					
+					if($new_teams_count > 0)
 					{
 						$values = array();
 						for($i=0;$i<$new_teams_count;++$i)
@@ -54,10 +57,6 @@
 							$query = "UPDATE labs SET last_no = last_no + $new_teams_count WHERE id='$lab'";
 							mysql_query($query) || ($error .= mysql_error());				
 						}
-					}
-					else
-					{
-						$error .= _('Team limit has been reached.');
 					}
 				}
 				else
