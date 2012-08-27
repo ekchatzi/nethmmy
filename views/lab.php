@@ -52,6 +52,7 @@
 				$id = array();
 				$team_name = array();
 				$team_info = array();
+				$team_lock = array();
 				$students = array();
 				$students_count = array();
 				$files = array();
@@ -70,7 +71,8 @@
 						$team_info_t = sprintf(_('Created on %s.'),strftime($DATE_FORMAT,$row['creation_time']));
 						if($row['update_time'] > $row['creation_time'])
 							$team_info_t .= sprintf(_('Last updated on %s.'),strftime($DATE_FORMAT,$row['update_time']));
-						$team_info_t .= sprintf(_("Team is %s."),($row['is_locked'])?_("Locked"):_("Not Locked"));
+						$team_lock_t = $team_lock[] = $row['is_locked'];
+						$team_info_t .= sprintf(_("Team is %s."),($team_lock_t)?_("Locked"):_("Not Locked"));
 						$team_info[] = $team_info_t;
 
 						//Students
@@ -241,7 +243,8 @@
 								<form action='edit_lab_team.php' method='post'>
 									<input type='hidden' name='tid' value="<?php echo $id[$i];?>" />
 									<label><?php echo _('New Name');?></label>
-									<input type='text' name='name' value="<?php echo $team_name[$i];?>" placeholder="<?php echo _('New name here...');?>" /> 
+									<input type='text' name='name' value="<?php echo $team_name[$i];?>" placeholder="<?php echo _('New name here...');?>" />
+									<input type='checkbox' name='lock' value="1" <?php if($team_lock[$i]) echo 'checked="checked"';?> /><label><?php echo _('Locked');?></label>
 									<input type='submit' value="<?php echo _('Submit');?>" />
 									<button type='button' class='cancelButton' onclick='javascript:void(0)'><?php echo _('Cancel');?></button>
 								</form>
@@ -273,7 +276,7 @@
 <?php						$c1 = can_join_lab_team($logged_userid,$id[$i]);
 						$c2 = can_leave_lab_team($logged_userid,$id[$i]);
 						$c3 = can_delete_lab_team($logged_userid,$id[$i]);
-						if($c1 || $c2){?>
+						if($c1 || $c2 || $c3){?>
 							<div class='joinLabTeamContainer'>
 <?php							if($c1){?>
 								<p><a href="join_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/add.png' class='icon addIcon' alt="<?php echo _('Add');?>" title="<?php echo _('Join team');?>" /><?php echo _('Join');?></a></p>

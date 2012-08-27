@@ -76,7 +76,7 @@
 				<p class='announcementClass'><?php echo $class[$i]?></p>
 				<h3 class='announcementTitle'><?php echo $title[$i];?></h3>
 				<p class='announcementInfo'><?php echo sprintf(_('Posted on %s by %s. Last update on %s.'),$post_time[$i],$poster[$i],$update_time[$i]);?></p>
-				<pre class='announcementBody'><?php echo $body[$i];?></pre>
+				<div class='announcementBody'><?php echo $body[$i];?></div>
 				</div>
 <?php		}?>
 <?php		if(!$classesraw) {?>

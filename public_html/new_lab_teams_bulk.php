@@ -34,7 +34,7 @@
 					$time = time();
 					$new_teams_count = min($team_limit,$count + $c) - $c;
 					$is_locked = $DEFAULT_LAB_TEAM_LOCK_STATE?'1':'0';
-					if($new_teams_count)
+					if($new_teams_count < $count)
 					{
 						$values = array();
 						for($i=0;$i<$new_teams_count;++$i)

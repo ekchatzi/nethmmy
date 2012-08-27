@@ -61,7 +61,7 @@
 			<label><?php echo _('Title');?></label><input type='text' name='title' placeholder="<?php echo _('Association Title');?>"/>
 			<label><?php echo _('Priority');?></label><input type='text' name='priority' placeholder="<?php echo _('How important is to the class');?>"/>
 			<label><?php echo _('Permissions');?></label><input type='text' name='permissions' placeholder="<?php echo _('Associatied users permissions');?>"/>
-			<input class='submit' type='submit' value="<?php echo _('Submit');?>" />
+			<br /><input class='submit' type='submit' value="<?php echo _('Submit');?>" />
 		</form>
 		</fieldset>
 		<script type='text/javascript'>

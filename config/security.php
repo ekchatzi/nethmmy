@@ -14,15 +14,25 @@
 	$MAX_TELEPHONE_NUMBER_LENGTH = 15;
 	$MIN_TELEPHONE_NUMBER_LENGTH = 7;
 
-	$ALLOWED_HTML_TAGS = "<b><i><em><br><hr><a><img><table><td><th><tr><p><ul><ol><li><strong><sup><sub><u><strike>";
-	$ALLOWED_HTML_ATTRIBUTES = array('href','src','title','alt','type','rowspan','colspan','lang');
+	$ALLOWED_HTML_TAGS = "<b><i><em><br><hr><a><img><table><td><th><tr><p><ul><ol><li><strong><sup><sub><u><strike><div><span>";
+	$ALLOWED_HTML_ATTRIBUTES = array('href','src','title','alt','type','rowspan','colspan','lang','style');
 
 	$USER_TYPES = array(0 => 'g', 1 => 's', 2 => 'p', 3 => 'a');
 	$USER_TYPES_FULL = array(0 => _('Guest'), 1 => _('Student'), 2 => _('Professor'), 3 => _('Admin'));
 	$DEFAULT_ACCOUNT_ACTIVE_STATE = '0';//written on the db during registration
 
-	$CLASS_PERMISSIONS = array('announce','manage_announcements','create_lab','lab_evaluation','upload','manage_files','create_test','evaluate_tests');
-
+	$CLASS_PERMISSIONS = array('manage_info','announce','manage_announcements','create_labs','manage_labs','lab_evaluation','upload_files','manage_files','create_quizs','evaluate_quizs');
+	$CLASS_PERMISSIONS_TEXT = array('manage_info' => _('Manage information'),
+					'announce' => _('Make announcements'),
+					'manage_announcements' => _('Manage announcements'),
+					'create_labs' => _('Create labs/assignments'),
+					'manage_labs' => _('Manage labs'),
+					'lab_evaluation' => _('Lab/assignment evaluation'),
+					'upload_files' => _('Upload files'),
+					'manage_files' => _('Manage files'),
+					'create_quizs' => _('Create quizs'),
+					'evaluate_quizs' => _('Evaluate quizs'));
+	
 	$MAX_FILESIZE = 8*1024*1024;//in bytes
 
 	$MAX_LAB_TEAM_LIMIT = 200;

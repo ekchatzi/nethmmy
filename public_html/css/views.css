@@ -108,7 +108,7 @@ div#receiveUrgents {
 	resize:vertical;
 }
 .newClassAssociationFieldset label,input{
-	display:inline;
+	display:inline !important;
 }
 /*
 	ASSOCIATIONS VIEW
@@ -214,7 +214,7 @@ div#receiveUrgents {
 }
 .announcementBody {
 	font-size:80%;
-	width:800px;
+	width:100%;
 }
 .pastAnnouncement {
 	margin-bottom:5px;

@@ -108,7 +108,7 @@
 				</div>
 <?php		}?>
 <?php		if(count($id) == 0) {?>
-			<p><?php echo _('No file folders yet.');?></p>
+			<p><?php echo _('No file folders.');?></p>
 <?php		}?>
 <?php		if(can_create_folder($logged_userid,$cid))
 		{?>

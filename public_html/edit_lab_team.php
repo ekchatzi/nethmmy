@@ -16,8 +16,9 @@
 	/*Get data from form*/
 	$name = isset($_POST['name'])?$_POST['name']:'';
 	$team = isset($_POST['tid'])?$_POST['tid']:'';
+	$lock = isset($_POST['lock'])?'1':'0';
 	/* check input */	
-	if(!(($e = name_validation($name)) || ($e = lab_team_id_validation($team))))
+	if(!(($e = name_validation($name)) || ($e = lab_team_id_validation($team)) || ($e = boolean_int_validation($lock))))
 	{
 		/* select class for redirection later */
 		$query = "SELECT lab FROM lab_teams WHERE id='$team'";
@@ -29,7 +30,8 @@
 			if(can_edit_lab_team($logged_userid,$team))
 			{
 				$query = "UPDATE lab_teams SET
-						title='".mysql_real_escape_string($name)."'
+						title='".mysql_real_escape_string($name)."',
+						is_locked='$lock'
 						WHERE id='$team' LIMIT 1";
 				mysql_query($query) || ($error .= mysql_error());
 			}

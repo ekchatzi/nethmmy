@@ -23,7 +23,7 @@
 			$class_name = $result['title'];
 			$class_link = "<a href='class/$class/'>$class_name</a>";
 			$semesters = $result['semesters'];
-			if(can_edit_class($logged_userid,$cid) && can_view_class($logged_user,$cid))
+			if(can_edit_class($logged_userid,$class) && can_view_class($logged_userid,$class))
 			{
 				$edit_class = true;
 				$allowed = true;

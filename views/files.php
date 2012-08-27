@@ -93,7 +93,7 @@
 <?php			}?>
 <?php		}?>
 <?php		if(count($id) == 0) {?>
-			<p><?php echo _('No files yet.');?></p>
+			<p><?php echo _('No files.');?></p>
 <?php		}?>
 <?php		if($edit) {?>
 			<a class='deleteSelectedLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIconAll" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" />Delete Selected</a>

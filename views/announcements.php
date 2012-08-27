@@ -97,6 +97,21 @@
 					</form>
 				</fieldset>
 			</div>
+			<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
+			<script type='text/javascript'>
+				//check the title//
+				function validate(form) {
+					var title = form.title.value;
+					if (title.length<1) {
+						inlineMsg('title',"<?php echo _('You have to enter a title');?>", 2, 0);
+						return false;
+					}
+					return true;
+				}
+				bkLib.onDomLoaded(function() {
+					new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
+				}); 
+			</script>
 <?php		}?>
 			<div class='pastAnnouncementsWrapper'>
 <?php		for($i=0;$i<count($id);++$i) { ;?>
@@ -104,7 +119,7 @@
 				<div class='pastAnnouncement <?php if($i%2) echo " alternateAnnouncement";?>' id="pastAnnouncement<?php echo $id[$i];?>">
 					<h3 class='announcementTitle'><?php echo $title[$i];?></h3>
 					<p class='announcementInfo'><?php echo sprintf(_('Posted on %s by %s. Last update on %s.'),$post_time[$i],$poster[$i],$update_time[$i]);?></p>
-					<pre class='announcementBody'><?php echo $body[$i];?></pre>
+					<div class='announcementBody'><?php echo $body[$i];?></div>
 <?php				if(can_edit_announcement($logged_userid,$id[$i])) { $edit = true;?>
 					<div class='editOptionsWrapper'>
 						<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_announcement/<?php echo $id[$i];?>/"><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
@@ -116,22 +131,10 @@
 <?php		}?>
 			</div>
 <?php		if(count($id) == 0) {?>
-			<p><?php echo _('No announcements yet.');?></p>
+			<p><?php echo _('No announcements.');?></p>
 <?php		}?>
 <?php		if($edit) {?>
-			<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 			<script type='text/javascript'>
-				
-				//check the title//
-				function validate(form) {
-					var title = form.title.value;
-					if (title.length<1) {
-						inlineMsg('title','<?php echo _('You have to enter a title');?>', 2, 0);
-						return false;
-					}
-					return true;
-				}
-				
 				$(document).ready(function(){
 					
 					var classId = "<?php echo $cid;?>";
@@ -146,9 +149,6 @@
 						}
 					});
 				});
-				bkLib.onDomLoaded(function() {
-				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
-				}); 
 			</script>
 <?php		}?>
 <?php	}?>
