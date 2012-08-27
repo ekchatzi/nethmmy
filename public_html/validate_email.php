@@ -8,7 +8,8 @@
         if(!isset($error)) 
                 $error = '';
 
-	$token = $_GET['token'];
+	$uid = 0;
+	$token = isset($_GET['token'])?$_GET['token']:'';
 	if(verify_token($token,'validate_email'))//if token is valid
 	{
 		$query = "SELECT data FROM tokens WHERE code='$token'";
