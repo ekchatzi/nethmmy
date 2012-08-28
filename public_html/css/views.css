@@ -234,6 +234,7 @@ div#receiveUrgents {
 .announcementBody {
 	font-size:80%;
 	width:100%;
+	word-wrap:break-word;
 }
 .pastAnnouncement {
 	margin-bottom:5px;
