@@ -19,9 +19,6 @@
 	$view['profile'] = '../views/profile.php';
 	$view_title['profile'] = _('Profile');
 
-	$view['class_association_types'] = '../views/class_association_types.php';
-	$view_title['class_association_types'] = _('Class Associations Types');
-
 	$view['edit_class_association_types'] = '../views/edit_class_association_types.php';
 	$view_title['edit_class_association_types'] = _('Edit Class Association Types');
 

@@ -177,8 +177,8 @@
 			</script>
 		</div>
 <?php		}?>
-<?php		if(can_view_class_association_types($logged_userid)) {?>
-				<a href='class_association_types/'><?php echo _('Association types');?></a>
+<?php		if(can_edit_class_association_types($logged_userid)) {?>
+				<a href='edit_class_association_types/'><?php echo _('Association types');?></a>
 <?php		}?>
 <?php	}?>
 </div>

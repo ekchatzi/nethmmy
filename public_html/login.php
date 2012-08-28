@@ -22,7 +22,6 @@
 			setcookie('message',$message,time()+3600,$INDEX_ROOT);
 
 		$redirect = $_SERVER['HTTP_REFERER'];
-
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');

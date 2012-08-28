@@ -75,9 +75,7 @@
 		if(isset($message) && strlen($message))
 			setcookie('message',$message,time()+3600,$INDEX_ROOT);
 
-
-		$redirect = ($error)?"edit_class_association_types/":"class_association_types/";
-		if(strlen($error))
+		$redirect = "edit_class_association_types/";
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}

@@ -6,7 +6,6 @@
                 $error = '';
 	$show = false;
 	$home_link = "<a href='home/'>"._('Home')."</a>";
-	$assoc_link = "<a href='class_association_types/'>"._('Class_association types')."</a>";
 	if(can_edit_class_association_types($logged_userid))
 	{
 		$query = "SELECT * FROM class_association_types";
@@ -33,7 +32,7 @@
 	}
 ?>
 <h2> <?php echo _('Edit Class Association Types');?> </h2>
-<p class='hierarchyNavigationRow'><?php echo $home_link . " > " . $assoc_link . " > " ._('Classes');?></p>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " ._('Class Association Types');?></p>
 <div class='editClassAssociationTypesWrapper'>
 <?php	if($show) {?>
 		<fieldset>
@@ -74,7 +73,7 @@
 <?php     		foreach($CLASS_PERMISSIONS_TEXT as $per => $per_txt) {?>		
 					<p class='permissionCheck'><input class='newClassAssociationCheck' id="<?php echo $per;?>" type='checkbox' name='<?php echo $per;?>'/><?php echo $per_txt;?></p>
 <?php			}?>	
-			<br /><input class='submit' type='submit' value="<?php echo _('Submit');?>" />
+			<input class='submit' type='submit' value="<?php echo _('Submit');?>" />
 		</form>
 		</fieldset>
 		<script type='text/javascript'>
