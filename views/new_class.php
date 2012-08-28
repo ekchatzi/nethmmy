@@ -2,6 +2,9 @@
 	include_once('../lib/access_rules.php');
 
 	$show = false;
+	$classes_link = _('Classes');
+	if(can_view_classes_list($logged_userid))
+		$classes_link = "<a href='classes/'>$classes_link</a>";
 	if(can_create_class($logged_userid))
 	{
 		$show = true;
@@ -12,6 +15,7 @@
 	}
 ?>
 <h2> <?php echo _('New Class');?> </h2>
+<p class='hierarchyNavigationRow'><?php echo $classes_link . " > " . _('New class');?></p>
 <div class='newClassWrapper'>
 <?php	if($show) {?>
 	<form class="new_class" action="new_class.php" method="post">

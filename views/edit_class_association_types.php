@@ -1,7 +1,11 @@
 <?php
 	include_once('../lib/access_rules.php');
 
+        if(!isset($error))
+                $error = '';
 	$show = false;
+	$home_link = "<a href='home/'>"._('Home')."</a>";
+	$assoc_link = "<a href='class_association_types/'>"._('Class_association types')."</a>";
 	if(can_edit_class_association_types($logged_userid))
 	{
 		$query = "SELECT * FROM class_association_types";
@@ -28,6 +32,7 @@
 	}
 ?>
 <h2> <?php echo _('Edit Class Association Types');?> </h2>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " . $assoc_link . " > " ._('Classes');?></p>
 <div class='editClassAssociationTypesWrapper'>
 <?php	if($show) {?>
 		<fieldset>

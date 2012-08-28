@@ -15,12 +15,15 @@
 		$error .= _("You are not logged in.");
 	}
 
-	if(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
+	if(isset($_GET['AJAX']))
+	{ 
+		echo '{ "error" : "'.$error.'"}';
+	}
+	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(!isset($message))
-			$message = '';
-		//Hide warnings
-		$warning = '';
+		if(isset($message) && strlen($message))
+			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+
 		$redirect = "home/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);

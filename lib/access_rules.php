@@ -108,7 +108,7 @@
 
 	function can_change_class_subscriptions($user,$target_user)
 	{
-		return ($user == $target_user) && (is_active($target_user) && (user_type($target_user) == 's'));
+		return ($user == $target_user) && (is_active($target_user) && (user_type($target_user) != 'g'));
 	}
 	function can_request_password_reset($user,$target_user)
 	{

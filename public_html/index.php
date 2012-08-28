@@ -4,8 +4,6 @@
 	include_once("../views/views.php");
 	include_once("../lib/connect_db.php");
 	include_once("../config/general.php");
-
-	setcookie('last_view',(isset($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:'home/'),0,$INDEX_ROOT);//save last view for after some actions
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -95,16 +93,17 @@
 		<div class='mainView'>
 
 			<div class='notificationSide'>
-				<img class='errorIcon' src='images/resource/exclamation_sign.png' />
-				<p id='notificationText'>
-<?php
-				if(isset($_COOKIE['notify']))
-				{
-					echo $_COOKIE['notify'];
-					setcookie('notify','',time()-3600,$INDEX_ROOT);
-				}
-?>
-				</p>
+<?php				if(isset($_COOKIE['notify'])) {
+					setcookie('notify','',time()-3600,$INDEX_ROOT);?>
+					<img class='notifyIcon' src='images/resource/exclamation_sign.png' />
+					<p class='notificationText'><?php echo $_COOKIE['notify'];?></p>
+
+<?php				}?>
+<?php				if(isset($_COOKIE['message'])) {
+					setcookie('message','',time()-3600,$INDEX_ROOT);?>
+					<img class='notifyIcon' src='images/resource/notify_sign.png' />
+					<p class='messageText'><?php echo $_COOKIE['message'];?></p>
+<?php				}?>
 			</div>		
 			<div>
 			<?php
@@ -123,9 +122,10 @@
 <?php
 		if($error)
 		{?>
-			$('#notificationText').append("<?php echo $error;?>");
+			var er = "<img class='errorIcon errorIconNotification' src='images/resource/exclamation_sign.png' /><p id='notificationText'><?php echo $_COOKIE['notify'];?></p>";
+			$('.notificationSide').append(er);
 <?php		}?>
-		if($('#notificationText').html().trim()!=='')
+		if($('.notificationSide').html().trim()!=='')
 		{
 			$('.notificationSide').css('display','block');
 		}

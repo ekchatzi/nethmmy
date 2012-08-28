@@ -67,10 +67,8 @@
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(!isset($message))
-			$message = '';
-		//Hide warnings
-		$warning = '';
+		if(isset($message) && strlen($message))
+			setcookie('message',$message,time()+3600,$INDEX_ROOT);
 		$redirect = "profile/$uid/";
 		if(strlen($error))
 			setcookie('notify',$error,time()+3600,$INDEX_ROOT);

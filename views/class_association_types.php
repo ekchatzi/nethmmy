@@ -1,7 +1,10 @@
 <?php
 	include_once('../lib/access_rules.php');
 
+        if(!isset($error))
+                $error = '';
 	$show = false;
+	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if(can_view_class_association_types($logged_userid))
 	{
 		$show =true;
@@ -31,6 +34,7 @@
 
 ?>
 <h2> <?php echo _('Class Association Types');?> </h2>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " . _('Class Association types');?></p>
 <div class='classAssociationTypesWrapper'>
 <?php	if($show) {?>
 		<fieldset>

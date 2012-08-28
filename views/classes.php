@@ -4,9 +4,10 @@
 	include_once('../config/general.php');
 	
 	if(!isset($error))
-				$error = '';
+		$error = '';
 	$show = false;
 	$show_sub = false;
+	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if (can_view_classes_list($logged_userid)) 
 	{
 		$show =true;
@@ -48,6 +49,7 @@
 	}
 ?>
 <h2><?php echo _('Classes');?> </h2>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " . _('Classes');?></p>
 <div class='classesWrapper'>
 <?php	if($show) {?>
 <?php		if($show_sub) {?>

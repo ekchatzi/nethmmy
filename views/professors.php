@@ -3,8 +3,9 @@
 	include_once('../lib/validate.php');
 
 	if(!isset($error))
-				$error = '';
+		$error = '';
 	$show = false;
+	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if(can_view_professor_list($logged_userid)) 
 	{
 		$show = true;
@@ -29,8 +30,8 @@
 		$error .= _("Access Denied");
 	}
 ?>
-
 <h2><?php echo _('Professors');?></h2>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " . _('Professors');?></p>
 <div class='professorListWrapper'>
 <?php if($show) {?>
 <?php 	for($i=0;$i<count($name);$i++) {?>
