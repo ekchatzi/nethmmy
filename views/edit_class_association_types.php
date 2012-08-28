@@ -1,5 +1,6 @@
 <?php
 	include_once('../lib/access_rules.php');
+	include_once('../config/security.php');
 
         if(!isset($error))
                 $error = '';
@@ -22,7 +23,7 @@
 				$tid[] = $row['id'];
 				$title[] = $row['title'];
 				$priority[] = $row['priority'];
-				$permissions[] = $row['permissions'];		
+				$permissions[] = explode(',',$row['permissions']);		
 			}		
 		}
 	}
@@ -43,10 +44,14 @@
 			<tr><th><img class='deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete?');?>"></th><th><?php echo _('Title');?></th><th><?php echo _('Priority');?></th><th><?php echo _('Permissions');?></tr>
 <?php		for($i=0;$i<count($tid);++$i) {?>
 			<tr id="associationRow<?php echo $i;?>" <?php if($i%2) echo " class='alternateRow'";?> >
-				<td><input type='hidden' value="<?php echo $tid[$i];?>" name='id[]' /><input class='classAssociationTypeField' id="delete<?php echo $i;?>" type='checkbox' name='delete[]' value="<?php echo $tid[$i];?>" /></td>
+				<td><input type='hidden' value="<?php echo $tid[$i];?>" name='id[]' /><input class='classAssociationTypeField deleteCheck' id="delete<?php echo $i;?>" type='checkbox' name='delete[]' value="<?php echo $tid[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="title<?php echo $i;?>" type='text' name='title[]' value="<?php echo $title[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="priority<?php echo $i;?>" type='text' name='priority[]' value="<?php echo $priority[$i];?>" /></td>
-				<td><input class='classAssociationTypeField' id="permissions<?php echo $i;?>" type='text' name='permissions[]' value="<?php echo $permissions[$i];?>" /></td>
+				<td>
+<?php       	foreach($CLASS_PERMISSIONS_TEXT as $per => $per_txt) {?>		
+					<p class='permissionCheck'><input class='classAssociationCheck' id="<?php echo $per.$i;?>" type='checkbox' name='<?php echo $per.$i;?>' <?php if(in_array($per, $permissions[$i])) echo "checked='true'";?> /><?php echo $per_txt;?></p>
+<?php			}?>				
+				</td>
 			</tr>
 <?php		}?>
 <?php		if(count($tid) == 0) {?>
@@ -62,10 +67,13 @@
 
 		<fieldset class = "editClassAssociationTypes">		
 		<legend><?php echo _('New association type');?></legend>
-		<form action='new_class_association_type.php' method='post'>
+		<form class='newAssociation' action='new_class_association_type.php' method='post' onsubmit='return editAssocCheck(false)'>
 			<label><?php echo _('Title');?></label><input type='text' name='title' placeholder="<?php echo _('Association Title');?>"/>
 			<label><?php echo _('Priority');?></label><input type='text' name='priority' placeholder="<?php echo _('How important is to the class');?>"/>
-			<label><?php echo _('Permissions');?></label><input type='text' name='permissions' placeholder="<?php echo _('Associatied users permissions');?>"/>
+			<label><?php echo _('Permissions');?></label>
+<?php     		foreach($CLASS_PERMISSIONS_TEXT as $per => $per_txt) {?>		
+					<p class='permissionCheck'><input class='newClassAssociationCheck' id="<?php echo $per;?>" type='checkbox' name='<?php echo $per;?>'/><?php echo $per_txt;?></p>
+<?php			}?>	
 			<br /><input class='submit' type='submit' value="<?php echo _('Submit');?>" />
 		</form>
 		</fieldset>
@@ -83,7 +91,7 @@
 			});
 			$(':checkbox').click(function() { 
 				var tid = this.id;
-				tid=tid.replace(/[a-z]+/,"");
+				tid=tid.replace(/[a-z_]+/,"");
 				changes[tid]=1;
 			});
 		});
@@ -91,7 +99,7 @@
 
 		function check() {
 			//delete confirmation//
-			var checked=$('input:checked').length;
+			var checked=$('input.deleteCheck:checked').length;
 			if (checked>0) {
 				if (!confirm("<?php echo _('Are you sure you want to delete the selected class associations?');?>")) {
 					return false;
@@ -101,6 +109,48 @@
 			for (var i=0;i<changes.length;i++) {
 				if (changes[i]==0) {
 					$('#associationRow'+i).remove();
+				}
+			}
+			editAssocCheck(true);
+			return true;
+		}
+		
+		//turn the association checkboxes into comma seperated list//
+		function editAssocCheck(multiple) {
+			if(multiple) {
+				var rows = <?php echo count($tid);?>;
+			}
+			else {
+				rows = 1;
+			}
+			for(var i=0;i<rows;i++) {
+				var s = '';
+				var permlist = '';
+				if(multiple) {
+					var selector = $('#associationRow'+i+' .classAssociationCheck:checked');
+				}
+				else {
+					var selector = $('.newClassAssociationCheck:checked');
+				}
+				selector.each(function() {
+					var perm = this.id.replace(/[0-9]+/,"");
+					if (perm!='' && perm!='delete') {
+						if (permlist=='') {
+							permlist = permlist+perm;
+						}
+						else {
+							permlist = permlist+','+perm;
+						}
+					}
+				});
+				s += "<input type='hidden' value='"+permlist+"' ";
+				if(multiple) {
+					s+= "name='permissions[]'/>";
+					$(s).appendTo('#associationRow'+i);
+				}
+				else {
+					s+= "name='permissions'/>";
+					$(s).appendTo('.newAssociation');
 				}
 			}
 			return true;

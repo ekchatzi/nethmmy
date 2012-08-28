@@ -138,7 +138,7 @@
 																//works only when email server is set up correctly
 																var ob = $.parseJSON(response);
 																if(ob.error!='') {
-																	alert(response);
+																	alert(ob.error);
 																}
 																else {
 																	alert('<?php echo _('Email sent! Please check your inbox and spam folder.');?>');

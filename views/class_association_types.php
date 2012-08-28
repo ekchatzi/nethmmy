@@ -60,7 +60,7 @@
 		</fieldset>
 <?php		if(can_edit_class_association_types($logged_userid)) {?>
 		<div class='editOptionsWrapper'>
-			<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_class_association_types/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
+			<a class='editLink' id="editLink" href="edit_class_association_types/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 		</div>
 <?php		}?>
 <?php	}?>

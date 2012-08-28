@@ -117,6 +117,25 @@ div#receiveUrgents {
 .associationTable {
 
 }
+.classAssociationCheck {
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 3px;
+	float: left;
+}
+.newClassAssociationCheck {
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 3px;
+	float: left;
+}
+.permissionCheck {
+	text-align: left;
+	margin-left: 10px;
+}
+
+/* NAVIGATION VIEW*/
+
 .navigationTitles {
 	background-color:#ffffff;
 	border:1px solid #000000;
