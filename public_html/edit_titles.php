@@ -7,7 +7,10 @@
 	include_once("../config/general.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	/* Data */
 	$titles = isset($_POST['title'])?$_POST['title']:array();
@@ -17,6 +20,7 @@
 	if(can_edit_titles($logged_userid))
 	{
 		/* edit */
+		$updated = 0;
 		for($i=0;$i<count($ids);++$i)
 		{
 			if(isset($titles[$i]) && isset($descriptions[$i]) && isset($ids[$i]))
@@ -31,25 +35,28 @@
 							description = '".mysql_real_escape_string(sanitize_html($desc))."'
 							WHERE id= '$id'
 							LIMIT 1";
-					mysql_query($query) || ($error .= mysql_error());
+					mysql_query($query) || ($error[] = mysql_error());
+					$updated++;
 				}
 				else
 				{
-					$error .= $e;
+					$error[] = $e;
 				}
 			}
 			else
 			{
-				$error .= _('Values count do not match id count');
+				$error[] = _('Values count do not match id count');
+				break;
 			}	
 		}
-
+		if($updated) 
+			$message[] = sprintf(_("%s out of %s titles were updated successfully."),$updated,count($ids)); 
 		/* delete */
 		$delete = implode(',',$delete);
 		if(!($e = id_list_validation($delete)))
 		{
 			$query = "DELETE FROM titles WHERE FIND_IN_SET(id,'$delete')";;
-			mysql_query($query) || ($error .= mysql_error());
+			mysql_query($query) || ($error[] = mysql_error());
 		}
 		else
 		{
@@ -58,23 +65,22 @@
 	}
 	else
 	{
-		$error .= _('Access denied.');
+		$error[] = _('Access denied.');
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "edit_titles/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
-	
 ?>

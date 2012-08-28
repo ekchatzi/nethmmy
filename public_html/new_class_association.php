@@ -7,7 +7,10 @@
 	include_once("../config/general.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	/* Data */
 	$user = isset($_POST['user'])?$_POST['user']:'';
@@ -21,32 +24,32 @@
 
 			$query = "INSERT INTO class_associations (class,user,type)
 					VALUES('$class','$user','$type')";
-			mysql_query($query) || ($error .= mysql_error());
+			mysql_query($query) || ($error[] = mysql_error());
+			$message[] = _('Association was created successfully.');
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}			
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "edit_class/$class/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
-	
 ?>

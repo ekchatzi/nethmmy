@@ -6,7 +6,7 @@
 	include_once("../lib/localization.php"); 
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
 
 	$uid = 0;
 	$token = isset($_POST['token'])?$_POST['token']:'';
@@ -28,41 +28,43 @@
 					$query = "UPDATE users SET password = '$password_hash',
 								salt='$salt'
 							WHERE id='$uid' LIMIT 1";
-					mysql_query($query) || ($error .= mysql_error());
+					mysql_query($query) || ($error[] = mysql_error());
 					delete_token($token);
+					$message[] = _('Password was changed successfully.');
 				}
 				else
 				{
-					$error .= _('Token is no longer avainable.');
+					$error[] = _('Token is no longer avainable.');
 				}
 			}
 			else
 			{
-				$error .= $e;
+				$error[] = $e;
 			}
 		}
 		else
 		{
-			$error .= _('Passwords don\'t match.');
+			$error[] = _('Passwords don\'t match.');
 		}
 	}
 	else
 	{
-		$error .= _('Token is invalid.');
+		$error[] = _('Token is invalid.');
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
+
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "home/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>

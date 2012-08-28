@@ -8,7 +8,10 @@
 	include_once("../config/security.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$lab = 0;
 	/* Data */
@@ -39,7 +42,7 @@
 			{
 				$query = "INSERT INTO file_folders (name,class,public)
 					VALUES('".mysql_real_escape_string($title)."','$class','0')";
-				mysql_query($query) || ($error .= mysql_error());
+				mysql_query($query) || ($error[] = mysql_error());
 				$folder = mysql_insert_id();
 			}
 			$time = time();
@@ -50,33 +53,33 @@
 					VALUES
 					('".mysql_real_escape_string($title)."','".mysql_real_escape_string(sanitize_html($description))."','$class','$team_limit','$users_per_team_limit','$registration_expire','$upload_limit','$upload_expire','$can_free_join',
 					 '$can_make_new_teams','$can_lock_teams','$folder','$time','$time')";
-			mysql_query($query) || ($error .= mysql_error());
+			mysql_query($query) || ($error[] = mysql_error());
 			$lab = mysql_insert_id();
+			$message[] = sprintf(_('Lab `%s` was created successfully.'),$title);
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = ($error)?"new_lab/$class/":"lab/$lab/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
-	
 ?>

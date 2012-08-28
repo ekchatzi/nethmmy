@@ -8,7 +8,10 @@
 	include_once("../lib/validate.php");
 
         if(!isset($error))
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	/*Get data from form*/
 	$first_name = isset($_POST['first_name'])?$_POST['first_name']:'';
@@ -40,7 +43,8 @@
 					$query = "UPDATE users SET
 							is_email_validated='0'
 							WHERE id='$uid' LIMIT 1";
-					mysql_query($query) || ($error .= mysql_error());
+					mysql_query($query) || ($error[] = mysql_error());
+					$message[] = _('Email address is no longer validated.');
 				}
 			}
 			
@@ -57,7 +61,8 @@
 					semester_update_time='".time()."',
 					email_urgent=$email_urgent
 					WHERE id='$uid' LIMIT 1";
-			mysql_query($query) || ($error .= mysql_error());
+			mysql_query($query) || ($error[] = mysql_error());
+			$message[] = _('Basic information were updated successfully.');
 
 			/* aem */
 			if(isset($_POST['aem']))
@@ -75,44 +80,45 @@
 							$query = "UPDATE users SET
 								aem='$aem'
 								WHERE id='$uid'";
-							mysql_query($query) || ($error .= mysql_error());
+							mysql_query($query) || ($error[] = mysql_error());
+							$message[] = _('AEM was updated successfully.');
 						}
 						else
 						{
-							$error .= $e;
+							$error[] = $e;
 						}
 					}
 				}
 				else
 				{
-					$error .= _('Access denied.');
+					$error[] = _('Access denied.');
 				}
 			}
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = ($error)?"edit_profile/$uid/":"profile/$uid/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>	

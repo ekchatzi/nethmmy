@@ -8,7 +8,7 @@
 	include_once("../lib/stats.php");
 
         if(!isset($error))
-                $error = '';
+                $error = array();
 
 	/*Get data from get*/
 	$fid = isset($_GET['fid'])?$_GET['fid']:'';
@@ -42,24 +42,28 @@
 				}
 				else
 				{
-					$error .= _('File does not exist');
+					$error[] = _('File does not exist.');
 				}
 			}
 			else
 			{
-				$error .= mysql_error();
+				$error[] = mysql_error();
 			}
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
-	if(strlen($error))
-		setcookie('notify',$error,time()+3600,$INDEX_ROOT);
+	if(isset($error) && count($error))
+	{
+		setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
+		$redirect = isset($_COOKIE['ref'])?$_COOKIE['ref']:"home/";
+		include('redirect.php');
+	}
 ?>	

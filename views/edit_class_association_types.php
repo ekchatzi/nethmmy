@@ -68,7 +68,7 @@
 		<legend><?php echo _('New association type');?></legend>
 		<form class='newAssociation' action='new_class_association_type.php' method='post' onsubmit='return editAssocCheck(false)'>
 			<label><?php echo _('Title');?></label><input type='text' name='title' placeholder="<?php echo _('Association Title');?>"/>
-			<label><?php echo _('Priority');?></label><input type='text' name='priority' placeholder="<?php echo _('How important is to the class');?>"/>
+			<label><?php echo _('Priority');?></label><input type='text' name='priority' placeholder="<?php echo _('Less is more important');?>"/>
 			<label><?php echo _('Permissions');?></label>
 <?php     		foreach($CLASS_PERMISSIONS_TEXT as $per => $per_txt) {?>		
 					<p class='permissionCheck'><input class='newClassAssociationCheck' id="<?php echo $per;?>" type='checkbox' name='<?php echo $per;?>'/><?php echo $per_txt;?></p>

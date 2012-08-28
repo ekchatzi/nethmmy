@@ -8,7 +8,10 @@
 	include_once("../config/security.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$lab_team = '';
 	$lab = '';
@@ -24,12 +27,13 @@
 	{
 		if(can_kick_from_lab_team($logged_userid,$uid,$tid))
 		{
-			$query = "SELECT lab,students FROM lab_teams WHERE id='$tid'";
+			$query = "SELECT lab,students,title FROM lab_teams WHERE id='$tid'";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
 			{
 				$result = mysql_fetch_array($ret);
 				$lab = $result['lab'];
+				$team_title = $result['title'];
 				$lab_team = $tid;
 				$students = $result['students'];
 				$c = preg_match_all('~\b[0-9]\b~',$students,$m);
@@ -41,8 +45,9 @@
 						students='".mysql_real_escape_string($students)."',
 						update_time='$time'
 						WHERE id='$tid'";
-				mysql_query($query) || ($error .= mysql_error());
-
+				mysql_query($query) || ($error[] = mysql_error());
+				$message[] = sprintf(_("Student was kicked from lab team `%s`."),$team_title); 
+				
 				if($c-1 == 0)
 				{
 					$query = "SELECT can_make_new_teams FROM labs WHERE id='$lab'";
@@ -52,39 +57,40 @@
 						if(mysql_result($ret,0,0))
 						{
 							$query = "DELETE FROM lab_teams WHERE id='$tid'";
-							mysql_query($query) || ($error .= mysql_error());
+							mysql_query($query) || ($error[] = mysql_error());
+							$message[] = sprintf(_("Lab team `%s` was deleted."),$team_title); 
 						}
 					}
 				}
 			}
 			else
 			{
-				$error .= mysql_error();
+				$error[] = mysql_error();
 			}
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "lab/$lab/".(($lab_team)?"#labTeamContainer$lab_team":"");
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>

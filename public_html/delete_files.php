@@ -7,7 +7,10 @@
 	include_once("../config/general.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	/* Data */
 	$delete = isset($_POST['fid'])?$_POST['fid']:array();
@@ -15,6 +18,7 @@
 	if(!($e = id_list_validation($delete)))
 	{
 		/* delete */
+		$deleted = 0;
 		foreach($delete as $fid)
 		{
 			if(!($e = file_id_validation($fid)))
@@ -40,42 +44,44 @@
 							$query = "UPDATE lab_teams SET
 									files='".mysql_real_escape_string($files)."'
 									WHERE id='$team' LIMIT 1";
-							mysql_query($query) || ($error .= mysql_error());
+							$ret = mysql_query($query) || ($error[] = mysql_error());
 						}
 						$query = "DELETE FROM files WHERE id='$fid' LIMIT 1";
-						mysql_query($query) || ($error .= mysql_error());
+						mysql_query($query) || ($error[] = mysql_error());
+						$deleted++;					
 					}
 					else
 					{
-						$error .= _('Access denied.');
+						$error[] = _('Access denied.');
 					}
 				}
 			}
 			else
 			{
-				$error . $e;				
+				$error[] = $e;				
 			}
 		}
+		if($deleted)
+			$message[] = sprintf(_("%s out of %s files were deleted successfully."),$deleted,count($delete)); 
 	}
 	else
 	{
-		$error . $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = ($folder)?"files/$folder/":$_COOKIE['last_view'];
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
-	
 ?>

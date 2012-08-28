@@ -623,7 +623,12 @@
 	{
 		if(is_active($user) && user_type($user) == 's')
 		{
-			$query = "SELECT lab_teams.is_locked AS is_locked,labs.id AS lab,labs.team_limit AS team_limit,labs.register_expire AS register_expire,lab_teams.students AS students,lab.users_per_team_limit AS users_per_team_limit FROM labs,lab_teams WHERE lab_teams.id='$team' AND labs.id = lab_teams.lab";
+			$query = "SELECT lab_teams.is_locked AS is_locked,
+					labs.id AS lab,labs.team_limit AS team_limit,
+					labs.register_expire AS register_expire,
+					lab_teams.students AS students,
+					labs.users_per_team_limit AS users_per_team_limit 
+					FROM labs,lab_teams WHERE lab_teams.id='$team' AND labs.id = lab_teams.lab";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
 			{
@@ -673,7 +678,29 @@
 	}
 	function can_kick_from_lab_team($user,$target_user,$team)
 	{
-		return true;
+		if(is_active($user) && user_type($user) != 'g')
+		{
+			if(user_type($user) == 'a')
+				return true;
+
+			$query = "SELECT labs.class AS class,lab_teams.students AS students FROM labs,lab_teams WHERE lab_teams.id='$team' AND lab_teams.lab=labs.id";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret))
+			{
+				$result = mysql_fetch_array($ret);
+				$class= $result['class'];
+				$query = "SELECT class_association_types.permissions AS permissions, FROM class_associations,class_association_types
+						WHERE class_associations.class='$class' AND class_associations.user='$user' AND class_associations.type = class_association_types.id";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+				{
+					$permissions = mysql_result($ret,0,0);
+					if(preg_match('~\manage_labs\b~',$permissions))
+						return true;
+				}
+			}
+		}
+		return false;
 	}
 	function can_edit_lab($user,$lab)
 	{

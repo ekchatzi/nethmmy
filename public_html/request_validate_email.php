@@ -8,8 +8,11 @@
 	include_once("../lib/token.php");
 
 	if(!isset($error)) 
-                $error = '';
+                $error = array();
 				
+	if(!isset($message))
+		$message = array();
+
 	$uid = isset($_POST['uid'])?$_POST['uid']:'';
 	if(!($e = user_id_validation($uid)))
 	{	
@@ -26,20 +29,20 @@
 				$subject = _('[ethmmy] Validate your email');
 				$token = get_token('validation',$uid);	
 				$link = "$INDEX_ROOT/validate_email.php?token=$token";
-				$message = sprintf(_("Please follow this link %s to validate your email address."),"<a href='$link'>$link</a>");
+				$message_body = sprintf(_("Please follow this link %s to validate your email address."),"<a href='$link'>$link</a>");
 				$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
-				if(mail($to, $subject, $message, $headers))
+				if(mail($to, $subject, $message_body, $headers))
 				{
-					echo false;
+					$message[] = (_('Email validation email was sent successfully to email address `%s`.'),$email);
 				} 
 				else 
 				{
-					$error .= _("Message delivery failed. Please try again.");
+					$error[] = _("Message delivery failed. Please try again.");
 				}
 			}
 			else
 			{
-				$error .= _("Your email is already validated");
+				$error[] = _("Your email is already validated");
 			}
 		}
 	}
@@ -51,17 +54,17 @@
 	
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "profile/$uid/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>

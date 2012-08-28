@@ -146,11 +146,12 @@ pre {
 	background-color:white;
 	border:1px solid black;
 	text-align:left;
-	position:relative;
 	margin-top:-6px;
 	margin-left:-7px;
 }
-
+.viewContainer {
+	position:relative;
+}
 .footer {
 	clear:both;
 	text-align:center;
@@ -190,14 +191,14 @@ pre {
 }
 
 .notificationSide {
-	display:none;
+}
+.notificationContainer {
 	border:1px dashed black;
 	background-color:#F4F390;
-	min-height:50px;
-	padding:10px;
+	min-height:40px;
 	margin-bottom:10px;
+	padding:10px;
 }
-
 .notificationSide p{
 	display:inline-block;	
 	vertical-align:middle;

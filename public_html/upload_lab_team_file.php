@@ -6,10 +6,15 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
+
 	$lab = isset($_POST['lab'])?$_POST['lab']:0;
 	$lab_team = 0;
-        if(!isset($error)) 
-                $error = '';
+
 	/*Get data from form*/
 	$name = (isset($_POST['name']) && strlen($_POST['name']))?$_POST['name']:'default';
 	$team = isset($_POST['tid'])?$_POST['tid']:'';
@@ -59,7 +64,8 @@
 								('$folder','".mysql_real_escape_string($uploadfile)."','"
 								.mysql_real_escape_string($name)."','$logged_userid','"
 								.time()."')";
-					mysql_query($query) || ($error .= mysql_error());
+					mysql_query($query) || ($error[] = mysql_error());
+					$message[] = _('File uploaded successfully.');
 					$file = mysql_insert_id();
 					if($file)
 					{
@@ -69,42 +75,42 @@
 						$query = "UPDATE lab_teams SET
 								files='".mysql_real_escape_string($files)."'
 								WHERE id='$team' LIMIT 1";
-						mysql_query($query) || ($error .= mysql_error());
+						mysql_query($query) || ($error[] = mysql_error());
 					}					
 				}
 				else
 				{
-					$error .=  _("File move failed.");
+					$error[] =  _("File move failed.");
 				}
 			}
 			else
 			{
-				$error .= mysql_error();
+				$error[] = mysql_error();
 			}
 		}
 		else
 		{
-			$error .= _('Access Denied.');
+			$error[] = _('Access Denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "lab/$lab/".(($lab_team)?"#labTeamContainer$lab_team":"");
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>	

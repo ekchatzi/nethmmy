@@ -6,7 +6,10 @@
 	include_once("../lib/localization.php"); 
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$uid = 0;
 	$token = isset($_GET['token'])?$_GET['token']:'';
@@ -21,6 +24,7 @@
 					WHERE id='$uid' LIMIT 1";
 			mysql_query($query) || ($error .= mysql_error());
 			delete_token($token);
+			$message[] = _('Email address is now validated.');
 		}
 		else
 		{
@@ -34,17 +38,17 @@
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "profile/$uid/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>

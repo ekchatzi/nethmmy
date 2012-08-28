@@ -7,7 +7,10 @@
 	include_once("../config/general.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$classid = '';
 
@@ -20,37 +23,35 @@
 	{
 		if(can_create_class($logged_userid))
 		{
-
-				$query = "INSERT INTO classes (title,description,semesters)
-						VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
-				mysql_query($query) || ($error .= mysql_error());
-				$classid = mysql_insert_id();	
-
+			$query = "INSERT INTO classes (title,description,semesters)
+					VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
+			mysql_query($query) || ($error[] = mysql_error());
+			$classid = mysql_insert_id();
+			$message[] = _('Class was created successfully.');
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = ($error)?"new_class/":"class/$classid/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
-	
 ?>

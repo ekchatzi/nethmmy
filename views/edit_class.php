@@ -41,7 +41,6 @@
 				$uid = array();
 				$type = array();
 				$name = array();
-				$permissions = array();
 				$title = array();
 				$query = "SELECT class_associations.id AS id,
 					 class_associations.user AS user,
@@ -58,8 +57,7 @@
 						$type_t = $type[] = $row['type'];
 						$query = "SELECT users.first_name AS first_name,
 								 users.last_name AS last_name,
-								 class_association_types.title AS title,
-								 class_association_types.permissions AS permissions
+								 class_association_types.title AS title
 								FROM class_association_types,users WHERE users.id='$uid_t' AND class_association_types.id='$type_t'";
 						$ret2 = mysql_query($query);
 						if($ret2 && mysql_num_rows($ret2))
@@ -67,7 +65,6 @@
 							$row = mysql_fetch_array($ret2);
 							$name[] = $row['first_name']." ".$row['last_name'];
 							$title[] = $row['title'];
-							$permissions[] = $row['permissions'];	
 						}
 					}		
 				}
@@ -127,13 +124,12 @@
 			<form action='edit_class_association_types.php' method='post'>
 			<table class='associationTable'>
 			<tbody>
-				<tr><th>&nbsp;</th><th><?php echo _('User');?></th><th><?php echo _('Type');?></th><th><?php echo _('Permissions');?></th></tr>
+				<tr><th>&nbsp;</th><th><?php echo _('User');?></th><th><?php echo _('Type');?></th></tr>
 <?php			for($i=0;$i<count($tid);++$i){	?>
 				<tr <?php if($i%2) echo " class='alternateRow' ";?> >
 					<td><a class='deleteLink' id="deleteLink<?php echo $tid[$i];?>" href='javascript:void(0)'><img id="deleteIcon<?php echo $tid[$i];?>" class='icon deleteIcon' src='images/resource/trash_can.png' alt='X' title="<?php echo _('Delete');?>"></a></td>
 					<td><a href="profile/<?php echo $uid[$i];?>/"><?php echo $name[$i];?></a></td>
 					<td><?php echo $title[$i];?></td>
-					<td><?php echo $permissions[$i];?></td>
 				</tr>
 <?php			}?>
 <?php			if(count($tid) == 0) {?>

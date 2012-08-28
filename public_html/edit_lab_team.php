@@ -9,7 +9,10 @@
 
 
         if(!isset($error))
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$lab = isset($_POST['lab'])?$_POST['lab']:0;
 	$lab_team = 0;
@@ -33,37 +36,38 @@
 						title='".mysql_real_escape_string($name)."',
 						is_locked='$lock'
 						WHERE id='$team' LIMIT 1";
-				mysql_query($query) || ($error .= mysql_error());
+				mysql_query($query) || ($error[] = mysql_error());
+				$message[] = _('Lab team was updated successfully.');
 			}
 			else
 			{
-				$error .= _('Access denied.');
+				$error[] = _('Access denied.');
 			}
 		}
 		else
 		{
-			$error .= mysql_error();
+			$error[] = mysql_error();
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "lab/$lab/".(($lab_team)?"#labTeamContainer$lab_team":"");;
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>	

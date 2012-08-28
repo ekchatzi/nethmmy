@@ -8,7 +8,10 @@
 	include_once("../lib/validate.php");
 
         if(!isset($error))
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	/*Get data from form*/
 	$password = isset($_POST['password'])?$_POST['password']:'';
@@ -34,32 +37,33 @@
 			$query = "INSERT INTO users 
 	(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,semester,is_active,semester_update_time)
 		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','$user_type','1',".time().",'$semester','$DEFAULT_ACCOUNT_ACTIVE_STATE','".time()."')";
-			mysql_query($query) || ($error .= mysql_error());
+			mysql_query($query) || ($error[] = mysql_error());
+			$message[] = _('Registration success');
 		}
 		else
 		{
-			$error .= $e;
+			$error[] = $e;
 		}
 	}
 	else
 	{
-		$error .= _('Passwords don\'t match.');
+		$error[] = _('Passwords don\'t match.');
 	}
 
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = ($error)?"register/":"home/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>	

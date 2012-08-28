@@ -4,6 +4,8 @@
 	include_once("../views/views.php");
 	include_once("../lib/connect_db.php");
 	include_once("../config/general.php");
+
+	setcookie('ref',$_SERVER['REQUEST_URI'],0,$INDEX_ROOT);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -91,21 +93,29 @@
 <?php			include('../views/navigation.php'); ?>
 		</div>
 		<div class='mainView'>
-
 			<div class='notificationSide'>
 <?php				if(isset($_COOKIE['notify'])) {
-					setcookie('notify','',time()-3600,$INDEX_ROOT);?>
-					<img class='notifyIcon' src='images/resource/exclamation_sign.png' />
-					<p class='notificationText'><?php echo $_COOKIE['notify'];?></p>
-
+					$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['notify']);
+					setcookie('notify','',time()-3600,$INDEX_ROOT);
+					foreach($cookie as $message){?>
+					<div class='notificationContainer'>
+						<img class='notifyIcon' src='images/resource/exclamation_sign.png' />
+						<p class='notificationText'><?php echo $message;?></p>
+					</div>
+<?php					}?>
 <?php				}?>
 <?php				if(isset($_COOKIE['message'])) {
-					setcookie('message','',time()-3600,$INDEX_ROOT);?>
-					<img class='notifyIcon' src='images/resource/notify_sign.png' />
-					<p class='messageText'><?php echo $_COOKIE['message'];?></p>
+					$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['message']);
+					setcookie('message','',time()-3600,$INDEX_ROOT);
+					foreach($cookie as $message){?>
+					<div class='notificationContainer'>
+						<img class='notifyIcon' src='images/resource/notify_sign.png' />
+						<p class='messageText'><?php echo $message;?></p>
+					</div>
+<?php					}?>
 <?php				}?>
 			</div>		
-			<div>
+			<div class='viewContainer'>
 			<?php
 				include($VIEW);
 			?>
@@ -117,18 +127,22 @@
 	</div>
 </div>
 <script type='text/javascript'>
-
-	$(document).ready(function(){
-<?php
-		if($error)
-		{?>
-			var er = "<img class='errorIcon errorIconNotification' src='images/resource/exclamation_sign.png' /><p id='notificationText'><?php echo $_COOKIE['notify'];?></p>";
+	function report_error(error){
+		if(error.length){
+			var er = "<div class='notificationContainer'><img class='notifyIcon' src='images/resource/exclamation_sign.png' /><p id='notificationText'>"+error+"</p></div>";
 			$('.notificationSide').append(er);
-<?php		}?>
-		if($('.notificationSide').html().trim()!=='')
-		{
-			$('.notificationSide').css('display','block');
 		}
+	}
+	function report_message(message){
+		if(message.length){
+			var er = "<div class='notificationContainer'><img class='notifyIcon' src='images/resource/notify_sign.png' /><p id='messageText'>"+message+"</p></div>";
+			$('.notificationSide').append(er);
+		}	
+	}
+	$(document).ready(function(){
+<?php		if($error){?>
+		report_error("<?php echo $error;?>");
+<?php		}?>
 	});
 </script>
 </body>

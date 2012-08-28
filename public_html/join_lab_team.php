@@ -8,7 +8,10 @@
 	include_once("../config/security.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$lab = '';
 	/* Data */
@@ -20,7 +23,7 @@
 	{
 		if(can_join_lab_team($logged_userid,$tid))
 		{
-			$query = "SELECT lab,students FROM lab_teams WHERE id='$tid'";
+			$query = "SELECT lab,students,title FROM lab_teams WHERE id='$tid'";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
 			{
@@ -38,37 +41,38 @@
 						students='".mysql_real_escape_string($students)."',
 						update_time='$time'
 						WHERE id='$tid'";
-				mysql_query($query) || ($error .= mysql_error());
+				mysql_query($query) || ($error[] = mysql_error());
+				$messagep[ = sprintf(_("You are now a member of team `%s`."),$result['title']); 
 			}
 			else
 			{
-				$error .= mysql_error();
+				$error[] = mysql_error();
 			}
 
 		}
 		else
 		{
-			$error .= _('Access denied.');
+			$error[] = _('Access denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "lab/$lab/".(($lab_team)?"#labTeamContainer$lab_team":"");;
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>

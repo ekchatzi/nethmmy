@@ -7,7 +7,11 @@
 	include_once("../lib/validate.php");
 
         if(!isset($error)) 
-                $error = '';
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
+
 	/*Get data from form*/
 	$name = (isset($_POST['name']) && strlen($_POST['name']))?$_POST['name']:'default';
 	$folder = isset($_POST['folder'])?$_POST['folder']:'';
@@ -44,36 +48,37 @@
 							('$folder','".mysql_real_escape_string($uploadfile)."','"
 							.mysql_real_escape_string($name)."','$logged_userid','"
 							.time()."')";
-				mysql_query($query) || ($error .= mysql_error());	
+				mysql_query($query) || ($error[] = mysql_error());
+				$message[] = _('File uploaded successfully.');	
 			}
 			else
 			{
-				$error .=  _("File move failed.");
+				$error[] =  _("File move failed.");
 			}
 		}
 		else
 		{
-			$error .= _('Access Denied.');
+			$error[] = _('Access Denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.$error.'"}';
+		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
-		if(isset($message) && strlen($message))
-			setcookie('message',$message,time()+3600,$INDEX_ROOT);
+		if(isset($message) && count($message))
+			setcookie('message',implode($MESSAGE_SEPERATOR,$message),time()+3600,$INDEX_ROOT);
 
+		if(isset($error) && count($error))
+			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
 		$redirect = "files/$folder/";
-		if(strlen($error))
-			setcookie('notify',$error,time()+3600,$INDEX_ROOT);
 		include('redirect.php');
 	}
 ?>	
