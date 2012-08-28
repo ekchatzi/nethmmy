@@ -7,7 +7,7 @@
         $error = '';
 	}
 	
-	$view_accept = array('class'=>_('Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'), 'edit_announcement' => _('Announcements'));
+	$view_accept = array('class'=>_('Class'), 'edit_class'=>_('Edit Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'), 'edit_announcement' => _('Announcements'));
 	$classes = '';
 	$v = isset($_GET['v'])?$_GET['v']:'';
 	
