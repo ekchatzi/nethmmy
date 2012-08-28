@@ -28,7 +28,8 @@
 	if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name))
 	   || ($e = email_validation($email)) || ($e = website_validation($website))
 	   || ($e = telephone_validation($telephone)) || ($e = xml_validation($bio))
-	   || ($e = user_id_validation($uid)) || ($e = title_id_validation($title))))
+	   || ($e = user_id_validation($uid)) || ($e = title_id_validation($title))
+	   || ($e = semester_validation($semester))))
 	{
 		if(can_edit_account($logged_userid,$uid))
 		{
@@ -59,7 +60,7 @@
 					telephone='".mysql_real_escape_string($telephone)."',
 					semester='$semester',
 					semester_update_time='".time()."',
-					email_urgent=$email_urgent
+					email_urgent='$email_urgent'
 					WHERE id='$uid' LIMIT 1";
 			mysql_query($query) || ($error[] = mysql_error());
 			$message[] = _('Basic information were updated successfully.');

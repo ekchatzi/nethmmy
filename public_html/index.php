@@ -6,6 +6,8 @@
 	include_once("../config/general.php");
 
 	setcookie('ref',$_SERVER['REQUEST_URI'],0,$INDEX_ROOT);
+	setcookie('notify','',time()-3600,$INDEX_ROOT);
+	setcookie('message','',time()-3600,$INDEX_ROOT);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -94,26 +96,6 @@
 		</div>
 		<div class='mainView'>
 			<div class='notificationSide'>
-<?php				if(isset($_COOKIE['notify'])) {
-					$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['notify']);
-					setcookie('notify','',time()-3600,$INDEX_ROOT);
-					foreach($cookie as $message){?>
-					<div class='notificationContainer'>
-						<img class='notifyIcon' src='images/resource/exclamation_sign.png' />
-						<p class='notificationText'><?php echo $message;?></p>
-					</div>
-<?php					}?>
-<?php				}?>
-<?php				if(isset($_COOKIE['message'])) {
-					$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['message']);
-					setcookie('message','',time()-3600,$INDEX_ROOT);
-					foreach($cookie as $message){?>
-					<div class='notificationContainer'>
-						<img class='notifyIcon' src='images/resource/notify_sign.png' />
-						<p class='messageText'><?php echo $message;?></p>
-					</div>
-<?php					}?>
-<?php				}?>
 			</div>		
 			<div class='viewContainer'>
 			<?php
@@ -145,6 +127,18 @@
 <?php		}?>
 <?php		foreach($message as $mes){?>
 			report_message("<?php echo $mes;?>");
+<?php		}?>
+<?php		if(isset($_COOKIE['notify'])) {
+			$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['notify']);
+			foreach($cookie as $message){?>
+				report_error("<?php echo $message;?>");
+<?php			}?>
+<?php		}?>
+<?php		if(isset($_COOKIE['message'])) {
+			$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['message']);
+			foreach($cookie as $message){?>
+				report_message("<?php echo $message;?>");
+<?php			}?>
 <?php		}?>
 	});
 </script>

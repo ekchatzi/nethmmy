@@ -364,21 +364,14 @@
 			if(user_type($user) == 'a')
 				return true;
 
-			$query = "SELECT class FROM file_folders WHERE id='$folder'";
+			$query = "SELECT class_association_types.permissions AS permissions, FROM class_associations,class_association_types
+					WHERE class_associations.class='$class' AND class_associations.user='$user' AND class_associations.type = class_association_types.id";
 			$ret = mysql_query($query);
 			if($ret && mysql_num_rows($ret))
 			{
-				$result = mysql_fetch_array($ret);
-				$class = $result['class'];
-				$query = "SELECT class_association_types.permissions AS permissions, FROM class_associations,class_association_types
-						WHERE class_associations.class='$class' AND class_associations.user='$user' AND class_associations.type = class_association_types.id";
-				$ret = mysql_query($query);
-				if($ret && mysql_num_rows($ret))
-				{
-					$permissions = mysql_result($ret,0,0);
-					if(preg_match('~\bmanage_files\b~',$permissions))
-						return true;
-				}
+				$permissions = mysql_result($ret,0,0);
+				if(preg_match('~\bmanage_files\b~',$permissions))
+					return true;
 			}
 		}
 		return false;
