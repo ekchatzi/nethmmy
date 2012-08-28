@@ -57,7 +57,7 @@
 
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : "'.implode($MESSAGE_SEPERATOR,$error).'"}';
+		echo '{ "error" : ["'.implode('","',$error).'"]}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{
