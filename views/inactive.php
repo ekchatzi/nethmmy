@@ -2,8 +2,12 @@
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 
-	if(!isset($error))
-		$error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
+
 	$show = false;
 	if(can_view_inactive_accounts($logged_userid)) 
 	{
@@ -26,7 +30,7 @@
 	}
 	else 
 	{
-		$error .= _("Access Denied");
+		$error[] = _("Access Denied");
 	}
 ?>
 

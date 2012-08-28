@@ -3,8 +3,11 @@
 	include_once('../lib/validate.php');
 	include_once('../config/general.php');
 
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$edit = false;
@@ -59,7 +62,7 @@
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 ?>
 <h2><?php echo _('Folder contents');?></h2>

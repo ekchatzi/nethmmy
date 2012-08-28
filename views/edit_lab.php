@@ -2,8 +2,11 @@
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$class_link = _('Some class');
@@ -43,17 +46,17 @@
 			}
 			else
 			{
-				$error .= _('Database Error');
+				$error[] = _('Database Error');
 			}
 		}
 		else
 		{
-			$error .= _('Access Denied.');
+			$error[] = _('Access Denied.');
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 ?>
 <h2> <?php echo _('Edit Lab/assignment');?> </h2>

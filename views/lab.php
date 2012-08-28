@@ -2,8 +2,11 @@
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$delete = false;
@@ -109,7 +112,7 @@
 						}
 						else
 						{
-							$error .= _("Invalid student list.") . " : " . $e;
+							$error[] = _("Invalid student list.") . " : " . $e;
 						}
 						$students[] = $students_t;
 						$students_count[] = $students_count_t;
@@ -150,7 +153,7 @@
 							}
 							else
 							{
-								$error .= _("Invalid file list.") . " : " . $e;
+								$error[] = _("Invalid file list.") . " : " . $e;
 							}
 							$files[] = $files_t;
 							$files_count[] = $files_count_t;
@@ -160,17 +163,17 @@
 			}
 			else
 			{
-				$error .= _('Access denied.');
+				$error[] = _('Access denied.');
 			}
 		}
 		else	
 		{
-			$error .= _('Database Error.');			
+			$error[] = _('Database Error.');			
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 ?>
 <h2><?php echo $lab_name;?></h2>

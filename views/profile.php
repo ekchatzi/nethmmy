@@ -1,9 +1,12 @@
 <?php
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
+       
+	if(!isset($error)) 
+                $error = array();
 
-        if(!isset($error))
-                $error = '';
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$user_name = _('Some user');
@@ -56,7 +59,7 @@
 					}
 					else
 					{
-						$error .= _('Database Error.');			
+						$error[] = _('Database Error.');			
 					}				
 				}
 
@@ -92,17 +95,17 @@
 			}
 			else
 			{
-				$error .= _('Access denied.');
+				$error[] = _('Access denied.');
 			}
 		}
 		else	
 		{
-			$error .= _('Database Error.');			
+			$error[] = _('Database Error.');			
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 ?>
 <h2><?php echo $user_name;?></h2>

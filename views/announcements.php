@@ -4,8 +4,11 @@
 	include_once('../config/general.php');
 
 	$allowed = false;
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$post = false;
@@ -69,11 +72,11 @@
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if(!$allowed)
-		$error .= _('Access Denied.');
+		$error[] = _('Access Denied.');
 ?>
 <h2><?php echo _('Announcements');?></h2>
 <p class='hierarchyNavigationRow'><?php echo $class_link . " > " . _('Announcements');?></p>
@@ -124,7 +127,6 @@
 					<div class='editOptionsWrapper'>
 						<a class='editLink' id="editLink<?php echo $id[$i];?>" href="edit_announcement/<?php echo $id[$i];?>/"><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 						<a class='deleteLink' id="deleteLink<?php echo $id[$i];?>" href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
-
 					</div>
 <?php				}?>
 				</div>

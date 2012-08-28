@@ -8,6 +8,9 @@
         if(!isset($error)) 
                 $error = array();
 
+	if(!isset($message))
+		$message = array();
+
 	$uid = 0;
 	$token = isset($_POST['token'])?$_POST['token']:'';
 	$password = isset($_POST['password'])?$_POST['password']:'';

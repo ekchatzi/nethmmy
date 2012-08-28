@@ -3,8 +3,11 @@
 	include_once('../lib/validate.php');
 
 	$allowed = false;
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 	
 	$show = false;
 	$edit_class = false;
@@ -85,16 +88,16 @@
 		}
 		else	
 		{
-			$error .= _('Database Error.');			
+			$error[] = _('Database Error.');			
 		}
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 
 	if($allowed == false)
-		$error .= _('Access Denied');
+		$error[] = _('Access Denied');
 ?>
 <h2><?php echo _('Edit Class');?></h2>
 <p class='hierarchyNavigationRow'><?php echo $classes_link . " > " .$class_link . " > " . _('Edit Class');?></p>

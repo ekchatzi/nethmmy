@@ -140,8 +140,11 @@
 		}	
 	}
 	$(document).ready(function(){
-<?php		if($error){?>
-		report_error("<?php echo $error;?>");
+<?php		foreach($error as $er){?>
+			report_error("<?php echo $er;?>");
+<?php		}?>
+<?php		foreach($message as $mes){?>
+			report_message("<?php echo $mes;?>");
 <?php		}?>
 	});
 </script>

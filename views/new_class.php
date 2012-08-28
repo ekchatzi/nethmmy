@@ -1,5 +1,10 @@
 <?php	
 	include_once('../lib/access_rules.php');
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$classes_link = _('Classes');
@@ -11,7 +16,7 @@
 	}
 	else
 	{
-		$error .= _('Access Denied.');
+		$error[] = _('Access Denied.');
 	}
 ?>
 <h2> <?php echo _('New Class');?> </h2>

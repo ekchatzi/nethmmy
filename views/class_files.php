@@ -3,8 +3,12 @@
 	include_once('../lib/validate.php');
 	include_once('../config/general.php');
 
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
+
 	$show = false;
 	$edit = false;
 	$delete = false;
@@ -42,10 +46,10 @@
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 ?>
-<h2><?php echo _('Class File Folders');?></h2>
+<h2><?php echo _('Class Files');?></h2>
 <p class='hierarchyNavigationRow'><?php echo $class_link . " > "._('Class Files');?></p>
 <div class='classFilesWrapper'>
 <?php	if($show) {

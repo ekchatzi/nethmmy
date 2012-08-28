@@ -2,10 +2,12 @@
 <?php
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
+      
 	if(!isset($error)) 
-	{
-        $error = '';
-	}
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 	
 	$view_accept = array('class'=>_('Class'), 'edit_class'=>_('Edit Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'), 'edit_announcement' => _('Announcements'));
 	$classes = '';
@@ -179,7 +181,7 @@
 	}
 	else
 	{
-		$error .= $e;
+		$error[] = $e;
 	}
 ?>
 <?php if(can_view_classes_list($logged_userid)) {?>

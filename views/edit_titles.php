@@ -1,5 +1,10 @@
 <?php
 	include_once('../lib/access_rules.php');
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	if(can_edit_titles($logged_userid))
@@ -22,7 +27,7 @@
 	}
 	else
 	{
-		$error .= _('Access Denied.');
+		$error[] = _('Access Denied.');
 	}
 ?>
 <h2> <?php echo _('Edit Titles');?> </h2>

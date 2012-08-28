@@ -2,8 +2,12 @@
 	include_once('../lib/access_rules.php');
 	include_once('../config/security.php');
 
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
+
 	$show = false;
 	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if(can_edit_class_association_types($logged_userid))
@@ -28,7 +32,7 @@
 	}
 	else
 	{
-		$error .= _('Access Denied.');
+		$error[] = _('Access Denied.');
 	}
 ?>
 <h2> <?php echo _('Edit Class Association Types');?> </h2>

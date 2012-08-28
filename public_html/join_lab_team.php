@@ -42,7 +42,7 @@
 						update_time='$time'
 						WHERE id='$tid'";
 				mysql_query($query) || ($error[] = mysql_error());
-				$messagep[ = sprintf(_("You are now a member of team `%s`."),$result['title']); 
+				$message[] = sprintf(_("You are now a member of team `%s`."),$result['title']); 
 			}
 			else
 			{

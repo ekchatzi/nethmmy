@@ -2,8 +2,11 @@
 	include_once('../lib/access_rules.php');
 	include_once('../lib/validate.php');
 
-        if(!isset($error))
-                $error = '';
+        if(!isset($error)) 
+                $error = array();
+
+	if(!isset($message))
+		$message = array();
 
 	$show = false;
 	$home_link = "<a href='home/'>"._('Home')."</a>";
@@ -25,7 +28,7 @@
 	}
 	else
 	{
-		$error .= _('Access denied.');
+		$error[] = _('Access denied.');
 	}
 
 ?>
