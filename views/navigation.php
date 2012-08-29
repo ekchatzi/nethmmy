@@ -148,14 +148,8 @@
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret) && mysql_result($ret,0,0)!='')
 		{	
-			if($classes!='')
-			{
-				$classes = $classes.','.mysql_result($ret,0,0);
-			}
-			else
-			{
-				$classes = mysql_result($ret,0,0);
-			}
+			if(strlen($classes)) $classes .= ',';
+			$classes .= mysql_result($ret,0,0);
 		}
 	}
 	
