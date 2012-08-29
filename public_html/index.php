@@ -89,7 +89,7 @@
 	</div>
 	<div class='header'>
 		<div class='headerMain'>
-			<h1> <?php echo _('eTHMMY');?> </h1>
+			<h1> <?php echo _('NeTHMMY');?> </h1>
 			<p> <?php echo _('Online classes application');?> </p>		
 		</div>
 	</div>

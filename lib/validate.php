@@ -331,7 +331,7 @@
 	function id_list_validation($text)
 	{
 		/* Must be a number or empty*/
-		if(is_string($text) && strlen($text))
+		if(is_string($text) && strlen($text) > 0)
 		{
 			$ids = explode(',',$text);
 			for($i = 0; $i < count($ids); ++$i)
