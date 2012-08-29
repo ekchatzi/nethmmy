@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="css/views.css" />
 	<link rel="stylesheet" type="text/css" href="css/anytime.css" />
 	<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+	<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 	<script src='js/anytime.js'></script>
 </head>
 <body>

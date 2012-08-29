@@ -59,7 +59,7 @@
 				<label><?php echo _('Title');?> </label>
 				<input type='text' name='title' id='labTitleField' placeholder="<?php echo _('Lab title');?>" />
 				<label><?php echo _('Description');?> </label>
-				<textarea name='description' id='labDescriptionField' placeholder="<?php echo _('Write a description for the lab');?>" ></textarea>
+				<textarea name='description' class='labDescriptionField' id='textEditor' placeholder="<?php echo _('Write a description for the lab');?>" ></textarea>
 				<label><?php echo _('Team limit');?> </label>
 				<input type='text' name='team_limit' placeholder="<?php echo _('How many teams the lab can have');?>" />
 				<label><?php echo _('Team size limit');?> </label>

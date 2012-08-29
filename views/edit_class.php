@@ -113,7 +113,7 @@
 			</ul>
 			<p>
 				<label id='descriptionLabel'><?php echo _('Description');?></label>
-				<textarea name='description' class='descriptionTextarea' placeholder="<?php echo _('Class description');?>"><?php echo $result['description'];?></textarea>
+				<textarea name='description' class='descriptionTextarea' id='textEditor' placeholder="<?php echo _('Class description');?>"><?php echo $result['description'];?></textarea>
 			</p>
 			<input type='hidden' name='cid' value="<?php echo $cid;?>" />
 			<input type='submit' value="<?php echo _('Apply');?>" />

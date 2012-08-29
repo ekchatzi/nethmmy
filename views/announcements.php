@@ -94,13 +94,12 @@
 						<input type='checkbox' name='urgent' value='1'/>
 						</div>
 						<label><?php echo _('Body');?></label>
-						<textarea class='announcementTextarea' id='editArea' name='text' placeholder="<?php echo _('Announcement body here...');?>" ></textarea>
+						<textarea class='announcementTextarea' id='textEditor' name='text' placeholder="<?php echo _('Announcement body here...');?>" ></textarea>
 						<input type='hidden' name='class' value="<?php echo $cid;?>" />
 						<input type='submit' value="<?php echo _('Post announcement');?>" />
 					</form>
 				</fieldset>
 			</div>
-			<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 			<script type='text/javascript'>
 				//check the title//
 				function validate(form) {
@@ -111,9 +110,6 @@
 					}
 					return true;
 				}
-				bkLib.onDomLoaded(function() {
-					new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
-				}); 
 			</script>
 <?php		}?>
 			<div class='pastAnnouncementsWrapper'>

@@ -105,7 +105,7 @@
 <?php		}?>	
 			<p>
 				<label id='biographyLabel'><?php echo _('Biography');?></label>
-				<textarea name='bio' class='bioTextarea' placeholder="<?php echo _('Some words about your self');?>"><?php echo $result['bio'];?></textarea>
+				<textarea name='bio' class='bioTextarea' id='textEditor' placeholder="<?php echo _('Some words about your self');?>"><?php echo $result['bio'];?></textarea>
 			</p>
 			<input type='hidden' name='uid' value="<?php echo $uid;?>" />
 			<input type='submit' value="<?php echo _('Submit');?>" />

@@ -10,7 +10,6 @@
 		$message = array();
 	
 	$view_accept = array('class'=>_('Class'), 'edit_class'=>_('Edit Class'), 'announcements' => _('Announcements'), 'class_files' => _('Files'), 'lab' => _('Lab'), 'new_lab' => _('New Lab'), 'edit_lab' => _('Edit Lab'), 'files' =>_('Files'), 'edit_announcement' => _('Announcements'));
-	$classes = '';
 	$v = isset($_GET['v'])?$_GET['v']:'';
 	
 	//Get the class id according to view//
@@ -129,8 +128,9 @@
 	}
 	
 	
-	//different cases for different users//
-	if(user_type($logged_userid)=='p')
+	//select the subscribed classes and the associated ones//
+	$classes = '';
+	if(user_type($logged_userid)=='p'||user_type($logged_userid)=='s'||user_type($logged_userid)=='a')
 	{
 		$query = "SELECT class FROM class_associations WHERE user = '$logged_userid'";
 		$ret = mysql_query($query);
@@ -143,14 +143,12 @@
 			}
 			$classes=implode(',',$classesar);
 		}
-	}
-	elseif(user_type($logged_userid)=='s')
-	{
+		
 		$query = "SELECT classes FROM users WHERE id = '$logged_userid'";
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
-			$classes = mysql_result($ret,0,0);
+			$classes = $classes.','.mysql_result($ret,0,0);
 		}
 	}
 	
@@ -183,6 +181,26 @@
 	{
 		$error[] = $e;
 	}
+	if(can_view_admin_panel($logged_userid))
+	{	
+		$admin_view_names =  array();
+		if (can_create_class($logged_userid))
+		{
+			$admin_view_names['new_class'] =  _('New Class'); 
+		}
+		if (can_edit_titles($logged_userid))
+		{
+			$admin_view_names['edit_titles'] = _('Titles'); 
+		}
+		if (can_edit_class_association_types($logged_userid))
+		{
+			$admin_view_names['edit_class_association_types'] = _('Association Types'); 
+		}
+		if (can_view_statistics($logged_userid))
+		{
+			$admin_view_names['stats'] = _('Stats'); 
+		}
+	}
 ?>
 <?php if(can_view_classes_list($logged_userid)) {?>
 		<li><a href='classes/'  class='navigationTitles globalNav' <?php if($v=='classes') {echo "id='navigationClassHl'";}?>><?php echo _("Classes");?></a></li>
@@ -190,4 +208,15 @@
 <?php if(can_view_professor_list($logged_userid)) {?>
 		<li><a href='professors/' class='navigationTitles globalNav' <?php if($v=='professors') {echo "id='navigationClassHl'";}?>><?php echo _("Professors");?></a></li>
 <?php }?>
+<?php if(can_view_admin_panel($logged_userid)) {?>
+		<div class='adminPanel'><li><a href='home/'  class='navigationTitles globalNav' <?php if($v=='home'||array_key_exists($v, $admin_view_names)) {echo "id='navigationClassHl'";}?>><?php echo _('Administration');?></a>
+		<ul>
+<?php 	if($v=='home'||array_key_exists($v, $admin_view_names)) {?>		
+<?php		foreach ($admin_view_names as $view => $view_title) {?>
+				<li><a href="<?php echo $view;?>/" <?php if (isset($v)&&$v==$view) echo "id='navigationHl'";?> class='navigationClassDirectories'><?php echo $view_title;?></a></li>	
+<?php		}?>
+<?php 	}?>
+		</ul></li></div>  
+<?php }?>  
+
 </ul>

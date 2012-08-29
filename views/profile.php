@@ -200,7 +200,7 @@
 				<a class='editLink' href="edit_profile/<?php echo $uid;?>/"' ><img src='images/resource/edit-pencil.gif' class='icon editIcon' alt="<?php echo _('Edit');?>" title="<?php echo _('Edit');?>" /></a>
 <?php			};?>
 <?php			if($c2) {?>
-				<a class='deleteLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon<?php echo $id[$i];?>" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
+				<a class='deleteLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id="deleteIcon" alt="<?php echo _('Delete');?>" title="<?php echo _('Delete');?>" /></a>
 			<script type='text/javascript'>
 				$(document).ready(function(){
 					$('.deleteLink').click(function(){

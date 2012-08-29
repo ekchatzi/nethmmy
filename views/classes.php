@@ -64,7 +64,7 @@
 <?php			for($i=0;$i<count($id[$s]);++$i) {?>
 					<div class='classField'><p class='classTitleField'><?php echo $title[$s][$i];?>
 <?php				if($show_sub) {?>						
-					<div class='subscribeCheck'><input id='classCheck' name='subscribe[]' value="<?php echo $id[$s][$i];?>" id="checkbox<?php echo $id[$s][$i];?>" type="checkbox"
+					<div class='subscribeCheck'><input class='classCheck' name='subscribe[]' value="<?php echo $id[$s][$i];?>" id="checkbox<?php echo $id[$s][$i];?>" type="checkbox"
 					<?php if(isset($classes)&&in_array($id[$s][$i], $classes)) echo "checked='true'";?> />
 					<img id='joinImage' src='../public_html/images/resource/joinIcon.png' alt='join icon' height="30" width="30"/></div>
 <?php				}?>

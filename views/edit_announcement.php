@@ -66,18 +66,13 @@
 				<input type='checkbox' name='urgent' value='1' <?php if($is_urgent) echo "checked='true'";?>/>
 				</div>
 				<label><?php echo _('Body');?> </label>
-				<textarea class='announcementTextarea' id='editArea' name='text' placeholder="<?php echo _('Announcement body...');?>" ><?php echo $text;?></textarea>
+				<textarea class='announcementTextarea' id='textEditor' name='text' placeholder="<?php echo _('Announcement body...');?>" ><?php echo $text;?></textarea>
 				<input type='hidden' name='id' value="<?php echo $id;?>" />
 				<input type="submit" value="<?php echo _('Submit');?>" />
 				<a id='cancelButton' href="announcements/<?php echo $class;?>/"><input type="button" name="cancel" value="Cancel" /></a>
 			</fieldset>
 		</form>
-		<script type="text/javascript" src="../public_html/js/nicEdit.js"></script>
 		<script type='text/javascript'>
-			bkLib.onDomLoaded(function() {
-				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('editArea');
-			}); 
-			
 			//check the title//
 			function validate(form) {
 				var title = form.title.value;

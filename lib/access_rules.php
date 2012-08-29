@@ -773,4 +773,8 @@
 	{
 		return is_active($user) && user_type($user) == 'a';
 	}
+	function can_view_admin_panel($user)
+	{
+		return is_active($user) && user_type($user) == 'a';
+	}
 ?>

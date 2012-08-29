@@ -51,7 +51,7 @@
 /*
 	NEW CLASS VIEW
 			*/
-#classDescriptionField {
+.classDescriptionField {
 	width:767px;
 	height:80px;
 	resize:vertical;
@@ -301,7 +301,7 @@ div#receiveUrgents {
 .newLabWrapper label {
 	display:block;
 }
-#labDescriptionField {
+.labDescriptionField {
 	width:767px;
 	height:80px;
 	resize:vertical;
@@ -399,7 +399,7 @@ div#receiveUrgents {
 	float: right;
 	display: inline;
 }
-#classCheck {
+.classCheck {
 	position: absolute;
 	z-index: 150;
 	display: inline;
@@ -455,4 +455,9 @@ div#receiveUrgents {
 }
 .newTitleSubmit {
 	display:inline !important;
+}
+
+/* ADMIN HOME */
+.adminHomeWrapper {
+	margin-top: 10px;
 }
