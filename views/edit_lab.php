@@ -119,5 +119,11 @@
 				<input type="submit" value="<?php echo _('Save changes');?>" />
 			</fieldset>
 		</form>
+		<script>
+			//turn the textareas into rich text editors
+			bkLib.onDomLoaded(function() {
+				new nicEditor({buttonList : ['bold','italic','underline','left','center','right','ol','ul','fontSize','fontFamily','fontFormat','superscript','subscript','removeformat','strikethrough','link','unlink','striketrhough','forecolor','bgcolor','image','upload','xhtml'], xhtml : true}).panelInstance('textEditor');
+			});
+		</script>
 <?php	}?>
 </div>
