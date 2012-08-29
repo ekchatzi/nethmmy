@@ -54,7 +54,7 @@
 	
 	if(isset($_GET['AJAX']))
 	{ 
-		echo '{ "error" : ["'.implode('","',$error).'"]}';
+		echo '{ "error" : ['.(count($error)?('"'.implode('","',$error).'"'):'').']}';
 	}
 	elseif(!(isset($DONT_REDIRECT) && $DONT_REDIRECT))
 	{

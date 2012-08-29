@@ -42,8 +42,7 @@
 	<p class='professorName'><?php echo $name[$i];?></p>
 <?php 	}?>
 <?php 	if(count($name)<1) {?>
-	<p><?php echo _('There are no registered professors yet');?></p>
+	<p><?php echo _('There are no registered professors');?></p>
 <?php 	}?>
 <?php }?>
 </div>
-

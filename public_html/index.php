@@ -5,6 +5,8 @@
 	include_once("../lib/connect_db.php");
 	include_once("../config/general.php");
 
+	$message_cookie = $_COOKIE['message'];
+	$notify_cookie = $_COOKIE['notify'];
 	setcookie('ref',$_SERVER['REQUEST_URI'],0,$INDEX_ROOT);
 	setcookie('notify','',time()-3600,$INDEX_ROOT);
 	setcookie('message','',time()-3600,$INDEX_ROOT);
@@ -129,15 +131,15 @@
 <?php		foreach($message as $mes){?>
 			report_message("<?php echo $mes;?>");
 <?php		}?>
-<?php		if(isset($_COOKIE['notify'])) {
-			$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['notify']);
-			foreach($cookie as $message){?>
+<?php		if(isset($notify_cookie)) {
+			$messages = explode($MESSAGE_SEPERATOR,$notify_cookie);
+			foreach($messages as $message){?>
 				report_error("<?php echo $message;?>");
 <?php			}?>
 <?php		}?>
-<?php		if(isset($_COOKIE['message'])) {
-			$cookie = explode($MESSAGE_SEPERATOR,$_COOKIE['message']);
-			foreach($cookie as $message){?>
+<?php		if(isset($message_cookie)) {
+			$messages = explode($MESSAGE_SEPERATOR,$message_cookie);
+			foreach($messages as $message){?>
 				report_message("<?php echo $message;?>");
 <?php			}?>
 <?php		}?>
