@@ -231,7 +231,7 @@
 					$ret = mysql_query($query);
 					if($ret && mysql_num_rows($ret))
 					{
-						if(mysql_result($ret,0,0) && preg_match('~\blab_evaluation\b~',$permissions))
+						if(mysql_result($ret,0,0) && preg_match('~\bevaluate_labs\b~',$permissions))
 							return true;
 					}
 				}
@@ -272,7 +272,8 @@
 			if(user_type($user) == 'a')
 				return true;
 
-			$query = "SELECT file_folders.class AS class,
+			$query = "SELECT file_folders.id AS folder,
+					 file_folders.class AS class,
 					 file_folders.public AS public 
 					FROM file_folders,files WHERE file_folders.id=files.folder AND files.id='$file'";
 			$ret = mysql_query($query);
@@ -280,11 +281,13 @@
 			{
 				$result = mysql_fetch_array($ret);
 				$public = $result['public'];
+				$folder = $result['folder'];
 				if($public)
 					return true;
 
+				$permissions = '';
 				$class = $result['class'];
-				$query = "SELECT class_association_types.permissions AS permissions, FROM class_associations,class_association_types
+				$query = "SELECT class_association_types.permissions AS permissions FROM class_associations,class_association_types
 						WHERE class_associations.class='$class' AND class_associations.user='$user' AND class_associations.type = class_association_types.id";
 				$ret = mysql_query($query);
 				if($ret && mysql_num_rows($ret))
@@ -293,12 +296,20 @@
 					if(preg_match('~\bmanage_files\b~',$permissions))
 						return true;
 
-					$query = "SELECT COUNT(*) FROM file_folders,labs WHERE labs.folder = file_folders.id AND labs.class = file_folders.class";
+					$query = "SELECT COUNT(*) FROM labs WHERE labs.folder = '$folder' AND labs.class";
 					$ret = mysql_query($query);
 					if($ret && mysql_num_rows($ret))
 					{
-						if(mysql_result($ret,0,0) && preg_match('~\blab_evaluation\b~',$permissions))
+						if(mysql_result($ret,0,0) && preg_match('~\bevaluate_labs\b~',$permissions))
 							return true;
+
+						$query = "SELECT COUNT(*) FROM lab_teams WHERE FIND_IN_SET('$file',lab_teams.files) AND FIND_IN_SET('$user',lab_teams.students)";
+						$ret = mysql_query($query);
+						if($ret && mysql_num_rows($ret))
+						{
+							if(mysql_result($ret,0,0))
+								return true;
+						}
 					}
 				}
 			}
@@ -470,7 +481,7 @@
 				if($ret && mysql_num_rows($ret))
 				{
 					$permissions = mysql_result($ret,0,0);
-					if(preg_match('~\lab_evaluation\b~',$permissions))
+					if(preg_match('~\evaluate_labs\b~',$permissions))
 						return true;
 				}
 			}

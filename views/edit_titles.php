@@ -7,6 +7,7 @@
 		$message = array();
 
 	$show = false;
+	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if(can_edit_titles($logged_userid))
 	{
 		$query = "SELECT * FROM titles";
@@ -31,6 +32,7 @@
 	}
 ?>
 <h2> <?php echo _('Edit Titles');?> </h2>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " ._('Class Association Types');?></p>
 <div class='editTitlesWrapper'>
 <?php	if($show) {?>
 		<fieldset>

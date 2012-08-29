@@ -21,13 +21,13 @@
 	$USER_TYPES_FULL = array(0 => _('Guest'), 1 => _('Student'), 2 => _('Professor'), 3 => _('Admin'));
 	$DEFAULT_ACCOUNT_ACTIVE_STATE = '0';//written on the db during registration
 
-	$CLASS_PERMISSIONS = array('manage_info','announce','manage_announcements','create_labs','manage_labs','lab_evaluation','upload_files','manage_files','create_quizs','evaluate_quizs');
+	$CLASS_PERMISSIONS = array('manage_info','announce','manage_announcements','create_labs','manage_labs','evaluate_labs','upload_files','manage_files','create_quizs','evaluate_quizs');
 	$CLASS_PERMISSIONS_TEXT = array('manage_info' => _('Manage information'),
 					'announce' => _('Make announcements'),
 					'manage_announcements' => _('Manage announcements'),
 					'create_labs' => _('Create labs/assignments'),
 					'manage_labs' => _('Manage labs'),
-					'lab_evaluation' => _('Lab/assignment evaluation'),
+					'evaluate_labs' => _('Lab/assignment evaluation'),
 					'upload_files' => _('Upload files'),
 					'manage_files' => _('Manage files'),
 					'create_quizs' => _('Create quizs'),

@@ -12,6 +12,8 @@
 	$delete = false;
 	$kick = false;
 	$edit_team = false;
+	$leave_team = false;
+	$delete_team = false;
 	$lid = isset($_GET['id'])?$_GET['id']:0;
 	$lab_name = _('Lab');
 	$class_link = _('Some class');
@@ -118,11 +120,11 @@
 						$students_count[] = $students_count_t;
 
 						//Files
+						$files_t = _("No files.");
+						$files_count_t = 0;
 						$can_view_files_t = $can_view_files[] = (can_view_lab_team_files($logged_userid,$id_t) && $folder);
 						if($can_view_files_t)
 						{
-							$files_t = _("No files.");
-							$files_count_t = 0;
 							if(!($e = id_list_validation($row['files'])))
 							{
 								$query = "SELECT id,name,full_path FROM files WHERE id IN(".$row['files'].") ORDER BY name ASC";
@@ -137,8 +139,8 @@
 										$f = "<span class='file' id='file$fid'>";
 										$file_extension_t = strtolower(substr(strrchr($row2['full_path'],"."),1));
 										$icon = file_exists("images/resource/filetype_icons/$file_extension_t.png")?"images/resource/filetype_icons/$file_extension_t.png":"images/resource/filetype_icons/default.png";
-										if(can_download_file($logged_userid,$fid))
-											$f .= "<a href='download_file.php?fid=$fid'><img src='$icon' title='".sprintf(_('Download %s'),$fname)."' alt='"._('download')."' class='filetypeIcon' />$fname</a>";
+
+										$f .= (can_download_file($logged_userid,$fid))?"<a href='download_file.php?fid=$fid'><img src='$icon' title='".sprintf(_('Download %s'),$fname)."' alt='"._('download')."' class='filetypeIcon' />$fname</a>":$fname;
 										if(can_edit_file($logged_userid,$fid))
 										{
 											$f .= "<a class='deleteLinkFiles' id='deleteLinkFiles$fid' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' id='deleteIcon$fid' alt='"._('Delete')."' title='"._('Delete')."' /></a>";
@@ -155,9 +157,9 @@
 							{
 								$error[] = _("Invalid file list.") . " : " . $e;
 							}
-							$files[] = $files_t;
-							$files_count[] = $files_count_t;
 						}
+						$files[] = $files_t;
+						$files_count[] = $files_count_t;
 					}				
 				}
 			}
@@ -284,11 +286,11 @@
 <?php							if($c1){?>
 								<p><a href="join_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/add.png' class='icon addIcon' alt="<?php echo _('Add');?>" title="<?php echo _('Join team');?>" /><?php echo _('Join');?></a></p>
 <?php							}?>
-<?php							if($c2){?>
-								<p><a href="leave_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/substract.png' class='icon minusIcon' alt="<?php echo _('Leave');?>" title="<?php echo _('Leave team');?>" /><?php echo _('Leave');?></a></p>
+<?php							if($c2){ $leave_team = true;?>
+								<p><a class='leaveLink' href="javascript:void(0)" ><img src='images/resource/substract.png' class='icon minusIcon' alt="<?php echo _('Leave');?>" title="<?php echo _('Leave team');?>" /><?php echo _('Leave');?></a></p>
 <?php							}?>
-<?php							if($c3){?>
-								<p><a href="delete_lab_team.php?tid=<?php echo $id[$i];?>" ><img src='images/resource/trash_can.png' class='icon deleteIcon' alt="<?php echo _('Delete');?>" title="<?php echo _('Delete team');?>" /><?php echo _('Delete');?></a></p>
+<?php							if($c3){ $delete_team = true;?>
+								<p><a class='deleteLabTeamLink' href='javascript:void(0)'><img src='images/resource/trash_can.png' class='icon deleteIcon' alt="<?php echo _('Delete');?>" title="<?php echo _('Delete team');?>" /><?php echo _('Delete');?></a></p>
 <?php							}?>
 							</div>
 <?php						}?>
@@ -310,8 +312,9 @@
 							var lab = "<?php echo $lid;?>";
 							$.post("kick_from_lab_team.php?AJAX",{ 'uid' : id,'tid' : teamId},function(data){
 								var ob = $.parseJSON(data);
-								if(ob.error) {
-									alert(ob.error);
+								if(ob.error.length) {
+									for(var i=0;i<ob.error.length;++i)
+										report_error(ob.error[i]);
 								} else {
 									if($('#labTeamStudents'+teamId).find('.user').size() == 1)
 									{
@@ -355,6 +358,22 @@
 								$('#labTeamFiles'+teamId + ' #file'+id).remove();
 							}
 						});
+					}
+				});
+<?php			};?>
+<?php			if($delete_team){?>
+				$('.deleteLabTeamLink').click(function(){
+					if (confirm("<?php echo _('Are you sure you want to delete this lab team?');?>")) {
+						var teamId = $(this).parents('.labTeamContainer').attr('id').replace('labTeamContainer','');
+						window.location = "delete_lab_team.php?tid="+teamId;
+					}
+				});
+<?php			};?>
+<?php			if($leave_team){?>
+				$('.leaveLink').click(function(){
+					if (confirm("<?php echo _('Are you sure you want to leave this lab team?');?>")) {
+						var teamId = $(this).parents('.labTeamContainer').attr('id').replace('labTeamContainer','');
+						window.location = "leave_lab_team.php?tid="+teamId;
 					}
 				});
 <?php			};?>
