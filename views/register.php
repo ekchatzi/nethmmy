@@ -137,8 +137,9 @@ function username_check(){
 		   data: 'username='+ username,
 		   cache: false,
 		   success: function(response){
-				if(response){
-					inlineMsg('username',response, 1, 0);
+				var ob = $.parseJSON(response);
+				if(ob.error!=''){
+					inlineMsg('username',ob.error, 1, 0);
 					exists=1;
 				}
 				else {
