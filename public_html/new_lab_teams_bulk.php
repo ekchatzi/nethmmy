@@ -6,6 +6,7 @@
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
 	include_once("../config/security.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -54,12 +55,12 @@
 								VALUES
 								$values";
 						mysql_query($query) || ($error[] = mysql_error());
-						$lab_team = mysql_insert_id();
-						if($lab_team)
+						if($lab_team = mysql_insert_id())
 						{				
 							$query = "UPDATE labs SET last_no = last_no + $new_teams_count WHERE id='$lab'";
 							mysql_query($query) || ($error[] = mysql_error());
 							$message[] = sprintf(_("%s lab team(s) were created successfully."),$new_teams_count);
+							lab_team_creation_bulk_log($lab,$new_teams_count);
 						}
 					}
 				}

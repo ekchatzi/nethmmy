@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -23,6 +24,17 @@
 	{
 		if(can_post_announcement($logged_userid,$class))
 		{	
+			$query = "INSERT INTO announcements (class,poster,is_urgent,title,text,post_time,update_time)
+					VALUES('$class','$logged_userid','$urgent','"
+					.mysql_real_escape_string($title)."','"
+					.mysql_real_escape_string(sanitize_html($text))."','".time()."','".time()."')";
+			mysql_query($query) || ($error[] = mysql_error());
+			if($ann = mysql_insert_id())
+			{
+				$message[] = _('Announcement was posted succesfully.');
+				announcement_log($ann);			
+			}	
+
 			if($urgent)
 			{
 				//email the users of this class//
@@ -32,7 +44,7 @@
 				{
 					$class_title = _('ethmmy class');
 				}
-				$query = "SELECT email FROM users WHERE FIND_IN_SET($class, classes) AND email_urgent = '1'";
+				$query = "SELECT id,email FROM users WHERE FIND_IN_SET($class, classes) AND email_urgent = '1'";
 				$ret = mysql_query($query);
 				if($ret && mysql_numrows($ret))
 				{
@@ -47,15 +59,14 @@
 						{
 							$error[] = _("Urgent delivery failed. Please try again by editing your last announcement.");
 						}
+						else
+						{
+							email_notification_log($row['id'],$ann);
+						}
 					}
 				}		
 			}
-			$query = "INSERT INTO announcements (class,poster,is_urgent,title,text,post_time,update_time)
-					VALUES('$class','$logged_userid','$urgent','"
-					.mysql_real_escape_string($title)."','"
-					.mysql_real_escape_string(sanitize_html($text))."','".time()."','".time()."')";
-			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _('Announcement was posted succesfully.');
+
 		}
 		else
 		{

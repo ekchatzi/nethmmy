@@ -5,6 +5,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -65,9 +66,7 @@
 								.mysql_real_escape_string($name)."','$logged_userid','"
 								.time()."')";
 					mysql_query($query) || ($error[] = mysql_error());
-					$message[] = _('File uploaded successfully.');
-					$file = mysql_insert_id();
-					if($file)
+					if($file = mysql_insert_id())
 					{
 						$files[] = $file;
 						$files = implode(',',$files);
@@ -76,6 +75,9 @@
 								files='".mysql_real_escape_string($files)."'
 								WHERE id='$team' LIMIT 1";
 						mysql_query($query) || ($error[] = mysql_error());
+
+						$message[] = sprintf(_('File `%s` uploaded successfully.'),$name);
+						lab_file_upload_log($file);
 					}					
 				}
 				else

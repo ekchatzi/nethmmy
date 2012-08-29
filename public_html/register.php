@@ -6,6 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
+	include_once("../lib/log.php");
 
         if(!isset($error))
                 $error = array();
@@ -38,7 +39,11 @@
 	(username,password,salt,email,first_name,last_name,aem,user_type,title,registration_time,semester,is_active,semester_update_time)
 		 VALUES ('$username','$password_hash','$salt','$email','$first_name','$last_name','$aem','$user_type','1',".time().",'$semester','$DEFAULT_ACCOUNT_ACTIVE_STATE','".time()."')";
 			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _('Registration success');
+			if($user = mysql_insert_id())
+			{
+				$message[] = _('Registration success');
+				user_account_creation_log($user);			
+			}		
 		}
 		else
 		{

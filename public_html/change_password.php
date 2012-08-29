@@ -4,6 +4,7 @@
 	include_once("../lib/token.php");
 	include_once("../config/security.php");
 	include_once("../lib/localization.php"); 
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -22,7 +23,7 @@
 			if(!($e = password_validation($password)))
 			{
 				$query = "SELECT data FROM tokens WHERE code='$token'";
-				($ret = mysql_query($query)) || ($error = $query . "||" .mysql_error());
+				$ret = mysql_query($query);
 				if($ret && mysql_numrows($ret))
 				{
 					$uid = mysql_result($ret,0,0);//data == uid
@@ -31,9 +32,13 @@
 					$query = "UPDATE users SET password = '$password_hash',
 								salt='$salt'
 							WHERE id='$uid' LIMIT 1";
-					mysql_query($query) || ($error[] = mysql_error());
-					delete_token($token);
-					$message[] = _('Password was changed successfully.');
+					($ret = mysql_query($query)) || ($error[] = mysql_error());
+					if($ret)
+					{
+						delete_token($token);
+						$message[] = _('Password was changed successfully.');
+						password_change_log($uid);					
+					}
 				}
 				else
 				{

@@ -4,6 +4,7 @@
 	include_once("../lib/token.php");
 	include_once("../config/security.php");
 	include_once("../lib/localization.php"); 
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -16,15 +17,25 @@
 	if(verify_token($token,'validate_email'))//if token is valid
 	{
 		$query = "SELECT data FROM tokens WHERE code='$token'";
-		($ret = mysql_query($query)) || ($error = $query . "||" .mysql_error());
+		$ret = mysql_query($query)
 		if($ret && mysql_numrows($ret))
 		{
 			$uid = mysql_result($ret,0,0);//data == uid
 			$query = "UPDATE users SET is_email_validated = '1'
 					WHERE id='$uid' LIMIT 1";
-			mysql_query($query) || ($error .= mysql_error());
-			delete_token($token);
-			$message[] = _('Email address is now validated.');
+			($ret = mysql_query($query)) || ($error .= mysql_error());
+			if($ret)
+			{
+				$email = _('address');
+				$query = "SELECT email FROM users WHERE id='$uid'";
+				$ret = mysql_query($query);
+				if($ret && mylsql_num_rows($ret))
+					$email = mysql_result($ret,0,0);
+
+				delete_token($token);
+				$message[] = sprintf(_('Email %s is now validated.'),$email);
+				email_address_validation_log($uid);
+			}
 		}
 		else
 		{

@@ -5,6 +5,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -49,7 +50,11 @@
 							.mysql_real_escape_string($name)."','$logged_userid','"
 							.time()."')";
 				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _('File uploaded successfully.');	
+				if($file = mysql_insert_id())
+				{
+					$message[] = sprintf(_('File `%s` uploaded successfully.'),$name);
+					file_upload_log($file);
+				}
 			}
 			else
 			{

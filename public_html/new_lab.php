@@ -6,6 +6,7 @@
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
 	include_once("../config/security.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -54,8 +55,11 @@
 					('".mysql_real_escape_string($title)."','".mysql_real_escape_string(sanitize_html($description))."','$class','$team_limit','$users_per_team_limit','$registration_expire','$upload_limit','$upload_expire','$can_free_join',
 					 '$can_make_new_teams','$can_lock_teams','$folder','$time','$time')";
 			mysql_query($query) || ($error[] = mysql_error());
-			$lab = mysql_insert_id();
-			$message[] = sprintf(_('Lab `%s` was created successfully.'),$title);
+			if($lab = mysql_insert_id())
+			{
+				$message[] = sprintf(_('Lab `%s` was created successfully.'),$title);
+				lab_creation_log($lab);			
+			}		
 		}
 		else
 		{

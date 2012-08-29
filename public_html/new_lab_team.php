@@ -38,12 +38,13 @@
 						VALUES
 						('$lab','$students','".mysql_real_escape_string($team_name)."','$time','$time','$files','$is_locked')";
 				mysql_query($query) || ($error[] = mysql_error());
-				$lab_team = mysql_insert_id();
-				if($lab_team)
+				if($lab_team = mysql_insert_id())
 				{				
 					$query = "UPDATE labs SET last_no = last_no + 1 WHERE id='$lab'";
-					mysql_query($query) || ($error[] = mysql_error());	
+					mysql_query($query) || ($error[] = mysql_error());
+	
 					$message[] = sprintf(_('Lab team `%s`was created successfully.'),$team_name);			
+					lab_team_creation_log($lab_team);
 				}
 			}
 			else

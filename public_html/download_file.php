@@ -5,7 +5,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
-	include_once("../lib/stats.php");
+	include_once("../lib/log.php");
 
         if(!isset($error))
                 $error = array();
@@ -27,7 +27,7 @@
 
 				if(file_exists($filepath))
 				{
-					file_download_stat_log($fid);
+					file_download_log($fid);
 					$file_extension = strtolower(substr(strrchr($filepath,"."),1));
 					$ctype = (isset($FILE_CONTENT_TYPES))?$FILE_CONTENT_TYPES[$file_extension]:"application/force-download";
 					header("Pragma: public"); // required

@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -25,7 +26,11 @@
 			$query = "INSERT INTO file_folders (name,class,public)
 					VALUES('".mysql_real_escape_string($name)."','$class','$public')";
 			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _('Folder was created successfully.');
+			if($folder = mysql_insert_id())
+			{
+				$message[] = _('Folder was created successfully.');
+				folder_creation_log($folder);			
+			}		
 		}
 		else
 		{
