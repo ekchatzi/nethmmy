@@ -10,4 +10,6 @@
 			    "doc" => "application/msword","xls" => "application/vnd.ms-excel","ppt" => "application/vnd.ms-powerpoint",
 			    "gif"  => "image/gif","png"  => "image/png","jpeg" => "image/jpg","jpg"  => "image/jpg");
 	$MESSAGE_SEPERATOR = '||>>';
+
+	$LOG_MESSAGES_SHOWN = 35;
 ?>

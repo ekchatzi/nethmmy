@@ -788,4 +788,12 @@
 	{
 		return is_active($user) && user_type($user) == 'a';
 	}
+	function can_view_log($user)
+	{
+		return is_active($user) && user_type($user) == 'a';	
+	}
+	function can_clean_log($user)
+	{
+		return is_active($user) && user_type($user) == 'a';	
+	}
 ?>

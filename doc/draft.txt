@@ -378,3 +378,18 @@ labs.folder είναι φάκελος όπου αποθηκεύονται τα �
 Tα κείμενα που θα είναι αποθηκευμένα στην βάση δεδομένων θα μπορουν περιέχουν html tags από ένα περιορισμένο υποσύνολο.
 
 Μεγάλο θέμα είναι το MySQL injection.
+
+LOG TYPES
+=========
+
+100 : download , data : file_id,user_id,downloader_ip
+101 : upload   , data : file_id,ip
+102 : upload lab file , data : file_id,ip
+103 : email validation , data : user_id
+104 : announcement , data : announcement_id
+105 : new folder , data : user_id,folder_id
+106 : new lab , data : user_id,lab_id
+107 : new lab team , data : lab_team_id
+108 : new lab teams bulk , data : user_id,lab_id,count
+109 : password change , data : user_id
+110 : new user , data : user_id

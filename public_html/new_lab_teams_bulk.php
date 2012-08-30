@@ -60,7 +60,7 @@
 							$query = "UPDATE labs SET last_no = last_no + $new_teams_count WHERE id='$lab'";
 							mysql_query($query) || ($error[] = mysql_error());
 							$message[] = sprintf(_("%s lab team(s) were created successfully."),$new_teams_count);
-							lab_team_creation_bulk_log($lab,$new_teams_count);
+							lab_team_creation_bulk_log($logged_userid,$lab,$new_teams_count);
 						}
 					}
 				}

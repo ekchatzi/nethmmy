@@ -1,11 +1,12 @@
 <?php
 	include_once('../lib/connect_db.php');
 	include_once('../lib/login.php');
+	include_once('../lib/log.php');
 	include_once("../lib/access_rules.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
-	include_once("../lib/log.php");
+	include_once("../config/security.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -13,34 +14,17 @@
 	if(!isset($message))
 		$message = array();
 
-	$classid = '';
-	/* Data */
-	$name = isset($_POST['name'])?$_POST['name']:'';
-	$class = isset($_POST['class'])?$_POST['class']:'';
-	$public = isset($_POST['public'])?$_POST['public']:'0';
-	/* check if input is valid */
-	if(!(($e = name_validation($name)) || ($e = class_id_validation($class)) || ($e = boolean_int_validation($public))))
+	$to_keep = isset($_POST['count'])?$_POST['count']:$LOG_SIZE;
+	if(can_clean_log($logged_userid))
 	{
-		if(can_create_folder($logged_userid,$class))//if user can add city
-		{
-			$query = "INSERT INTO file_folders (name,class,public)
-					VALUES('".mysql_real_escape_string($name)."','$class','$public')";
-			mysql_query($query) || ($error[] = mysql_error());
-			if($folder = mysql_insert_id())
-			{
-				$message[] = _('Folder was created successfully.');
-				folder_creation_log($logged_userid,$folder);			
-			}		
-		}
-		else
-		{
-			$error[] = _('Access denied.');
-		}
+		$deleted = clean_log($logged_userid,$to_keep);
+		if($deleted >= 0)
+			$message[] = sprintf(_('Deleted %s log entries.'),$deleted);
 	}
 	else
 	{
-		$error[] = $e;
-	}
+		$error[] = _('Access denied.');
+	}	
 
 	if(isset($_GET['AJAX']))
 	{ 
@@ -55,7 +39,7 @@
 		if(isset($error) && count($error))
 			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
-		$redirect = "class_files/$class/";
+		$redirect = "home/";
 		include('redirect.php');
 	}
 ?>

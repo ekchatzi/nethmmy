@@ -53,7 +53,7 @@
 				if($file = mysql_insert_id())
 				{
 					$message[] = sprintf(_('File `%s` uploaded successfully.'),$name);
-					file_upload_log($file);
+					file_upload_log($file,$_SERVER['REMOTE_ADDR']);
 				}
 			}
 			else

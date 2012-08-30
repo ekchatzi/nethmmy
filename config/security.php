@@ -39,4 +39,20 @@
 	$MAX_LAB_TEAM_LIMIT = 200;
 	$MAX_USERS_PER_LAB_TEAM_LIMIT = 20;
 	$MAX_LAB_UPLOAD_LIMIT = 10;
+
+	//Logging
+	$LOG_SIZE = 3000;
+	$MIN_LOG_MESSAGES_KEPT = 200;
+	$ALLOWED_LOG_TYPES = array(100,101,102,103,104,105,106,107,108,109,110);
+	$LOG_TYPES_TEXT = array( 100 => _('File download'),
+				 101 => _('File upload'),
+				 102 => _('Lab file upload'),
+				 103 => _('Email validation'),
+				 104 => _('Announcement'),
+				 105 => _('New folder'),
+				 106 => _('New lab'),
+				 107 => _('New lab team'),
+				 108 => _('New lab teams bulk'),
+				 109 => _('Password change'),
+				 110 => _('New user account'));
 ?>

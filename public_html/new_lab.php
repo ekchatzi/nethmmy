@@ -58,7 +58,7 @@
 			if($lab = mysql_insert_id())
 			{
 				$message[] = sprintf(_('Lab `%s` was created successfully.'),$title);
-				lab_creation_log($lab);			
+				lab_creation_log($logged_userid,$lab);			
 			}		
 		}
 		else

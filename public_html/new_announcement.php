@@ -29,10 +29,10 @@
 					.mysql_real_escape_string($title)."','"
 					.mysql_real_escape_string(sanitize_html($text))."','".time()."','".time()."')";
 			mysql_query($query) || ($error[] = mysql_error());
-			if($ann = mysql_insert_id())
+			if($announcement = mysql_insert_id())
 			{
 				$message[] = _('Announcement was posted succesfully.');
-				announcement_log($ann);			
+				announcement_log($announcement);			
 			}	
 
 			if($urgent)

@@ -27,7 +27,7 @@
 
 				if(file_exists($filepath))
 				{
-					file_download_log($fid);
+					file_download_log($fid,$logged_userid,$_SERVER['REMOTE_ADDR']);
 					$file_extension = strtolower(substr(strrchr($filepath,"."),1));
 					$ctype = (isset($FILE_CONTENT_TYPES))?$FILE_CONTENT_TYPES[$file_extension]:"application/force-download";
 					header("Pragma: public"); // required
