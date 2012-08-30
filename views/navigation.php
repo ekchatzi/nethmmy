@@ -182,26 +182,25 @@
 	{
 		$error[] = $e;
 	}
-	if(can_view_admin_panel($logged_userid))
-	{	
-		$admin_view_names =  array();
-		if (can_create_class($logged_userid))
-		{
-			$admin_view_names['new_class'] =  _('New Class'); 
-		}
-		if (can_edit_titles($logged_userid))
-		{
-			$admin_view_names['edit_titles'] = _('Titles'); 
-		}
-		if (can_edit_class_association_types($logged_userid))
-		{
-			$admin_view_names['edit_class_association_types'] = _('Association Types'); 
-		}
-		if (can_view_statistics($logged_userid))
-		{
-			$admin_view_names['stats'] = _('Stats'); 
-		}
+	
+	$admin_view_names =  array();
+	if (can_create_class($logged_userid))
+	{
+		$admin_view_names['new_class'] =  _('New Class'); 
 	}
+	if (can_edit_titles($logged_userid))
+	{
+		$admin_view_names['edit_titles'] = _('Titles'); 
+	}
+	if (can_edit_class_association_types($logged_userid))
+	{
+		$admin_view_names['edit_class_association_types'] = _('Association Types'); 
+	}
+	if (can_view_statistics($logged_userid))
+	{
+		$admin_view_names['stats'] = _('Stats'); 
+	}
+	
 ?>
 <?php if(can_view_classes_list($logged_userid)) {?>
 		<li><a href='classes/'  class='navigationTitles globalNav' <?php if($v=='classes') {echo "id='navigationClassHl'";}?>><?php echo _("Classes");?></a></li>
@@ -209,7 +208,7 @@
 <?php if(can_view_professor_list($logged_userid)) {?>
 		<li><a href='professors/' class='navigationTitles globalNav' <?php if($v=='professors') {echo "id='navigationClassHl'";}?>><?php echo _("Professors");?></a></li>
 <?php }?>
-<?php if(can_view_admin_panel($logged_userid)) {?>
+<?php if(count($admin_view_names) > 0) {?>
 		<div class='adminPanel'><li><a href='home/'  class='navigationTitles globalNav' <?php if($v=='home'||array_key_exists($v, $admin_view_names)) {echo "id='navigationClassHl'";}?>><?php echo _('Administration');?></a>
 		<ul>
 <?php 	if($v=='home'||array_key_exists($v, $admin_view_names)) {?>		
