@@ -26,8 +26,11 @@
 			$query = "INSERT INTO classes (title,description,semesters)
 					VALUES('$title','".mysql_real_escape_string(sanitize_html($description))."','$semesters')";
 			mysql_query($query) || ($error[] = mysql_error());
-			$classid = mysql_insert_id();
-			$message[] = _('Class was created successfully.');
+			if($classid = mysql_insert_id())
+			{
+				$message[] = _('Class was created successfully.');
+				class_creation_log($logged_userid,$classid);			
+			}		
 		}
 		else
 		{

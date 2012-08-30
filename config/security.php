@@ -43,7 +43,7 @@
 	//Logging
 	$LOG_SIZE = 3000;
 	$MIN_LOG_MESSAGES_KEPT = 200;
-	$ALLOWED_LOG_TYPES = array(100,101,102,103,104,105,106,107,108,109,110);
+	$ALLOWED_LOG_TYPES = array(100,101,102,103,104,105,106,107,108,109,110,111);
 	$LOG_TYPES_TEXT = array( 100 => _('File download'),
 				 101 => _('File upload'),
 				 102 => _('Lab file upload'),
@@ -54,5 +54,6 @@
 				 107 => _('New lab team'),
 				 108 => _('New lab teams bulk'),
 				 109 => _('Password change'),
-				 110 => _('New user account'));
+				 110 => _('New user account'),
+				 111 => _('New class'));
 ?>

@@ -58,6 +58,8 @@
 				return sprintf(_('User #%s changed his password.'),$d[0]);
 			case 110:
 				return sprintf(_('New user #%s.'),$d[0]);
+			case 111:
+				return sprintf(_('User #%s created class #%s.'),$d[0],$d[1]);
 			default:
 				return sprintf(_('Log message type `%s` with data `%s`'),$type,$data);	
 		}
@@ -144,5 +146,9 @@
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'users_accounts_created'";
 		mysql_query($query);
 		log_entry(110,implode(',',$user));
+	}
+	function class_creation_log($user,$class)
+	{
+		log_entry(111,implode(',',$user,$class));
 	}
 ?>

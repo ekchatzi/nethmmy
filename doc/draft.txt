@@ -393,3 +393,4 @@ LOG TYPES
 108 : new lab teams bulk , data : user_id,lab_id,count
 109 : password change , data : user_id
 110 : new user , data : user_id
+111 : new class , data : user_id,class_id
