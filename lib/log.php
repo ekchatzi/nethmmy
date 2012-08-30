@@ -95,13 +95,13 @@
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'email_addresses_validated'";
 		mysql_query($query);
-		log_entry(103,implode(',',$user));
+		log_entry(103,implode(',',array($user)));
 	}
 	function announcement_log($announcement)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'announcements_made'";
 		mysql_query($query);
-		log_entry(104,implode(',',$announcement));
+		log_entry(104,implode(',',array($announcement)));
 	}
 	function email_notification_log($user,$announcement)
 	{
@@ -112,19 +112,19 @@
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'file_folders_created'";
 		mysql_query($query);
-		log_entry(105,implode(',',$user,$folder));
+		log_entry(105,implode(',',array($user,$folder)));
 	}
 	function lab_creation_log($user,$lab)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'labs_created'";
 		mysql_query($query);
-		log_entry(106,implode(',',$user,$lab));
+		log_entry(106,implode(',',array($user,$lab)));
 	}
 	function lab_team_creation_log($lab_team)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'labs_teams_created'";
 		mysql_query($query);
-		log_entry(107,implode(',',$lab_team));
+		log_entry(107,implode(',',array($lab_team)));
 	}
 	function lab_team_creation_bulk_log($user,$lab,$count)
 	{
@@ -132,23 +132,23 @@
 		{
 			$query = "UPDATE global_stats SET value = value + $count where name= 'labs_teams_created'";
 			mysql_query($query);
-			log_entry(108,implode(',',$user,$lab,$count));
+			log_entry(108,implode(',',array($user,$lab,$count)));
 		}	
 	}
 	function password_change_log($user)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'passwords_changed'";
 		mysql_query($query);
-		log_entry(109,implode(',',$user));
+		log_entry(109,implode(',',array($user)));
 	}
 	function user_account_creation_log($user)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'users_accounts_created'";
 		mysql_query($query);
-		log_entry(110,implode(',',$user));
+		log_entry(110,implode(',',array($user)));
 	}
 	function class_creation_log($user,$class)
 	{
-		log_entry(111,implode(',',$user,$class));
+		log_entry(111,implode(',',array($user,$class)));
 	}
 ?>

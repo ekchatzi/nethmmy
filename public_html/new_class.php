@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once("../lib/log.php");
 
         if(!isset($error)) 
                 $error = array();
@@ -28,8 +29,8 @@
 			mysql_query($query) || ($error[] = mysql_error());
 			if($classid = mysql_insert_id())
 			{
-				$message[] = _('Class was created successfully.');
-				class_creation_log($logged_userid,$classid);			
+				$message[] = sprintf(_('Class `%s` was created successfully.'),$title);
+				class_creation_log($logged_userid,$classid);
 			}		
 		}
 		else
