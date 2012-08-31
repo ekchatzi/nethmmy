@@ -39,7 +39,7 @@
 		}
 		else
 		{
-			$error .= _('Token is no longer avainable.');
+			$error .= _('Token is no longer available.');
 		}
 	}
 	else

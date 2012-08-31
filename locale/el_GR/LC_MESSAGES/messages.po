@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tichuiq\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-31 10:22+0200\n"
-"PO-Revision-Date: 2012-08-31 12:35+0200\n"
+"POT-Creation-Date: 2012-08-31 13:49+0200\n"
+"PO-Revision-Date: 2012-08-31 13:53+0200\n"
 "Last-Translator: lefteris hatzipetrou <ekchatzi@auth.gr>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -76,6 +76,7 @@ msgid "Registration success"
 msgstr "Εγγραφή επιτυχής"
 
 #: public_html/register.php:55
+#: public_html/change_password.php:54
 msgid "Passwords don't match."
 msgstr "Οι κωδικοί δεν ταιριάζουν"
 
@@ -86,15 +87,13 @@ msgstr "Το εργαστήριο `%s` δημιουργήθηκε επιτυχώ
 
 #: public_html/new_lab.php:65
 #: public_html/new_class.php:38
-#: public_html/delete_class.php:29
-#: public_html/edit_profile.php:95
+#: public_html/delete_class.php:33
 #: public_html/edit_profile.php:101
-#: public_html/change_user_type.php:31
-#: public_html/change_user_type.php:57
-#: public_html/delete_files.php:55
-#: public_html/edit_class.php:38
-#: public_html/new_class_association.php:32
-#: public_html/edit_class_association_types.php:74
+#: public_html/edit_profile.php:107
+#: public_html/delete_files.php:68
+#: public_html/edit_class.php:41
+#: public_html/new_class_association.php:37
+#: public_html/edit_class_association_types.php:81
 #: public_html/new_class_association_type.php:31
 msgid "Access denied."
 msgstr "Απαγορεύεται η πρόσβαση."
@@ -104,77 +103,91 @@ msgstr "Απαγορεύεται η πρόσβαση."
 msgid "Class `%s` was created successfully."
 msgstr "Το μάθημα `%s` δημιουργήθηκε επιτυχώς."
 
-#: public_html/delete_class.php:25
+#: public_html/delete_class.php:27
 msgid "Class was deleted successfully."
 msgstr "Το μάθημα διεγράφει επιτυχώς."
 
-#: public_html/edit_profile.php:48
+#: public_html/edit_profile.php:49
 msgid "Email address is no longer validated."
 msgstr "Η διέυθυνση ηλεκτρονικού ταχυδρομείου δεν είναι πλέον εξακριβωμένη."
 
-#: public_html/edit_profile.php:66
+#: public_html/edit_profile.php:69
 msgid "Basic information were updated successfully."
 msgstr "Οι βασικές πληροφορίες ανανεώθηκαν επιτυχώς."
 
-#: public_html/edit_profile.php:85
+#: public_html/edit_profile.php:90
 msgid "AEM was updated successfully."
 msgstr "Ο ΑΕΜ ανανεώθηκε επιτυχώς."
 
-#: public_html/change_user_type.php:53
-msgid "Active status changed successfully."
-msgstr "Η κατάσταση του λογαριασμού άλλαξε επιτυχώς."
+#: public_html/change_password.php:38
+msgid "Password was changed successfully."
+msgstr "Ο κωδικός άλλαξε επιτυχώς."
 
-#: public_html/change_user_type.php:62
-msgid "Invalid active status."
-msgstr "Μη έγκυρη κατάσταση λογαριασμού."
+#: public_html/change_password.php:44
+msgid "Token is no longer available."
+msgstr "Το token δεν είναι έγκυρο."
 
-#: public_html/delete_files.php:65
+#: public_html/change_password.php:59
+msgid "Token is invalid."
+msgstr "Το token δεν είναι έγκυρο."
+
+#: public_html/delete_files.php:78
 #, php-format
 msgid "%s out of %s files were deleted successfully."
 msgstr "%s από τα %s αρχεία διεγράφηκαν επιτυχώς."
 
-#: public_html/edit_class.php:34
+#: public_html/edit_class.php:35
 msgid "Class updated successfully."
 msgstr "Το μάθημα ανανεώθηκε επιτυχώς."
 
-#: public_html/new_class_association.php:28
+#: public_html/new_class_association.php:32
 msgid "Association was created successfully."
 msgstr "Ο συσχετισμός δημιουργήθηκε επιτυχώς."
 
-#: public_html/edit_class_association_types.php:53
+#: public_html/edit_class_association_types.php:45
+#, php-format
+msgid "Association type `%s` updated successfully."
+msgstr "Ο τύπος συσχετισμού `%s` ανανεώθηκε με επιτυχία."
+
+#: public_html/edit_class_association_types.php:56
 msgid "Values count do not match id count"
 msgstr "Ο αριθμός των ταυτοτήτων δεν ταιριάζει με αυτό των τιμών"
 
-#: public_html/edit_class_association_types.php:59
+#: public_html/edit_class_association_types.php:62
 #, php-format
 msgid "%s out of %s class associations were updated successfully."
 msgstr "%s από τις %s συσχετίσεις ανανεώθηκαν επιτυχώς."
+
+#: public_html/edit_class_association_types.php:71
+#, fuzzy, php-format
+msgid "%s association types deleted successfully."
+msgstr "Ο συσχετισμός διεγράφη με επιτυχία."
 
 #: public_html/new_class_association_type.php:27
 msgid "New association type was created successfully."
 msgstr "Ο νέος τύπος συσχετισμού δημιουργήθηκε με επιτυχία."
 
-#: public_html/edit_announcement.php:32
+#: public_html/edit_announcement.php:33
 #: public_html/new_announcement.php:45
 msgid "ethmmy class"
 msgstr "Μάθημα NeTHMMY"
 
-#: public_html/edit_announcement.php:42
+#: public_html/edit_announcement.php:43
 #: public_html/new_announcement.php:55
 #, php-format
 msgid "[ethmmy] Urgent announcement for %s"
 msgstr "[NeTHMMY] Επείγουσα ανακοίνωση για %s"
 
-#: public_html/edit_announcement.php:56
+#: public_html/edit_announcement.php:57
 #: public_html/new_announcement.php:69
 msgid "Urgent delivery failed."
 msgstr "Επείγουσα παράδοση απέτυχε."
 
-#: public_html/edit_announcement.php:75
+#: public_html/edit_announcement.php:78
 msgid "Announcement was updated successfully."
 msgstr "Η ανακοίνωση ανανεώθηκε με επιτυχία."
 
-#: public_html/delete_class_association.php:31
+#: public_html/delete_class_association.php:34
 msgid "Class association was deleted successfully."
 msgstr "Ο συσχετισμός διεγράφη με επιτυχία."
 
@@ -182,24 +195,24 @@ msgstr "Ο συσχετισμός διεγράφη με επιτυχία."
 msgid "Announcement was posted succesfully."
 msgstr "Η ανακοίνωση αναρτήθηκε με επιτυχία."
 
-#: public_html/delete_announcement.php:30
+#: public_html/delete_announcement.php:33
 msgid "Announcement was deleted successfully."
 msgstr "Η ανακοίνωση διεγράφει με επιτυχία."
 
-#: public_html/edit_folder.php:39
+#: public_html/edit_folder.php:41
 msgid "Folder information were updated successfully."
 msgstr "Οι πληροφορίες φακέλου ανανεώθηκαν επιτυχώς."
 
-#: public_html/join_lab_team.php:45
+#: public_html/join_lab_team.php:48
 #, php-format
 msgid "You are now a member of team `%s`."
 msgstr "Είστε πλέον μέλος της ομάδας `%s`."
 
-#: public_html/delete_folder.php:36
+#: public_html/delete_folder.php:39
 msgid "Folder was deleted successfully."
 msgstr "Ο φάκελος διεγράγει επιτυχώς."
 
-#: public_html/delete_folder.php:40
+#: public_html/delete_folder.php:44
 msgid "Folder is not empty."
 msgstr "Ο φάκελος δεν είναι άδειος."
 
@@ -220,7 +233,7 @@ msgstr "Η μετακίνηση αρχείου απέτυχε."
 msgid "Access Denied."
 msgstr "Άρνηση πρόσβασης."
 
-#: public_html/edit_file.php:37
+#: public_html/edit_file.php:39
 msgid "File information were updated successfully."
 msgstr "Οι πληροφορίες αρχείου ανέβηκαν επιτυχώς."
 
@@ -228,7 +241,7 @@ msgstr "Οι πληροφορίες αρχείου ανέβηκαν επιτυχ
 msgid "File does not exist."
 msgstr "Το αρχείο δεν υπάρχει."
 
-#: public_html/delete_lab.php:32
+#: public_html/delete_lab.php:34
 msgid "Lab was deleted successfully."
 msgstr "Το εργαστήριο διεγράφει με επιτυχία."
 
@@ -236,23 +249,33 @@ msgstr "Το εργαστήριο διεγράφει με επιτυχία."
 msgid "Class subscriptions were updated."
 msgstr "Οι συνδρόμες μαθημάτων ανανεώθηκαν."
 
-#: public_html/edit_lab.php:58
-#: public_html/edit_lab.php:67
+#: public_html/edit_lab.php:59
+#: public_html/edit_lab.php:69
 msgid "File folder was created successfully."
 msgstr "Ο φάκελος αρχείων δημιουργήθηκε επιτυχώς."
 
-#: public_html/edit_lab.php:82
+#: public_html/edit_lab.php:86
 msgid "Lab information were updated successfully."
 msgstr "Οι πληροφορίες εργαστηρίου ανανεώθηκαν επιτυχώς."
 
-#: public_html/delete_user.php:25
+#: public_html/delete_user.php:28
 msgid "User account was deleted successfully."
 msgstr "Ο λογαριασμός χρήστη διεγράφει επιτυχώς."
 
-#: public_html/edit_titles.php:53
+#: public_html/edit_titles.php:42
+#, fuzzy, php-format
+msgid "Title `%s` updated successfully."
+msgstr "Το αρχείο `%s` ανέβηκε με επιτυχία."
+
+#: public_html/edit_titles.php:58
 #, php-format
 msgid "%s out of %s titles were updated successfully."
 msgstr "%s από %s τίτλους ανανεώθηκαν επιτυχώς."
+
+#: public_html/edit_titles.php:67
+#, fuzzy, php-format
+msgid "%s titles deleted successfully."
+msgstr "Το μάθημα διεγράφει επιτυχώς."
 
 #: public_html/new_lab_team.php:46
 #, php-format
@@ -268,41 +291,40 @@ msgstr "Το όριο ομάδων συμπληρώθηκε."
 msgid "%s lab team(s) were created successfully."
 msgstr "%s ομάδες δημιουργήθηκαν επιτυχώς."
 
-#: public_html/change_password.php:39
-msgid "Password was changed successfully."
-msgstr "Ο κωδικός άλλαξε επιτυχώς."
+#: public_html/edit_user_type.php:31
+#, fuzzy
+msgid "User type updated successfully."
+msgstr "Το μάθημα ανανεώθηκε επιτυχώς."
 
-#: public_html/change_password.php:45
-#: public_html/validate_email.php:42
-msgid "Token is no longer avainable."
-msgstr "Το token δεν είναι έγκυρο."
+#: public_html/edit_user_type.php:59
+msgid "Active status changed successfully."
+msgstr "Η κατάσταση του λογαριασμού άλλαξε επιτυχώς."
 
-#: public_html/change_password.php:60
-#: public_html/validate_email.php:47
-msgid "Token is invalid."
-msgstr "Το token δεν είναι έγκυρο."
+#: public_html/edit_user_type.php:69
+msgid "Invalid active status."
+msgstr "Μη έγκυρη κατάσταση λογαριασμού."
 
-#: public_html/leave_lab_team.php:48
+#: public_html/leave_lab_team.php:51
 #, php-format
 msgid "You left lab team `%s`."
 msgstr "Αποχώρησες από την ομάδα `%s`."
 
-#: public_html/leave_lab_team.php:60
-#: public_html/kick_from_lab_team.php:61
+#: public_html/leave_lab_team.php:63
+#: public_html/kick_from_lab_team.php:64
 #, php-format
 msgid "Lab team `%s` was deleted."
 msgstr "Η ομάδα `%s` διεγράφει."
 
-#: public_html/kick_from_lab_team.php:49
+#: public_html/kick_from_lab_team.php:52
 #, php-format
 msgid "Student was kicked from lab team `%s`."
 msgstr "Ο φοιτητής αποβλήθηκε από την ομάδα `%s`."
 
-#: public_html/delete_lab_team.php:36
+#: public_html/delete_lab_team.php:45
 msgid "Lab team was deleted successfully."
 msgstr "Η ομάδα εργαστηρίου διεγράφει επιτυχώς."
 
-#: public_html/edit_lab_team.php:40
+#: public_html/edit_lab_team.php:42
 msgid "Lab team was updated successfully."
 msgstr "Η ομάδα ανανεώθηκε επιτυχώς."
 
@@ -312,6 +334,7 @@ msgid "Title `%s`was created successfully."
 msgstr "Ο τίτλος `%s` δημιουργήθηκε επιτυχώς"
 
 #: public_html/request_validate_email.php:29
+#: public_html/request_change_password_email.php:29
 msgid "[ethmmy] Validate your email"
 msgstr "[NeTHMMY] Επιβεβαιώστε το email σας"
 
@@ -326,6 +349,7 @@ msgid "Email validation email was sent successfully to email address `%s`."
 msgstr "Ένα email εξακρίβωσης απεστάλθηκε στην διέυθυνση `%s`."
 
 #: public_html/request_validate_email.php:40
+#: public_html/request_change_password_email.php:40
 msgid "Message delivery failed. Please try again."
 msgstr "Η παράδοση του μηνύματος απέτυχε. Δοκιμάστε ξανά."
 
@@ -343,16 +367,33 @@ msgstr "Το email %s είναι πλέον επιβεβαιωμένο."
 msgid "Deleted %s log entries."
 msgstr "Διεγράφησαν %s εγγράφες καταγραφής."
 
-#: lib/login.php:30
+#: public_html/request_change_password_email.php:32
+#, php-format
+msgid ""
+"Please follow this link %s to change your password, or you can paste the following code to the code input field in the page you were redirected.\n"
+" Code: %s"
+msgstr ""
+
+#: public_html/request_change_password_email.php:36
+#, fuzzy, php-format
+msgid "Email for password reset was sent successfully to email address `%s`."
+msgstr "Ένα email εξακρίβωσης απεστάλθηκε στην διέυθυνση `%s`."
+
+#: public_html/request_change_password_email.php:45
+#, fuzzy
+msgid "Your email is not validated"
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου είναι ήδη εξακριβωμένη."
+
+#: lib/login.php:32
 msgid "Remote adress has been changed since last login"
 msgstr "Η διεύθυνση πελάτη άλλαξε από την τελευταία εισόδου"
 
-#: lib/login.php:92
-#: lib/login.php:97
+#: lib/login.php:101
+#: lib/login.php:106
 msgid "User not found or wrong password."
 msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
-#: lib/login.php:102
+#: lib/login.php:111
 msgid "Someone is logged in."
 msgstr "Κάποιος είναι ήδη συνδεδεμένος."
 
@@ -390,13 +431,13 @@ msgstr "Το όνομα περιέχει μη έγκυρους χαρακτήρ�
 msgid "Username must be between %s and %s characters long"
 msgstr "Τα ονόμα χρήστη πρέπει να είναι μεταξύ %s και %s χαρακτήρες σε μήκος."
 
-#: lib/validate.php:157
-msgid "Username is taken."
-msgstr "Το όνομα χρήστη είναι κατελειμένο."
-
-#: lib/validate.php:161
+#: lib/validate.php:155
 msgid "Username must contain only latin alphanumeric characters."
 msgstr "Το όνομα χρήστη πρέπει να περιέχει μόνο λατινικούς αλφαριθμητικούς χαρακτήρες."
+
+#: lib/validate.php:161
+msgid "Username is taken."
+msgstr "Το όνομα χρήστη είναι κατελειμένο."
 
 #: lib/validate.php:178
 msgid "AEM already exists."
@@ -437,6 +478,11 @@ msgstr "Δε βρέθηκε ο χρήστης."
 #: lib/validate.php:479
 #: lib/validate.php:558
 #: lib/validate.php:581
+#: views/class.php:67
+#: views/edit_profile.php:69
+#: views/profile.php:62
+#: views/profile.php:103
+#: views/edit_class.php:91
 msgid "Database Error."
 msgstr "Σφάλμα βάσης δεδομένων."
 
@@ -602,67 +648,212 @@ msgstr "Το όριο αποστολής αρχείων πρέπει να είν
 msgid "Upload limit too large.Must be less than %s."
 msgstr "Το όριο αποστολής αρχείων πρέπει είναι πολύ μεγάλο. Πρέπει να είναι μικρότερο από %s. "
 
-#: lib/log.php:40
-#, php-format
-msgid "User #%s downloaded file #%s from ip address %s."
+#: lib/log.php:45
+#, fuzzy, php-format
+msgid "User #%s downloaded file #%s from %s."
 msgstr "Ο χρήστης #%s κατέβασε το αρχείο #%s από την διεύθυνση %s."
 
-#: lib/log.php:42
-#, php-format
-msgid "File #%s was uploaded from ip address %s."
-msgstr "Το αρχείο #%s ανέβηκε από την διεύθυνση %s."
+#: lib/log.php:47
+#, fuzzy, php-format
+msgid "User #%s uploaded file #%s from %s."
+msgstr "Ο χρήστης #%s κατέβασε το αρχείο #%s από την διεύθυνση %s."
 
-#: lib/log.php:44
-#, php-format
-msgid "Lab file #%s was uploaded from ip address %s."
-msgstr "Το αρχείο εργαστηρίου #%s ανέβηκε από την διεύθυνση %s."
+#: lib/log.php:49
+#, fuzzy, php-format
+msgid "User #%s uploaded lab file #%s from %s."
+msgstr "Ο χρήστης #%s κατέβασε το αρχείο #%s από την διεύθυνση %s."
 
-#: lib/log.php:46
+#: lib/log.php:51
 #, php-format
 msgid "User #%s validated his email address."
 msgstr "Ο χρήστης #%s επιβεβαίωση την διέυθυνση email του."
 
-#: lib/log.php:48
-#, php-format
-msgid "Announcement #%s was posted."
-msgstr "Αναρτήθηκε η ανακοίνωση #%s."
+#: lib/log.php:53
+#, fuzzy, php-format
+msgid "User #%s posted announcement #%s."
+msgstr "Ανάρτηση ανακοίνωσης"
 
-#: lib/log.php:50
-#, php-format
-msgid "Folder #%s was created by user #%s."
-msgstr "Ο φάκελος αρχείων  #%s  δημιουργήθηκε από τον χρήστη #%s."
+#: lib/log.php:55
+#, fuzzy, php-format
+msgid "User #%s created file folder #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
 
-#: lib/log.php:52
-#, php-format
-msgid "Lab #%s was created by user #%s."
-msgstr "Το εργαστήριο  #%s δημιουργήθηκε από τον χρήστη #%s."
+#: lib/log.php:57
+#, fuzzy, php-format
+msgid "User #%s created lab #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
 
-#: lib/log.php:54
-#, php-format
-msgid "Lab team #%s was created."
-msgstr "Δημιουργήθηκε η ομάδα εργαστηρίου #%s ."
+#: lib/log.php:59
+#, fuzzy, php-format
+msgid "User #%s created lab team #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
 
-#: lib/log.php:56
+#: lib/log.php:61
 #, php-format
 msgid "User #%s created %s team(s) for lab #%s."
 msgstr "Ο χρήστης #%s δημιούργησε %s ομάδες για το εργαστήριο #%s."
 
-#: lib/log.php:58
+#: lib/log.php:63
 #, php-format
 msgid "User #%s changed his password."
 msgstr "Ο χρήστης #%s άλλαξε τον κωδικό του."
 
-#: lib/log.php:60
+#: lib/log.php:65
 #, php-format
 msgid "New user #%s."
 msgstr "Νέος χρήστης #%s."
 
-#: lib/log.php:62
+#: lib/log.php:67
 #, php-format
 msgid "User #%s created class #%s."
 msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
 
-#: lib/log.php:64
+#: lib/log.php:69
+#, fuzzy, php-format
+msgid "User #%s deleted class #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:71
+#, fuzzy, php-format
+msgid "User #%s edited class #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:73
+#, fuzzy, php-format
+msgid "User #%s deleted lab #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:75
+#, fuzzy, php-format
+msgid "User #%s edited lab #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:77
+#, fuzzy, php-format
+msgid "User #%s deleted lab team #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:79
+#, fuzzy, php-format
+msgid "User #%s edited lab team #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:81
+#, fuzzy, php-format
+msgid "User #%s deleted announcement #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:83
+#, fuzzy, php-format
+msgid "User #%s edited announcement #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:85
+#, fuzzy, php-format
+msgid "User #%s deleted file #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:87
+#, fuzzy, php-format
+msgid "User #%s edited file #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:89
+#, fuzzy, php-format
+msgid "User #%s deleted folder #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:91
+#, fuzzy, php-format
+msgid "User #%s edited folder #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:93
+#, fuzzy, php-format
+msgid "User #%s deleted user account #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:95
+#, fuzzy, php-format
+msgid "User #%s edited user account #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:97
+#, fuzzy, php-format
+msgid "User #%s joined lab team #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:99
+#, fuzzy, php-format
+msgid "User #%s left lab team #%s."
+msgstr "Αποχώρησες από την ομάδα `%s`."
+
+#: lib/log.php:101
+#, fuzzy, php-format
+msgid "User #%s kicked from lab team #%s user #%s."
+msgstr "Ο φοιτητής αποβλήθηκε από την ομάδα `%s`."
+
+#: lib/log.php:103
+#, fuzzy, php-format
+msgid "User #%s deleted titles #(%s)."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:105
+#, fuzzy, php-format
+msgid "User #%s edited title #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:107
+#, fuzzy, php-format
+msgid "User #%s deleted association type #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:109
+#, fuzzy, php-format
+msgid "User #%s edited association type #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:111
+#, fuzzy, php-format
+msgid "User #%s deleted association #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:113
+#, fuzzy, php-format
+msgid "User #%s created association #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:115
+#, fuzzy, php-format
+msgid "User #%s edited user's #%s AEM."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:117
+#, fuzzy, php-format
+msgid "User #%s edited user's #%s user type."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:119
+#, fuzzy, php-format
+msgid "User #%s edited user's #%s active status."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:121
+#, fuzzy, php-format
+msgid "User #%s logged in from %s."
+msgstr "Ο χρήστης #%s κατέβασε το αρχείο #%s από την διεύθυνση %s."
+
+#: lib/log.php:123
+#, fuzzy, php-format
+msgid "User #%s logged out."
+msgstr "Ο χρήστης #%s άλλαξε τον κωδικό του."
+
+#: lib/log.php:125
+#, fuzzy, php-format
+msgid "User #%s cleaned %s log messages."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:127
 #, php-format
 msgid "Log message type `%s` with data `%s`"
 msgstr "Μήνυμα καταγραφής με τύπο `%s` και δεδομένα `%s`"
@@ -706,8 +897,6 @@ msgstr "Περιγραφή"
 
 #: views/class.php:101
 #: views/profile.php:200
-#: views/announcements.php:128
-#: views/announcements.php:129
 msgid "Edit"
 msgstr "Επεξεργασία"
 
@@ -750,14 +939,10 @@ msgid "Edit Class Association Types"
 msgstr "Επεξεργασία τύπων συσχετισμών"
 
 #: views/views.php:26
-#: views/announcements.php:81
-#: views/announcements.php:82
-#: views/edit_announcement.php:13
 msgid "Announcements"
 msgstr "Ανακοινώσεις"
 
 #: views/views.php:29
-#: views/edit_announcement.php:56
 msgid "Edit Announcement"
 msgstr "Επεξεργασία ανακοίνωσης"
 
@@ -812,6 +997,11 @@ msgstr "Αίτηση εγγραφής"
 msgid "Professors"
 msgstr "Καθηγητές"
 
+#: views/views.php:68
+#, fuzzy
+msgid "Change your password"
+msgstr "Ο κωδικός πρόσβασης σας."
+
 #: views/classes.php:52
 #: views/edit_class.php:100
 msgid "Access Denied"
@@ -835,7 +1025,7 @@ msgid "User Information"
 msgstr "Πληροφορίες  χρήστη"
 
 #: views/register.php:6
-#: views/edit_profile.php:121
+#: views/edit_profile.php:124
 #: views/profile.php:187
 msgid "Account type"
 msgstr "Είδος λογαριασμού"
@@ -932,7 +1122,8 @@ msgid "You must enter a password"
 msgstr "Πρέπει να δώσετε ένα κωδικό"
 
 #: views/register.php:70
-msgid "Password must contain at least 6 letters and numbers"
+#, fuzzy, php-format
+msgid "Password must contain at least %s letters and numbers"
 msgstr "Ο κωδικός πρέπει να αποτελείται από τουλάχιστον 6 χαρακτήρες, αριθμούς ΚΑΙ γράμματα"
 
 #: views/register.php:74
@@ -1035,10 +1226,8 @@ msgstr "Το URL της προσωπικής σας ιστοσελίδας"
 #: views/edit_profile.php:98
 #: views/new_class.php:29
 #: views/edit_class_association_types.php:47
-#: views/edit_class_association_types.php:74
+#: views/edit_class_association_types.php:75
 #: views/edit_class.php:111
-#: views/announcements.php:90
-#: views/edit_announcement.php:62
 msgid "Title"
 msgstr "Τίτλος"
 
@@ -1052,31 +1241,41 @@ msgid "Some words about your self"
 msgstr "Λίγα λόγια για εσάς"
 
 #: views/edit_profile.php:111
-#: views/edit_class_association_types.php:80
+#: views/edit_class_association_types.php:82
 #: views/edit_class.php:164
-#: views/edit_announcement.php:71
 msgid "Submit"
 msgstr "Αποστολή"
 
-#: views/edit_profile.php:120
+#: views/edit_profile.php:114
+#, fuzzy
+msgid "Change Password"
+msgstr "Επιβεβαίωση κωδικού"
+
+#: views/edit_profile.php:123
 msgid "Account"
 msgstr "Λογαριασμός"
 
-#: views/edit_profile.php:132
+#: views/edit_profile.php:135
 msgid "Active"
 msgstr "Ενεργός"
 
-#: views/edit_profile.php:132
+#: views/edit_profile.php:135
 msgid "Inactive"
 msgstr "Ανενεργός"
 
-#: views/edit_profile.php:137
+#: views/edit_profile.php:140
 msgid "Set"
 msgstr "Ορισμός"
 
 #: views/profile.php:12
 msgid "Some user"
 msgstr "Κάποιος χρήστης"
+
+#: views/profile.php:41
+#: views/profile.php:42
+#: views/profile.php:190
+msgid "Not available"
+msgstr "Μη διαθέσιμο"
 
 #: views/profile.php:48
 #: views/edit_class.php:136
@@ -1172,37 +1371,37 @@ msgid "Delete?"
 msgstr "Διαγραφή;"
 
 #: views/edit_class_association_types.php:47
-#: views/edit_class_association_types.php:75
+#: views/edit_class_association_types.php:76
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
 #: views/edit_class_association_types.php:47
-#: views/edit_class_association_types.php:76
+#: views/edit_class_association_types.php:77
 msgid "Permissions"
 msgstr "Δικαιώματα"
 
-#: views/edit_class_association_types.php:62
+#: views/edit_class_association_types.php:63
 #: views/edit_class.php:146
 msgid "No entries."
 msgstr "Καμμία εισαγωγή"
 
-#: views/edit_class_association_types.php:67
+#: views/edit_class_association_types.php:68
 msgid "Apply changes"
 msgstr "Εφαρμογή αλλαγών"
 
-#: views/edit_class_association_types.php:72
+#: views/edit_class_association_types.php:73
 msgid "New association type"
 msgstr "Νέος τύπος συσχετισμού"
 
-#: views/edit_class_association_types.php:74
+#: views/edit_class_association_types.php:75
 msgid "Association Title"
 msgstr "Τίτλος συσχετισμού"
 
-#: views/edit_class_association_types.php:75
+#: views/edit_class_association_types.php:76
 msgid "Less is more important"
 msgstr "Οσο λιγότερο τόσο πιο σημαντικός"
 
-#: views/edit_class_association_types.php:107
+#: views/edit_class_association_types.php:109
 msgid "Are you sure you want to delete the selected class associations?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε τους επιλεγμένους συσχετισμούς;"
 
@@ -1247,6 +1446,7 @@ msgid "Association types"
 msgstr "Τύποι συσχετισμών"
 
 #: views/announcements.php:16
+#: views/new_lab.php:12
 msgid "some class"
 msgstr "κάποιο μάθημα"
 
@@ -1283,6 +1483,7 @@ msgid "You have to enter a title"
 msgstr "Πρέπει να δώσετε ένα τίτλο"
 
 #: views/announcements.php:124
+#: views/home/student.php:78
 #, php-format
 msgid "Posted on %s by %s. Last update on %s."
 msgstr "Αναρτήθηκε στις %s από %s. Τελευταία ανανέωση στις %s."
@@ -1296,6 +1497,10 @@ msgid "Are you sure you want to delete this announcement?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ανακοίνση;"
 
 #: views/edit_announcement.php:12
+#: views/class_files.php:16
+#: views/files.php:16
+#: views/edit_lab.php:12
+#: views/lab.php:19
 msgid "Some class"
 msgstr "Κάποιο μάθημα"
 
@@ -1704,13 +1909,54 @@ msgid "Create %s new teams"
 msgstr "Δημιουργήστε %s νέες ομάδες"
 
 #: views/lab.php:389
-#: views/home/admin.php:52
+#: views/home/admin.php:55
 msgid "Go"
 msgstr "Εμπρός"
 
 #: views/professors.php:45
 msgid "There are no registered professors"
 msgstr "Δεν υπάρχουν εγγεγραμμένοι καθηγητές"
+
+#: views/change_password.php:11
+#, fuzzy
+msgid "Reset your password"
+msgstr "Ο κωδικός πρόσβασης σας."
+
+#: views/change_password.php:16
+msgid "New Password"
+msgstr "Νέος Κωδικός"
+
+#: views/change_password.php:17
+#, fuzzy
+msgid "Your new login password"
+msgstr "Ο κωδικός πρόσβασης σας."
+
+#: views/change_password.php:18
+#, fuzzy
+msgid "Confirm New Password"
+msgstr "Επιβεβαίωση κωδικού"
+
+#: views/change_password.php:19
+#, fuzzy
+msgid "Your new login password again"
+msgstr "Ο κωδικός πρόσβασης σας ξανά."
+
+#: views/change_password.php:20
+msgid "Code"
+msgstr "Κωδικός επαναφοράς"
+
+#: views/change_password.php:21
+msgid "(Leave it unchanged if it is auto completed)"
+msgstr ""
+
+#: views/change_password.php:22
+msgid "Reset"
+msgstr "Επαναφορά"
+
+#: views/change_password.php:55
+#, fuzzy
+msgid "You have to enter the code you received in your mail."
+msgstr "Η διέυθυνση email που δώσατε δεν είναι έγκυρη."
 
 #: views/edit_titles.php:63
 msgid "New title"
@@ -1788,23 +2034,23 @@ msgstr "Δεν έχετε καμμία συνδρομή μαθημάτων."
 msgid "No announcements yet."
 msgstr "Καμμία ανακοίνωση."
 
-#: views/home/admin.php:32
+#: views/home/admin.php:35
 msgid "Administrator's home"
 msgstr "Αρχική διαχειριστή"
 
-#: views/home/admin.php:38
+#: views/home/admin.php:41
 msgid "Recent activity"
 msgstr "Πρόσφατη δραστηριότητα"
 
-#: views/home/admin.php:44
+#: views/home/admin.php:47
 msgid "No log entries."
 msgstr "Καμμία εισαγωγή καταγραφής."
 
-#: views/home/admin.php:50
+#: views/home/admin.php:53
 msgid "Clean Log"
 msgstr "Καθαρισμός καταγραφών"
 
-#: views/home/admin.php:51
+#: views/home/admin.php:54
 #, php-format
 msgid "Clean log and keep %s entries"
 msgstr "Καθαρισμός καταγραφών και διατήρηση %s εισαγωγών"
@@ -1865,45 +2111,189 @@ msgstr "Δημιουργία quiz"
 msgid "Evaluate quizs"
 msgstr "Βαθμολόγηση quiz"
 
-#: config/security.php:47
+#: config/security.php:48
 msgid "File download"
 msgstr "Κατέβασμα αρχείων"
 
-#: config/security.php:48
+#: config/security.php:49
 msgid "File upload"
 msgstr "Ανέβασμα αρχείων"
 
-#: config/security.php:49
+#: config/security.php:50
 msgid "Lab file upload"
 msgstr "Ανέβασμα αρχείων εργαστηρίου"
 
-#: config/security.php:50
+#: config/security.php:51
 msgid "Email validation"
 msgstr "Εξακρίβωση ηλεκτρονικού ταχυδρομείου"
 
-#: config/security.php:52
+#: config/security.php:53
 msgid "New folder"
 msgstr "Νέος φάκελος"
 
-#: config/security.php:53
+#: config/security.php:54
 msgid "New lab"
 msgstr "Νέο εργαστήριο"
 
-#: config/security.php:54
+#: config/security.php:55
 msgid "New lab team"
 msgstr "Νέα ομάδα εργαστηρίου"
 
-#: config/security.php:55
+#: config/security.php:56
 msgid "New lab teams bulk"
 msgstr "Μαζική δημιουργία ομάδων"
 
-#: config/security.php:56
+#: config/security.php:57
 msgid "Password change"
 msgstr "Αλλαγές κωδικού"
 
-#: config/security.php:57
+#: config/security.php:58
 msgid "New user account"
 msgstr "Νέος χρήστης"
+
+#: config/security.php:60
+#, fuzzy
+msgid "Class deletion"
+msgstr "Περιγραφή μαθήματος"
+
+#: config/security.php:61
+#, fuzzy
+msgid "Class update"
+msgstr "Όνομα μαθήματος"
+
+#: config/security.php:62
+msgid "Lab deletion"
+msgstr "Διαγραφή εργαστηρίου"
+
+#: config/security.php:63
+#, fuzzy
+msgid "Lab update"
+msgstr "Τίτλος εργαστηρίου"
+
+#: config/security.php:64
+#, fuzzy
+msgid "Lab team deletion"
+msgstr "Η ομάδα `%s` διεγράφει."
+
+#: config/security.php:65
+#, fuzzy
+msgid "Lab team update"
+msgstr "Ομάδες εργαστηρίου που δημιουργήθηκαν"
+
+#: config/security.php:66
+#, fuzzy
+msgid "Announcement deletion"
+msgstr "Ανακοινώσεις που έγιναν"
+
+#: config/security.php:67
+#, fuzzy
+msgid "Announcement update"
+msgstr "Ανακοινώσεις που έγιναν"
+
+#: config/security.php:68
+#, fuzzy
+msgid "File deletion"
+msgstr "Πληροφορίες αρχείου"
+
+#: config/security.php:69
+#, fuzzy
+msgid "File update"
+msgstr "Ανέβασμα αρχείων"
+
+#: config/security.php:70
+#, fuzzy
+msgid "Folder deletion"
+msgstr "Περιεχόμενα φακέλου"
+
+#: config/security.php:71
+#, fuzzy
+msgid "Folder update"
+msgstr "Περιεχόμενα φακέλου"
+
+#: config/security.php:72
+#, fuzzy
+msgid "User deletion"
+msgstr "Πληροφορίες  χρήστη"
+
+#: config/security.php:73
+#, fuzzy
+msgid "User update"
+msgstr "Όνομα χρήστη"
+
+#: config/security.php:74
+#, fuzzy
+msgid "Lab team join"
+msgstr "Αποχώρηση από ομάδα"
+
+#: config/security.php:75
+#, fuzzy
+msgid "Lab team leave"
+msgstr "Ομάδες εργαστηρίου που δημιουργήθηκαν"
+
+#: config/security.php:76
+#, fuzzy
+msgid "Lab team kick"
+msgstr "Ομάδες εργαστηρίου που δημιουργήθηκαν"
+
+#: config/security.php:77
+msgid "Titles deletion"
+msgstr ""
+
+#: config/security.php:78
+#, fuzzy
+msgid "Title edit"
+msgstr "Τίτλος"
+
+#: config/security.php:79
+#, fuzzy
+msgid "Association types deletion"
+msgstr "Τύποι συσχετισμών"
+
+#: config/security.php:80
+#, fuzzy
+msgid "Association types update"
+msgstr "Τύποι συσχετισμών"
+
+#: config/security.php:81
+#, fuzzy
+msgid "Association deletion"
+msgstr "Τίτλος συσχετισμού"
+
+#: config/security.php:82
+#: config/security.php:83
+#, fuzzy
+msgid "Association creation"
+msgstr "Τίτλος συσχετισμού"
+
+#: config/security.php:84
+msgid "User type update"
+msgstr ""
+
+#: config/security.php:85
+msgid "User active status update"
+msgstr ""
+
+#: config/security.php:88
+msgid "Log cleanup"
+msgstr "Καθαρισμός καταγραφών"
+
+#~ msgid "File #%s was uploaded from ip address %s."
+#~ msgstr "Το αρχείο #%s ανέβηκε από την διεύθυνση %s."
+
+#~ msgid "Lab file #%s was uploaded from ip address %s."
+#~ msgstr "Το αρχείο εργαστηρίου #%s ανέβηκε από την διεύθυνση %s."
+
+#~ msgid "Announcement #%s was posted."
+#~ msgstr "Αναρτήθηκε η ανακοίνωση #%s."
+
+#~ msgid "Folder #%s was created by user #%s."
+#~ msgstr "Ο φάκελος αρχείων  #%s  δημιουργήθηκε από τον χρήστη #%s."
+
+#~ msgid "Lab #%s was created by user #%s."
+#~ msgstr "Το εργαστήριο  #%s δημιουργήθηκε από τον χρήστη #%s."
+
+#~ msgid "Lab team #%s was created."
+#~ msgstr "Δημιουργήθηκε η ομάδα εργαστηρίου #%s ."
 
 #, fuzzy
 #~ msgid "Class Αssociation Τypes"
