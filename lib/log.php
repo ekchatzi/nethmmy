@@ -141,20 +141,40 @@
 			$query = "UPDATE global_stats SET value = value + 1 where name= 'files_downloaded'";
 			mysql_query($query);
 			
-			log_entry(100,implode(',',array($user,$file,$ip)),$user,0);
+			$class = 0;
+			$query = "SELECT file_folders.class FROM file_folders,files WHERE file_folders.id = files.folder AND files.id = '$file'";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret))
+				$class = mysql_result($ret,0,0);
+
+			log_entry(100,implode(',',array($user,$file,$ip)),$user,$class);
 		}
 	}
 	function file_upload_log($user,$file,$ip)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'files_uploaded'";
 		mysql_query($query);
-		log_entry(101,implode(',',array($user,$file,$ip)),$user,0);
+
+		$class = 0;
+		$query = "SELECT file_folders.class FROM file_folders,files WHERE file_folders.id = files.folder AND files.id = '$file'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(101,implode(',',array($user,$file,$ip)),$user,$class);
 	}
 	function lab_file_upload_log($user,$file,$ip)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'lab_files_uploaded'";
 		mysql_query($query);
-		log_entry(102,implode(',',array($file,$ip)),$user,0);
+
+		$class = 0;
+		$query = "SELECT file_folders.class FROM file_folders,files WHERE file_folders.id = files.folder AND files.id = '$file'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(102,implode(',',array($file,$ip)),$user,$class);
 	}
 	function email_address_validation_log($user)
 	{
@@ -166,7 +186,14 @@
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'announcements_made'";
 		mysql_query($query);
-		log_entry(104,implode(',',array($announcement)),$user,0);
+
+		$class = 0;
+		$query = "SELECT class FROM announcements WHERE id = '$announcement'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(104,implode(',',array($announcement)),$user,$class);
 	}
 	function email_notification_log($user,$announcement)
 	{
@@ -177,19 +204,40 @@
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'file_folders_created'";
 		mysql_query($query);
-		log_entry(105,implode(',',array($user,$folder)),$user,0);
+
+		$class = 0;
+		$query = "SELECT class FROM file_folders WHERE id = '$folder'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(105,implode(',',array($user,$folder)),$user,$class);
 	}
 	function lab_creation_log($user,$lab)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'labs_created'";
 		mysql_query($query);
-		log_entry(106,implode(',',array($user,$lab)),$user,0);
+
+		$class = 0;
+		$query = "SELECT class FROM labs WHERE id = '$lab'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(106,implode(',',array($user,$lab)),$user,$class);
 	}
 	function lab_team_creation_log($user,$lab_team)
 	{
 		$query = "UPDATE global_stats SET value = value + 1 where name= 'lab_teams_created'";
 		mysql_query($query);
-		log_entry(107,implode(',',array($lab_team)),$user,0);
+
+		$class = 0;
+		$query = "SELECT labs.class FROM labs.lab_teams WHERE lab_teams.id = '$lab_team' AND labs.id = lab_teams.lab";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(107,implode(',',array($lab_team)),$user,$class);
 	}
 	function lab_team_creation_bulk_log($user,$lab,$count)
 	{
@@ -197,7 +245,14 @@
 		{
 			$query = "UPDATE global_stats SET value = value + $count where name= 'lab_teams_created'";
 			mysql_query($query);
-			log_entry(108,implode(',',array($user,$lab,$count)),$user,0);
+
+			$class = 0;
+			$query = "SELECT class FROM labs WHERE id = '$lab'";
+			$ret = mysql_query($query);
+			if($ret && mysql_num_rows($ret))
+				$class = mysql_result($ret,0,0);
+
+			log_entry(108,implode(',',array($user,$lab,$count)),$user,$class);
 		}	
 	}
 	function password_change_log($user)
@@ -230,7 +285,13 @@
 	}
 	function lab_edit_log($user,$lab)
 	{
-		log_entry(115,implode(',',array($user,$lab)),$user,0);
+		$class = 0;
+		$query = "SELECT class FROM labs WHERE id = '$lab'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(115,implode(',',array($user,$lab)),$user,$class);
 	}
 	function lab_team_deletion_log($user,$class,$team)
 	{
@@ -238,15 +299,27 @@
 	}
 	function lab_team_edit_log($user,$team)
 	{
-		log_entry(117,implode(',',array($user,$team)),$user,0);
+		$class = 0;
+		$query = "SELECT labs.class FROM labs.lab_teams WHERE lab_teams.id = '$team' AND labs.id = lab_teams.lab";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(117,implode(',',array($user,$team)),$user,$class);
 	}
 	function announcement_deletion_log($user,$class,$an)
 	{
 		log_entry(118,implode(',',array($user,$an)),$user,$class);
 	}
-	function announcement_edit_log($user,$an)
+	function announcement_edit_log($user,$announcement)
 	{
-		log_entry(119,implode(',',array($user,$an)),$user,0);
+		$class = 0;
+		$query = "SELECT class FROM announcements WHERE id = '$announcement'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(119,implode(',',array($user,$announcement)),$user,$class);
 	}
 	function file_deletion_log($user,$class,$file)
 	{
@@ -254,7 +327,13 @@
 	}
 	function file_edit_log($user,$file)
 	{
-		log_entry(121,implode(',',array($user,$file)),$user,0);
+		$class = 0;
+		$query = "SELECT file_folders.class FROM file_folders,files WHERE file_folders.id = files.folder AND files.id = '$file'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(121,implode(',',array($user,$file)),$user,$class);
 	}
 	function folder_deletion_log($user,$class,$folder)
 	{
@@ -262,7 +341,13 @@
 	}
 	function folder_edit_log($user,$folder)
 	{
-		log_entry(123,implode(',',array($user,$folder)),$user,0);
+		$class = 0;
+		$query = "SELECT class FROM file_folders WHERE id = '$folder'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(123,implode(',',array($user,$folder)),$user,$class);
 	}
 	function user_deletion_log($user,$target_user)
 	{
@@ -274,15 +359,33 @@
 	}
 	function lab_team_join_log($user,$team)
 	{
+		$class = 0;
+		$query = "SELECT labs.class FROM labs.lab_teams WHERE lab_teams.id = '$team' AND labs.id = lab_teams.lab";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
 		log_entry(126,implode(',',array($user,$team)),$user,0);
 	}
 	function lab_team_leave_log($user,$team)
 	{
-		log_entry(127,implode(',',array($user,$team)),$user,0);
+		$class = 0;
+		$query = "SELECT labs.class FROM labs.lab_teams WHERE lab_teams.id = '$team' AND labs.id = lab_teams.lab";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(127,implode(',',array($user,$team)),$user,$class);
 	}
 	function lab_team_kick_log($user,$team,$target_user)
 	{
-		log_entry(128,implode(',',array($user,$team,$target_user)),$user,0);
+		$class = 0;
+		$query = "SELECT labs.class FROM labs.lab_teams WHERE lab_teams.id = '$team' AND labs.id = lab_teams.lab";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(128,implode(',',array($user,$team,$target_user)),$user,$class);
 	}
 	function titles_deletion_log($user,$titles)
 	{
@@ -302,11 +405,17 @@
 	}
 	function association_deletion_log($user,$class,$assoc)
 	{
-		log_entry(133,implode(',',array($user,$assoc)),$user,0);
+		log_entry(133,implode(',',array($user,$assoc)),$user,$class);
 	}
 	function association_creation_log($user,$assoc)
 	{
-		log_entry(134,implode(',',array($user,$assoc)),$user,0);
+		$class = 0;
+		$query = "SELECT class FROM class_association WHERE id='$assoc'";
+		$ret = mysql_query($query);
+		if($ret && mysql_num_rows($ret))
+			$class = mysql_result($ret,0,0);
+
+		log_entry(134,implode(',',array($user,$assoc)),$user,$class);
 	}
 	function user_edit_aem_log($user,$target_user)
 	{

@@ -1,5 +1,5 @@
 <?php
-	$DATE_FORMAT = '%c';
+	$DATE_FORMAT = '%d %b %Y %H:%M';
 	$INDEX_ROOT = "/nethmmy/public_html/";
 	$SEMESTERS_COUNT = 9;
 	$NEW_ANNOUNCEMENTS_SHOWN = 15;
