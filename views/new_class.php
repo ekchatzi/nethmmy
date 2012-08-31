@@ -29,7 +29,7 @@
 			<label><?php echo _('Title');?> </label>
 			<input type='text' name='title' id='classTitleField' placeholder="<?php echo _('Class name');?>" />
 			<label><?php echo _('Semesters');?> </label>
-			<input type='text' name='semesters' id='semestersField' placeholder="<?php echo _('The semesters the class is taught');?>" />
+			<input type='text' name='semesters' id='semestersField' placeholder="<?php echo _('e.g. 2 or 6,8 ');?>" />
 			<label><?php echo _('Description');?> </label>
 			<textarea name='description' class='classDescriptionField' id='textEditor' placeholder="<?php echo _('Write a description for the class');?>" ></textarea> 
 			<input type="submit" value="<?php echo _('Add');?>" />

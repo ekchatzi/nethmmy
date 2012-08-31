@@ -6,7 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
-
+	include_once('../lib/log.php');
 
         if(!isset($error))
                 $error = array();
@@ -35,8 +35,11 @@
 						name='".mysql_real_escape_string($name)."',
 						public='".mysql_real_escape_string($public)."'
 						WHERE id='$fid' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _("Folder information were updated successfully.");
+				if(mysql_query($query))
+				{
+					folder_edit_log($logged_userid,$fid);
+					$message[] = _("Folder information were updated successfully.");
+				}
 			}
 			else
 			{

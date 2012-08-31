@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 30, 2012 at 11:17 AM
+-- Generation Time: Aug 31, 2012 at 09:44 AM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `description` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'class description',
   `semesters` tinytext CHARACTER SET ascii NOT NULL COMMENT 'comma seperated list of semesters the class is avanaible',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='classes table' AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `file_folders` (
   `public` int(11) NOT NULL COMMENT 'public flag',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 -- --------------------------------------------------------
 
@@ -128,19 +128,19 @@ CREATE TABLE IF NOT EXISTS `global_stats` (
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='key value store for statistics';
 
--- --------------------------------------------------------
+
 --
 -- Dumping data for table `global_stats`
 --
 
 INSERT INTO `global_stats` (`name`, `value`) VALUES
-('announcements_made', 0),
+('announcements_made', 5),
 ('email_addresses_validated', 0),
 ('email_notifications', 0),
 ('files_downloaded', 0),
 ('files_uploaded', 0),
 ('file_folders_created', 0),
-('labs_created', 0),
+('labs_created', 2),
 ('lab_files_uploaded', 0),
 ('lab_teams_created', 0),
 ('passwords_changed', 0),
@@ -165,13 +165,12 @@ CREATE TABLE IF NOT EXISTS `labs` (
   `upload_limit` int(11) unsigned NOT NULL DEFAULT '1' COMMENT 'How many files can a team upload',
   `team_limit` int(10) unsigned NOT NULL COMMENT 'how many lab teams can exist ',
   `users_per_team_limit` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'how many users can be on the same team',
-  `can_free_join` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can join any team or they have to join the first avainable',
   `can_make_new_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can make new teams',
   `can_lock_teams` int(11) NOT NULL DEFAULT '1' COMMENT 'boolean value that tells if users can lock their teams',
   `last_no` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'last team no',
   PRIMARY KEY (`id`),
   KEY `class` (`class`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -190,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `lab_teams` (
   `is_locked` int(11) NOT NULL COMMENT 'flag that is 1 if team is locked, ie noone new can join',
   PRIMARY KEY (`id`),
   KEY `lab` (`lab`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=133 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=232 ;
 
 -- --------------------------------------------------------
 
@@ -200,12 +199,15 @@ CREATE TABLE IF NOT EXISTS `lab_teams` (
 
 CREATE TABLE IF NOT EXISTS `log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'log entry id',
+  `user` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'associated user',
+  `class` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'associated class',
   `time` int(10) unsigned NOT NULL COMMENT 'unix time of message',
   `data` tinytext CHARACTER SET ascii NOT NULL COMMENT 'type sensitive data',
   `type` int(11) NOT NULL DEFAULT '0' COMMENT 'message type code',
   PRIMARY KEY (`id`),
-  KEY `time` (`time`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+  KEY `time` (`time`),
+  KEY `user` (`user`,`class`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=0 ;
 
 -- --------------------------------------------------------
 

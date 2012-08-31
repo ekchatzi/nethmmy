@@ -82,8 +82,8 @@
 			<fieldset>
 			<legend><?php echo _('User information');?></legend>
 			<ul>
-				<li><label><?php echo _("First name");?> </label><input type='text' name='first_name' value="<?php echo $first_name;?>" placeholder="<?php echo _('Your first name');?>" /></li>
-				<li><label><?php echo _("Last name");?> </label><input type='text' name='last_name' value="<?php echo $last_name;?>" placeholder="<?php echo _('Your last name');?>" /></li>
+				<li><label><?php echo _("First Name");?> </label><input type='text' name='first_name' value="<?php echo $first_name;?>" placeholder="<?php echo _('Your first name');?>" /></li>
+				<li><label><?php echo _("Last Name");?> </label><input type='text' name='last_name' value="<?php echo $last_name;?>" placeholder="<?php echo _('Your last name');?>" /></li>
 <?php		if(!($e = user_type_validation($uid_type)) && $USER_TYPES[$uid_type] == 's' && can_edit_aem($logged_userid,$uid)) {?>
 				<li><label><?php echo _("ΑΕΜ");?> </label><input type='text' name='aem' value="<?php echo $aem;?>" placeholder="<?php echo _('Your AEM');?>"/></li>
 <?php		}?>
@@ -112,10 +112,10 @@
 			</fieldset>
 		</form>
 <?php		
-		$c1 = can_change_user_type($logged_userid,$uid);
-		$c2 = can_change_active_status($logged_userid,$uid);
+		$c1 = can_edit_user_type($logged_userid,$uid);
+		$c2 = can_edit_active_status($logged_userid,$uid);
 		if( $c1 || $c2 ) {?>
-			<form method='post' action='change_user_type.php'>
+			<form method='post' action='edit_user_type.php'>
 			<fieldset class='accountInformationWrapper'>
 			<legend><?php echo _('Account');?></legend>
 				<label> <?php echo _("Account type");?> </label>

@@ -65,8 +65,7 @@
 				<label><?php echo _('Team size limit');?> </label>
 				<input type='text' name='users_per_team_limit' placeholder="<?php echo _('How many users any lab team can have');?>" />
 				<label><?php echo _('Registration deadline');?> </label>
-				<input type="text" name='register_expire' id='dateField1' placeholder="<?php echo _('Date registrations close');?>" />					
-				<br /><input type='checkbox' name='can_free_join' value='1'><label class='checkboxLabel'><?php echo _('Free join');?> </label>
+				<input type="text" name='register_expire' id='dateField1' placeholder="<?php echo _('Date registrations close');?>" />
 				<br /><input type='checkbox' name='can_make_new_teams' value='1'><label class='checkboxLabel'><?php echo _('Users can create teams');?> </label>
 				<br /><input type='checkbox' name='can_lock_teams' value='1'><label class='checkboxLabel'><?php echo _('Users can lock their teams');?> </label>
 				<br /><input type='checkbox' name='can_upload' id='canUploadCheckbox' value='1'><label class='checkboxLabel'><?php echo _('Users can upload files');?> </label>

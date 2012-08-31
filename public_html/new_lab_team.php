@@ -44,7 +44,7 @@
 					mysql_query($query) || ($error[] = mysql_error());
 	
 					$message[] = sprintf(_('Lab team `%s`was created successfully.'),$team_name);			
-					lab_team_creation_log($lab_team);
+					lab_team_creation_log($logged_userid,$lab_team);
 				}
 			}
 			else

@@ -30,7 +30,7 @@
 				$token = get_token('validation',$uid);	
 				$link = "$INDEX_ROOT/validate_email.php?token=$token";
 				$message_body = sprintf(_("Please follow this link %s to validate your email address."),"<a href='$link'>$link</a>");
-				$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
+				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message_body, $headers))
 				{
 					$message[] = (_('Email validation email was sent successfully to email address `%s`.'),$email);

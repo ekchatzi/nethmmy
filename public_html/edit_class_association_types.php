@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -18,8 +19,6 @@
 	$permissions = isset($_POST['permissions'])?$_POST['permissions']:array();
 	$delete = isset($_POST['delete'])?$_POST['delete']:array();
 	$ids = isset($_POST['id'])?$_POST['id']:array();
-
-		
 	if(can_edit_class_association_types($logged_userid))
 	{
 		/* edit */
@@ -40,8 +39,12 @@
 							permissions = '".mysql_real_escape_string(($perms))."'
 							WHERE id= '$id'
 							LIMIT 1";
-					mysql_query($query) || ($error[] = mysql_error());
-					$updated++;
+					if(mysql_query($query))
+					{
+						association_type_edit_log($logged_userid,$id);
+						$message[] = sprintf(_('Association type `%s` updated successfully.'),$title);
+						$updated++;
+					}
 				}
 				else
 				{
@@ -62,7 +65,11 @@
 		if(!($e = id_list_validation($delete)))
 		{
 			$query = "DELETE FROM class_association_types WHERE FIND_IN_SET(id,'$delete')";
-			mysql_query($query) || ($error[] = mysql_error());
+			if(mysql_query($query))
+			{
+				association_types_deletion_log($logged_userid,$delete);
+				$message[] = sprintf(_('%s association types deleted successfully.'),count(explode(',',$delete)));
+			}
 		}
 		else
 		{

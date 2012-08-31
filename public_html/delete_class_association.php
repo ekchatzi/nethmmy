@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -27,8 +28,11 @@
 			if(can_edit_class_associations($logged_userid,$class))
 			{
 				$query = "DELETE FROM class_associations WHERE id='$tid' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message = _('Class association was deleted successfully.');
+				if(mysql_query($query))
+				{
+					association_deletion_log($logged_userid,$class,$tid);
+					$message[] = _('Class association was deleted successfully.');
+				}
 			}
 			else
 			{

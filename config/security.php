@@ -43,7 +43,8 @@
 	//Logging
 	$LOG_SIZE = 3000;
 	$MIN_LOG_MESSAGES_KEPT = 200;
-	$ALLOWED_LOG_TYPES = array(100,101,102,103,104,105,106,107,108,109,110,111);
+	$MIN_AGE_LOG_MESSAGES_KEPT = 5*24*60*60;//how old must a log message be to deleted
+	$ALLOWED_LOG_TYPES = array(100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,200);
 	$LOG_TYPES_TEXT = array( 100 => _('File download'),
 				 101 => _('File upload'),
 				 102 => _('Lab file upload'),
@@ -55,5 +56,34 @@
 				 108 => _('New lab teams bulk'),
 				 109 => _('Password change'),
 				 110 => _('New user account'),
-				 111 => _('New class'));
+				 111 => _('New class'),
+				 112 => _('Class deletion'),
+				 113 => _('Class update'),
+				 114 => _('Lab deletion'),
+				 115 => _('Lab update'),
+				 116 => _('Lab team deletion'),
+				 117 => _('Lab team update'),
+				 118 => _('Announcement deletion'),
+				 119 => _('Announcement update'),
+				 120 => _('File deletion'),
+				 121 => _('File update'),
+				 122 => _('Folder deletion'),
+				 123 => _('Folder update'),
+				 124 => _('User deletion'),
+				 125 => _('User update'),
+				 126 => _('Lab team join'),
+				 127 => _('Lab team leave'),
+				 128 => _('Lab team kick'),
+				 129 => _('Titles deletion'),
+				 130 => _('Title edit'),
+				 131 => _('Association types deletion'),
+				 132 => _('Association types update'),
+			 	 133 => _('Association deletion'),
+			 	 134 => _('Association creation'),
+			 	 135 => _('Association creation'),
+			 	 136 => _('User type update'),
+			 	 137 => _('User active status update'),
+			 	 138 => _('Login'),
+			 	 139 => _('Logout'),
+			 	 200 => _('Log cleanup'));
 ?>

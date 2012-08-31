@@ -6,11 +6,8 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 
-	$username = trim(strtolower($_POST['username']));
-	$username = mysql_escape_string($username);
-
+	$username = isset($_POST['username'])?$_POST['username']:'';
 	$e = new_account_username_validation($username);
 
-	echo $e;
-	//echo "1";
+	echo '{ "error" : "'.$e.'" }';
 ?>

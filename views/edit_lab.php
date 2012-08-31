@@ -29,7 +29,6 @@
 				$upload_expire = $result['upload_expire'];
 				$folder = $result['folder'];
 				$can_lock_teams = $result['can_lock_teams'];
-				$can_free_join = $result['can_free_join'];
 				$upload_limit = $result['upload_limit'];
 				$can_make_new_teams = $result['can_make_new_teams'];
 				$team_limit = $result['team_limit'];
@@ -104,8 +103,7 @@
 				<label><?php echo _('Team size limit');?> </label>
 				<input type='text' name='users_per_team_limit' placeholder="<?php echo _('How many users any lab team can have');?>" value="<?php echo $team_size_limit;?>" />
 				<label><?php echo _('Registration deadline');?> </label>
-				<input type="text" name='register_expire' id='dateField1' placeholder="<?php echo _('Date registrations close');?>" />					
-				<br /><input type='checkbox' name='can_free_join' value='1' <?php if($can_free_join) echo "checked='checked'";?> ><label class='checkboxLabel'><?php echo _('Free join');?> </label>
+				<input type="text" name='register_expire' id='dateField1' placeholder="<?php echo _('Date registrations close');?>" />
 				<br /><input type='checkbox' name='can_make_new_teams' value='1' <?php if($can_make_new_teams) echo "checked='checked'";?>><label class='checkboxLabel'><?php echo _('Users can create teams');?> </label>
 				<br /><input type='checkbox' name='can_lock_teams' value='1' <?php if($can_lock_teams) echo "checked='checked'";?>><label class='checkboxLabel'  ><?php echo _('Users can lock their teams');?> </label>
 				<br /><input type='checkbox' name='can_upload' id='canUploadCheckbox' value='1' <?php if($folder) echo "checked='checked'";?>><label class='checkboxLabel'><?php echo _('Users can upload files');?> </label>

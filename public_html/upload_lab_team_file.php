@@ -77,7 +77,7 @@
 						mysql_query($query) || ($error[] = mysql_error());
 
 						$message[] = sprintf(_('File `%s` uploaded successfully.'),$name);
-						lab_file_upload_log($file,$_SERVER['REMOTE_ADDR']);
+						lab_file_upload_log($logged_userid,$file,$_SERVER['REMOTE_ADDR']);
 					}					
 				}
 				else

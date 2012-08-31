@@ -6,6 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
+	include_once('../lib/log.php');
 
         if(!isset($error))
                 $error = array();
@@ -62,9 +63,11 @@
 					semester_update_time='".time()."',
 					email_urgent='$email_urgent'
 					WHERE id='$uid' LIMIT 1";
-			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _('Basic information were updated successfully.');
-
+			if(mysql_query($query))
+			{
+				user_edit_log($logged_userid,$uid);
+				$message[] = _('Basic information were updated successfully.');
+			}
 			/* aem */
 			if(isset($_POST['aem']))
 			{
@@ -81,8 +84,11 @@
 							$query = "UPDATE users SET
 								aem='$aem'
 								WHERE id='$uid'";
-							mysql_query($query) || ($error[] = mysql_error());
-							$message[] = _('AEM was updated successfully.');
+							if(mysql_query($query))
+							{
+								user_edit_aem_log($logged_userid,$uid);
+								$message[] = _('AEM was updated successfully.');
+							}
 						}
 						else
 						{

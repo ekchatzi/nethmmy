@@ -6,6 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
+	include_once('../lib/log.php');
 
         if(!isset($error))
                 $error = array();
@@ -18,13 +19,17 @@
 	$uid = isset($_POST['uid'])?$_POST['uid']:0;
 	if(!(($uid_is_invalid = $e = user_id_validation($uid)) || ($e = user_type_validation($user_type))))
 	{
-		if(can_change_user_type($logged_userid,$uid))
+		if(can_edit_user_type($logged_userid,$uid))
 		{
 			/* update database */
 			$query = "UPDATE users 
 					SET user_type = '$user_type'
 					WHERE id='$uid' LIMIT 1";
-			mysql_query($query) || ($error[] = mysql_error());
+			if(mysql_query($query))
+			{
+				user_type_edit_log($logged_userid,$uid);
+				$message[] = _('User type updated successfully.');
+			}
 		}
 		else
 		{
@@ -42,15 +47,17 @@
 	{
 		if(($activate === '0') || ($activate === '1'))
 		{
-			if(can_change_active_status($logged_userid,$uid))
+			if(can_edit_active_status($logged_userid,$uid))
 			{
 				/* update database */
 				$query = "UPDATE users 
 						SET is_active = '$activate'
 						WHERE id='$uid' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-
-				$message[] = _('Active status changed successfully.');
+				if(mysql_query($query))
+				{
+					user_active_status_edit_log($logged_userid,$uid);
+					$message[] = _('Active status changed successfully.');
+				}			
 			}
 			else
 			{

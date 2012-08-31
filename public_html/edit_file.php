@@ -6,7 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
-
+	include_once('../lib/log.php');
 
         if(!isset($error))
                 $error = array();
@@ -33,8 +33,11 @@
 				$query = "UPDATE files SET
 						name='".mysql_real_escape_string($name)."'
 						WHERE id='$file' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _("File information were updated successfully.");
+				if(mysql_query($query))
+				{
+					file_edit_log($logged_userid,$file);
+					$message[] = _("File information were updated successfully.");
+				}
 			}
 			else
 			{

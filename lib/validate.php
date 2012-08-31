@@ -133,7 +133,7 @@
 			return sprintf(_("Names must be between %s and %s characters long"),$MIN_NAME_LENGTH,$MAX_NAME_LENGTH);
 
 		/* Must contain only alphanumeric characters */
-		if(!preg_match('~^[\p{L}\d _\.]*$~u',$name))
+		if(!preg_match('~^[\p{L}\d -_\.]*$~u',$name))
 			return _('Name contains illegal characters.');
 
 		return false;
@@ -150,15 +150,15 @@
 		if(strlen($username) > $MAX_USERNAME_LENGTH || strlen($username) < $MIN_USERNAME_LENGTH)
 			return sprintf(_("Username must be between %s and %s characters long"),$MIN_USERNAME_LENGTH,$MAX_USERNAME_LENGTH);
 		
-		/* Must be unique */
-		$query = "SELECT username FROM users WHERE username='$username' LIMIT 1";
-		$ret = mysql_query($query);
-		if($ret && mysql_numrows($ret))
-			return _('Username is taken.');
-
 		/* Must contain only alphanumeric characters */
 		if(!preg_match('~^[a-zA-Z0-9]*$~',$username))
 			return _('Username must contain only latin alphanumeric characters.');
+
+		/* Must be unique */
+		$query = "SELECT username FROM users WHERE username='".mysql_real_escape_string($username)."' LIMIT 1";
+		$ret = mysql_query($query);
+		if($ret && mysql_numrows($ret))
+			return _('Username is taken.');
 		
 		return false;
 	}
@@ -533,10 +533,6 @@
 			/* Must be a positive integer */
 			if(!is_numeric($time) || $time <= 0)
 				return _('Timestamps must be positive integers.');
-
-			/* Must be after now */
-			if($time > time())
-				return _('Deadlines must be in the future.');
 		}
 		return false;
 	}

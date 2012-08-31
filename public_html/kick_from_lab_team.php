@@ -6,6 +6,7 @@
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
 	include_once("../config/security.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -45,9 +46,11 @@
 						students='".mysql_real_escape_string($students)."',
 						update_time='$time'
 						WHERE id='$tid'";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = sprintf(_("Student was kicked from lab team `%s`."),$team_title); 
-				
+				if(mysql_query($query))
+				{
+					lab_team_kick_log($logged_userid,$tid,$uid);
+					$message[] = sprintf(_("Student was kicked from lab team `%s`."),$team_title); 
+				}
 				if($c-1 == 0)
 				{
 					$query = "SELECT can_make_new_teams FROM labs WHERE id='$lab'";

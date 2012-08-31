@@ -40,7 +40,7 @@
 <div class='editClassAssociationTypesWrapper'>
 <?php	if($show) {?>
 		<fieldset>
-		<legend><?php echo _('Class associations types');?></legend>
+		<legend><?php echo _('Class Association Types');?></legend>
 		<form action='edit_class_association_types.php' method='post' onsubmit='return check()'>
 		<table class='associationTable'>
 		<tbody>

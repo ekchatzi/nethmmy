@@ -6,6 +6,7 @@
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
 	include_once("../config/security.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -31,9 +32,18 @@
 				$result = mysql_fetch_array($ret);
 				$lab = $result['lab'];
 
+				$class = 0;
+				$query = "SELECT class FROM labs WHERE id='$lab'";
+				$ret = mysql_query($query);
+				if($ret && mysql_num_rows($ret))
+					$class =ysql_result($ret,0,0);
+
 				$query = "DELETE FROM lab_teams WHERE id='$tid'";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _('Lab team was deleted successfully.');
+				if(mysql_query($query))
+				{
+					lab_team_deletion_log($logged_userid,$class,$tid);
+					$message[] = _('Lab team was deleted successfully.');
+				}
 			}
 			else
 			{

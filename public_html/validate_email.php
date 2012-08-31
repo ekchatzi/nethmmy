@@ -26,7 +26,7 @@
 			($ret = mysql_query($query)) || ($error .= mysql_error());
 			if($ret)
 			{
-				$email = _('address');
+				$email = '';
 				$query = "SELECT email FROM users WHERE id='$uid'";
 				$ret = mysql_query($query);
 				if($ret && mylsql_num_rows($ret))

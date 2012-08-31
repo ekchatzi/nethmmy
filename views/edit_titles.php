@@ -32,7 +32,7 @@
 	}
 ?>
 <h2> <?php echo _('Edit Titles');?> </h2>
-<p class='hierarchyNavigationRow'><?php echo $home_link . " > " ._('Class Association Types');?></p>
+<p class='hierarchyNavigationRow'><?php echo $home_link . " > " ._('Titles');?></p>
 <div class='editTitlesWrapper'>
 <?php	if($show) {?>
 		<fieldset>

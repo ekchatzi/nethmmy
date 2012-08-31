@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -26,8 +27,11 @@
 			if(can_edit_announcement($logged_userid,$aid))
 			{
 				$query = "DELETE FROM announcements WHERE id='$aid' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _('Announcement was deleted successfully.');
+				if(mysql_query($query)
+				{
+					announcement_deletion_log($logged_userid,$class,$aid);
+					$message[] = _('Announcement was deleted successfully.');
+				}
 			}
 			else
 			{

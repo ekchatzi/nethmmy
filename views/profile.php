@@ -38,8 +38,8 @@
 				$semester = $result['semester'];
 				$semester_update = $result['semester_update_time'];
 				$email = $result['email'];
-				$telephone = $result['telephone'];
-				$website = $result['website'];
+				$telephone = ($result['telephone'])?$result['telephone']:_('Not avainable');
+				$website = ($result['website'])?$result['website']:_('Not avainable');
 				$title_id = $result['title'];
 				$is_active = $result['is_active'];
 				$is_email_validated = $result['is_email_validated'];
@@ -187,7 +187,7 @@
 					<li><label> <?php echo _("Account type");?>: </label><?php echo $account_type_text." - ".($result['is_active']?'Active':'Inactive');?></li>
 					<li><label> <?php echo _("Registered on");?> </label><?php echo strftime($DATE_FORMAT,$result['registration_time']);?></li>
 					<li><label> <?php echo _("Last Login on");?> </label><?php echo strftime($DATE_FORMAT,$result['last_login']);?></li>
-					<li><label> <?php echo _("From");?> </label><?php echo $result['last_remote_adress'];?></li>
+					<li><label> <?php echo _("From");?> </label><?php echo ($result['last_remote_adress'])?$result['last_remote_adress']:_('Not avainable');?></li>
 				</ul>
 			</fieldset>
 <?php		}?>

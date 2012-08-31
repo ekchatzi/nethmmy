@@ -32,7 +32,7 @@
 			if($announcement = mysql_insert_id())
 			{
 				$message[] = _('Announcement was posted succesfully.');
-				announcement_log($announcement);			
+				announcement_creation_log($logged_userid,$announcement);			
 			}	
 
 			if($urgent)
@@ -48,22 +48,25 @@
 				$ret = mysql_query($query);
 				if($ret && mysql_numrows($ret))
 				{
+					$fail = false;
 					while($row = mysql_fetch_array($ret))
 					{
 						$to = $row['email'];
-						$subject =_('[ethmmy] Urgent announcement from ').$class_title;
+						$subject = sprintf(_('[ethmmy] Urgent announcement for %s'),$class_title);
 						$message_body = $title.'\n'.$text;
-						$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
+						$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 						
 						if(!mail($to, $subject, $message_body, $headers))
 						{
-							$error[] = _("Urgent delivery failed. Please try again by editing your last announcement.");
+							$fail = true;
 						}
 						else
 						{
 							email_notification_log($row['id'],$ann);
 						}
 					}
+					if($fail) 
+						$error[] = _("Urgent delivery failed.");
 				}		
 			}
 

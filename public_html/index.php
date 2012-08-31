@@ -108,7 +108,7 @@
 		</div>
 	</div>
 	<div class='footer'>
-		<?php echo _('Blah blah blah 2012');?>
+		<?php echo _('Aristotle University of Thessaloniki &copy;2012');?>
 	</div>
 </div>
 <script type='text/javascript'>

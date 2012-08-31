@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -24,8 +25,12 @@
 
 			$query = "INSERT INTO class_associations (class,user,type)
 					VALUES('$class','$user','$type')";
-			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _('Association was created successfully.');
+			mysql_query($query);
+			if($assoc = mysql_insert_id())
+			{
+				association_creation_log($logged_userid,$assoc);
+				$message[] = _('Association was created successfully.');
+			}		
 		}
 		else
 		{

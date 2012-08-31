@@ -4,10 +4,9 @@
 }
 
 body {
-	margin:auto;
 	font-family: Verdana;
-	width:1000px;
 	background-color:#E0DEEF;
+	font-size:14px;
 }
 
 label {

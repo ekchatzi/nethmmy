@@ -37,11 +37,11 @@
 	{
 		return is_active($user) && (user_type($user) == 'a');
 	}
-	function can_change_user_type($user,$target_user)
+	function can_edit_user_type($user,$target_user)
 	{
 		return is_active($user) && (user_type($user) == 'a');
 	}
-	function can_change_active_status($user,$target_user)
+	function can_edit_active_status($user,$target_user)
 	{
 		return is_active($user) && (user_type($user) == 'a');
 	}
@@ -106,7 +106,7 @@
 	}
 
 
-	function can_change_class_subscriptions($user,$target_user)
+	function can_edit_class_subscriptions($user,$target_user)
 	{
 		return ($user == $target_user) && (is_active($target_user) && (user_type($target_user) != 'g'));
 	}

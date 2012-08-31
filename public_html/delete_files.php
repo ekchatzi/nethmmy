@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -23,11 +24,13 @@
 		{
 			if(!($e = file_id_validation($fid)))
 			{
-				$query = "SELECT full_path FROM files WHERE id='$fid'";
+				$query = "SELECT full_path,folder FROM files WHERE id='$fid'";
 				$ret = mysql_query($query);
 				if($ret && mysql_num_rows($ret))
 				{
-					$full_path = mysql_result($ret,0,0);
+					$result = mysql_fetch_array($ret);
+					$full_path = $result['full_path'];
+					$folder = $result['folder'];
 					if(can_edit_file($logged_userid,$fid) && unlink($full_path))
 					{
 						//unlink if file is linked to lab team
@@ -46,9 +49,19 @@
 									WHERE id='$team' LIMIT 1";
 							$ret = mysql_query($query) || ($error[] = mysql_error());
 						}
+
+						$class = 0;
+						$query = "SELECT class FROM file_folders WHERE id='$folder'";
+						$ret = mysql_query($query);
+						if($ret && mysql_num_rows($ret))
+							$class = mysql_result($ret,0,0);
+
 						$query = "DELETE FROM files WHERE id='$fid' LIMIT 1";
-						mysql_query($query) || ($error[] = mysql_error());
-						$deleted++;					
+						if(mysql_query($query))
+						{
+							file_deletion_log($logged_userid,$class,$fid);
+							$deleted++;					
+						}
 					}
 					else
 					{

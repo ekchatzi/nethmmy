@@ -3,6 +3,8 @@
 	include_once('../config/security.php');
 	include_once('../config/general.php');
 	include_once("../lib/localization.php");
+	include_once('../lib/log.php');
+
 	/*
 		Get logged user identification data.
 		returns array with 'type' => user_type and 'id' => id , of logged in user,
@@ -46,7 +48,10 @@
 		{
 			$query= "UPDATE users SET 
 				login_token = NULL WHERE id='".$logged_user['id']."' LIMIT 1";
-			$ret = mysql_query($query);
+			if($ret = mysql_query($query))
+			{
+				logout_log($logged_user['id']);
+			}
 		}
 		setcookie('login_token','',time() - 3600,$INDEX_ROOT);
 		setcookie('remember','',time() - 3600,$INDEX_ROOT);
@@ -84,8 +89,12 @@
 								last_login = '".time()."',
 								last_remote_adress = '$ip'
 							WHERE id = '$uid' LIMIT 1";
-					mysql_query($query);
-					return mysql_error();//return mysql error if any;
+					if(mysql_query($query))
+					{
+						login_log($uid,$ip);
+						return false;
+					}
+					return mysql_error();
 				}
 				else
 				{

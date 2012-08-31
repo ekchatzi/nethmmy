@@ -34,6 +34,9 @@
 	$view['files'] = '../views/files.php';
 	$view_title['files'] = _('Folder contents');
 
+	$view['file'] = '../views/file.php';
+	$view_title['file'] = _('File information');
+
 	$view['lab'] = '../views/lab.php';
 	$view_title['lab'] = _('Lab');
 

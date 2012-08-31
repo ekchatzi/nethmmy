@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -35,8 +36,12 @@
 							description = '".mysql_real_escape_string(sanitize_html($desc))."'
 							WHERE id= '$id'
 							LIMIT 1";
-					mysql_query($query) || ($error[] = mysql_error());
-					$updated++;
+					if(mysql_query($query))
+					{
+						title_edit_log($logged_userid,$id);
+						$message[] = sprintf(_('Title `%s` updated successfully.'),$title);
+						$updated++;
+					}
 				}
 				else
 				{
@@ -56,7 +61,11 @@
 		if(!($e = id_list_validation($delete)))
 		{
 			$query = "DELETE FROM titles WHERE FIND_IN_SET(id,'$delete')";;
-			mysql_query($query) || ($error[] = mysql_error());
+			if(mysql_query($query))
+			{
+				titles_deletion_log($logged_userid,$delete);
+				$message[] = sprintf(_('%s titles deleted successfully.'),count(explode(',',$delete)));
+			}
 		}
 		else
 		{

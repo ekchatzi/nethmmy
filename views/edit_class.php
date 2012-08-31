@@ -109,7 +109,7 @@
 			<legend><?php echo _('Class information');?></legend>
 			<ul>
 				<li><label><?php echo _("Title");?> </label><input type='text' name='title' value="<?php echo $class_name;?>" placeholder="<?php echo _('Class\' title');?>" /></li>
-				<li><label><?php echo _("Semesters");?> </label><input type='text' name='semesters' value="<?php echo $semesters;?>" placeholder="<?php echo _('Semesters the class is taught');?>"/></li>
+				<li><label><?php echo _("Semesters");?> </label><input type='text' name='semesters' value="<?php echo $semesters;?>" placeholder="<?php echo _('e.g. 2 or 6,8 ');?>"/></li>
 			</ul>
 			<p>
 				<label id='descriptionLabel'><?php echo _('Description');?></label>

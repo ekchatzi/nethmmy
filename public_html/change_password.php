@@ -32,8 +32,7 @@
 					$query = "UPDATE users SET password = '$password_hash',
 								salt='$salt'
 							WHERE id='$uid' LIMIT 1";
-					($ret = mysql_query($query)) || ($error[] = mysql_error());
-					if($ret)
+					if(mysql_query($query))
 					{
 						delete_token($token);
 						$message[] = _('Password was changed successfully.');

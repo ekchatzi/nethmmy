@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -25,11 +26,15 @@
 			if(can_delete_lab($logged_userid,$lid))
 			{
 				$query = "DELETE FROM labs WHERE id='$lid' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-
-				$query = "DELETE FROM lab_teams WHERE lab='$lid'";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _("Lab was deleted successfully.");
+				if(mysql_query($query))
+				{
+					$query = "DELETE FROM lab_teams WHERE lab='$lid'";
+					if(mysql_query($query))
+					{
+						$message[] = _("Lab was deleted successfully.");
+						lab_deletion_log($logged_userid,$class,$lid);
+					}
+				}
 			}
 			else
 			{

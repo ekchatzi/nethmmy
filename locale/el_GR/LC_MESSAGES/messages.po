@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tichuiq\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-15 09:44+0200\n"
-"PO-Revision-Date: 2012-07-15 09:44+0200\n"
+"POT-Creation-Date: 2012-08-31 10:22+0200\n"
+"PO-Revision-Date: 2012-08-31 12:35+0200\n"
 "Last-Translator: lefteris hatzipetrou <ekchatzi@auth.gr>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -19,23 +19,1912 @@ msgstr ""
 "X-Poedit-SearchPath-1: ./lib\n"
 "X-Poedit-SearchPath-2: ./views\n"
 "X-Poedit-SearchPath-3: ./doc\n"
+"X-Poedit-SearchPath-4: ./config\n"
 
-#: public_html/index.php:12
+#: public_html/index.php:19
 msgid "Ηλεκτρονική τάξη Τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης"
 msgstr "Ηλεκτρονική τάξη Τμήματος Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών Αριστοτελείου Πανεπιστημίου Θεσσαλονίκης"
 
-#: lib/login.php:74
-#: lib/login.php:79
+#: public_html/index.php:66
+#: public_html/index.php:74
+msgid "Login"
+msgstr "Είσοδος"
+
+#: public_html/index.php:67
+msgid "Register"
+msgstr "Εγγραφή"
+
+#: public_html/index.php:71
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: public_html/index.php:72
+msgid "Password"
+msgstr "Κωδικός"
+
+#: public_html/index.php:82
+msgid "Home"
+msgstr "Αρχική"
+
+#: public_html/index.php:85
+msgid "Logout"
+msgstr "Έξοδος"
+
+#: public_html/index.php:92
+msgid "NeTHMMY"
+msgstr "ΝεΤΗΜΜΥ"
+
+#: public_html/index.php:93
+msgid "Online classes application"
+msgstr "Εφαρμογή διαδικτυακών μαθημάτων"
+
+#: public_html/index.php:111
+msgid "Aristotle University of Thessaloniki &copy;2012"
+msgstr "Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης &copy;2012"
+
+#: public_html/login.php:18
+#, php-format
+msgid "Welcome to Nethmmy"
+msgstr "Καλώσορίσατε στο ΝεΤΗΜΜΥ"
+
+#: public_html/logout.php:18
+msgid "You are not logged in."
+msgstr "Δεν είστε συνδεδεμένοι."
+
+#: public_html/register.php:44
+msgid "Registration success"
+msgstr "Εγγραφή επιτυχής"
+
+#: public_html/register.php:55
+msgid "Passwords don't match."
+msgstr "Οι κωδικοί δεν ταιριάζουν"
+
+#: public_html/new_lab.php:59
+#, php-format
+msgid "Lab `%s` was created successfully."
+msgstr "Το εργαστήριο `%s` δημιουργήθηκε επιτυχώς"
+
+#: public_html/new_lab.php:65
+#: public_html/new_class.php:38
+#: public_html/delete_class.php:29
+#: public_html/edit_profile.php:95
+#: public_html/edit_profile.php:101
+#: public_html/change_user_type.php:31
+#: public_html/change_user_type.php:57
+#: public_html/delete_files.php:55
+#: public_html/edit_class.php:38
+#: public_html/new_class_association.php:32
+#: public_html/edit_class_association_types.php:74
+#: public_html/new_class_association_type.php:31
+msgid "Access denied."
+msgstr "Απαγορεύεται η πρόσβαση."
+
+#: public_html/new_class.php:32
+#, php-format
+msgid "Class `%s` was created successfully."
+msgstr "Το μάθημα `%s` δημιουργήθηκε επιτυχώς."
+
+#: public_html/delete_class.php:25
+msgid "Class was deleted successfully."
+msgstr "Το μάθημα διεγράφει επιτυχώς."
+
+#: public_html/edit_profile.php:48
+msgid "Email address is no longer validated."
+msgstr "Η διέυθυνση ηλεκτρονικού ταχυδρομείου δεν είναι πλέον εξακριβωμένη."
+
+#: public_html/edit_profile.php:66
+msgid "Basic information were updated successfully."
+msgstr "Οι βασικές πληροφορίες ανανεώθηκαν επιτυχώς."
+
+#: public_html/edit_profile.php:85
+msgid "AEM was updated successfully."
+msgstr "Ο ΑΕΜ ανανεώθηκε επιτυχώς."
+
+#: public_html/change_user_type.php:53
+msgid "Active status changed successfully."
+msgstr "Η κατάσταση του λογαριασμού άλλαξε επιτυχώς."
+
+#: public_html/change_user_type.php:62
+msgid "Invalid active status."
+msgstr "Μη έγκυρη κατάσταση λογαριασμού."
+
+#: public_html/delete_files.php:65
+#, php-format
+msgid "%s out of %s files were deleted successfully."
+msgstr "%s από τα %s αρχεία διεγράφηκαν επιτυχώς."
+
+#: public_html/edit_class.php:34
+msgid "Class updated successfully."
+msgstr "Το μάθημα ανανεώθηκε επιτυχώς."
+
+#: public_html/new_class_association.php:28
+msgid "Association was created successfully."
+msgstr "Ο συσχετισμός δημιουργήθηκε επιτυχώς."
+
+#: public_html/edit_class_association_types.php:53
+msgid "Values count do not match id count"
+msgstr "Ο αριθμός των ταυτοτήτων δεν ταιριάζει με αυτό των τιμών"
+
+#: public_html/edit_class_association_types.php:59
+#, php-format
+msgid "%s out of %s class associations were updated successfully."
+msgstr "%s από τις %s συσχετίσεις ανανεώθηκαν επιτυχώς."
+
+#: public_html/new_class_association_type.php:27
+msgid "New association type was created successfully."
+msgstr "Ο νέος τύπος συσχετισμού δημιουργήθηκε με επιτυχία."
+
+#: public_html/edit_announcement.php:32
+#: public_html/new_announcement.php:45
+msgid "ethmmy class"
+msgstr "Μάθημα NeTHMMY"
+
+#: public_html/edit_announcement.php:42
+#: public_html/new_announcement.php:55
+#, php-format
+msgid "[ethmmy] Urgent announcement for %s"
+msgstr "[NeTHMMY] Επείγουσα ανακοίνωση για %s"
+
+#: public_html/edit_announcement.php:56
+#: public_html/new_announcement.php:69
+msgid "Urgent delivery failed."
+msgstr "Επείγουσα παράδοση απέτυχε."
+
+#: public_html/edit_announcement.php:75
+msgid "Announcement was updated successfully."
+msgstr "Η ανακοίνωση ανανεώθηκε με επιτυχία."
+
+#: public_html/delete_class_association.php:31
+msgid "Class association was deleted successfully."
+msgstr "Ο συσχετισμός διεγράφη με επιτυχία."
+
+#: public_html/new_announcement.php:34
+msgid "Announcement was posted succesfully."
+msgstr "Η ανακοίνωση αναρτήθηκε με επιτυχία."
+
+#: public_html/delete_announcement.php:30
+msgid "Announcement was deleted successfully."
+msgstr "Η ανακοίνωση διεγράφει με επιτυχία."
+
+#: public_html/edit_folder.php:39
+msgid "Folder information were updated successfully."
+msgstr "Οι πληροφορίες φακέλου ανανεώθηκαν επιτυχώς."
+
+#: public_html/join_lab_team.php:45
+#, php-format
+msgid "You are now a member of team `%s`."
+msgstr "Είστε πλέον μέλος της ομάδας `%s`."
+
+#: public_html/delete_folder.php:36
+msgid "Folder was deleted successfully."
+msgstr "Ο φάκελος διεγράγει επιτυχώς."
+
+#: public_html/delete_folder.php:40
+msgid "Folder is not empty."
+msgstr "Ο φάκελος δεν είναι άδειος."
+
+#: public_html/new_folder.php:31
+msgid "Folder was created successfully."
+msgstr "Ο φάκελος δημιουργήθηκε επιτυχώς."
+
+#: public_html/upload_file.php:55
+#, php-format
+msgid "File `%s` uploaded successfully."
+msgstr "Το αρχείο `%s` ανέβηκε με επιτυχία."
+
+#: public_html/upload_file.php:61
+msgid "File move failed."
+msgstr "Η μετακίνηση αρχείου απέτυχε."
+
+#: public_html/upload_file.php:66
+msgid "Access Denied."
+msgstr "Άρνηση πρόσβασης."
+
+#: public_html/edit_file.php:37
+msgid "File information were updated successfully."
+msgstr "Οι πληροφορίες αρχείου ανέβηκαν επιτυχώς."
+
+#: public_html/download_file.php:45
+msgid "File does not exist."
+msgstr "Το αρχείο δεν υπάρχει."
+
+#: public_html/delete_lab.php:32
+msgid "Lab was deleted successfully."
+msgstr "Το εργαστήριο διεγράφει με επιτυχία."
+
+#: public_html/classes_subscription.php:1
+msgid "Class subscriptions were updated."
+msgstr "Οι συνδρόμες μαθημάτων ανανεώθηκαν."
+
+#: public_html/edit_lab.php:58
+#: public_html/edit_lab.php:67
+msgid "File folder was created successfully."
+msgstr "Ο φάκελος αρχείων δημιουργήθηκε επιτυχώς."
+
+#: public_html/edit_lab.php:82
+msgid "Lab information were updated successfully."
+msgstr "Οι πληροφορίες εργαστηρίου ανανεώθηκαν επιτυχώς."
+
+#: public_html/delete_user.php:25
+msgid "User account was deleted successfully."
+msgstr "Ο λογαριασμός χρήστη διεγράφει επιτυχώς."
+
+#: public_html/edit_titles.php:53
+#, php-format
+msgid "%s out of %s titles were updated successfully."
+msgstr "%s από %s τίτλους ανανεώθηκαν επιτυχώς."
+
+#: public_html/new_lab_team.php:46
+#, php-format
+msgid "Lab team `%s`was created successfully."
+msgstr "Η ομάδα `%s` δημιουργήθηκε επιτυχώς."
+
+#: public_html/new_lab_teams_bulk.php:42
+msgid "Team limit has been reached."
+msgstr "Το όριο ομάδων συμπληρώθηκε."
+
+#: public_html/new_lab_teams_bulk.php:62
+#, php-format
+msgid "%s lab team(s) were created successfully."
+msgstr "%s ομάδες δημιουργήθηκαν επιτυχώς."
+
+#: public_html/change_password.php:39
+msgid "Password was changed successfully."
+msgstr "Ο κωδικός άλλαξε επιτυχώς."
+
+#: public_html/change_password.php:45
+#: public_html/validate_email.php:42
+msgid "Token is no longer avainable."
+msgstr "Το token δεν είναι έγκυρο."
+
+#: public_html/change_password.php:60
+#: public_html/validate_email.php:47
+msgid "Token is invalid."
+msgstr "Το token δεν είναι έγκυρο."
+
+#: public_html/leave_lab_team.php:48
+#, php-format
+msgid "You left lab team `%s`."
+msgstr "Αποχώρησες από την ομάδα `%s`."
+
+#: public_html/leave_lab_team.php:60
+#: public_html/kick_from_lab_team.php:61
+#, php-format
+msgid "Lab team `%s` was deleted."
+msgstr "Η ομάδα `%s` διεγράφει."
+
+#: public_html/kick_from_lab_team.php:49
+#, php-format
+msgid "Student was kicked from lab team `%s`."
+msgstr "Ο φοιτητής αποβλήθηκε από την ομάδα `%s`."
+
+#: public_html/delete_lab_team.php:36
+msgid "Lab team was deleted successfully."
+msgstr "Η ομάδα εργαστηρίου διεγράφει επιτυχώς."
+
+#: public_html/edit_lab_team.php:40
+msgid "Lab team was updated successfully."
+msgstr "Η ομάδα ανανεώθηκε επιτυχώς."
+
+#: public_html/new_title.php:26
+#, php-format
+msgid "Title `%s`was created successfully."
+msgstr "Ο τίτλος `%s` δημιουργήθηκε επιτυχώς"
+
+#: public_html/request_validate_email.php:29
+msgid "[ethmmy] Validate your email"
+msgstr "[NeTHMMY] Επιβεβαιώστε το email σας"
+
+#: public_html/request_validate_email.php:32
+#, php-format
+msgid "Please follow this link %s to validate your email address."
+msgstr "Παρακαλούμε ακολουθείστε το σύνδεσμο %s για να επιβεβαιώσετε την διέυθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: public_html/request_validate_email.php:36
+#, php-format
+msgid "Email validation email was sent successfully to email address `%s`."
+msgstr "Ένα email εξακρίβωσης απεστάλθηκε στην διέυθυνση `%s`."
+
+#: public_html/request_validate_email.php:40
+msgid "Message delivery failed. Please try again."
+msgstr "Η παράδοση του μηνύματος απέτυχε. Δοκιμάστε ξανά."
+
+#: public_html/request_validate_email.php:45
+msgid "Your email is already validated"
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου είναι ήδη εξακριβωμένη."
+
+#: public_html/validate_email.php:36
+#, php-format
+msgid "Email %s is now validated."
+msgstr "Το email %s είναι πλέον επιβεβαιωμένο."
+
+#: public_html/clean_log.php:22
+#, php-format
+msgid "Deleted %s log entries."
+msgstr "Διεγράφησαν %s εγγράφες καταγραφής."
+
+#: lib/login.php:30
+msgid "Remote adress has been changed since last login"
+msgstr "Η διεύθυνση πελάτη άλλαξε από την τελευταία εισόδου"
+
+#: lib/login.php:92
+#: lib/login.php:97
 msgid "User not found or wrong password."
 msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
+
+#: lib/login.php:102
+msgid "Someone is logged in."
+msgstr "Κάποιος είναι ήδη συνδεδεμένος."
+
+#: lib/validate.php:64
+msgid "Boolean int values values must be \"0\" or \"1\""
+msgstr "Οι τιμές λογικών ακεραίων πρέπει να είναι `0` ή `1`."
+
+#: lib/validate.php:77
+msgid "Invalid markup"
+msgstr "Κακή μορφή markup."
+
+#: lib/validate.php:92
+msgid "Invalid semester list."
+msgstr "Μη έγκυρη λίστα εξαμήνων."
+
+#: lib/validate.php:106
+msgid "Semester must be positive integer."
+msgstr "Το εξάμηνο πρέπει να είναι θετικός ακέραιος."
+
+#: lib/validate.php:119
+msgid "Email is invalid."
+msgstr "Το email δεν είναι έγκυρο."
+
+#: lib/validate.php:133
+#, php-format
+msgid "Names must be between %s and %s characters long"
+msgstr "Τα ονόματα πρέπει να είναι μεταξύ %s και %s χαρακτήρες σε μήκος."
+
+#: lib/validate.php:137
+msgid "Name contains illegal characters."
+msgstr "Το όνομα περιέχει μη έγκυρους χαρακτήρες"
+
+#: lib/validate.php:151
+#, php-format
+msgid "Username must be between %s and %s characters long"
+msgstr "Τα ονόμα χρήστη πρέπει να είναι μεταξύ %s και %s χαρακτήρες σε μήκος."
+
+#: lib/validate.php:157
+msgid "Username is taken."
+msgstr "Το όνομα χρήστη είναι κατελειμένο."
+
+#: lib/validate.php:161
+msgid "Username must contain only latin alphanumeric characters."
+msgstr "Το όνομα χρήστη πρέπει να περιέχει μόνο λατινικούς αλφαριθμητικούς χαρακτήρες."
+
+#: lib/validate.php:178
+msgid "AEM already exists."
+msgstr "Το ΑΕΜ υπάρχει ήδη."
+
+#: lib/validate.php:182
+msgid "AEM must be positive integer."
+msgstr "Το ΑΕΜ πρέπει να είναι θετικός ακέραιος."
+
+#: lib/validate.php:196
+#, php-format
+msgid "Password must be between %s and %s characters long"
+msgstr "Ο κωδικός πρέπει να είναι μεταξύ %s και %s χαρακτήρες σε μήκος."
+
+#: lib/validate.php:200
+msgid "Password must contain letters AND numbers."
+msgstr "Ο κωδικός πρέπει να περιέχει γράμματα ΚΑΙ αριθμούς."
+
+#: lib/validate.php:214
+msgid "Invalid user type."
+msgstr "Μη έγκυρος τύπος χρήστη."
+
+#: lib/validate.php:226
+msgid "User ids must be positive integers."
+msgstr "Οι ταυτότητες χρηστών πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:234
+msgid "User id does not exist."
+msgstr "Δε βρέθηκε ο χρήστης."
+
+#: lib/validate.php:237
+#: lib/validate.php:260
+#: lib/validate.php:284
+#: lib/validate.php:365
+#: lib/validate.php:389
+#: lib/validate.php:433
+#: lib/validate.php:456
+#: lib/validate.php:479
+#: lib/validate.php:558
+#: lib/validate.php:581
+msgid "Database Error."
+msgstr "Σφάλμα βάσης δεδομένων."
+
+#: lib/validate.php:249
+msgid "Class ids must be positive integers."
+msgstr "Οι ταυτότητες μαθημάτων πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:257
+msgid "Class id does not exist."
+msgstr "Το μάθημα δεν βρέθηκε."
+
+#: lib/validate.php:273
+msgid "Title ids must be positive integers."
+msgstr "Οι ταυτότητες τίτλων πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:281
+msgid "Title id does not exist."
+msgstr "Ο τίτλος δεν βρέθηκε."
+
+#: lib/validate.php:297
+#, php-format
+msgid "Telephone numbers must be between %s and %s characters long or empty."
+msgstr "Οι αριθμοί τηλεφώνων πρέπει να είναι μεταξύ %s και %s  χαρακτήρων ή κενοί."
+
+#: lib/validate.php:300
+msgid "Invalid characters for telephone number."
+msgstr "Μη έγκυροι χαρακτήρες για αριθμό τηλεφώνου."
+
+#: lib/validate.php:322
+msgid "Priority must be positive integer."
+msgstr "Η προτεραιότητα πρέπει να είναι θετικός ακέραιος."
+
+#: lib/validate.php:340
+msgid "Invalid id list."
+msgstr "Μη έγκυρη λίστα ταυτοτήτων."
+
+#: lib/validate.php:354
+msgid "Association type ids must be positive integers."
+msgstr "Οι ταυτότητες ειδών συσχετισμών πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:362
+msgid "Association type id does not exist."
+msgstr "Ο τύπος συσχετισμού δεν βρέθηκε."
+
+#: lib/validate.php:378
+msgid "Association ids must be positive integers."
+msgstr "Οι ταυτότητες συσχετισμών πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:386
+msgid "Association id does not exist."
+msgstr "Ο συσχετισμός δεν βρέθηκε."
+
+#: lib/validate.php:408
+#, php-format
+msgid "Invalid permission \"%s\"."
+msgstr "Μη έγκυρο δικαίωμα `%s`"
+
+#: lib/validate.php:422
+msgid "Announcement ids must be positive integers."
+msgstr "Οι ταυτότητες ανακοινώσεων πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:430
+msgid "Announcement id does not exist."
+msgstr "Η ανακοίνωση δεν βρέθηκε."
+
+#: lib/validate.php:445
+msgid "Folder ids must be positive integers."
+msgstr "Οι ταυτότητες φακέλων αρχείων πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:453
+msgid "Folder id does not exist."
+msgstr "Ο φάκελος δεν βρέθηκε."
+
+#: lib/validate.php:468
+msgid "File ids must be positive integers."
+msgstr "Οι ταυτότητες αρχείων πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:476
+msgid "File id does not exist."
+msgstr "Το αρχείο δεν βρέθηκε."
+
+#: lib/validate.php:491
+msgid "File was not sent from form."
+msgstr "Το αρχείο δεν απεστάλει από την φόρμα."
+
+#: lib/validate.php:499
+msgid "File is too big."
+msgstr "Το αρχείο είναι πολύ μεγάλο."
+
+#: lib/validate.php:502
+msgid "The uploaded file was only partially uploaded."
+msgstr "Το αρχείο ανέβηκε μόνο τμηματικά."
+
+#: lib/validate.php:505
+msgid "No file was uploaded."
+msgstr "Το αρχείο δεν ανέβηκε."
+
+#: lib/validate.php:508
+msgid "Missing a temporary folder."
+msgstr "Δεν υπάρχει προσωρινός φάκελος."
+
+#: lib/validate.php:511
+msgid "Failed to write file to disk."
+msgstr "Αποτυχία εγγραφής στον δίσκο."
+
+#: lib/validate.php:514
+#, php-format
+msgid "File error %s"
+msgstr "Σφάλμα αρχείου %s"
+
+#: lib/validate.php:518
+msgid "File is too large."
+msgstr "Το μέγεθος του αρχείου είναι πολύ μεγάλο."
+
+#: lib/validate.php:521
+msgid "File was not uploaded."
+msgstr "Το αρχείο δεν ανέβηκε."
+
+#: lib/validate.php:535
+msgid "Timestamps must be positive integers."
+msgstr "Οι χρόνοι πρέπει να είναι ακέραιοι θετικοί."
+
+#: lib/validate.php:547
+msgid "Lab ids must be positive integers."
+msgstr "Η ταυτότητα του εργαστηρίου πρέπει να είναι θετικός ακέραιος"
+
+#: lib/validate.php:555
+msgid "Lab id does not exist."
+msgstr "Δεν βρέθηκε το εργαστήριο."
+
+#: lib/validate.php:570
+msgid "Lab team ids must be positive integers."
+msgstr "Οι ταυτότητες ομάδων εργστηρίου πρέπει να είναι θετικοί ακέραιοι."
+
+#: lib/validate.php:578
+msgid "Lab team id does not exist."
+msgstr "Η ομάδα εργαστηρίου δεν βρέθηκε."
+
+#: lib/validate.php:589
+msgid "Team limit must be positive integer."
+msgstr "Το όριο ομάδων πρέπει να είναι θετικός ακέραιος."
+
+#: lib/validate.php:592
+#, php-format
+msgid "Team limit too large.Must be less than %s."
+msgstr "Το όριο ομάδων είναι πολύ μεγάλο. Πρέπει να είναι μικρότερο από %s."
+
+#: lib/validate.php:600
+msgid "Lab team user limit must be positive integer."
+msgstr "Το όριο ατόμων για κάθε ομάδα πρέπει να είναι θετικός ακέραιος."
+
+#: lib/validate.php:603
+#, php-format
+msgid "Lab team user  limit too large.Must be less than %s."
+msgstr "Το όριο ατόμων για κάθε ομάδα είναι πολύ μεγάλο. Πρέπει να είναι μικρότερο από %s. "
+
+#: lib/validate.php:611
+msgid "Upload limit must be positive integer."
+msgstr "Το όριο αποστολής αρχείων πρέπει να είναι θετικός ακέραιος."
+
+#: lib/validate.php:614
+#, php-format
+msgid "Upload limit too large.Must be less than %s."
+msgstr "Το όριο αποστολής αρχείων πρέπει είναι πολύ μεγάλο. Πρέπει να είναι μικρότερο από %s. "
+
+#: lib/log.php:40
+#, php-format
+msgid "User #%s downloaded file #%s from ip address %s."
+msgstr "Ο χρήστης #%s κατέβασε το αρχείο #%s από την διεύθυνση %s."
+
+#: lib/log.php:42
+#, php-format
+msgid "File #%s was uploaded from ip address %s."
+msgstr "Το αρχείο #%s ανέβηκε από την διεύθυνση %s."
+
+#: lib/log.php:44
+#, php-format
+msgid "Lab file #%s was uploaded from ip address %s."
+msgstr "Το αρχείο εργαστηρίου #%s ανέβηκε από την διεύθυνση %s."
+
+#: lib/log.php:46
+#, php-format
+msgid "User #%s validated his email address."
+msgstr "Ο χρήστης #%s επιβεβαίωση την διέυθυνση email του."
+
+#: lib/log.php:48
+#, php-format
+msgid "Announcement #%s was posted."
+msgstr "Αναρτήθηκε η ανακοίνωση #%s."
+
+#: lib/log.php:50
+#, php-format
+msgid "Folder #%s was created by user #%s."
+msgstr "Ο φάκελος αρχείων  #%s  δημιουργήθηκε από τον χρήστη #%s."
+
+#: lib/log.php:52
+#, php-format
+msgid "Lab #%s was created by user #%s."
+msgstr "Το εργαστήριο  #%s δημιουργήθηκε από τον χρήστη #%s."
+
+#: lib/log.php:54
+#, php-format
+msgid "Lab team #%s was created."
+msgstr "Δημιουργήθηκε η ομάδα εργαστηρίου #%s ."
+
+#: lib/log.php:56
+#, php-format
+msgid "User #%s created %s team(s) for lab #%s."
+msgstr "Ο χρήστης #%s δημιούργησε %s ομάδες για το εργαστήριο #%s."
+
+#: lib/log.php:58
+#, php-format
+msgid "User #%s changed his password."
+msgstr "Ο χρήστης #%s άλλαξε τον κωδικό του."
+
+#: lib/log.php:60
+#, php-format
+msgid "New user #%s."
+msgstr "Νέος χρήστης #%s."
+
+#: lib/log.php:62
+#, php-format
+msgid "User #%s created class #%s."
+msgstr ".Ο χρήστης #%s δημιούργησε το μάθημα #%s"
+
+#: lib/log.php:64
+#, php-format
+msgid "Log message type `%s` with data `%s`"
+msgstr "Μήνυμα καταγραφής με τύπο `%s` και δεδομένα `%s`"
+
+#: views/class.php:12
+#: views/edit_class.php:109
+msgid "Class information"
+msgstr "Πληροφορίες μαθήματος"
+
+#: views/class.php:13
+msgid "There is no description yet."
+msgstr "Δεν υπάρχει περιγραφή"
+
+#: views/class.php:15
+#: views/views.php:8
+#: views/classes.php:55
+#: views/classes.php:56
+#: views/new_class.php:10
+#: views/edit_class.php:16
+msgid "Classes"
+msgstr "Μαθήματα"
+
+#: views/class.php:79
+#, php-format
+msgid "Taught on semester(s) %s"
+msgstr "Διδάσκεται στο/α εξάμηνο/α %s"
+
+#: views/class.php:81
+msgid "Associated professors"
+msgstr "Συσχετισμένοι καθηγητές"
+
+#: views/class.php:88
+msgid "No associated professors."
+msgstr "Κανένας συσχετισμένος καθηγητής."
+
+#: views/class.php:92
+#: views/new_class.php:33
+#: views/edit_class.php:115
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: views/class.php:101
+#: views/profile.php:200
+#: views/announcements.php:128
+#: views/announcements.php:129
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: views/class.php:104
+#: views/profile.php:203
+#: views/edit_class.php:139
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: views/class.php:108
+msgid "Are you sure you want to delete this class?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το μάθημα;"
+
+#: views/views.php:5
+msgid "eClasses"
+msgstr "eΜαθήματα"
+
+#: views/views.php:11
+msgid "Class"
+msgstr "Μάθημα"
+
+#: views/views.php:14
+#: views/edit_class.php:102
+#: views/edit_class.php:103
+msgid "Edit Class"
+msgstr "Επεξεργασία μαθήματος"
+
+#: views/views.php:17
+#: views/new_class.php:22
+msgid "New Class"
+msgstr "Νέο Μάθημα"
+
+#: views/views.php:20
+msgid "Profile"
+msgstr "Προφίλ χρήστη"
+
+#: views/views.php:23
+#: views/edit_class_association_types.php:38
+msgid "Edit Class Association Types"
+msgstr "Επεξεργασία τύπων συσχετισμών"
+
+#: views/views.php:26
+#: views/announcements.php:81
+#: views/announcements.php:82
+#: views/edit_announcement.php:13
+msgid "Announcements"
+msgstr "Ανακοινώσεις"
+
+#: views/views.php:29
+#: views/edit_announcement.php:56
+msgid "Edit Announcement"
+msgstr "Επεξεργασία ανακοίνωσης"
+
+#: views/views.php:32
+msgid "Class Files"
+msgstr "Αρχεία μαθήματος"
+
+#: views/views.php:35
+msgid "Folder contents"
+msgstr "Περιεχόμενα φακέλου"
+
+#: views/views.php:38
+msgid "File information"
+msgstr "Πληροφορίες αρχείου"
+
+#: views/views.php:41
+msgid "Lab"
+msgstr "Εργαστήριο"
+
+#: views/views.php:44
+msgid "Edit Lab"
+msgstr "Επεξεργασία Εργαστηρίου"
+
+#: views/views.php:47
+msgid "New Lab"
+msgstr "Νέο εργαστήριο"
+
+#: views/views.php:50
+msgid "Edit Profile"
+msgstr "Επεξεργασία Προφίλ"
+
+#: views/views.php:53
+msgid "Edit Titles"
+msgstr "Επεξεργασία τίτλων"
+
+#: views/views.php:56
+msgid "Inactive accounts"
+msgstr "Ανενεργοί λογαριασμοί"
+
+#: views/views.php:59
+msgid "Statistics"
+msgstr "Στατιστικά"
+
+#: views/views.php:62
+#: views/register.php:1
+msgid "Register Application"
+msgstr "Αίτηση εγγραφής"
+
+#: views/views.php:65
+#: views/edit_profile.php:17
+#: views/profile.php:17
+msgid "Professors"
+msgstr "Καθηγητές"
+
+#: views/classes.php:52
+#: views/edit_class.php:100
+msgid "Access Denied"
+msgstr "Άρνηση πρόσβασης."
+
+#: views/classes.php:63
+#, php-format
+msgid "Semester %s"
+msgstr "Εξάμηνο %s"
+
+#: views/classes.php:74
+msgid "No classes."
+msgstr "Δεν υπάρχουν μαθήματα."
+
+#: views/classes.php:79
+msgid "Set subscriptions"
+msgstr "Ορισμός συνδρομών"
+
+#: views/register.php:5
+msgid "User Information"
+msgstr "Πληροφορίες  χρήστη"
+
+#: views/register.php:6
+#: views/edit_profile.php:121
+#: views/profile.php:187
+msgid "Account type"
+msgstr "Είδος λογαριασμού"
+
+#: views/register.php:10
+msgid "Your unique username"
+msgstr "Το όνομα εισόδου σας"
+
+#: views/register.php:12
+msgid "Your login password"
+msgstr "Ο κωδικός πρόσβασης σας."
+
+#: views/register.php:13
+msgid "Confirm Password"
+msgstr "Επιβεβαίωση κωδικού"
+
+#: views/register.php:14
+msgid "Your login password again"
+msgstr "Ο κωδικός πρόσβασης σας ξανά."
+
+#: views/register.php:15
+#: views/edit_profile.php:85
+msgid "First Name"
+msgstr "Όνομα"
+
+#: views/register.php:16
+#: views/edit_profile.php:85
+msgid "Your first name"
+msgstr "Το όνομα σας"
+
+#: views/register.php:17
+#: views/edit_profile.php:86
+msgid "Last Name"
+msgstr "Επίθετο"
+
+#: views/register.php:18
+#: views/edit_profile.php:86
+msgid "Your last name"
+msgstr "Το επίθετο σας"
+
+#: views/register.php:19
+#: views/edit_profile.php:91
+#: views/profile.php:124
+msgid "Email"
+msgstr "E-Mail"
+
+#: views/register.php:20
+#: views/edit_profile.php:91
+msgid "Your email address"
+msgstr "Η διεύθυνση email σας"
+
+#: views/register.php:21
+msgid "AEM"
+msgstr "Αριθμός Ειδικού Μητρώου"
+
+#: views/register.php:22
+#: views/edit_profile.php:88
+msgid "Your AEM"
+msgstr "Ο Αριθμός Ειδικού Μητρώου σας"
+
+#: views/register.php:23
+#: views/edit_profile.php:90
+#: views/profile.php:118
+msgid "Semester"
+msgstr "Εξάμηνο"
+
+#: views/register.php:24
+#: views/edit_profile.php:90
+msgid "Your current semester"
+msgstr "Το τρέχων σας εξάμηνο"
+
+#: views/register.php:25
+msgid "Send"
+msgstr "Αποστολή"
+
+#: views/register.php:46
+msgid "Your username has to be bigger than that."
+msgstr "Το όνομα εισόδου σας πρέπει να είναι μεγαλύτερο."
+
+#: views/register.php:51
+msgid "Your password has to be bigger than that."
+msgstr "Ο κωδικός σας πρέπει να είναι μεγαλύτερος."
+
+#: views/register.php:56
+msgid "Your username has to be smaller than that."
+msgstr "Το όνομα εισόδου σας πρέπει να είναι μικρότερο."
+
+#: views/register.php:61
+msgid "Your password has to be smaller than that."
+msgstr "Ο κωδικός σας πρέπει να είναι μικρότερος."
+
+#: views/register.php:66
+msgid "You must enter a password"
+msgstr "Πρέπει να δώσετε ένα κωδικό"
+
+#: views/register.php:70
+msgid "Password must contain at least 6 letters and numbers"
+msgstr "Ο κωδικός πρέπει να αποτελείται από τουλάχιστον 6 χαρακτήρες, αριθμούς ΚΑΙ γράμματα"
+
+#: views/register.php:74
+msgid "Passwords must match"
+msgstr "Οι κωδικοί πρέπει να ταιριάζουν"
+
+#: views/register.php:78
+msgid "You must enter your name"
+msgstr "Πρέπει να δώσετε το όνομα σας"
+
+#: views/register.php:82
+msgid "You have entered an invalid name"
+msgstr "Έχετε δώσει ένα μη έγκυρο όνομα"
+
+#: views/register.php:86
+msgid "You must enter your last name"
+msgstr "Πρέπει να δώσετε το επίθετο σας"
+
+#: views/register.php:90
+msgid "You have entered an invalid last name"
+msgstr "Έχετε δώσει ένα μη έγκυρο επίθετο"
+
+#: views/register.php:94
+msgid "You must enter your email"
+msgstr "Πρέπει να δώσετε το email σας"
+
+#: views/register.php:98
+msgid "You have entered an invalid email."
+msgstr "Η διέυθυνση email που δώσατε δεν είναι έγκυρη."
+
+#: views/register.php:102
+msgid "You have to enter your AEM"
+msgstr "Πρέπει να δώσετε το ΑΕΜ σας"
+
+#: views/register.php:106
+msgid "You have entered an invalid AEM"
+msgstr "Έχετε δώσει μη έγκυρο ΑΕΜ"
+
+#: views/register.php:110
+msgid "You have to enter your semester"
+msgstr "Πρέπει να δώσετε το εξάμηνο φοίτησης σας"
+
+#: views/register.php:114
+msgid "You have entered an invalid semester"
+msgstr "Δώσατε μη έγκυρο εξάμηνο φοίτησης"
+
+#: views/register.php:118
+msgid "Username already exists"
+msgstr "Το όνομα χρήστη υπάρχει ήδη"
+
+#: views/register.php:146
+msgid "Username available"
+msgstr "Το όνομα χρήστη είναι διαθέσιμο"
+
+#: views/edit_profile.php:12
+msgid "some user"
+msgstr "κάποιος χρήστης"
+
+#: views/edit_profile.php:14
+#: views/profile.php:14
+msgid "Users"
+msgstr "Χρήστες"
+
+#: views/edit_profile.php:78
+#: views/edit_profile.php:79
+msgid "Edit profile"
+msgstr "Επεξεργασία προφίλ"
+
+#: views/edit_profile.php:83
+msgid "User information"
+msgstr "Πληροφορίες χρήστη"
+
+#: views/edit_profile.php:88
+#: views/profile.php:117
+msgid "ΑΕΜ"
+msgstr "ΑΕΜ"
+
+#: views/edit_profile.php:92
+msgid "Send urgent announcements to this mail"
+msgstr "Αποστολή επείγουσων ανακοινώσεων σε αυτό το email"
+
+#: views/edit_profile.php:93
+#: views/profile.php:158
+msgid "Telephone"
+msgstr "Τηλέφωνο"
+
+#: views/edit_profile.php:93
+msgid "Your telephone number"
+msgstr "Ο αριθμός τηλεφώνου σας"
+
+#: views/edit_profile.php:94
+#: views/profile.php:159
+msgid "Website"
+msgstr "Ιστοσελίδα"
+
+#: views/edit_profile.php:94
+msgid "Your personal website URL"
+msgstr "Το URL της προσωπικής σας ιστοσελίδας"
+
+#: views/edit_profile.php:98
+#: views/new_class.php:29
+#: views/edit_class_association_types.php:47
+#: views/edit_class_association_types.php:74
+#: views/edit_class.php:111
+#: views/announcements.php:90
+#: views/edit_announcement.php:62
+msgid "Title"
+msgstr "Τίτλος"
+
+#: views/edit_profile.php:107
+#: views/profile.php:164
+msgid "Biography"
+msgstr "Βιογραφικό"
+
+#: views/edit_profile.php:108
+msgid "Some words about your self"
+msgstr "Λίγα λόγια για εσάς"
+
+#: views/edit_profile.php:111
+#: views/edit_class_association_types.php:80
+#: views/edit_class.php:164
+#: views/edit_announcement.php:71
+msgid "Submit"
+msgstr "Αποστολή"
+
+#: views/edit_profile.php:120
+msgid "Account"
+msgstr "Λογαριασμός"
+
+#: views/edit_profile.php:132
+msgid "Active"
+msgstr "Ενεργός"
+
+#: views/edit_profile.php:132
+msgid "Inactive"
+msgstr "Ανενεργός"
+
+#: views/edit_profile.php:137
+msgid "Set"
+msgstr "Ορισμός"
+
+#: views/profile.php:12
+msgid "Some user"
+msgstr "Κάποιος χρήστης"
+
+#: views/profile.php:48
+#: views/edit_class.php:136
+msgid "User"
+msgstr "Χρήστης"
+
+#: views/profile.php:49
+msgid "Common user"
+msgstr "Απλός χρήστης"
+
+#: views/profile.php:122
+msgid "Contact Info"
+msgstr "Πληροφορίες επικοινωνίας"
+
+#: views/profile.php:147
+msgid "Email sent! Please check your inbox and spam folder."
+msgstr "Το email απεστάλει! Ελέξτε τα εισερχόμενα σας."
+
+#: views/profile.php:165
+msgid "There is no biography yet."
+msgstr "Δεν υπάρχει βιογραφικό ακόμα."
+
+#: views/profile.php:169
+msgid "Associated classes"
+msgstr "Συσχετισμένα μαθήματα"
+
+#: views/profile.php:177
+msgid "None"
+msgstr "Κανένα"
+
+#: views/profile.php:183
+msgid "Account Information"
+msgstr "Πληροφορίες λογαριασμού"
+
+#: views/profile.php:186
+#: views/edit_class.php:157
+msgid "User ID"
+msgstr "ID Χρήστη"
+
+#: views/profile.php:188
+msgid "Registered on"
+msgstr "Εγγεγραμμένος από"
+
+#: views/profile.php:189
+msgid "Last Login on"
+msgstr "Τελευταία είσοδος"
+
+#: views/profile.php:190
+msgid "From"
+msgstr "Από"
+
+#: views/profile.php:207
+msgid "Are you sure you want to delete this user account?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το λογαριασμό χρήστη;"
+
+#: views/new_class.php:23
+msgid "New class"
+msgstr "Νέο μάθημα"
+
+#: views/new_class.php:28
+msgid "Class Information"
+msgstr "Πληροφορίες μαθήματος"
+
+#: views/new_class.php:30
+msgid "Class name"
+msgstr "Όνομα μαθήματος"
+
+#: views/new_class.php:31
+#: views/edit_class.php:112
+msgid "Semesters"
+msgstr "Εξάμηνα"
+
+#: views/new_class.php:32
+#: views/edit_class.php:112
+msgid "e.g. 2 or 6,8 "
+msgstr "π.χ 2 ή 6,8"
+
+#: views/new_class.php:34
+msgid "Write a description for the class"
+msgstr "Γράψτε μια περιγραφή για το μάθημα"
+
+#: views/new_class.php:35
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: views/edit_class_association_types.php:39
+#: views/edit_class_association_types.php:43
+msgid "Class Association Types"
+msgstr "Τύποι συσχετισμών"
+
+#: views/edit_class_association_types.php:47
+msgid "Delete?"
+msgstr "Διαγραφή;"
+
+#: views/edit_class_association_types.php:47
+#: views/edit_class_association_types.php:75
+msgid "Priority"
+msgstr "Προτεραιότητα"
+
+#: views/edit_class_association_types.php:47
+#: views/edit_class_association_types.php:76
+msgid "Permissions"
+msgstr "Δικαιώματα"
+
+#: views/edit_class_association_types.php:62
+#: views/edit_class.php:146
+msgid "No entries."
+msgstr "Καμμία εισαγωγή"
+
+#: views/edit_class_association_types.php:67
+msgid "Apply changes"
+msgstr "Εφαρμογή αλλαγών"
+
+#: views/edit_class_association_types.php:72
+msgid "New association type"
+msgstr "Νέος τύπος συσχετισμού"
+
+#: views/edit_class_association_types.php:74
+msgid "Association Title"
+msgstr "Τίτλος συσχετισμού"
+
+#: views/edit_class_association_types.php:75
+msgid "Less is more important"
+msgstr "Οσο λιγότερο τόσο πιο σημαντικός"
+
+#: views/edit_class_association_types.php:107
+msgid "Are you sure you want to delete the selected class associations?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε τους επιλεγμένους συσχετισμούς;"
+
+#: views/edit_class.php:15
+msgid "Edit class"
+msgstr "Επεξεργασία μαθήματος"
+
+#: views/edit_class.php:111
+msgid "Class' title"
+msgstr "Τίτλος μαθήματος"
+
+#: views/edit_class.php:116
+msgid "Class description"
+msgstr "Περιγραφή μαθήματος"
+
+#: views/edit_class.php:119
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: views/edit_class.php:132
+msgid "Class Associations"
+msgstr "Συσχετισμοί μαθημάτων"
+
+#: views/edit_class.php:136
+msgid "Type"
+msgstr "Τύπος"
+
+#: views/edit_class.php:154
+msgid "New association"
+msgstr "Νέος συσχετισμός"
+
+#: views/edit_class.php:158
+msgid "as"
+msgstr "ως"
+
+#: views/edit_class.php:171
+msgid "Are you sure you want to delete this class association?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον συσχετισμό;"
+
+#: views/edit_class.php:186
+msgid "Association types"
+msgstr "Τύποι συσχετισμών"
+
+#: views/announcements.php:16
+msgid "some class"
+msgstr "κάποιο μάθημα"
+
+#: views/announcements.php:88
+msgid "New announcement"
+msgstr "Νέα ανακοίνωση"
+
+#: views/announcements.php:91
+#: views/edit_announcement.php:63
+msgid "Announcement title here..."
+msgstr "Τίτλος ανακοίνωσης εδώ..."
+
+#: views/announcements.php:93
+#: views/edit_announcement.php:65
+msgid "Urgent"
+msgstr "Επείγον"
+
+#: views/announcements.php:96
+#: views/edit_announcement.php:68
+msgid "Body"
+msgstr "Σώμα"
+
+#: views/announcements.php:97
+msgid "Announcement body here..."
+msgstr "Σώμα ανακοίνωσης"
+
+#: views/announcements.php:99
+msgid "Post announcement"
+msgstr "Ανάρτηση ανακοίνωσης"
+
+#: views/announcements.php:108
+#: views/edit_announcement.php:80
+msgid "You have to enter a title"
+msgstr "Πρέπει να δώσετε ένα τίτλο"
+
+#: views/announcements.php:124
+#, php-format
+msgid "Posted on %s by %s. Last update on %s."
+msgstr "Αναρτήθηκε στις %s από %s. Τελευταία ανανέωση στις %s."
+
+#: views/announcements.php:136
+msgid "No announcements."
+msgstr "Καμμία ανακοίνωση."
+
+#: views/announcements.php:144
+msgid "Are you sure you want to delete this announcement?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ανακοίνση;"
+
+#: views/edit_announcement.php:12
+msgid "Some class"
+msgstr "Κάποιο μάθημα"
+
+#: views/edit_announcement.php:42
+msgid "Announcement was not found"
+msgstr "Δεν βρέθηκε η ανακοίνωση"
+
+#: views/edit_announcement.php:55
+msgid "Edit announcement"
+msgstr "Επεξεργασία ανακοίνωσης"
+
+#: views/edit_announcement.php:61
+msgid "Announcement"
+msgstr "Ανακοίνωση"
+
+#: views/edit_announcement.php:69
+msgid "Announcement body..."
+msgstr "Σώμα ανακοίνωσης"
+
+#: views/class_files.php:71
+msgid "Are you sure you want to delete this folder?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον φάκελο αρχείων;"
+
+#: views/class_files.php:102
+#: views/files.php:89
+#: views/lab.php:250
+msgid "New Name"
+msgstr "Νέο Όνομα"
+
+#: views/class_files.php:103
+#: views/files.php:90
+#: views/lab.php:251
+msgid "New name here..."
+msgstr "Νέο όνομα εδώ..."
+
+#: views/class_files.php:105
+#: views/class_files.php:126
+msgid "Public"
+msgstr "Δημόσιος"
+
+#: views/class_files.php:108
+#: views/files.php:92
+#: views/lab.php:254
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: views/class_files.php:115
+msgid "No file folders."
+msgstr "Κανένας φάκελος αρχείων."
+
+#: views/class_files.php:121
+msgid "New Folder"
+msgstr "Νέος φάκελος"
+
+#: views/class_files.php:123
+#: views/files.php:160
+#: views/lab.php:269
+msgid "Name"
+msgstr "Όνομα"
+
+#: views/class_files.php:124
+msgid "Folder name here..."
+msgstr "Όνομα φακέλου εδώ..."
+
+#: views/class_files.php:128
+msgid "Create folder"
+msgstr "Δημιουργία φακέλου"
+
+#: views/navigation.php:12
+#: views/navigation.php:78
+msgid "Files"
+msgstr "Αρχεία"
+
+#: views/navigation.php:193
+#: views/edit_titles.php:35
+#: views/edit_titles.php:39
+msgid "Titles"
+msgstr "Τίτλοι"
+
+#: views/navigation.php:197
+msgid "Association Types"
+msgstr "Τύποι συσχετισμών"
+
+#: views/navigation.php:201
+msgid "Stats"
+msgstr "Στατιστικά"
+
+#: views/navigation.php:212
+msgid "Administration"
+msgstr "Διαχείρηση"
+
+#: views/files.php:15
+msgid "Folder"
+msgstr "Φάκελος"
+
+#: views/files.php:17
+#: views/files.php:28
+msgid "Class files"
+msgstr "Αρχεία μαθήματος"
+
+#: views/files.php:80
+#: views/lab.php:143
+#, php-format
+msgid "Download %s"
+msgstr "Κατεβάσμα %s"
+
+#: views/files.php:80
+#: views/lab.php:143
+msgid "download"
+msgstr "κατέβασμα"
+
+#: views/files.php:99
+#: views/lab.php:123
+#: views/lab.php:357
+msgid "No files."
+msgstr "Δεν υπάρχουν αρχεία."
+
+#: views/files.php:112
+msgid "Are you sure you want to delete the selected file(s)?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε το/α επιλεγμένο/α  αρχείο/α;"
+
+#: views/files.php:130
+#: views/lab.php:346
+msgid "Are you sure you want to delete this file?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το αρχείο;"
+
+#: views/files.php:158
+#: views/files.php:165
+#: views/lab.php:267
+#: views/lab.php:275
+msgid "Upload file"
+msgstr "Ανέβασμα"
+
+#: views/files.php:161
+#: views/lab.php:270
+msgid "(Optional) File name here..."
+msgstr "(Προαιρετικό) Όνομα αρχείου εδώ..."
+
+#: views/files.php:162
+#: views/lab.php:271
+msgid "File"
+msgstr "Αρχείο"
+
+#: views/edit_lab.php:13
+msgid "Some Lab"
+msgstr "Κάποιο εργαστήριο"
+
+#: views/edit_lab.php:48
+msgid "Database Error"
+msgstr "Σφάλμα βάσης δεδομένων"
+
+#: views/edit_lab.php:61
+msgid "Edit Lab/assignment"
+msgstr "Επεξεργασία Εργαστηρίου/Εργασίας"
+
+#: views/edit_lab.php:62
+#: views/lab.php:182
+msgid "Labs/Assignements"
+msgstr "Εργαστήρια/Εργασίες"
+
+#: views/edit_lab.php:70
+#: views/edit_lab.php:71
+#: views/new_lab.php:40
+#: views/new_lab.php:41
+msgid "Registration Deadline"
+msgstr "Διωρία εγγραφής"
+
+#: views/edit_lab.php:70
+#: views/edit_lab.php:71
+#: views/new_lab.php:40
+#: views/new_lab.php:41
+msgid "Hour"
+msgstr "Ώρα"
+
+#: views/edit_lab.php:70
+#: views/edit_lab.php:71
+#: views/new_lab.php:40
+#: views/new_lab.php:41
+msgid "Minute"
+msgstr "Λεπτό"
+
+#: views/edit_lab.php:70
+#: views/edit_lab.php:71
+#: views/new_lab.php:40
+#: views/new_lab.php:41
+msgid "Month"
+msgstr "Μήνας"
+
+#: views/edit_lab.php:70
+#: views/edit_lab.php:71
+#: views/new_lab.php:40
+#: views/new_lab.php:41
+msgid "Day of the Month"
+msgstr "Ημέρα του μήνα"
+
+#: views/edit_lab.php:70
+#: views/edit_lab.php:71
+#: views/new_lab.php:40
+#: views/new_lab.php:41
+msgid "Year"
+msgstr "Έτος"
+
+#: views/edit_lab.php:96
+#: views/new_lab.php:58
+msgid "Lab information and settings"
+msgstr "Πληροφορίες εργαστηρίου και ρυθμίσεις"
+
+#: views/edit_lab.php:98
+#: views/new_lab.php:60
+msgid "Lab title"
+msgstr "Τίτλος εργαστηρίου"
+
+#: views/edit_lab.php:100
+#: views/new_lab.php:62
+msgid "Write a description for the lab"
+msgstr "Δώστε μια περιγραφή για το εργαστήριο"
+
+#: views/edit_lab.php:101
+#: views/new_lab.php:63
+msgid "Team limit"
+msgstr "Όριο ομάδων"
+
+#: views/edit_lab.php:102
+#: views/new_lab.php:64
+msgid "How many teams the lab can have"
+msgstr "Πόσες ομάδες μπορούν να δημιουργηθούν"
+
+#: views/edit_lab.php:103
+#: views/new_lab.php:65
+msgid "Team size limit"
+msgstr "Όριο ατόμων"
+
+#: views/edit_lab.php:104
+#: views/new_lab.php:66
+msgid "How many users any lab team can have"
+msgstr "Πόσα άτομα μπορούν να υπάρχουν σε μία ομάδα"
+
+#: views/edit_lab.php:105
+#: views/new_lab.php:67
+msgid "Registration deadline"
+msgstr "Διορία εγγραφής"
+
+#: views/edit_lab.php:106
+#: views/new_lab.php:68
+msgid "Date registrations close"
+msgstr "Ημερομηνία λήξης εγγραφής"
+
+#: views/edit_lab.php:107
+#: views/new_lab.php:69
+msgid "Users can create teams"
+msgstr "Οι χρήστες μπορούν να φτιάξουν ομάδες"
+
+#: views/edit_lab.php:108
+#: views/new_lab.php:70
+msgid "Users can lock their teams"
+msgstr "Οι χρήστες μπορούν να κλειδώσουν την ομάδα τους"
+
+#: views/edit_lab.php:109
+#: views/new_lab.php:71
+msgid "Users can upload files"
+msgstr "Οι χρήστες μπορούν να ανεβάσουν αρχεία"
+
+#: views/edit_lab.php:111
+#: views/new_lab.php:73
+msgid "Upload limit"
+msgstr "Όριο αποστολής αρχείων"
+
+#: views/edit_lab.php:112
+#: views/new_lab.php:74
+msgid "How many files lab teams can upload"
+msgstr "Πόσα αρχεία μπορεί να ανεβάσει κάθε ομάδα"
+
+#: views/edit_lab.php:113
+#: views/new_lab.php:75
+msgid "Upload deadline"
+msgstr "Διορία αποστολής αρχείων"
+
+#: views/edit_lab.php:114
+#: views/new_lab.php:76
+msgid "Date file uploads close"
+msgstr "Η ημερομηνία οι αποστολές αρχείων σταματούν"
+
+#: views/edit_lab.php:117
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγγών"
+
+#: views/new_lab.php:79
+msgid "Create Lab"
+msgstr "Δημιουργία εργαστηρίου"
+
+#: views/lab.php:50
+#, php-format
+msgid "Registrations close on %s."
+msgstr "Διορία εγγραφών %s."
+
+#: views/lab.php:51
+#, php-format
+msgid "File uploads deadline on %s."
+msgstr "Διωρία αποστολής αρχείων %s."
+
+#: views/lab.php:53
+#, php-format
+msgid "Created on %s for %s and updated on %s."
+msgstr "Δημιουργήθηκε στις %s για το μάθημα %s και ανανεώθηκε στις %s."
+
+#: views/lab.php:76
+#, php-format
+msgid "Created on %s."
+msgstr "Δημιουργήθηκε στις %s."
+
+#: views/lab.php:78
+#, php-format
+msgid "Last updated on %s."
+msgstr "Τελεύταια ανανέωση στις %s."
+
+#: views/lab.php:80
+#, php-format
+msgid "Team is %s."
+msgstr "Η ομάδα είναι %s."
+
+#: views/lab.php:80
+#: views/lab.php:252
+msgid "Locked"
+msgstr "Κλειδωμένη"
+
+#: views/lab.php:80
+msgid "Not Locked"
+msgstr "Μη κλειδωμένη"
+
+#: views/lab.php:84
+#: views/lab.php:321
+msgid "No students."
+msgstr "Κανένας φοιτητής."
+
+#: views/lab.php:103
+msgid "Kick"
+msgstr "Αποβολή"
+
+#: views/lab.php:117
+msgid "Invalid student list."
+msgstr "Λάθος στην λίστα μαθητών."
+
+#: views/lab.php:158
+msgid "Invalid file list."
+msgstr "Λάθος στην λίστα αρχείων."
+
+#: views/lab.php:204
+msgid "Are you sure you want to delete this lab?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το εργαστήριο;"
+
+#: views/lab.php:219
+msgid "Teams"
+msgstr "Ομάδες"
+
+#: views/lab.php:221
+msgid "Create new team"
+msgstr "Δημιουργία νέας ομάδας"
+
+#: views/lab.php:236
+msgid "Go to my team"
+msgstr "Πήγαινε στην ομάδα μου"
+
+#: views/lab.php:287
+msgid "Join team"
+msgstr "Εγγραφή στην ομάδα"
+
+#: views/lab.php:287
+msgid "Join"
+msgstr "Εγγραφή"
+
+#: views/lab.php:290
+msgid "Leave"
+msgstr "Αποχώρηση"
+
+#: views/lab.php:290
+msgid "Leave team"
+msgstr "Αποχώρηση από ομάδα"
+
+#: views/lab.php:293
+msgid "Delete team"
+msgstr "Διαγραφή ομάδας"
+
+#: views/lab.php:302
+msgid "No teams."
+msgstr "Καμμία ομάδα."
+
+#: views/lab.php:309
+msgid "Are you sure you want to kick this student?"
+msgstr "Είστε σίγουροι ότι θέλετε να αποβάλετε αυτόν τον φοιτητή;"
+
+#: views/lab.php:366
+msgid "Are you sure you want to delete this lab team?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ομάδα εργαστηρίου;"
+
+#: views/lab.php:374
+msgid "Are you sure you want to leave this lab team?"
+msgstr "Είστε σίγουροι ότι θέλετε να αποχωρήσετε από την ομάδα;"
+
+#: views/lab.php:386
+msgid "Bulk create teams"
+msgstr "Μαζική δημιουργία ομάδων"
+
+#: views/lab.php:387
+#, php-format
+msgid "Create %s new teams"
+msgstr "Δημιουργήστε %s νέες ομάδες"
+
+#: views/lab.php:389
+#: views/home/admin.php:52
+msgid "Go"
+msgstr "Εμπρός"
+
+#: views/professors.php:45
+msgid "There are no registered professors"
+msgstr "Δεν υπάρχουν εγγεγραμμένοι καθηγητές"
+
+#: views/edit_titles.php:63
+msgid "New title"
+msgstr "Νέος τίτλος"
+
+#: views/edit_titles.php:66
+msgid "Short title description"
+msgstr "Σύντομη περιγραφή τίτλου"
+
+#: views/edit_titles.php:94
+msgid "Are you sure you want to delete the selected titles?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε τους επιλεγμένους τίτλους;"
+
+#: views/inactive.php:44
+msgid "There are no inactive accounts."
+msgstr "Δεν υπάρχουν ανενεργοί λογαριασμοί."
+
+#: views/stats.php:5
+msgid "Announcements made"
+msgstr "Ανακοινώσεις που έγιναν"
+
+#: views/stats.php:6
+msgid "Email adresses validated"
+msgstr "Εξακριβώσεις Διευθύνσεων ηλεκτρονικού ταχυδρομείου"
+
+#: views/stats.php:7
+msgid "Email notifications"
+msgstr "Ειδοποιήσεις ηλεκτρονικού ταχυδρομείου"
+
+#: views/stats.php:8
+msgid "Files downloaded"
+msgstr "Αρχεία που κατέβηκαν"
+
+#: views/stats.php:9
+msgid "Files uploaded"
+msgstr "Αρχεία που ανέβηκαν"
+
+#: views/stats.php:10
+msgid "File folders created"
+msgstr "Φάκελοι αρχείων που δημιουργήθηκαν"
+
+#: views/stats.php:11
+msgid "Labs created"
+msgstr "Εργαστηρία που δημιουργήθηκαν"
+
+#: views/stats.php:12
+msgid "Lab files uploaded"
+msgstr "Αρχεία εργαστηρίων που ανέβηκαν"
+
+#: views/stats.php:13
+msgid "Lab teams created"
+msgstr "Ομάδες εργαστηρίου που δημιουργήθηκαν"
+
+#: views/stats.php:14
+msgid "Passwords changed"
+msgstr "Αλλαγγές κωδικού"
+
+#: views/stats.php:15
+msgid "User accounts created"
+msgstr "Λογαριασμοί χρηστών που δημιουργήθηκαν"
+
+#: views/stats.php:56
+msgid "No statistics."
+msgstr "Δεν υπάρχουν στατιστικά."
+
+#: views/home/student.php:71
+msgid "Newest Announcements"
+msgstr "Νέες ανακοινώσεις"
+
+#: views/home/student.php:83
+msgid "You don't have any class subscriptions."
+msgstr "Δεν έχετε καμμία συνδρομή μαθημάτων."
+
+#: views/home/student.php:86
+msgid "No announcements yet."
+msgstr "Καμμία ανακοίνωση."
+
+#: views/home/admin.php:32
+msgid "Administrator's home"
+msgstr "Αρχική διαχειριστή"
+
+#: views/home/admin.php:38
+msgid "Recent activity"
+msgstr "Πρόσφατη δραστηριότητα"
+
+#: views/home/admin.php:44
+msgid "No log entries."
+msgstr "Καμμία εισαγωγή καταγραφής."
+
+#: views/home/admin.php:50
+msgid "Clean Log"
+msgstr "Καθαρισμός καταγραφών"
+
+#: views/home/admin.php:51
+#, php-format
+msgid "Clean log and keep %s entries"
+msgstr "Καθαρισμός καταγραφών και διατήρηση %s εισαγωγών"
+
+#: config/security.php:21
+msgid "Guest"
+msgstr "Επισκέπτης"
+
+#: config/security.php:21
+msgid "Student"
+msgstr "Φοιτητής"
+
+#: config/security.php:21
+msgid "Professor"
+msgstr "Καθηγητής"
+
+#: config/security.php:21
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+#: config/security.php:25
+msgid "Manage information"
+msgstr "Διαχείρηση πληροφοριών"
+
+#: config/security.php:26
+msgid "Make announcements"
+msgstr "Ανάρτηση ανακοινώσεων"
+
+#: config/security.php:27
+msgid "Manage announcements"
+msgstr "Διαχείρηση ανακοινώσεων"
+
+#: config/security.php:28
+msgid "Create labs/assignments"
+msgstr "Δημιουργία Εργαστηρίων/Εργασιών"
+
+#: config/security.php:29
+msgid "Manage labs"
+msgstr "Διαχείρηση εργαστηρίων"
+
+#: config/security.php:30
+msgid "Lab/assignment evaluation"
+msgstr "Βαθμολόγηση Εργαστηρίου/Εργασίας"
+
+#: config/security.php:31
+msgid "Upload files"
+msgstr "Ανέβασμα αρχείων"
+
+#: config/security.php:32
+msgid "Manage files"
+msgstr "Διαχείρηση αρχείων"
+
+#: config/security.php:33
+msgid "Create quizs"
+msgstr "Δημιουργία quiz"
+
+#: config/security.php:34
+msgid "Evaluate quizs"
+msgstr "Βαθμολόγηση quiz"
+
+#: config/security.php:47
+msgid "File download"
+msgstr "Κατέβασμα αρχείων"
+
+#: config/security.php:48
+msgid "File upload"
+msgstr "Ανέβασμα αρχείων"
+
+#: config/security.php:49
+msgid "Lab file upload"
+msgstr "Ανέβασμα αρχείων εργαστηρίου"
+
+#: config/security.php:50
+msgid "Email validation"
+msgstr "Εξακρίβωση ηλεκτρονικού ταχυδρομείου"
+
+#: config/security.php:52
+msgid "New folder"
+msgstr "Νέος φάκελος"
+
+#: config/security.php:53
+msgid "New lab"
+msgstr "Νέο εργαστήριο"
+
+#: config/security.php:54
+msgid "New lab team"
+msgstr "Νέα ομάδα εργαστηρίου"
+
+#: config/security.php:55
+msgid "New lab teams bulk"
+msgstr "Μαζική δημιουργία ομάδων"
+
+#: config/security.php:56
+msgid "Password change"
+msgstr "Αλλαγές κωδικού"
+
+#: config/security.php:57
+msgid "New user account"
+msgstr "Νέος χρήστης"
+
+#, fuzzy
+#~ msgid "Class Αssociation Τypes"
+#~ msgstr "Τύποι συσχετισμών"
+
+#~ msgid "Free join"
+#~ msgstr "Ελεύθερη εγγραφή"
+
+#~ msgid "Deadlines must be in the future."
+#~ msgstr "Οι διωρίες πρέπει να είναι στο μέλλον."
+
+#~ msgid "Semesters the class is taught"
+#~ msgstr "Εξάμηνα στα οποία διδάσκεται το μάθημα"
+
+#~ msgid "[ethmmy] Urgent announcement from "
+#~ msgstr "[NeTHMMY] "
 
 #~ msgid "Ο λογαριασμός σας ενεργοποίηθηκε.Μπορείτε να παίξετε."
 #~ msgstr "Ο λογαριασμός σας ενεργοποίηθηκε.Μπορείτε να παίξετε."
 
 #~ msgid "Token is bad."
-#~ msgstr "Το token δεν είναι έγκυρο."
-
-#~ msgid "Token is invalid."
 #~ msgstr "Το token δεν είναι έγκυρο."
 
 #~ msgid "You made your call already."
@@ -47,15 +1936,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Game not found."
 #~ msgstr "Δεν βρέθηκε το παιχνίδι."
 
-#~ msgid "You are not joined in a game."
-#~ msgstr "Δεν είστε καθισμένοι σε κάποιο παιχνίδι."
-
-#~ msgid "You are not logged in."
-#~ msgstr "Δεν είστε συνδεδεμένοι."
-
-#~ msgid "You can't change your call"
-#~ msgstr "Δεν μπορείται να αλλάξετε γνώμη."
-
 #~ msgid "Your have less than 14 cards."
 #~ msgstr "Έχετε λιγότερες από 14 κάρτες."
 
@@ -65,20 +1945,8 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Email taken."
 #~ msgstr "Το email είναι πιασμένο!"
 
-#~ msgid "Email is invalid"
-#~ msgstr "Το email είναι λάθος."
-
 #~ msgid "It's not deal phase."
 #~ msgstr "Δεν είναι φάση μοιράσματος."
-
-#~ msgid "You are not the dealer."
-#~ msgstr "Ο πρώτος παίκτης μοιράζει."
-
-#~ msgid "Access denied."
-#~ msgstr "Απαγορεύεται η πρόσβαση."
-
-#~ msgid "Access Denied."
-#~ msgstr "Άρνηση πρόσβασης."
 
 #~ msgid "City name is not valid."
 #~ msgstr "Το όνομα πόλης δεν είναι έγκυρο."
@@ -323,9 +2191,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "No cards to play."
 #~ msgstr "Δεν δόθηκαν χαρτιά!"
 
-#~ msgid "Message too big."
-#~ msgstr "Πολύ μεγάλο μήνυμα."
-
 #~ msgid "Bad Message."
 #~ msgstr "Μη έγκυρο μήνυμα."
 
@@ -334,21 +2199,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
 #~ msgid "Ο λογαριασμός σας ενεργοποίηθηκε.Μπορείτε να κάνετε login."
 #~ msgstr "Ο λογαριασμός σας ενεργοποίηθηκε. Μπορείτε να κάνετε login."
-
-#~ msgid "Email is taken."
-#~ msgstr "Το email είναι πιασμένο."
-
-#~ msgid "Email is invalid."
-#~ msgstr "Το email δεν είναι έγκυρο."
-
-#~ msgid "Image file error"
-#~ msgstr "Σφάλμα αρχείου εικόνας"
-
-#~ msgid "Image file is too large."
-#~ msgstr "Το μέγεθος της εικόνας είναι πολύ μεγάλο."
-
-#~ msgid "Image not uploaded."
-#~ msgstr "Η εικόνα δεν ανέβηκε."
 
 #~ msgid "Image file is not valid."
 #~ msgstr "Το αρχείο εικόνας δεν είναι ένα έγκυρο."
@@ -364,12 +2214,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Ενεργοποιήση λογαριασμού στο TICHUIQ"
 #~ msgstr "Ενεργοποιήση λογαριασμού στο TICHUIQ"
 
-#~ msgid "Email delivery failed."
-#~ msgstr "Η αποστολή email απέτυχε."
-
-#~ msgid "An activation email was sent to email address %s."
-#~ msgstr "Ένα email ενεργοποίησης απεστάλθηκε στην διέυθυνση %s."
-
 #~ msgid "Failed to get authentication token."
 #~ msgstr "Αποτυχία ανάκτησης κωδικού άδειας."
 
@@ -379,26 +2223,14 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "An activation email was sent to email adress"
 #~ msgstr "Ένα email ενεργοποίησης στάλθηκε στην διεύθυνση email"
 
-#~ msgid "Account is already activated."
-#~ msgstr "Ο λογαριασμός είναι ήδη ενεργοποιημένος."
-
-#~ msgid "Email not found!"
-#~ msgstr "Το email δεν βρέθηκε."
-
 #~ msgid "Ακολούθησε το παρακάτω λινκ για να αλλάξεις τον κωδικό σου...\n"
 #~ msgstr "Ακολούθησε το παρακάτω λινκ για να αλλάξεις τον κωδικό σου...\n"
 
 #~ msgid "Αλλαγή κωδικού στο TICHUIQ"
 #~ msgstr "Αλλαγή κωδικού στο TICHUIQ"
 
-#~ msgid "Invalid form."
-#~ msgstr "Κακή μορφή."
-
 #~ msgid "It's not phoenix form select phase."
 #~ msgstr "Δεν είναι φάση επιλογής φοίνικα."
-
-#~ msgid "Invalid request."
-#~ msgstr "Λάθος απαίτηση."
 
 #~ msgid "It's not majong request phase."
 #~ msgstr "It's not majong request phase."
@@ -411,9 +2243,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
 #~ msgid "Innapropriate Hand."
 #~ msgstr "Δεν μπορεί να παιχτεί αυτό το χέρι."
-
-#~ msgid "Invalid Hand."
-#~ msgstr "Μη έγκυρο χέρι."
 
 #~ msgid "Request fail."
 #~ msgstr "Δες τι ζητήθηκε..."
@@ -550,9 +2379,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ "<em>password</em>) και πατήστε <em>Είσοδος</em>, αλλιώς πατήστε "
 #~ "<em>Εγγραφή</em> για να ξεκινήσετε την διαδικασία εγγραφής σας και να "
 #~ "παίξετε tichu online <em>άμεσα</em>!"
-
-#~ msgid "E-mail"
-#~ msgstr "E-Mail"
 
 #~ msgid "Είσοδος"
 #~ msgstr "Είσοδος"
@@ -1228,9 +3054,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Προφίλ παίκτη"
 #~ msgstr "Προφίλ παίκτη"
 
-#~ msgid "Not found."
-#~ msgstr "Δε βρέθηκε."
-
 #~ msgid "Αλλού"
 #~ msgstr "Αλλού"
 
@@ -1303,12 +3126,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Πόλη"
 #~ msgstr "Πόλη"
 
-#~ msgid "Registered on %s."
-#~ msgstr "Παίζει tichu online από %s."
-
-#~ msgid "Last active on %s."
-#~ msgstr "Τελεύταιο σημείο ζωής %s."
-
 #~ msgid "Now playing on table %s."
 #~ msgstr "Τώρα παίζει στο τραπέζι %s."
 
@@ -1357,9 +3174,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Accomplished grand tichu on %s."
 #~ msgstr "Πέτυχε grand tichu στις %s."
 
-#~ msgid "Gained %s badge on %s."
-#~ msgstr "Κέρδισε το μετάλλιο %s στις %s."
-
 #~ msgid "Bombed on %s!"
 #~ msgstr "Έριξε βόμβα στις %s!"
 
@@ -1371,9 +3185,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
 #~ msgid "Userid is not a valid."
 #~ msgstr "Το Userid δεν είναι έγκυρο."
-
-#~ msgid "User is not given."
-#~ msgstr "Δέ δόθηκε χρήστης."
 
 #~ msgid "Εικόνα"
 #~ msgstr "Εικόνα"
@@ -1476,41 +3287,14 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "Games"
 #~ msgstr "Τραπέζια"
 
-#~ msgid "Register"
-#~ msgstr "Εγγραφή"
-
-#~ msgid "Change password"
-#~ msgstr "Αλλαγή κωδικού"
-
 #~ msgid "Tichu online on your browser!"
 #~ msgstr "Tichu online από τον browser σας!"
-
-#~ msgid "Contact us"
-#~ msgstr "Επικοινωνήστε μαζί μας"
 
 #~ msgid "Search for players"
 #~ msgstr "Αναζήτηση παικτών"
 
-#~ msgid "Player profile"
-#~ msgstr "Προφίλ παίκτη"
-
-#~ msgid "%s's profile"
-#~ msgstr "%s"
-
-#~ msgid "Player activity"
-#~ msgstr "Δραστηριότητα παίχτη"
-
 #~ msgid "%s's activity"
 #~ msgstr "Δραστηριότητα του/της %s"
-
-#~ msgid "Manage cities"
-#~ msgstr "Διαχείρηση πόλεων"
-
-#~ msgid "Password reset"
-#~ msgstr "Επαναφορά κωδικού"
-
-#~ msgid "Account activation"
-#~ msgstr "Ενεργοποίηση λογαριασμού"
 
 #~ msgid "All Badges"
 #~ msgstr "Όλα τα μετάλλια"
@@ -1526,9 +3310,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
 #~ msgid "%s owners"
 #~ msgstr "Ιδιοκτήτες του %s"
-
-#~ msgid "Game information"
-#~ msgstr "Πληροφορίες παιχνιδιού"
 
 #~ msgid "City information"
 #~ msgstr "Πληροφορίες πόλης"
@@ -2108,9 +3889,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 #~ msgid "bonus Deals"
 #~ msgstr "Bonus Deals"
 
-#~ msgid "Actions"
-#~ msgstr "Ενέργειες"
-
 #~ msgid "Ανέβασμα φωτογραφίας"
 #~ msgstr "Ανέβασμα φωτογραφίας"
 
@@ -2125,9 +3903,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
 #~ msgid "Tichu rules"
 #~ msgstr "Οι κανόνες του tichu"
-
-#~ msgid "Wrong password."
-#~ msgstr "Λάθος κωδικός πρόσβασης."
 
 #~ msgid ""
 #~ "Your account is not activated. Fill in the<a href='index.php?"
@@ -2159,9 +3934,6 @@ msgstr "Δεν βρέθηκε ο χρήστης ή λάθος κωδικός"
 
 #~ msgid "Γενικά στατιστικά"
 #~ msgstr "Γενικά στατιστικά"
-
-#~ msgid "Site statistics"
-#~ msgstr "Στατιστικά"
 
 #~ msgid "TichuIQ - Παίξτε tichu online από τον browser σας!"
 #~ msgstr "TichuIQ - Παίξτε tichu online από τον browser σας!"

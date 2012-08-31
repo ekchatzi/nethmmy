@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -21,8 +22,11 @@
 		if(can_delete_class($logged_userid,$cid))
 		{
 			$query = "DELETE FROM classes WHERE id='$cid' LIMIT 1";
-			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _('Class was deleted successfully.');		
+			if(mysql_query($query))
+			{
+				$message[] = _('Class was deleted successfully.');
+				class_deletion_log($logged_userid,$class);			
+			}	
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
-
+	include_once('../lib/log.php');
 
         if(!isset($error))
                 $error = array();
@@ -30,8 +30,11 @@
 					description='".mysql_real_escape_string(sanitize_html($description))."',
 					semesters='$semesters'
 					WHERE id='$cid' LIMIT 1";
-			mysql_query($query) || ($error[] = mysql_error());
-			$message[] = _("Class updated successfully.");
+			if(mysql_query($query))
+			{
+				$message[] = _("Class updated successfully.");
+				class_edit_log($logged_userid,$cid);
+			}		
 		}
 		else
 		{

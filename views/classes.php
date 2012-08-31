@@ -35,7 +35,7 @@
 			$id[] = $id_t;
 		}
 
-		if (can_change_class_subscriptions($logged_userid,$logged_userid )) 
+		if (can_edit_class_subscriptions($logged_userid,$logged_userid )) 
 		{
 			$show_sub = true;
 			$query = "SELECT classes FROM users WHERE id = '$logged_userid'";

@@ -5,6 +5,7 @@
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
 	include_once("../config/general.php");
+	include_once('../lib/log.php');
 
         if(!isset($error)) 
                 $error = array();
@@ -35,18 +36,25 @@
 			$ret = mysql_query($query);
 			if($ret && mysql_numrows($ret))
 			{
+				$fail = false;
 				while($row = mysql_fetch_array($ret))
 				{
 					$to = $row['email'];
-					$subject =_('[ethmmy] Urgent announcement from ').$class_title;
+					$subject = sprintf(_('[ethmmy] Urgent announcement for %s'),$class_title);
 					$message_body = $title.'\n'.$text;
-					$headers = _('From: ').$NOTIFY_EMAIL_ADDRESS.'\n';
+					$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 					
 					if(!mail($to, $subject, $message_body, $headers))
 					{
-						$error[] = _("Urgent delivery failed. Please try again by editing your last announcement.");
+						$fail = true;
+					}
+					else
+					{
+						email_notification_log($row['id'],$ann);
 					}
 				}
+				if($fail) 
+					$error[] = _("Urgent delivery failed.");
 			}		
 		}
 		
@@ -64,8 +72,11 @@
 						update_time = '".time()."',
 						is_urgent = $urgent
 						WHERE id='$aid' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _("Announcement was updated successfully.");		
+				if(mysql_query($query))
+				{
+					announcement_edit_log($logged_userid,$aid);
+					$message[] = _("Announcement was updated successfully.");		
+				}
 			}
 			else
 			{

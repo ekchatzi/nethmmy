@@ -6,7 +6,7 @@
 	include_once("../lib/login.php");
 	include_once("../lib/localization.php");
 	include_once("../lib/validate.php");
-
+	include_once('../lib/log.php');
 
         if(!isset($error))
                 $error = array();
@@ -36,8 +36,11 @@
 						title='".mysql_real_escape_string($name)."',
 						is_locked='$lock'
 						WHERE id='$team' LIMIT 1";
-				mysql_query($query) || ($error[] = mysql_error());
-				$message[] = _('Lab team was updated successfully.');
+				if(mysql_query($query))
+				{
+					lab_team_edit_log($logged_userid,$team);
+					$message[] = _('Lab team was updated successfully.');
+				}
 			}
 			else
 			{
