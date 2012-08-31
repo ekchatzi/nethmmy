@@ -50,10 +50,11 @@
 				<td><input type='hidden' value="<?php echo $tid[$i];?>" name='id[]' /><input class='classAssociationTypeField deleteCheck' id="delete<?php echo $i;?>" type='checkbox' name='delete[]' value="<?php echo $tid[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="title<?php echo $i;?>" type='text' name='title[]' value="<?php echo $title[$i];?>" /></td>
 				<td><input class='classAssociationTypeField' id="priority<?php echo $i;?>" type='text' name='priority[]' value="<?php echo $priority[$i];?>" /></td>
-				<td>
+				<td><ul>
 <?php       	foreach($CLASS_PERMISSIONS_TEXT as $per => $per_txt) {?>		
-					<p class='permissionCheck'><input class='classAssociationCheck' id="<?php echo $per.$i;?>" type='checkbox' name='<?php echo $per.$i;?>' <?php if(in_array($per, $permissions[$i])) echo "checked='true'";?> /><?php echo $per_txt;?></p>
-<?php			}?>				
+					<li class='permissionCheck'><input class='classAssociationCheck' id="<?php echo $per.$i;?>" type='checkbox' name='<?php echo $per.$i;?>' <?php if(in_array($per, $permissions[$i])) echo "checked='true'";?> /><?php echo $per_txt;?></li>
+<?php			}?>	
+				</ul>
 				</td>
 			</tr>
 <?php		}?>
@@ -73,10 +74,11 @@
 		<form class='newAssociation' action='new_class_association_type.php' method='post' onsubmit='return editAssocCheck(false)'>
 			<label><?php echo _('Title');?></label><input type='text' name='title' placeholder="<?php echo _('Association Title');?>"/>
 			<label><?php echo _('Priority');?></label><input type='text' name='priority' placeholder="<?php echo _('Less is more important');?>"/>
-			<label><?php echo _('Permissions');?></label>
+			<div class='newClassAssociationPerm'><label><?php echo _('Permissions');?></label><ul>
 <?php     		foreach($CLASS_PERMISSIONS_TEXT as $per => $per_txt) {?>		
-					<p class='permissionCheck'><input class='newClassAssociationCheck' id="<?php echo $per;?>" type='checkbox' name='<?php echo $per;?>'/><?php echo $per_txt;?></p>
+					<li class='permissionCheck'><input class='newClassAssociationCheck' id="<?php echo $per;?>" type='checkbox' name='<?php echo $per;?>'/><?php echo $per_txt;?></li>
 <?php			}?>	
+			</ul></div>
 			<input class='submit' type='submit' value="<?php echo _('Submit');?>" />
 		</form>
 		</fieldset>

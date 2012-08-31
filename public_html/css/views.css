@@ -96,6 +96,11 @@ div#receiveUrgents {
 	position: relative;
 	margin-left: 10px;
 }
+.changePasswordLink {
+	position: relative;
+	top: -480px;
+	right: -663px;
+}
 /*
 	EDIT CLASS VIEW
 				*/
@@ -108,7 +113,7 @@ div#receiveUrgents {
 	resize:vertical;
 }
 .newClassAssociationFieldset label,input{
-	display:inline !important;
+	display:inline;
 }
 /*
 	ASSOCIATIONS VIEW
@@ -133,6 +138,7 @@ div#receiveUrgents {
 	text-align: left;
 	margin-left: 10px;
 }
+
 
 /* NAVIGATION VIEW*/
 
@@ -460,4 +466,24 @@ div#receiveUrgents {
 /* ADMIN HOME */
 .adminHomeWrapper {
 	margin-top: 10px;
+}
+
+/* CHANGE PASSWORD */
+.passResetWrapper form > label{
+	display:block;
+}
+.passResetWrapper form > input{
+	display:block;
+}
+.resetForm label {
+	display:block;
+}
+.resetForm .submit {
+	display:block;
+	margin-top: 5px;
+}
+.passResetNote {
+	display: inline-block;
+	font-size: 8pt;
+	margin-left: 10px;
 }

@@ -12,46 +12,25 @@
 				
 	if(!isset($message))
 		$message = array();
-
+		
 	$uid = isset($_POST['uid'])?$_POST['uid']:'';
 	if(!($e = user_id_validation($uid)))
-	{	
-		$query = "SELECT * FROM users WHERE id='$uid' LIMIT 1";
-		$ret = mysql_query($query);
-		if($ret && mysql_num_rows($ret))
+	{
+		if(can_request_password_reset($logged_userid,$uid))
 		{
-			$result = mysql_fetch_array($ret);
-			$email = $result['email'];
-			$is_validated = $result['is_email_validated'];
-			if (!$is_validated)
-			{
-				$to = $email;
-				$subject = _('[ethmmy] Validate your email');
-				$token = get_token('email_validation',$uid);	
-				$link = "$INDEX_ROOT/validate_email.php?token=$token";
-				$message_body = sprintf(_("Please follow this link %s to validate your email address."),"<a href='$link'>$link</a>");
-				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
-				if(mail($to, $subject, $message_body, $headers))
-				{
-					$message[] = (_('Email validation email was sent successfully to email address `%s`.'),$email);
-				} 
-				else 
-				{
-					$error[] = _("Message delivery failed. Please try again.");
-				}
-			}
-			else
-			{
-				$error[] = _("Your email is already validated");
-			}
+			$token = get_token('password_reset',$uid);
+		}
+		else
+		{
+			$error[] = _('Access Denied.');
 		}
 	}
-	else 
+	else
 	{
-		$error . $e;
+		$error[] = $e;
 	}
-	
-	
+		
+		
 	if(isset($_GET['AJAX']))
 	{ 
 		echo '{ "error" : ['.(count($error)?('"'.implode('","',$error).'"'):'').'],
@@ -65,7 +44,8 @@
 		if(isset($error) && count($error))
 			setcookie('notify',implode($MESSAGE_SEPERATOR,$error),time()+3600,$INDEX_ROOT);
 
-		$redirect = "profile/$uid/";
+		$redirect = "change_password/".$token."/";
 		include('redirect.php');
 	}
 ?>
+		

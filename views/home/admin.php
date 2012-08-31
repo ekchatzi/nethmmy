@@ -22,10 +22,13 @@
 		$log_times = array();
 		$query = "SELECT * FROM log WHERE 1 ORDER BY time DESC LIMIT $LOG_MESSAGES_SHOWN";
 		$ret = mysql_query($query);
-		while($row = mysql_fetch_array($ret))
+		if($ret && mysql_num_rows($ret))
 		{
-			$log_times[] = strftime($DATE_FORMAT,$row['time']);
-			$log_messages[] = parse_log_message($row['type'],$row['data']); 
+			while($row = mysql_fetch_array($ret))
+			{
+				$log_times[] = strftime($DATE_FORMAT,$row['time']);
+				$log_messages[] = parse_log_message($row['type'],$row['data']); 
+			}
 		}
 	}
 ?>

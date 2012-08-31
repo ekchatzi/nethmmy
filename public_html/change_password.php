@@ -16,7 +16,7 @@
 	$token = isset($_POST['token'])?$_POST['token']:'';
 	$password = isset($_POST['password'])?$_POST['password']:'';
 	$password_again = isset($_POST['password_again'])?$_POST['password_again']:'';
-	if(verify_token($token,'change_password'))//if token is valid
+	if(verify_token($token,'password_reset'))//if token is valid
 	{
 		if($password == $password_again)
 		{
@@ -41,7 +41,7 @@
 				}
 				else
 				{
-					$error[] = _('Token is no longer avainable.');
+					$error[] = _('Token is no longer available.');
 				}
 			}
 			else
