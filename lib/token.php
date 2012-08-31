@@ -1,4 +1,4 @@
-<?
+<?php
 	include_once('../config/security.php');
 
 	function get_token($context,$data)

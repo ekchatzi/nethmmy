@@ -60,6 +60,9 @@
 	
 	$view['professors'] = '../views/professors.php';
 	$view_title['professors'] = _('Professors');
+	
+	$view['change_password'] = '../views/change_password.php';
+	$view_title['change_password'] = _('Change your password');
 
 	/* if v is one of the above (so $view[$v] evaluates to true)
 	we will include $view[$v] else we include by default home view*/	

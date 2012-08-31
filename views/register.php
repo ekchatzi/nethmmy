@@ -39,7 +39,7 @@ function validate(form) {
   var semester = form.semester.value;
   var nameRegex = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
   var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  var passRegex = /(?=.*\d)(?=.*[a-z]).{6,}/;
+  var passRegex = /(?=.*\d)(?=.*[a-z]).{<?php echo $MIN_PASSWORD_LENGTH;?>,}/;
   var numRegex = /^\s*\d+\s*$/;
   
   if (username.length<<?php echo $MIN_USERNAME_LENGTH;?>) {
@@ -67,7 +67,7 @@ function validate(form) {
     return false;
   }
   if(!password.match(passRegex)) {
-    inlineMsg('password','<?php echo _('Password must contain at least 6 letters and numbers');?>', 2, 0);
+    inlineMsg('password','<?php sprintf(_("Password must contain at least %s letters and numbers"), $MIN_PASSWORD_LENGTH);?>', 2, 0);
     return false;
   }
   if(password!=password_again) {

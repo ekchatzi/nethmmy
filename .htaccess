@@ -11,4 +11,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteBase   /nethmmy/
 RewriteRule	 ^public_html/([A-Za-z0-9_-]+)/([0-9]+)/$     ./public_html/index.php?v=$1&id=$2	[L]
 RewriteRule  ^public_html/([A-Za-z0-9_-]+)/$                          	  ./public_html/index.php?v=$1 			[L]
+RewriteRule	 ^public_html/change_password/([A-Za-z0-9]+)/$     ./public_html/index.php?v=change_password&token=$1	[L]
 #RewriteRule ^public_html/([a-z]+)/?$       				  ./public_html/index.php?v=$1 			[L]

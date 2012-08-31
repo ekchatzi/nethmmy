@@ -13,27 +13,27 @@
 	if(!isset($message))
 		$message = array();
 
-	$uid = isset($_POST['uid'])?$_POST['uid']:'';
+	$email = isset($_POST['email'])?$_POST['email']:'';
 	if(!($e = user_id_validation($uid)))
 	{	
-		$query = "SELECT * FROM users WHERE id='$uid' LIMIT 1";
+		$query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
 			$result = mysql_fetch_array($ret);
-			$email = $result['email'];
+			$uid = $result['id'];
 			$is_validated = $result['is_email_validated'];
-			if (!$is_validated)
+			if ($is_validated)
 			{
 				$to = $email;
 				$subject = _('[ethmmy] Validate your email');
-				$token = get_token('email_validation',$uid);	
-				$link = "$INDEX_ROOT/validate_email.php?token=$token";
-				$message_body = sprintf(_("Please follow this link %s to validate your email address."),"<a href='$link'>$link</a>");
+				$token = get_token('password_reset',$uid);	
+				$link = "$INDEX_ROOT/change_password/$token/";
+				$message_body = sprintf(_("Please follow this link %s to change your password, or you can paste the following code to the code input field in the page you were redirected.\n Code: %s"),"<a href='$link'>$link</a>","$token");
 				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message_body, $headers))
 				{
-					$message[] = (_('Email validation email was sent successfully to email address `%s`.'),$email);
+					$message[] = (_('Email for password reset was sent successfully to email address `%s`.'),$email);
 				} 
 				else 
 				{
@@ -42,7 +42,7 @@
 			}
 			else
 			{
-				$error[] = _("Your email is already validated");
+				$error[] = _("Your email is not validated");
 			}
 		}
 	}
