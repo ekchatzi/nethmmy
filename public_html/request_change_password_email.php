@@ -14,7 +14,7 @@
 		$message = array();
 
 	$email = isset($_POST['email'])?$_POST['email']:'';
-	if(!($e = user_id_validation($uid)))
+	if(!($e = email_validation($email)))
 	{	
 		$query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
 		$ret = mysql_query($query);
