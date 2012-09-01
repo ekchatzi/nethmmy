@@ -117,12 +117,59 @@
 		/* Must be in email format */
 		if(!preg_match('~^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$~',$email))
 			return _('Email is invalid.');
+		/* Must be in db */
+		$query = "SELECT email FROM users WHERE email='".mysql_real_escape_string($email)."' LIMIT 1";
+		$ret = mysql_query($query);
+		if(!$ret || mysql_numrows($ret) == 0)
+			return _('Email was not found in our database.');
+
+		return false;
+	}
+	/*
+		Validates email adreess.
+		returns false on ok,errors on error
+	*/
+	function new_account_email_validation($email)
+	{
+		/* Must be in email format */
+		if(!preg_match('~^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$~',$email))
+			return _('Email is invalid.');
 		/* Must be unique */
 		$query = "SELECT email FROM users WHERE email='".mysql_real_escape_string($email)."' LIMIT 1";
 		$ret = mysql_query($query);
 		if($ret && mysql_numrows($ret))
 			return _('Your email is already in our database.');
 
+		return false;
+	}
+	/*
+		Validates email adreess.
+		returns false on ok,errors on error
+	*/
+	function edit_account_email_validation($email,$uid)
+	{
+		/* Must be in email format */
+		if(!preg_match('~^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$~',$email))
+			return _('Email is invalid.');
+		/* Must be unique */
+		$query = "SELECT email FROM users WHERE id='".mysql_real_escape_string($uid)."' LIMIT 1";
+		$ret = mysql_query($query);
+		if($ret && mysql_numrows($ret))
+		{
+			if($email != mysql_result($ret,0,0))
+			{
+				/* Must be unique */
+				$query = "SELECT email FROM users WHERE email='".mysql_real_escape_string($email)."' LIMIT 1";
+				$ret = mysql_query($query);
+				if($ret && mysql_numrows($ret))
+					return _('Your email is already in our database.');
+			}
+		
+		}
+		else
+		{
+			return _('Invalid user ID.');
+		}	
 		return false;
 	}
 

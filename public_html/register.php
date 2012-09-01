@@ -28,7 +28,7 @@
 	if($password == $password_again)
 	{
 		if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name)) || ($e = new_account_username_validation($username))
-		   || ($e = email_validation($email)) || ($e = new_account_aem_validation($aem)) || ($e = semester_validation($semester))
+		   || ($e = new_account_email_validation($email)) || ($e = new_account_aem_validation($aem)) || ($e = semester_validation($semester))
 		   || ($e = password_validation($password)) || ($e = user_type_validation($user_type))))
 		{
 			$salt = bin2hex(mcrypt_create_iv(32));

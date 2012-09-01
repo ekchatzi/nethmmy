@@ -27,7 +27,7 @@
 	$email_urgent = isset($_POST['send_urgent'])?$_POST['send_urgent']:'0';
 	/* check input */
 	if(!(($e = name_validation($first_name)) || ($e = name_validation($last_name))
-	   || ($e = email_validation($email)) || ($e = website_validation($website))
+	   || ($e = edit_account_email_validation($email,$uid)) || ($e = website_validation($website))
 	   || ($e = telephone_validation($telephone)) || ($e = xml_validation($bio))
 	   || ($e = user_id_validation($uid)) || ($e = title_id_validation($title))
 	   || ($e = semester_validation($semester))))

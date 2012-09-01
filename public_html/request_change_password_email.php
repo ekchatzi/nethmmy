@@ -47,7 +47,7 @@
 		}
 		else
 		{
-			$error[] = _("Your email was not found in our database");
+			$error[] = _("Email was not found in our database");
 		}
 	}
 	else 
