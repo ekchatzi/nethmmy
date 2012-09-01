@@ -71,7 +71,6 @@ pre {
 	padding-top:1px;
 	padding-bottom:1px;
 	position:relative;
-	top:1px;
 }
 .topBar a:hover {
 	background-color:#E0DEEF;
@@ -82,6 +81,15 @@ pre {
 	padding-right:2px;
 	padding-top:0px;
 	padding-bottom:0px;
+}
+.forgotHref {
+	font-size: 8pt;
+	margin-left: 5px;
+	top: -1px;
+}
+.rememberCheck {
+	top: 1px;
+	position: relative;
 }
 
 .loginInfo {

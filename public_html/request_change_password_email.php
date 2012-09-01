@@ -33,7 +33,7 @@
 				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message_body, $headers))
 				{
-					$message[] = (_('Email for password reset was sent successfully to email address `%s`.'),$email);
+					$message[] = sprintf(_('Email for password reset was sent successfully to email address `%s`.'),$email);
 				} 
 				else 
 				{
@@ -45,10 +45,14 @@
 				$error[] = _("Your email is not validated");
 			}
 		}
+		else
+		{
+			$error[] = _("Your email was not found in our database");
+		}
 	}
 	else 
 	{
-		$error . $e;
+		$error[] = $e;
 	}
 	
 	

@@ -111,8 +111,9 @@
 			<input type='submit' value="<?php echo _('Submit');?>" />
 			</fieldset>
 		</form>
+<?php	if(can_request_password_reset($logged_userid,$uid)) {?>
 		<div class='changePasswordLink'><form method='post' action='request_change_password.php'><input type='hidden' name='uid' value="<?php echo $uid;?>" /><input type='submit' value="<?php echo _('Change Password');?>" /></form></div>
-			
+<?php	}?>			
 		
 <?php		
 		$c1 = can_edit_user_type($logged_userid,$uid);

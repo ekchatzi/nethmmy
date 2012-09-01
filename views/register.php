@@ -133,7 +133,7 @@ function username_check(){
 		
 		$.ajax({
 		   type: "POST",
-		   url: "../public_html/check_username.php",
+		   url: "../public_html/check_username.php?AJAX",
 		   data: 'username='+ username,
 		   cache: false,
 		   success: function(response){
@@ -143,7 +143,7 @@ function username_check(){
 					exists=1;
 				}
 				else {
-					inlineMsg('username','<?php echo _('Username available');?>', 1, 1);
+					inlineMsg('username',ob.message, 1, 1);
 					exists=0;
 				}
 
