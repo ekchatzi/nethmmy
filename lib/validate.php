@@ -117,6 +117,11 @@
 		/* Must be in email format */
 		if(!preg_match('~^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$~',$email))
 			return _('Email is invalid.');
+		/* Must be unique */
+		$query = "SELECT email FROM users WHERE email='".mysql_real_escape_string($email)."' LIMIT 1";
+		$ret = mysql_query($query);
+		if($ret && mysql_numrows($ret))
+			return _('Your email is already in our database.');
 
 		return false;
 	}

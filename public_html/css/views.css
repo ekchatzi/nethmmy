@@ -98,7 +98,7 @@ div#receiveUrgents {
 }
 .changePasswordLink {
 	position: relative;
-	top: -480px;
+	top: -440px;
 	right: -663px;
 }
 /*
@@ -487,3 +487,5 @@ div#receiveUrgents {
 	font-size: 8pt;
 	margin-left: 10px;
 }
+
+

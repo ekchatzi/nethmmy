@@ -144,7 +144,7 @@
 																	alert(ob.error);
 																}
 																else {
-																	alert('<?php echo _('Email sent! Please check your inbox and spam folder.');?>');
+																	alert(ob.message);
 																}
 															}
 														});

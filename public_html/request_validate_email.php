@@ -33,7 +33,7 @@
 				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message_body, $headers))
 				{
-					$message[] = (_('Email validation email was sent successfully to email address `%s`.'),$email);
+					$message[] = sprintf(_('Validation email was sent successfully to email address `%s`.'),$email);
 				} 
 				else 
 				{

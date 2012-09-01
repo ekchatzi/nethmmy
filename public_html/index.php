@@ -61,7 +61,29 @@
 							loginExpanded = false;
 						}					
 					});
+					$('#forgotHref').click(function(){
+						var email = prompt("<?php echo _('Please enter your email address');?>");
+						if(email!=null && email!='') {
+							$.ajax({
+							   type: "POST",
+							   url: "../public_html/request_change_password_email.php?AJAX",
+							   data: 'email='+email,
+							   cache: false,
+							   success: function(response) {
+									//works only when email server is set up correctly
+									var ob = $.parseJSON(response);
+									if(ob.error!='') {
+										alert(ob.error);
+									}
+									else {
+										alert(ob.message);
+									}
+								}
+							});
+						}
+					});
 				});
+				
 			</script>
 			<a id='showLoginLink' href='javascript:void(0)'><?php echo _('Login');?></a>
 			<a href='register/'><?php echo _('Register');?></a>
@@ -70,8 +92,8 @@
 					<div class='loginPromptLine1'>
 						<input type='text' name='username' placeholder="<?php echo _('Username');?>" />
 						<input type='password' name='password' placeholder="<?php echo _('Password');?>" />
-						<span><input type='checkbox' name='remember' value='1' <?php if(isset($_COOKIE['remember']) && $_COOKIE['remember']) echo " checked='checked'";?> />Remember me</span>
-						<input type='submit' value="<?php echo _('Login');?>" />
+						<span><input class='rememberCheck' type='checkbox' name='remember' value='1' <?php if(isset($_COOKIE['remember']) && $_COOKIE['remember']) echo " checked='checked'";?> />Remember me</span>
+						<input type='submit' value="<?php echo _('Login');?>" /><span><a href='javascript:void(0)' id='forgotHref' class='forgotHref'>Forgot your password?</a></span>
 					</div>
 				</form>
 			</div>
