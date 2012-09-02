@@ -29,7 +29,7 @@
 				$subject = _('[ethmmy] Validate your email');
 				$token = get_token('password_reset',$uid);	
 				$link = "$INDEX_ROOT/change_password/$token/";
-				$message_body = sprintf(_("Please follow this link %s to change your password, or you can paste the following code to the code input field in the page you were redirected.\n Code: %s"),"<a href='$link'>$link</a>","$token");
+				$message_body = sprintf(_("Please follow this link %s to change your password, or you can paste the following code to the code input field in this page: %s .\n Code: %s"),"<a href='$link'>$link</a>","<a href='$INDEX_ROOT/change_password/'>$INDEX_ROOT/change_password/</a>","$token");
 				$headers = 'From: '.$NOTIFY_EMAIL_ADDRESS.'\n';
 				if(mail($to, $subject, $message_body, $headers))
 				{
