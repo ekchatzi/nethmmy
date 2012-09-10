@@ -12,11 +12,11 @@
 	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if(can_edit_class_association_types($logged_userid))
 	{
+		$show = true;
 		$query = "SELECT * FROM class_association_types";
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
-			$show = true;
 			$tid = array();
 			$title = array();
 			$priority = array();
