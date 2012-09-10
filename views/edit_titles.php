@@ -10,14 +10,14 @@
 	$home_link = "<a href='home/'>"._('Home')."</a>";
 	if(can_edit_titles($logged_userid))
 	{
+		$show = true;
+		$tid = array();
+		$title = array();
+		$description = array();
 		$query = "SELECT * FROM titles";
 		$ret = mysql_query($query);
 		if($ret && mysql_num_rows($ret))
 		{
-			$show = true;
-			$tid = array();
-			$title = array();
-			$description = array();
 			while($row = mysql_fetch_array($ret))
 			{
 				$tid[] = $row['id'];
