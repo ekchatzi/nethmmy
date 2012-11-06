@@ -27,7 +27,7 @@
 				if($ret && mysql_numrows($ret))
 				{
 					$uid = mysql_result($ret,0,0);//data == uid
-					$salt = bin2hex(mcrypt_create_iv(32));
+					$salt = bin2hex(uniqid());
 					$password_hash = hash($HASH_ALGORITHM,$password.$salt);//generate hash of salted password
 					$query = "UPDATE users SET password = '$password_hash',
 								salt='$salt'

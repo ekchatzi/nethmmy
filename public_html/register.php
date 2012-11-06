@@ -31,7 +31,7 @@
 		   || ($e = new_account_email_validation($email)) || ($e = new_account_aem_validation($aem)) || ($e = semester_validation($semester))
 		   || ($e = password_validation($password)) || ($e = user_type_validation($user_type))))
 		{
-			$salt = bin2hex(mcrypt_create_iv(32));
+			$salt = bin2hex(uniqid());
 			$password_hash = hash($HASH_ALGORITHM,$password.$salt);//generate hash of salted password	
 
 			/* add user to database */

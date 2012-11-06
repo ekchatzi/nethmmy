@@ -37,7 +37,7 @@ function validate(form) {
   var password = form.password.value;
   var password_again = form.password_again.value;
   var semester = form.semester.value;
-  var nameRegex = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+  var nameRegex = /^[\u0000-\u007F\u0370-\u03FF\u1F00-\u1FFF\u2000-\u206F]*$/;
   var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   var passRegex = /(?=.*\d)(?=.*[a-z]).{<?php echo $MIN_PASSWORD_LENGTH;?>,}/;
   var numRegex = /^\s*\d+\s*$/;

@@ -325,17 +325,6 @@ Coding style προτείνονται:
 + `tokens`
 `code,data,context`
 
-+ `test_templates`:  
-`id,class,creator,title,description,descriptor`
-
-+ `test_instances`:  
-`id,test_template,student,time_created,descriptor`
-
-+ `test_submissions`:     
-`id,test_instance,time_submitted`
-
-+ `test_results`:         
-`id,student,test_template,grade,time_evaluated,confirmed`
 
 
 ####Σημειώσεις
@@ -394,3 +383,35 @@ LOG TYPES
 109 : password change , data : user_id
 110 : new user , data : user_id
 111 : new class , data : user_id,class_id
+.......... Check lib/log.php for others
+
+
+QUIZ SYSTEM
+===========
+
+lib/quiz.php
+	function evaluate_quiz(quiz_instance,quiz_anwsers);
+	function generate_quiz_instance(quiz_template);
+	function generate_quiz_html(quiz_instance);
+	function validate_quiz_template_description(quiz_template_description);
+
+views/new_quiz.php
+views/edit_quiz.php
+views/quiz_info.php
+views/quiz.php
+views/quiz_result.php
+views/quiz_anwsers.php
+
+public_html/new_quiz.php
+public_html/edit_quiz.php
+public_html/start_quiz.php
+public_html/submit_quiz.php
+public_html/evaluate_quizs.php
+public_html/evaluate_anwser.php
+
+views/new_quiz.php --> public_html/new_quiz.php --> validate_quiz_template_description() --> db:quiz_templates --> views/quiz_info.php
+views/quiz_info.php --> start_quiz.php --> generate_quiz_instance() -->  db:quiz_instances --> views/quiz.php --> submit_quiz.php --> db:quiz_anwsers
+views/quiz_info.php --> evaluate_quizs.php --> evaluate_quiz() --> db:quiz_results --> views/quiz_result.php
+views/quiz_info.php --> views/quiz_result.php
+views/quiz_info.php --> views/edit_quiz.php --> public_html/edit_quiz.php --> validate_quiz_template_description() --> db:quiz_templates --> views/quiz_info.php
+views/quiz_info.php --> views/quiz_anwsers.php --> views/evaluate_anwser.php --> views/quiz_anwsers.php

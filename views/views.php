@@ -67,6 +67,9 @@
 	$view['change_password'] = '../views/change_password.php';
 	$view_title['change_password'] = _('Change your password');
 
+	$view['log'] = '../views/log.php';
+	$view_title['log'] = _('Log');
+
 	/* if v is one of the above (so $view[$v] evaluates to true)
 	we will include $view[$v] else we include by default home view*/	
 	$VIEW = isset($view[$v])?$view[$v]:$view['home'];
