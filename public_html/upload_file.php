@@ -43,6 +43,7 @@
 
 			//now that we settled on target filename
 			//make the move
+
 			if(move_uploaded_file($file['tmp_name'],$uploadfile))
 			{
 				$query = "INSERT INTO files (folder,full_path,name,uploader,upload_time) VALUES 

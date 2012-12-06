@@ -1,4 +1,11 @@
 fix register doesn't accept greek characters (javascript lacks unicode support)
 fix register doesn't state error when password doesn't have letters
+state on home if account is inactive
+log view with arguments
+kathigites --> xristes sto class view
 translations
-quiz 
+quiz
+
+lab title validation script
+title overflow
+
